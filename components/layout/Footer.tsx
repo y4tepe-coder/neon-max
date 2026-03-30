@@ -44,11 +44,11 @@ export default function Footer() {
             </p>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:hallo@neon-agentur.de"
+                href="mailto:hallo@neon-bw.de"
                 className="flex items-center gap-2.5 text-white/50 hover:text-neon transition-colors duration-200 text-sm cursor-pointer"
               >
                 <Mail size={15} />
-                hallo@neon-agentur.de
+                hallo@neon-bw.de
               </a>
               <div className="flex items-center gap-2.5 text-white/50 text-sm">
                 <MapPin size={15} />
@@ -79,16 +79,19 @@ export default function Footer() {
           ))}
         </div>
 
+        {/* Ländle-Spruch */}
+        <div className="py-8 border-b border-dark-border text-center">
+          <p className="text-2xl md:text-3xl font-bold tracking-tight text-white/80">
+            Gemacht mit <span className="text-neon">Herz</span> im Ländle.
+          </p>
+        </div>
+
         {/* Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center py-6 gap-4">
           <p className="text-white/30 text-sm">
             © {new Date().getFullYear()} NEON Agentur. Alle Rechte vorbehalten.
           </p>
-          <div className="flex items-center gap-1.5">
-            <span className="text-white/30 text-sm">Gemacht mit</span>
-            <span className="text-neon text-sm">♥</span>
-            <span className="text-white/30 text-sm">in Baden-Württemberg</span>
-          </div>
+          <p className="text-white/20 text-sm">neon-bw.de</p>
         </div>
       </div>
     </footer>
