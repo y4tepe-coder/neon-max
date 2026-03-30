@@ -18,7 +18,7 @@ export default function DatenschutzPage() {
             <div>
               <h2 className="text-lg font-semibold text-text-dark mb-2">1. Verantwortlicher</h2>
               <p>Yasin Tepe – NEON Agentur</p>
-              <p>Flattigstraße 12, 77771 Klein-Velden</p>
+              <p>Flattichstraße 12, 70771 Leinfelden-Echterdingen</p>
               <p>E-Mail: <a href="mailto:hallo@neon-bw.de" className="text-neon-dim hover:underline">hallo@neon-bw.de</a></p>
               <p>Telefon: +49 176 20170133</p>
             </div>

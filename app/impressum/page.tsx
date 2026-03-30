@@ -18,8 +18,8 @@ export default function ImpressumPage() {
               <h2 className="text-lg font-semibold text-text-dark mb-2">Angaben gemäß § 5 TMG</h2>
               <p>Yasin Tepe</p>
               <p>NEON Agentur</p>
-              <p>Flattigstraße 12</p>
-              <p>77771 Klein-Velden</p>
+              <p>Flattichstraße 12</p>
+              <p>70771 Leinfelden-Echterdingen</p>
               <p>Deutschland</p>
             </div>
 
@@ -46,8 +46,8 @@ export default function ImpressumPage() {
             <div>
               <h2 className="text-lg font-semibold text-text-dark mb-2">Verantwortlich für den Inhalt gemäß § 18 Abs. 2 MStV</h2>
               <p>Yasin Tepe</p>
-              <p>Flattigstraße 12</p>
-              <p>77771 Klein-Velden</p>
+              <p>Flattichstraße 12</p>
+              <p>70771 Leinfelden-Echterdingen</p>
             </div>
 
             <div>
