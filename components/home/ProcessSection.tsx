@@ -4,17 +4,8 @@ import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { AnimatedRoadmap, type Milestone } from '@/components/ui/animated-roadmap'
 import { BookingModal } from '@/components/ui/booking-modal'
+import { Calendar } from 'lucide-react'
 
-/**
- * Milestone positions map to SVG path coordinates (viewBox 0 0 800 400, container h-480px):
- *   left % × 8 = SVG x   |   top % × 4 = SVG y
- *
- *   Erstgespräch   → left 7.50% / top 80.00% → SVG (60, 320)
- *   Ziele & Konzept → left 22.50% / top 16.00% → SVG (180, 64)
- *   Umsetzung      → left 43.75% / top 56.00% → SVG (350, 224)
- *   Livegang       → left 63.75% / top  9.50% → SVG (510, 38)
- *   Betreuung      → left 94.75% / top 48.75% → SVG (758, 195)
- */
 const milestones: Milestone[] = [
   {
     id: 1,
@@ -103,17 +94,83 @@ export default function ProcessSection() {
             <p className="text-white/50 text-lg leading-relaxed">
               Von der ersten Idee bis zur fertigen Website – und darüber hinaus.
             </p>
-            <p className="text-white/25 text-sm mt-3">
-              Fahren Sie mit der Maus über die Schritte, um mehr zu erfahren.
-            </p>
           </motion.div>
 
-          {/* Animated roadmap */}
+          {/* Mobile: vertical step list */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:hidden mt-10 flex flex-col gap-0"
+          >
+            {milestones.map((m, i) => {
+              const dotOpacity = 1 - i * 0.175
+              const isLast = i === milestones.length - 1
+              return (
+                <motion.div
+                  key={m.id}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
+                  className="flex gap-4"
+                >
+                  {/* Line + dot */}
+                  <div className="flex flex-col items-center">
+                    <div
+                      className="w-4 h-4 rounded-full shrink-0 mt-1"
+                      style={{
+                        backgroundColor: `rgba(197,247,79,${dotOpacity})`,
+                        boxShadow: `0 0 10px rgba(197,247,79,${dotOpacity * 0.5})`,
+                      }}
+                    />
+                    {!isLast && (
+                      <div
+                        className="w-px flex-1 mt-1 mb-0"
+                        style={{
+                          background: `linear-gradient(to bottom, rgba(197,247,79,${dotOpacity * 0.4}), rgba(197,247,79,${dotOpacity * 0.1}))`,
+                          minHeight: '2rem',
+                        }}
+                      />
+                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div className={`pb-8 ${isLast ? 'pb-0' : ''}`}>
+                    <p
+                      className="text-[11px] font-bold uppercase tracking-widest mb-1"
+                      style={{ color: `rgba(197,247,79,${dotOpacity})` }}
+                    >
+                      Schritt {m.id}
+                    </p>
+                    <h3 className="text-off-white font-bold text-base mb-1">{m.name}</h3>
+                    <p className="text-white/45 text-sm leading-relaxed">{m.description}</p>
+                    {m.cta && (
+                      <button
+                        type="button"
+                        onClick={() => setBookingOpen(true)}
+                        className="mt-3 inline-flex items-center gap-2 text-xs font-semibold px-4 py-2.5 rounded-full cursor-pointer transition-all duration-200"
+                        style={{ backgroundColor: '#C5F74F', color: '#111111' }}
+                      >
+                        <Calendar size={13} aria-hidden="true" />
+                        Termin buchen
+                      </button>
+                    )}
+                  </div>
+                </motion.div>
+              )
+            })}
+          </motion.div>
+
+          {/* Desktop: animated SVG roadmap */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
+            className="hidden lg:block"
           >
+            <p className="text-white/25 text-sm text-center mb-2">
+              Fahren Sie mit der Maus über die Schritte, um mehr zu erfahren.
+            </p>
             <AnimatedRoadmap milestones={milestonesWithHandlers} />
           </motion.div>
         </div>
