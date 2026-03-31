@@ -20,7 +20,7 @@ function RotatingWord() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((i) => (i + 1) % rotatingWords.length)
-    }, 2200)
+    }, 3000)
     return () => clearInterval(timer)
   }, [])
 
@@ -34,10 +34,13 @@ function RotatingWord() {
       <AnimatePresence mode="wait">
         <motion.span
           key={rotatingWords[index]}
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -40, opacity: 0 }}
-          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ y: 60, opacity: 0, filter: 'blur(12px)', scale: 0.92 }}
+          animate={{ y: 0, opacity: 1, filter: 'blur(0px)', scale: 1 }}
+          exit={{ y: -50, opacity: 0, filter: 'blur(8px)', scale: 1.04 }}
+          transition={{
+            duration: 0.65,
+            ease: [0.16, 1, 0.3, 1],
+          }}
           className="inline-block text-neon"
         >
           {rotatingWords[index]}
