@@ -96,58 +96,66 @@ export default function ProcessSection() {
           </motion.div>
 
           {/* Mobile: vertical step list */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:hidden mt-10 flex flex-col gap-0"
-          >
+          <div className="lg:hidden mt-10 flex flex-col gap-0">
             {milestones.map((m, i) => {
-              const dotOpacity = 1 - i * 0.175
+              const targetOpacity = 1 - i * 0.175
               const isLast = i === milestones.length - 1
+              const dotDelay = 0.3 + i * 0.45
+              const lineDelay = dotDelay + 0.25
+
               return (
-                <motion.div
-                  key={m.id}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
-                  className="flex gap-4"
-                >
-                  {/* Line + dot */}
+                <div key={m.id} className="flex gap-4">
+                  {/* Dot + line column */}
                   <div className="flex flex-col items-center">
-                    <div
+                    {/* Dot: dark → neon */}
+                    <motion.div
                       className="w-4 h-4 rounded-full shrink-0 mt-1"
-                      style={{
-                        backgroundColor: `rgba(197,247,79,${dotOpacity})`,
-                        boxShadow: `0 0 10px rgba(197,247,79,${dotOpacity * 0.5})`,
+                      initial={{
+                        backgroundColor: 'rgba(197,247,79,0.08)',
+                        boxShadow: 'none',
+                        scale: 0.6,
                       }}
+                      animate={isInView ? {
+                        backgroundColor: `rgba(197,247,79,${targetOpacity})`,
+                        boxShadow: `0 0 18px rgba(197,247,79,${targetOpacity * 0.7}), 0 0 6px rgba(197,247,79,${targetOpacity * 0.4})`,
+                        scale: 1,
+                      } : {}}
+                      transition={{ duration: 0.5, delay: dotDelay, ease: [0.34, 1.56, 0.64, 1] }}
                     />
+                    {/* Line: grows downward */}
                     {!isLast && (
-                      <div
-                        className="w-px flex-1 mt-1 mb-0"
-                        style={{
-                          background: `linear-gradient(to bottom, rgba(197,247,79,${dotOpacity * 0.4}), rgba(197,247,79,${dotOpacity * 0.1}))`,
-                          minHeight: '2rem',
-                        }}
+                      <motion.div
+                        className="w-px mt-1"
+                        style={{ minHeight: '2.5rem' }}
+                        initial={{ scaleY: 0, originY: 0, background: `linear-gradient(to bottom, rgba(197,247,79,${targetOpacity * 0.4}), rgba(197,247,79,0.05))` }}
+                        animate={isInView ? { scaleY: 1 } : {}}
+                        transition={{ duration: 0.35, delay: lineDelay, ease: 'easeIn' }}
                       />
                     )}
                   </div>
 
-                  {/* Content */}
-                  <div className={`pb-8 ${isLast ? 'pb-0' : ''}`}>
-                    <p
+                  {/* Content fades in with dot */}
+                  <motion.div
+                    className={`pb-8 ${isLast ? 'pb-0' : ''}`}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.4, delay: dotDelay + 0.1 }}
+                  >
+                    <motion.p
                       className="text-[11px] font-bold uppercase tracking-widest mb-1"
-                      style={{ color: `rgba(197,247,79,${dotOpacity})` }}
+                      initial={{ color: 'rgba(197,247,79,0.2)' }}
+                      animate={isInView ? { color: `rgba(197,247,79,${targetOpacity})` } : {}}
+                      transition={{ duration: 0.4, delay: dotDelay }}
                     >
                       Schritt {m.id}
-                    </p>
+                    </motion.p>
                     <h3 className="text-off-white font-bold text-base mb-1">{m.name}</h3>
                     <p className="text-white/45 text-sm leading-relaxed">{m.description}</p>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </div>
               )
             })}
-          </motion.div>
+          </div>
 
           {/* Desktop: animated SVG roadmap */}
           <motion.div
