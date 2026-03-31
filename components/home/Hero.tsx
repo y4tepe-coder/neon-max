@@ -1,6 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import { GradientWave } from '@/components/ui/gradient-wave'
@@ -10,6 +11,41 @@ const trustPoints = [
   'Inklusive Betreuung',
   'Schnelle Umsetzung',
 ]
+
+const rotatingWords = ['Professionell.', 'Modern.', 'Betreut.']
+
+function RotatingWord() {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % rotatingWords.length)
+    }, 2200)
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <span
+      className="relative inline-block overflow-hidden"
+      style={{ minWidth: '14ch' }}
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={rotatingWords[index]}
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -40, opacity: 0 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          className="inline-block text-neon"
+        >
+          {rotatingWords[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  )
+}
 
 export default function Hero() {
   return (
@@ -70,12 +106,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-bold text-off-white leading-[1.05] tracking-tight mb-6 text-balance"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-bold text-off-white leading-[1.1] tracking-tight mb-6"
           >
-            Ihre neue Website.{' '}
-            <span className="text-neon">Professionell.</span>
+            Ihre neue Website.
             <br />
-            Modern. Betreut.
+            <RotatingWord />
           </motion.h1>
 
           {/* Sub-headline */}
