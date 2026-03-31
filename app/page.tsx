@@ -1,4 +1,5 @@
 import Hero from '@/components/home/Hero'
+import { MarqueeBanner } from '@/components/ui/marquee-banner'
 import ProblemSection from '@/components/home/ProblemSection'
 import ServicesOverview from '@/components/home/ServicesOverview'
 import WhyNeon from '@/components/home/WhyNeon'
@@ -12,6 +13,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <MarqueeBanner />
       <ProblemSection />
       <ServicesOverview />
       <WebsiteCheck />
