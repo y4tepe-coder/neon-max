@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Calendar } from 'lucide-react'
 
@@ -174,13 +174,7 @@ function MilestoneMarker({ milestone }: { milestone: Milestone }) {
 const AnimatedRoadmap = React.forwardRef<HTMLDivElement, AnimatedRoadmapProps>(
   ({ className, milestones, ...props }, _ref) => {
     const containerRef = React.useRef<HTMLDivElement>(null)
-    const { scrollYProgress } = useScroll({
-      target: containerRef,
-      offset: ['start end', 'end start'],
-    })
-
-    const pathLength = useTransform(scrollYProgress, [0.1, 0.65], [0, 1])
-    const pathOpacity = useTransform(scrollYProgress, [0.05, 0.2], [0, 1])
+    const isInView = useInView(containerRef, { once: true, margin: '-100px' })
 
     return (
       <div ref={containerRef} className={cn('relative w-full', className)} {...props}>
@@ -204,7 +198,9 @@ const AnimatedRoadmap = React.forwardRef<HTMLDivElement, AnimatedRoadmapProps>(
                 strokeWidth="14"
                 strokeLinecap="round"
                 strokeOpacity="0.07"
-                style={{ pathLength, opacity: pathOpacity }}
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
+                transition={{ pathLength: { duration: 2.2, ease: 'easeInOut' }, opacity: { duration: 0.4 } }}
               />
               {/* Main dashed trail */}
               <motion.path
@@ -214,7 +210,9 @@ const AnimatedRoadmap = React.forwardRef<HTMLDivElement, AnimatedRoadmapProps>(
                 strokeWidth="2"
                 strokeDasharray="10 7"
                 strokeLinecap="round"
-                style={{ pathLength, opacity: pathOpacity }}
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={isInView ? { pathLength: 1, opacity: 1 } : {}}
+                transition={{ pathLength: { duration: 2.2, ease: 'easeInOut' }, opacity: { duration: 0.4 } }}
               />
             </svg>
 
