@@ -42,8 +42,9 @@ function MilestoneMarker({ milestone }: { milestone: Milestone }) {
 
   React.useEffect(() => () => clearTimeout(hideTimer.current), [])
 
-  const isActive = milestone.status !== 'pending'
-  const dotColor = isActive ? '#C5F74F' : '#3A3A3A'
+  // Progressive fade: step 1 = full brightness, step 5 = 30%
+  const dotOpacity = 1 - (milestone.id - 1) * 0.175
+  const dotColor = `rgba(197,247,79,${dotOpacity})`
 
   const side = milestone.tooltipSide ?? 'top'
   const align = milestone.tooltipAlign ?? 'center'
@@ -117,9 +118,7 @@ function MilestoneMarker({ milestone }: { milestone: Milestone }) {
           viewport={{ once: true }}
           className="w-14 h-14 rounded-full flex items-center justify-center cursor-pointer select-none"
           style={{
-            background: isActive
-              ? 'radial-gradient(circle, rgba(197,247,79,0.18) 0%, transparent 70%)'
-              : 'transparent',
+            background: `radial-gradient(circle, rgba(197,247,79,${dotOpacity * 0.18}) 0%, transparent 70%)`,
           }}
           onMouseEnter={onEnter}
           onMouseLeave={onLeave}
@@ -129,11 +128,9 @@ function MilestoneMarker({ milestone }: { milestone: Milestone }) {
             style={{
               backgroundColor: dotColor,
               borderColor: dotColor,
-              boxShadow: isHovered && isActive
-                ? '0 0 28px rgba(197,247,79,0.9), 0 0 10px rgba(197,247,79,0.5)'
-                : isActive
-                ? '0 0 14px rgba(197,247,79,0.45)'
-                : 'none',
+              boxShadow: isHovered
+                ? `0 0 28px rgba(197,247,79,${dotOpacity * 0.9}), 0 0 10px rgba(197,247,79,${dotOpacity * 0.5})`
+                : `0 0 14px rgba(197,247,79,${dotOpacity * 0.45})`,
             }}
           />
         </motion.div>

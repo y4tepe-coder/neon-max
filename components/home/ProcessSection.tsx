@@ -42,7 +42,7 @@ const milestones: Milestone[] = [
     status: 'in-progress',
     position: { top: '56%', left: '43.75%' },
     description:
-      'Wir bauen Ihre Website – modern, mobil optimiert und auf Ihr Unternehmen zugeschnitten. Sie verfolgen den Fortschritt laufend.',
+      'Wir bauen Ihre Website und halten Sie dabei auf dem Laufenden. Sie entscheiden, was gefällt – und was noch angepasst werden soll.',
     tooltipSide: 'top',
     tooltipAlign: 'center',
   },
