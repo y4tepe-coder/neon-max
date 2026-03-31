@@ -3,7 +3,6 @@ import { DM_Sans } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
-import { WhatsAppFloat } from '@/components/ui/whatsapp-float'
 import { CalendlyBadge } from '@/components/ui/calendly-badge'
 
 const dmSans = DM_Sans({
@@ -57,7 +56,6 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
-        <WhatsAppFloat />
         <CalendlyBadge />
       </body>
     </html>

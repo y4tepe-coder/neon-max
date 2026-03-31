@@ -28,8 +28,8 @@ export default function ImpressumPage() {
               <p>Telefon: +49 176 20170133</p>
               <p>
                 E-Mail:{' '}
-                <a href="mailto:hallo@neon-bw.de" className="text-neon-dim hover:underline">
-                  hallo@neon-bw.de
+                <a href="mailto:info@neon-bw.de" className="text-neon-dim hover:underline">
+                  info@neon-bw.de
                 </a>
               </p>
               <p>Website: www.neon-bw.de</p>
