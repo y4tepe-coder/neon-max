@@ -4,7 +4,6 @@ import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { AnimatedRoadmap, type Milestone } from '@/components/ui/animated-roadmap'
 import { BookingModal } from '@/components/ui/booking-modal'
-import { Calendar } from 'lucide-react'
 
 const milestones: Milestone[] = [
   {
@@ -144,17 +143,6 @@ export default function ProcessSection() {
                     </p>
                     <h3 className="text-off-white font-bold text-base mb-1">{m.name}</h3>
                     <p className="text-white/45 text-sm leading-relaxed">{m.description}</p>
-                    {m.cta && (
-                      <button
-                        type="button"
-                        onClick={() => setBookingOpen(true)}
-                        className="mt-3 inline-flex items-center gap-2 text-xs font-semibold px-4 py-2.5 rounded-full cursor-pointer transition-all duration-200"
-                        style={{ backgroundColor: '#C5F74F', color: '#111111' }}
-                      >
-                        <Calendar size={13} aria-hidden="true" />
-                        Termin buchen
-                      </button>
-                    )}
                   </div>
                 </motion.div>
               )
