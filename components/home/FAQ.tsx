@@ -1,54 +1,34 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { Plus, Minus } from 'lucide-react'
 
 const faqs = [
   {
     question: 'Was kostet eine Website?',
     answer:
-      'Das hängt von Ihren Anforderungen ab. Grundsätzlich unterscheiden wir zwischen dem einmaligen Setup (Erstellung) und der laufenden monatlichen Betreuung. Konkrete Preise besprechen wir immer transparent im Erstgespräch – keine Überraschungen.',
-  },
-  {
-    question: 'Was ist der Unterschied zwischen Setup und Betreuung?',
-    answer:
-      'Das Setup ist die einmalige Erstellung Ihrer Website – das Gestalten, Bauen und Veröffentlichen. Die Betreuung ist das laufende Modell danach: Hosting, technische Pflege, Sicherheit, kleinere Änderungen und Support. Beides zusammen ergibt eine vollständige Lösung.',
+      'Unser Komplettpaket besteht aus einem einmaligen Setup-Preis und einer monatlichen Betreuungspauschale. Die genauen Konditionen besprechen wir transparent im Erstgespräch – keine versteckten Kosten.',
   },
   {
     question: 'Muss ich mich selbst um Hosting oder Technik kümmern?',
     answer:
-      'Nein. Hosting, Domain-Einrichtung, technische Konfiguration und alles Technische übernehmen wir für Sie. Sie müssen sich um nichts kümmern – das ist der Kern unserer Betreuung.',
-  },
-  {
-    question: 'Kann ich später Änderungen machen lassen?',
-    answer:
-      'Ja, das ist ein fester Bestandteil unseres Betreuungsmodells. Kleinere Textänderungen, neue Bilder oder Anpassungen sind enthalten. Für größere Erweiterungen sprechen wir das kurz ab.',
-  },
-  {
-    question: 'Ist die Website mobil optimiert?',
-    answer:
-      'Selbstverständlich. Alle Websites, die wir bauen, sind vollständig für Smartphones und Tablets optimiert. Heute greifen die meisten Menschen mobil auf Websites zu – das hat höchste Priorität.',
+      'Nein. Domain-Einrichtung, Hosting, technische Konfiguration und Sicherheit übernehmen wir vollständig. Sie kümmern sich um Ihr Unternehmen – wir um alles Technische.',
   },
   {
     question: 'Wie schnell kann eine Website online gehen?',
     answer:
-      'Das hängt vom Umfang und der Verfügbarkeit der Inhalte ab. Einfachere Projekte können innerhalb von 2–4 Wochen live gehen. Wir besprechen einen realistischen Zeitplan im Erstgespräch.',
+      'Bei zügiger Bereitstellung der Inhalte können einfachere Projekte innerhalb von 2–4 Wochen live gehen. Den genauen Zeitplan klären wir im Erstgespräch.',
   },
   {
     question: 'Bietet ihr auch Terminbuchung oder Chatfunktionen an?',
     answer:
-      'Ja, als optionale Erweiterung. Online-Terminbuchung, Chat-Funktionen und weitere smarte Erweiterungen können nach dem Launch jederzeit hinzugefügt werden – wenn Sie es brauchen.',
-  },
-  {
-    question: 'Wie läuft die Zusammenarbeit genau ab?',
-    answer:
-      'Wir starten mit einem kurzen Erstgespräch, klären Ihre Ziele und den Umfang, setzen die Website um – und Sie sehen den Fortschritt laufend. Nach dem Launch betreuen wir Ihre Website weiter. Kein komplizierter Prozess, keine langen Wartezeiten.',
+      'Ja, als optionale Erweiterung. Online-Terminbuchung, Live-Chat und weitere smarte Funktionen können jederzeit nach dem Launch ergänzt werden – wenn Sie es brauchen.',
   },
   {
     question: 'Kann die Website später noch erweitert werden?',
     answer:
-      'Ja. Wir bauen Ihre Website so, dass sie problemlos wachsen kann. Neue Seiten, Funktionen oder Erweiterungen können jederzeit ergänzt werden.',
+      'Ja. Wir bauen Ihre Website so, dass sie problemlos mitwachsen kann. Neue Seiten, Funktionen oder Integrationen können jederzeit ergänzt werden.',
   },
 ]
 
@@ -65,7 +45,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         aria-expanded={isOpen}
       >
         <span className="text-text-dark font-semibold text-base leading-snug">{question}</span>
-        <span className="shrink-0 mt-0.5 w-6 h-6 rounded-full bg-warm-gray flex items-center justify-center">
+        <span className="shrink-0 mt-0.5 w-6 h-6 rounded-full bg-warm-gray flex items-center justify-center transition-colors duration-200">
           {isOpen ? (
             <Minus size={14} className="text-neon-dim" aria-hidden="true" />
           ) : (
@@ -74,21 +54,17 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         </span>
       </button>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="overflow-hidden"
-          >
-            <p className="text-text-muted text-sm leading-relaxed pb-5 pr-8">
-              {answer}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* CSS grid trick: no JS-driven height animation → no lag */}
+      <div
+        className="grid transition-all duration-200 ease-in-out"
+        style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+      >
+        <div className="overflow-hidden">
+          <p className="text-text-muted text-sm leading-relaxed pb-5 pr-8">
+            {answer}
+          </p>
+        </div>
+      </div>
     </div>
   )
 }
