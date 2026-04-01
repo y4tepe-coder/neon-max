@@ -1,11 +1,9 @@
 'use client'
 
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { Calendar, MapPin, Clock, CheckCircle2, ArrowRight } from 'lucide-react'
+import { useRef, useState } from 'react'
+import { Calendar, MapPin, Clock, CheckCircle2, ArrowRight, Mail, Send, Loader2 } from 'lucide-react'
 
-// TODO: Ersetze mit deinem echten öffentlichen Calendly-Link
-// z.B. https://calendly.com/dein-name/erstgespraech
 const CALENDLY_URL = 'https://calendly.com/y4tepe/30min'
 const WHATSAPP_URL =
   'https://wa.me/4917620170133?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20neue%20Website.'
@@ -24,12 +22,41 @@ export default function ContactOptions() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
+  const [emailOpen, setEmailOpen] = useState(false)
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+
   function openCalendly() {
     const w = window as CalendlyWindow
     if (w.Calendly) {
       w.Calendly.initPopupWidget({ url: CALENDLY_URL })
     } else {
       window.open(CALENDLY_URL, '_blank')
+    }
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setStatus('loading')
+    setErrorMsg('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      const data = await res.json()
+      if (res.ok) {
+        setStatus('success')
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        setStatus('error')
+        setErrorMsg(data.error ?? 'Fehler beim Senden.')
+      }
+    } catch {
+      setStatus('error')
+      setErrorMsg('Fehler beim Senden. Bitte versuchen Sie es erneut.')
     }
   }
 
@@ -49,8 +76,8 @@ export default function ContactOptions() {
               Einfach Kontakt aufnehmen.
             </h2>
             <p className="text-text-muted text-base leading-relaxed mb-8">
-              Kein kompliziertes Formular. Wählen Sie einfach, wie Sie mit uns in
-              Kontakt treten möchten – wir sind schnell für Sie da.
+              Wählen Sie einfach, wie Sie mit uns in Kontakt treten möchten –
+              wir sind schnell für Sie da.
             </p>
 
             <div className="space-y-5 mb-8">
@@ -154,6 +181,139 @@ export default function ContactOptions() {
                 </p>
               </div>
             </motion.a>
+
+            {/* Email form card */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="rounded-2xl bg-white border border-warm-gray overflow-hidden"
+            >
+              {/* Card header – always visible */}
+              <button
+                type="button"
+                onClick={() => { setEmailOpen(!emailOpen); setStatus('idle') }}
+                className="w-full p-6 sm:p-7 flex items-start gap-4 text-left cursor-pointer
+                           hover:bg-warm-gray/40 transition-colors duration-200"
+                aria-expanded={emailOpen}
+              >
+                <div className="w-12 h-12 rounded-xl bg-warm-gray flex items-center justify-center shrink-0">
+                  <Mail size={22} className="text-text-dark" aria-hidden="true" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs font-semibold text-text-muted uppercase tracking-widest mb-1">
+                    Klassisch &amp; direkt
+                  </p>
+                  <h3 className="text-text-dark font-bold text-lg mb-1.5">
+                    Per E-Mail schreiben
+                  </h3>
+                  <p className="text-text-muted text-sm leading-relaxed">
+                    Senden Sie uns direkt eine Anfrage – wir antworten innerhalb von 24 Stunden.
+                  </p>
+                </div>
+                <ArrowRight
+                  size={18}
+                  className={`shrink-0 mt-1 text-text-muted transition-transform duration-200 ${emailOpen ? 'rotate-90' : ''}`}
+                  aria-hidden="true"
+                />
+              </button>
+
+              {/* Expandable form – CSS grid trick */}
+              <div
+                className="grid transition-all duration-300 ease-in-out"
+                style={{ gridTemplateRows: emailOpen ? '1fr' : '0fr' }}
+              >
+                <div className="overflow-hidden">
+                  <div className="px-6 sm:px-7 pb-6 sm:pb-7 border-t border-border-light">
+                    {status === 'success' ? (
+                      <div className="pt-5 flex items-start gap-3">
+                        <CheckCircle2 size={20} className="text-neon shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-text-dark font-semibold text-sm">Nachricht gesendet!</p>
+                          <p className="text-text-muted text-sm mt-0.5">
+                            Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+                          </p>
+                        </div>
+                      </div>
+                    ) : (
+                      <form onSubmit={handleSubmit} className="pt-5 space-y-3" noValidate>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          <div>
+                            <label htmlFor="contact-name" className="block text-xs font-semibold text-text-muted uppercase tracking-wide mb-1.5">
+                              Name
+                            </label>
+                            <input
+                              id="contact-name"
+                              type="text"
+                              required
+                              value={formData.name}
+                              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                              placeholder="Ihr Name"
+                              className="w-full rounded-xl border border-border-light bg-warm-gray px-4 py-2.5 text-sm text-text-dark placeholder:text-text-muted/50
+                                         focus:outline-none focus:ring-2 focus:ring-neon/40 focus:border-neon/40 transition-colors"
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="contact-email" className="block text-xs font-semibold text-text-muted uppercase tracking-wide mb-1.5">
+                              E-Mail
+                            </label>
+                            <input
+                              id="contact-email"
+                              type="email"
+                              required
+                              value={formData.email}
+                              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                              placeholder="ihre@email.de"
+                              className="w-full rounded-xl border border-border-light bg-warm-gray px-4 py-2.5 text-sm text-text-dark placeholder:text-text-muted/50
+                                         focus:outline-none focus:ring-2 focus:ring-neon/40 focus:border-neon/40 transition-colors"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <label htmlFor="contact-message" className="block text-xs font-semibold text-text-muted uppercase tracking-wide mb-1.5">
+                            Nachricht
+                          </label>
+                          <textarea
+                            id="contact-message"
+                            required
+                            rows={4}
+                            value={formData.message}
+                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                            placeholder="Erzählen Sie uns kurz von Ihrem Projekt oder Ihrer Frage..."
+                            className="w-full rounded-xl border border-border-light bg-warm-gray px-4 py-2.5 text-sm text-text-dark placeholder:text-text-muted/50
+                                       focus:outline-none focus:ring-2 focus:ring-neon/40 focus:border-neon/40 transition-colors resize-none"
+                          />
+                        </div>
+
+                        {status === 'error' && (
+                          <p className="text-red-500 text-xs">{errorMsg}</p>
+                        )}
+
+                        <button
+                          type="submit"
+                          disabled={status === 'loading'}
+                          className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold
+                                     text-sm px-5 py-2.5 rounded-full hover:bg-neon-dim transition-colors duration-200
+                                     cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                        >
+                          {status === 'loading' ? (
+                            <>
+                              <Loader2 size={14} className="animate-spin" aria-hidden="true" />
+                              Wird gesendet...
+                            </>
+                          ) : (
+                            <>
+                              <Send size={14} aria-hidden="true" />
+                              Anfrage senden
+                            </>
+                          )}
+                        </button>
+                      </form>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>
