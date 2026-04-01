@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { CalendlyBadge } from '@/components/ui/calendly-badge'
+import { ScrollProgress } from '@/components/ui/scroll-progress'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -53,6 +54,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
+        <ScrollProgress />
         <Navbar />
         <main>{children}</main>
         <Footer />
