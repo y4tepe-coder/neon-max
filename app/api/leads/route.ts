@@ -13,12 +13,14 @@ async function sendLeadEmail(data: {
   score?: number
   resultLevel?: string
 }) {
-  const { NOTIFY_EMAIL, GMAIL_USER, GMAIL_APP_PASSWORD } = process.env
-  if (!GMAIL_USER || !GMAIL_APP_PASSWORD || !NOTIFY_EMAIL) return
+  const { NOTIFY_EMAIL, SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env
+  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !NOTIFY_EMAIL) return
 
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: { user: GMAIL_USER, pass: GMAIL_APP_PASSWORD },
+    host: SMTP_HOST,
+    port: Number(SMTP_PORT ?? 587),
+    secure: Number(SMTP_PORT) === 465,
+    auth: { user: SMTP_USER, pass: SMTP_PASS },
   })
 
   const levelLabels: Record<string, string> = {
@@ -36,7 +38,7 @@ async function sendLeadEmail(data: {
     : ''
 
   await transporter.sendMail({
-    from: `"NEON Agentur" <${GMAIL_USER}>`,
+    from: `"NEON Agentur" <${SMTP_USER}>`,
     to: NOTIFY_EMAIL,
     subject: `🔔 Neuer Website-Check: ${data.contact.name || 'Unbekannt'} – ${data.url || 'keine URL'}`,
     text: [

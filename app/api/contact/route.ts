@@ -23,20 +23,26 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Nachricht zu lang.' }, { status: 400 })
     }
 
-    const { GMAIL_USER, GMAIL_APP_PASSWORD } = process.env
-    if (!GMAIL_USER || !GMAIL_APP_PASSWORD) {
-      console.error('Missing GMAIL_USER or GMAIL_APP_PASSWORD env vars')
-      return NextResponse.json({ error: 'E-Mail-Konfiguration fehlt.' }, { status: 500 })
+    const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env
+
+    // In development without SMTP configured: just log and return success
+    if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
+      console.log('[Contact Form – Dev Mode]')
+      console.log(`  Von:      ${name} <${email}>`)
+      console.log(`  Nachricht: ${message}`)
+      return NextResponse.json({ success: true })
     }
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: { user: GMAIL_USER, pass: GMAIL_APP_PASSWORD },
+      host: SMTP_HOST,
+      port: Number(SMTP_PORT ?? 587),
+      secure: Number(SMTP_PORT) === 465,
+      auth: { user: SMTP_USER, pass: SMTP_PASS },
     })
 
     await transporter.sendMail({
-      from: `"NEON Kontaktformular" <${GMAIL_USER}>`,
-      to: 'info@neon-bw.de',
+      from: `"NEON Kontaktformular" <${SMTP_USER}>`,
+      to: SMTP_USER, // info@neon-bw.de sendet an sich selbst
       replyTo: email,
       subject: `Neue Kontaktanfrage von ${name}`,
       text: `Name: ${name}\nE-Mail: ${email}\n\nNachricht:\n${message}`,
@@ -56,6 +62,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true })
   } catch (err) {
     console.error('Contact form error:', err)
-    return NextResponse.json({ error: 'Fehler beim Senden. Bitte versuchen Sie es später erneut.' }, { status: 500 })
+    return NextResponse.json(
+      { error: 'Fehler beim Senden. Bitte versuchen Sie es später erneut.' },
+      { status: 500 }
+    )
   }
 }
