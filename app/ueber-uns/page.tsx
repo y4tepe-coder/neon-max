@@ -81,23 +81,26 @@ export default function UeberUnsPage() {
               </h2>
               <div className="space-y-4 text-text-muted text-base leading-relaxed mb-8">
                 <p>
-                  Ich habe NEON Agentur gegründet, weil ich überzeugt bin: Jedes lokale
-                  Unternehmen verdient einen professionellen, modernen Online-Auftritt – egal
-                  wie groß oder klein es ist.
+                  NEON Agentur habe ich mit einer klaren Überzeugung gegründet: Jedes lokale
+                  Unternehmen – unabhängig von Größe oder Branche – verdient einen professionellen,
+                  zeitgemäßen Online-Auftritt.
                 </p>
                 <p>
-                  Was mich täglich antreibt: Ich begegne Unternehmern, die ihr Handwerk
-                  meisterhaft beherrschen, aber online kaum sichtbar sind. Das möchte ich ändern.
-                  Mit Websites, die wirklich helfen – und mit echtem Support dahinter.
+                  Was mich täglich antreibt: Ich begegne Unternehmern, die in ihrem Fachgebiet
+                  exzellent sind – online jedoch kaum wahrgenommen werden. Genau das möchte ich
+                  ändern. Mit Websites, die nachhaltig wirken und von echter Betreuung begleitet
+                  werden.
                 </p>
                 <p>
-                  Mein Ansatz ist dabei klar: Kein Fachjargon, keine Überraschungen, keine
-                  anonymen Support-Systeme. Sie haben mich als direkten Ansprechpartner – jemanden,
-                  der Ihr Projekt kennt und sich wirklich kümmert.
+                  Mein Anspruch ist dabei klar definiert: Keine Fachbegriffe, keine versteckten
+                  Kosten, kein anonymer Support. Sie erhalten mich als persönlichen
+                  Ansprechpartner – jemanden, der Ihr Projekt von Anfang an begleitet, tiefgehend
+                  versteht und mit konsequentem Engagement betreut.
                 </p>
                 <p>
-                  NEON ist jung, modern und ambitioniert. Und genau das ist unser Vorteil für Sie:
-                  Frisches Denken, aktuelle Methoden und ein echter Fokus auf Ergebnisse.
+                  NEON steht für einen modernen, ambitionierten Ansatz. Das ist unser Vorteil für
+                  Sie: aktuelle Methoden, klare Strukturen und ein konsequenter Fokus auf
+                  messbare Ergebnisse.
                 </p>
               </div>
 

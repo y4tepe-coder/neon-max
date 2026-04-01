@@ -85,19 +85,19 @@ export default function FounderSection() {
 
             <div className="space-y-4 text-text-muted text-base leading-relaxed mb-8">
               <p>
-                Ich habe NEON Agentur gegründet, weil ich überzeugt bin, dass jedes lokale
-                Unternehmen einen professionellen Online-Auftritt verdient – unabhängig von Größe
-                oder Budget.
+                NEON Agentur habe ich gegründet, weil ich überzeugt bin: Jedes lokale Unternehmen
+                verdient einen professionellen, zeitgemäßen Online-Auftritt – unabhängig von
+                Größe oder Branche.
               </p>
               <p>
-                Was mich antreibt: Ich sehe täglich Unternehmer, die handwerklich großartig sind,
-                aber online kaum sichtbar. Das möchte ich ändern. Mit modernen Websites, die
-                wirklich funktionieren – und mit echter Betreuung dahinter.
+                Was mich täglich antreibt: Ich begegne Unternehmern, die in ihrem Fachgebiet
+                exzellent sind – online jedoch kaum sichtbar. Das möchte ich ändern. Mit Websites,
+                die nachhaltig wirken – und mit verlässlicher Betreuung, die dauerhaft trägt.
               </p>
               <p>
-                Bei NEON gibt es keine anonymen Support-Tickets und keine versteckten Kosten. Sie
-                haben mich als direkten Ansprechpartner – jemanden, der Ihr Projekt kennt und
-                sich wirklich kümmert.
+                Bei NEON gibt es keine anonymen Support-Tickets, keine versteckten Kosten. Sie
+                erhalten mich als persönlichen Ansprechpartner – jemanden, der Ihr Projekt von
+                Beginn an begleitet, fundiert kennt und mit echtem Engagement betreut.
               </p>
             </div>
 
