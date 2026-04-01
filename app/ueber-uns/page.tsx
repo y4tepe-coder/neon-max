@@ -59,7 +59,7 @@ export default function UeberUnsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Photo placeholder */}
             <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-dark-bg max-w-md mx-auto lg:mx-0">
+              <div className="relative rounded-2xl overflow-hidden aspect-square bg-dark-bg max-w-xs mx-auto lg:mx-0">
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
                   <div className="w-24 h-24 rounded-full bg-dark-card border-2 border-neon/30 flex items-center justify-center" aria-hidden="true">
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">

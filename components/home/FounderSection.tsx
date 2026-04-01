@@ -23,7 +23,7 @@ export default function FounderSection() {
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-dark-bg max-w-md mx-auto lg:mx-0">
+            <div className="relative rounded-2xl overflow-hidden aspect-square bg-dark-bg max-w-xs mx-auto lg:mx-0">
               {/* Placeholder for founder photo */}
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
                 <div
