@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 
 function escapeHtml(str: string) {
   return str
@@ -23,29 +23,22 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Nachricht zu lang.' }, { status: 400 })
     }
 
-    const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env
+    const { RESEND_API_KEY } = process.env
 
-    // In development without SMTP configured: just log and return success
-    if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
+    if (!RESEND_API_KEY) {
       console.log('[Contact Form – Dev Mode]')
       console.log(`  Von:      ${name} <${email}>`)
       console.log(`  Nachricht: ${message}`)
       return NextResponse.json({ success: true })
     }
 
-    const transporter = nodemailer.createTransport({
-      host: SMTP_HOST,
-      port: Number(SMTP_PORT ?? 587),
-      secure: Number(SMTP_PORT) === 465,
-      auth: { user: SMTP_USER, pass: SMTP_PASS },
-    })
+    const resend = new Resend(RESEND_API_KEY)
 
-    await transporter.sendMail({
-      from: `"NEON Kontaktformular" <${SMTP_USER}>`,
-      to: SMTP_USER, // info@neon-bw.de sendet an sich selbst
+    await resend.emails.send({
+      from: 'NEON Kontaktformular <onboarding@resend.dev>',
+      to: 'info@neon-bw.de',
       replyTo: email,
       subject: `Neue Kontaktanfrage von ${name}`,
-      text: `Name: ${name}\nE-Mail: ${email}\n\nNachricht:\n${message}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
           <h2 style="color:#111;border-bottom:2px solid #C5F74F;padding-bottom:8px">
