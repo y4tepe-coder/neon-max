@@ -18,17 +18,17 @@ export default function FounderSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start"
+          className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start"
         >
           {/* Left: Photo + overlapping badge */}
           <div className="relative flex-shrink-0 mx-auto lg:mx-0">
             {/* Photo */}
-            <div className="w-56 md:w-64 rounded-2xl overflow-hidden shadow-xl aspect-[3/4]">
+            <div className="w-64 md:w-80 rounded-2xl overflow-hidden shadow-xl aspect-[3/4]">
               <Image
                 src="/yasin.png"
                 alt="Yasin Tepe – Gründer von NEON Agentur"
-                width={320}
-                height={427}
+                width={400}
+                height={533}
                 className="w-full h-full object-cover object-top"
                 priority
               />
@@ -56,10 +56,16 @@ export default function FounderSection() {
             </h2>
             <p className="text-neon-dim font-semibold text-base mb-5">Gründer von NEON Agentur</p>
 
-            <p className="text-text-muted text-base leading-relaxed mb-5 max-w-lg">
-              Ich baue moderne Websites für lokale Unternehmen – und betreue sie dauerhaft. Kein
-              Fachjargon, keine Überraschungen. Persönlich, direkt und auf Augenhöhe.
-            </p>
+            <div className="space-y-4 text-text-muted text-base leading-relaxed mb-5 max-w-xl">
+              <p>
+                NEON Agentur habe ich gegründet, weil ich täglich Unternehmen begegne, die in
+                ihrem Fachgebiet exzellent sind – online jedoch kaum wahrgenommen werden.
+              </p>
+              <p>
+                Mein Anspruch: Kein Fachjargon, keine versteckten Kosten, kein anonymer Support.
+                Sie erhalten mich als persönlichen Ansprechpartner – von Anfang bis Ende.
+              </p>
+            </div>
 
             <div className="flex flex-wrap gap-2 mb-7">
               {['Persönlich', 'Transparent', 'Engagiert', 'Lokal'].map((val) => (
