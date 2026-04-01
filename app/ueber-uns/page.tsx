@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 
@@ -56,25 +57,22 @@ export default function UeberUnsPage() {
       {/* Founder */}
       <section className="section-pad bg-off-white py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Photo placeholder */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden aspect-square bg-dark-bg max-w-xs mx-auto lg:mx-0">
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                  <div className="w-24 h-24 rounded-full bg-dark-card border-2 border-neon/30 flex items-center justify-center" aria-hidden="true">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-                      <circle cx="20" cy="14" r="7" fill="#C5F74F" fillOpacity="0.3" />
-                      <path d="M4 36c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke="#C5F74F" strokeOpacity="0.3" strokeWidth="2" strokeLinecap="round" />
-                    </svg>
-                  </div>
-                  <p className="text-white/20 text-xs text-center px-6">Foto kommt hier rein</p>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-neon to-transparent opacity-60" aria-hidden="true" />
-              </div>
+          {/* Overlapping card layout */}
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-0">
+            {/* Photo */}
+            <div className="w-56 h-56 md:w-64 md:h-72 rounded-2xl overflow-hidden flex-shrink-0 shadow-xl">
+              <Image
+                src="/yasin.png"
+                alt="Yasin Tepe – Gründer von NEON Agentur"
+                width={320}
+                height={400}
+                className="w-full h-full object-cover object-top"
+                priority
+              />
             </div>
 
-            {/* Text */}
-            <div>
+            {/* Text card overlapping */}
+            <div className="md:ml-[-32px] md:mt-8 z-10 bg-white rounded-2xl shadow-xl border border-border-light p-7 md:p-8 max-w-xl w-full">
               <h2 className="text-4xl md:text-5xl font-bold text-text-dark leading-tight tracking-tight mb-6 text-balance">
                 Hi, ich bin Yasin –{' '}
                 <span className="text-neon-dim">Gründer von NEON.</span>
