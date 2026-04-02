@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'Für wen – NEON Agentur',
   description:
     'NEON Agentur richtet sich an lokale Dienstleister, Handwerker, kleine Unternehmen und Betriebe in Baden-Württemberg, die professionell online auftreten wollen.',
+  alternates: {
+    canonical: '/fuer-wen',
+  },
 }
 
 const targetGroups = [

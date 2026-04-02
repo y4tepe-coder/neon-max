@@ -3,6 +3,9 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Impressum – NEON Agentur',
   robots: { index: false },
+  alternates: {
+    canonical: '/impressum',
+  },
 }
 
 export default function ImpressumPage() {
