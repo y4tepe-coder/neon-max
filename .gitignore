@@ -19,3 +19,8 @@ data/leads.json
 # Logs
 *.log
 npm-debug.log*
+
+# Claude / VS Code intern
+.agents/
+.claude/
+skills-lock.json
