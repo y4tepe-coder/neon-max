@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'Leistungen & Preise – NEON Agentur',
   description:
     'Website-Komplettpaket für lokale Unternehmen: 399 € einmalig + 79 € / Monat. Erstellung und laufende Betreuung aus einer Hand. Keine versteckten Kosten.',
+  alternates: {
+    canonical: '/leistungen',
+  },
 }
 
 const setupFeatures = [

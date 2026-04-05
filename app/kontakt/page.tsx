@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: 'Kontakt – NEON Agentur',
   description:
     'Nehmen Sie Kontakt mit NEON Agentur auf. Kostenloses Erstgespräch, keine Verpflichtung – wir antworten innerhalb von 24 Stunden.',
+  alternates: {
+    canonical: '/kontakt',
+  },
 }
 
 export default function KontaktPage() {

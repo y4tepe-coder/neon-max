@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: 'Über NEON – Wer wir sind',
   description:
     'NEON Agentur – gegründet mit der Mission, lokale Unternehmen professionell und modern online zu bringen. Persönlich, transparent und auf Augenhöhe.',
+  alternates: {
+    canonical: '/ueber-uns',
+  },
 }
 
 const values = [
