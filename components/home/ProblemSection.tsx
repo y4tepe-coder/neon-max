@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
-import { Monitor, SearchX, Settings2, Clock, TrendingDown, UserX, ArrowRight } from 'lucide-react'
+import { Monitor, SearchX, Clock, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 const problems = [
@@ -22,32 +22,11 @@ const problems = [
       'Wenn Kunden nach Ihnen suchen, finden sie Sie nicht. Oder schlimmer: Sie finden Ihre Konkurrenz.',
   },
   {
-    icon: Settings2,
-    color: 'bg-purple-50 text-purple-500',
-    title: 'Änderungen sind kompliziert',
-    description:
-      'Jede kleine Anpassung kostet Zeit, Geld oder Nerven. Wer ist überhaupt noch für Ihre Website zuständig?',
-  },
-  {
     icon: Clock,
     color: 'bg-amber-50 text-amber-500',
     title: 'Keine Zeit für Pflege',
     description:
       'Sie führen ein Unternehmen – da bleibt keine Zeit, sich auch noch um die Website zu kümmern.',
-  },
-  {
-    icon: TrendingDown,
-    color: 'bg-red-50 text-red-500',
-    title: 'Unprofessioneller Eindruck',
-    description:
-      'Eine schlecht wirkende Website schadet Ihrem Ruf. Potenzielle Kunden springen ab, bevor sie anfragen.',
-  },
-  {
-    icon: UserX,
-    color: 'bg-slate-100 text-slate-500',
-    title: 'Kein klarer Ansprechpartner',
-    description:
-      'Sie wissen nicht, an wen Sie sich wenden sollen – und haben das Gefühl, allein gelassen zu werden.',
   },
 ]
 

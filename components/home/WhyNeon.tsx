@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { User, MessageSquare, Zap, MapPin, Clock, Star } from 'lucide-react'
+import { User, MessageSquare, Clock } from 'lucide-react'
 
 const reasons = [
   {
@@ -12,28 +12,10 @@ const reasons = [
       'Kein anonymes Support-System, kein Ticket-Portal. Sie haben immer einen direkten Ansprechpartner – und der kennt Ihr Projekt.',
   },
   {
-    icon: Star,
-    title: 'Frische Perspektive',
-    description:
-      'Als junge Agentur denken wir modern und digital. Keine alten Muster, keine veralteten Ansätze. Wir arbeiten auf dem Stand von heute.',
-  },
-  {
     icon: MessageSquare,
     title: 'Klare Kommunikation',
     description:
       'Kein Fachjargon, keine undurchsichtigen Angebote. Wir erklären alles verständlich – und Sie wissen immer, was gerade passiert.',
-  },
-  {
-    icon: Zap,
-    title: 'Schnelle Umsetzung',
-    description:
-      'Wir reden nicht wochenlang – wir machen. Einfache Projekte können innerhalb weniger Wochen live gehen.',
-  },
-  {
-    icon: MapPin,
-    title: 'Lokal und erreichbar',
-    description:
-      'Wir sind in Baden-Württemberg zu Hause. Lokal verwurzelt, aber mit einem Design-Anspruch, der über die Region hinausgeht.',
   },
   {
     icon: Clock,
