@@ -15,7 +15,14 @@ jobs:
           username: root
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
-            cd $(find / -name "docker-compose.yml" 2>/dev/null -not -path "*/proc/*" | head -1 | xargs dirname)
-            git pull origin main
+            cd /docker/neon-website
+            if [ ! -d ".git" ]; then
+              git init
+              git remote add origin https://github.com/y4tepe-coder/neon-max.git
+              git fetch origin main
+              git reset --hard origin/main
+            else
+              git pull origin main
+            fi
             docker compose down
             docker compose up -d --build
