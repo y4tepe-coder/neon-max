@@ -24,5 +24,7 @@ jobs:
             else
               git pull origin main
             fi
-            docker compose down
+            docker compose down --remove-orphans
+            docker rm -f neon-website-neon-agentur-1 2>/dev/null || true
+            docker network rm neon-website_default 2>/dev/null || true
             docker compose up -d --build
