@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 
 const navLinks = [
   { href: '/leistungen', label: 'Leistungen' },
@@ -108,6 +108,16 @@ export default function Navbar() {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center gap-4">
+              <a
+                href="tel:+4917620170133"
+                className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
+                  showDark ? 'text-white/70 hover:text-white' : 'text-text-muted hover:text-text-dark'
+                }`}
+                aria-label="Jetzt anrufen"
+              >
+                <Phone size={15} />
+                0176 20 17 01 33
+              </a>
               <Link
                 href="/kontakt"
                 className="bg-neon text-text-dark text-sm font-semibold px-5 py-2.5 rounded-full
@@ -157,6 +167,14 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              <a
+                href="tel:+4917620170133"
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center gap-2 text-base font-medium py-2 border-b border-border-light/50 text-text-muted hover:text-text-dark transition-colors duration-200"
+              >
+                <Phone size={17} />
+                0176 20 17 01 33
+              </a>
               <Link
                 href="/kontakt"
                 onClick={() => setIsMenuOpen(false)}

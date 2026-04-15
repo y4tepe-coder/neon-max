@@ -5,6 +5,7 @@ import ServicesOverview from '@/components/home/ServicesOverview'
 import WhyNeon from '@/components/home/WhyNeon'
 import WebsiteCheck from '@/components/home/WebsiteCheck'
 import ProcessSection from '@/components/home/ProcessSection'
+import PortfolioSection from '@/components/home/PortfolioSection'
 import FounderSection from '@/components/home/FounderSection'
 import FAQ from '@/components/home/FAQ'
 import ClosingCTA from '@/components/home/ClosingCTA'
@@ -19,6 +20,7 @@ export default function HomePage() {
       <WebsiteCheck />
       <WhyNeon />
       <ProcessSection />
+      <PortfolioSection />
       <FounderSection />
       <FAQ />
       <ClosingCTA />

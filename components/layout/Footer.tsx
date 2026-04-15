@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Mail, MapPin } from 'lucide-react'
+import { Mail, MapPin, Phone, Linkedin, Instagram } from 'lucide-react'
 
 const footerLinks = [
   {
@@ -50,10 +50,39 @@ export default function Footer() {
                 <Mail size={15} />
                 info@neon-bw.de
               </a>
+              <a
+                href="tel:+4917620170133"
+                className="flex items-center gap-2.5 text-white/50 hover:text-neon transition-colors duration-200 text-sm cursor-pointer"
+              >
+                <Phone size={15} />
+                0176 20 17 01 33
+              </a>
               <div className="flex items-center gap-2.5 text-white/50 text-sm">
                 <MapPin size={15} />
                 Baden-Württemberg, Deutschland
               </div>
+            </div>
+
+            {/* Social Media */}
+            <div className="flex items-center gap-4 mt-4">
+              <a
+                href="[LINKEDIN URL]"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-9 h-9 rounded-full border border-white/10 text-white/40 hover:text-neon hover:border-neon/40 transition-all duration-200"
+                aria-label="NEON auf LinkedIn"
+              >
+                <Linkedin size={16} />
+              </a>
+              <a
+                href="[INSTAGRAM URL]"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-9 h-9 rounded-full border border-white/10 text-white/40 hover:text-neon hover:border-neon/40 transition-all duration-200"
+                aria-label="NEON auf Instagram"
+              >
+                <Instagram size={16} />
+              </a>
             </div>
           </div>
 

@@ -40,6 +40,21 @@ export const metadata: Metadata = {
     locale: 'de_DE',
     url: 'https://neon-bw.de',
     siteName: 'NEON Agentur',
+    images: [
+      {
+        url: '/yasin.png',
+        width: 1200,
+        height: 630,
+        alt: 'NEON Agentur – Webdesign für lokale Unternehmen in Baden-Württemberg',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NEON Agentur – Moderne Websites für lokale Unternehmen',
+    description:
+      'Wir erstellen und betreuen moderne Websites für lokale Unternehmen. Professionell, klar und persönlich.',
+    images: ['/yasin.png'],
   },
   robots: {
     index: true,
