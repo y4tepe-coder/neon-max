@@ -24,6 +24,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-dm-sans)', 'DM Sans', 'system-ui', 'sans-serif'],
+        handwritten: ['var(--font-caveat)', 'Caveat', 'cursive'],
       },
       fontSize: {
         'display': ['4.5rem', { lineHeight: '1.05', letterSpacing: '-0.03em', fontWeight: '700' }],

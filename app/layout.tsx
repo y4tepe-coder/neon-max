@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { DM_Sans } from 'next/font/google'
+import { DM_Sans, Caveat } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -10,6 +10,13 @@ const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-dm-sans',
+  display: 'swap',
+})
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-caveat',
   display: 'swap',
 })
 
@@ -132,7 +139,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="de" className={dmSans.variable}>
+    <html lang="de" className={`${dmSans.variable} ${caveat.variable}`}>
       <head>
         <link
           rel="stylesheet"
