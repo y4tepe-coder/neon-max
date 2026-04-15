@@ -1,43 +1,65 @@
 import type { Metadata } from 'next'
-import { Wrench, Shield, Zap, CheckCircle2, ArrowRight, Info } from 'lucide-react'
+import { CheckCircle2, ArrowRight, Zap, Star, Info } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Leistungen & Preise – NEON Agentur',
   description:
-    'Website-Komplettpaket für lokale Unternehmen: 399 € einmalig + 79 € / Monat. Erstellung und laufende Betreuung aus einer Hand. Keine versteckten Kosten.',
+    'Starter ab 500 € + 50 €/Monat, Business ab 850 € + 89 €/Monat, Premium ab 1.750 € + 139 €/Monat. Webdesign & Betreuung für lokale Unternehmen in Baden-Württemberg.',
   alternates: {
     canonical: '/leistungen',
   },
 }
 
-const setupFeatures = [
-  'Modernes, individuelles Design',
-  'Für alle Geräte optimiert',
-  'Klare Seitenstruktur & Navigation',
-  'Professionelle Inhaltsaufbereitung',
-  'Kontaktformular & Kontaktseite',
-  'SEO-Grundeinrichtung',
-  'Technische Einrichtung & Konfiguration',
-  'Domain & Veröffentlichung',
-  'Übergabe & persönliche Einweisung',
-]
-
-const betreuungFeatures = [
-  'Hosting & technischer Betrieb',
-  'SSL-Zertifikat & Sicherheit',
-  'Regelmäßige Updates & Wartung',
-  '1 Inhaltsänderung pro Monat inklusive',
-  'Schneller E-Mail-Support',
-  'Persönlicher Ansprechpartner',
-  'Keine Überraschungskosten',
-]
-
-const trustPoints = [
-  'Keine versteckten Kosten',
-  'Klare Preisstruktur',
-  'Transparente Zusammenarbeit',
-  'Zusätze nur nach Absprache',
+const packages = [
+  {
+    id: 'starter',
+    name: 'Starter',
+    monthlyPrice: '50 €',
+    setupPrice: '500 €',
+    description: 'Professioneller Einstieg für lokale Unternehmen.',
+    features: [
+      'Moderne One-Pager Website',
+      'Local SEO Grundsetup',
+      'Smartes Kontaktformular',
+      'Hosting & Wartung',
+    ],
+    highlighted: false,
+    badge: null,
+  },
+  {
+    id: 'business',
+    name: 'Business',
+    monthlyPrice: '89 €',
+    setupPrice: '850 €',
+    description: 'Für Unternehmen, die wachsen wollen.',
+    features: [
+      'Multi-Page Website (bis 5 Seiten)',
+      'Erweitertes Local SEO',
+      'Automatisierte Terminbuchung',
+      'WhatsApp/E-Mail-Erinnerungen',
+      'Hosting & Wartung',
+    ],
+    highlighted: true,
+    badge: 'Am beliebtesten',
+  },
+  {
+    id: 'premium',
+    name: 'Premium',
+    monthlyPrice: '139 €',
+    setupPrice: '1.750 €',
+    description: 'Maximale Reichweite & Automatisierung.',
+    features: [
+      'Umfassende Website (bis 10 Seiten)',
+      'KI-Chatbot für 24/7 Support',
+      'KI-Telefonassistent (optional)',
+      'Alle Automatisierungen',
+      'Priorisierter Support',
+      'Hosting & Wartung',
+    ],
+    highlighted: false,
+    badge: null,
+  },
 ]
 
 const erweiterungen = [
@@ -49,7 +71,7 @@ const erweiterungen = [
   {
     title: 'Chat & Kontaktfunktionen',
     description:
-      'Ermöglichen Sie schnelle Kontaktaufnahme über einen Chat oder Kontakt-Button auf Ihrer Website.',
+      'Schnelle Kontaktaufnahme über einen Chat oder Kontakt-Button direkt auf Ihrer Website.',
   },
   {
     title: 'Smarte Formulare',
@@ -84,160 +106,96 @@ export default function LeistungenPage() {
               Leistungen & Preise
             </p>
             <h1 className="text-5xl md:text-6xl font-bold text-off-white leading-tight tracking-tight mb-6 text-balance">
-              Ein Paket.{' '}
-              <span className="text-neon">Alles drin.</span>
+              Drei Pakete.{' '}
+              <span className="text-neon">Ein Ansprechpartner.</span>
             </h1>
             <p className="text-white/50 text-lg leading-relaxed max-w-2xl">
-              Wir bieten kein Baukastensystem und keine versteckten Extras. Unser Modell ist
-              bewusst einfach: Sie bekommen eine professionelle Website – und wir sorgen dafür,
-              dass sie dauerhaft läuft.
+              Kein Baukastensystem, keine versteckten Extras. Wählen Sie das Paket, das zu Ihrem
+              Unternehmen passt – wir übernehmen Erstellung und Betreuung aus einer Hand.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Main Package */}
-      <section id="paket" className="py-20 md:py-28 bg-off-white">
+      {/* Pricing Packages */}
+      <section id="pakete" className="py-20 md:py-28 bg-off-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-          {/* Package card */}
-          <div className="bg-white rounded-3xl border border-border-light overflow-hidden shadow-xl mb-8">
-
-            {/* Header with pricing */}
-            <div className="bg-dark-bg px-8 md:px-12 py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-              <div>
-                <div className="inline-flex items-center gap-2 bg-neon/10 border border-neon/20 rounded-full px-3.5 py-1.5 mb-4">
-                  <span className="w-1.5 h-1.5 rounded-full bg-neon" aria-hidden="true" />
-                  <span className="text-neon/80 text-xs font-semibold uppercase tracking-widest">
-                    Das Komplettpaket
-                  </span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-off-white leading-tight tracking-tight mb-2">
-                  Website-Komplettpaket
-                </h2>
-                <p className="text-white/50 text-base">
-                  Erstellt und betreut – aus einer Hand.
-                </p>
-              </div>
-
-              {/* Pricing */}
-              <div className="flex items-end gap-5 shrink-0">
-                <div className="text-center">
-                  <div className="text-4xl md:text-5xl font-black text-off-white leading-none">399 €</div>
-                  <div className="text-white/40 text-sm mt-1 font-medium">einmalig</div>
-                </div>
-                <div className="text-white/25 text-3xl font-light mb-2">+</div>
-                <div className="text-center">
-                  <div className="text-4xl md:text-5xl font-black text-neon leading-none">79 €</div>
-                  <div className="text-neon/50 text-sm mt-1 font-medium">pro Monat</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Content: Setup + Betreuung */}
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              {/* Setup */}
-              <div className="p-8 md:p-10 border-b md:border-b-0 md:border-r border-border-light">
-                <div className="flex items-center gap-2.5 mb-2">
-                  <div className="w-7 h-7 rounded-lg bg-warm-gray flex items-center justify-center">
-                    <Wrench size={13} className="text-text-muted" aria-hidden="true" />
-                  </div>
-                  <span className="text-xs font-semibold uppercase tracking-widest text-text-muted">
-                    Einmalig · Setup
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold text-text-dark mb-1 mt-4">
-                  Ihre Website wird erstellt.
-                </h3>
-                <p className="text-text-muted text-sm leading-relaxed mb-6">
-                  Wir bauen Ihre Website von Grund auf – modern, individuell und auf Ihr
-                  Unternehmen zugeschnitten. Bis zum Livegang kümmern wir uns um alles.
-                </p>
-
-                <ul className="space-y-3">
-                  {setupFeatures.map((f) => (
-                    <li key={f} className="flex items-start gap-3">
-                      <CheckCircle2 size={16} className="text-neon-dim shrink-0 mt-0.5" aria-hidden="true" />
-                      <span className="text-text-dark text-sm">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Betreuung */}
-              <div className="p-8 md:p-10">
-                <div className="flex items-center gap-2.5 mb-2">
-                  <div className="w-7 h-7 rounded-lg bg-neon/10 flex items-center justify-center">
-                    <Shield size={13} className="text-neon" aria-hidden="true" />
-                  </div>
-                  <span className="text-xs font-semibold uppercase tracking-widest text-neon/60">
-                    Monatlich · Betreuung
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold text-text-dark mb-1 mt-4">
-                  Ihre Website wird betreut.
-                </h3>
-                <p className="text-text-muted text-sm leading-relaxed mb-6">
-                  Eine Website braucht laufende Pflege. Hosting, Sicherheit, Updates und
-                  Anpassungen – das übernehmen wir. Sie haben immer einen Ansprechpartner.
-                </p>
-
-                <ul className="space-y-3">
-                  {betreuungFeatures.map((f) => (
-                    <li key={f} className="flex items-start gap-3">
-                      <CheckCircle2 size={16} className="text-neon shrink-0 mt-0.5" aria-hidden="true" />
-                      <span className="text-text-dark text-sm">{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* CTA + Trust strip */}
-            <div className="px-8 md:px-12 py-6 bg-warm-gray border-t border-border-light flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5">
-              <div className="flex flex-wrap gap-x-6 gap-y-2">
-                {trustPoints.map((point) => (
-                  <span key={point} className="text-text-muted text-sm flex items-center gap-2">
-                    <span className="w-1 h-1 rounded-full bg-neon-dim shrink-0" aria-hidden="true" />
-                    {point}
-                  </span>
-                ))}
-              </div>
-              <Link
-                href="/kontakt"
-                className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-6 py-3.5 rounded-full
-                           hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm shrink-0"
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {packages.map((pkg) => (
+              <div
+                key={pkg.id}
+                className={`relative flex flex-col rounded-2xl overflow-hidden ${
+                  pkg.highlighted
+                    ? 'bg-dark-bg border-2 border-neon/50 shadow-[0_0_60px_rgba(197,247,79,0.12)]'
+                    : 'bg-dark-bg border border-dark-border'
+                }`}
               >
-                Paket anfragen
-                <ArrowRight size={16} aria-hidden="true" />
-              </Link>
-            </div>
+                {/* Bestseller badge */}
+                {pkg.badge && (
+                  <div className="absolute top-0 inset-x-0 flex justify-center">
+                    <span className="inline-flex items-center gap-1.5 bg-neon text-text-dark text-xs font-bold px-4 py-1.5 rounded-b-xl tracking-wide">
+                      <Star size={11} fill="currentColor" aria-hidden="true" />
+                      {pkg.badge}
+                    </span>
+                  </div>
+                )}
+
+                <div className={`flex flex-col flex-1 p-7 ${pkg.badge ? 'pt-11' : ''}`}>
+                  {/* Package label + description */}
+                  <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${pkg.highlighted ? 'text-neon/70' : 'text-white/30'}`}>
+                    {pkg.name}
+                  </p>
+                  <p className="text-white/40 text-sm mb-6 leading-relaxed">{pkg.description}</p>
+
+                  {/* Pricing */}
+                  <div className="mb-1.5">
+                    <div className={`text-4xl font-black leading-none tabular-nums ${pkg.highlighted ? 'text-neon' : 'text-off-white'}`}>
+                      {pkg.monthlyPrice}
+                      <span className={`text-sm font-semibold ml-1.5 ${pkg.highlighted ? 'text-neon/50' : 'text-white/30'}`}>
+                        / Monat
+                      </span>
+                    </div>
+                    <p className="text-white/35 text-sm mt-2">
+                      + {pkg.setupPrice} <span className="text-white/20">einmalig</span>
+                    </p>
+                  </div>
+                  <p className="text-white/20 text-xs mb-7">12 Monate Mindestlaufzeit</p>
+
+                  {/* Divider */}
+                  <div className={`h-px w-full mb-6 ${pkg.highlighted ? 'bg-neon/15' : 'bg-dark-border'}`} />
+
+                  {/* Features */}
+                  <ul className="space-y-3 flex-1 mb-8">
+                    {pkg.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2.5">
+                        <CheckCircle2
+                          size={15}
+                          className={`shrink-0 mt-0.5 ${pkg.highlighted ? 'text-neon' : 'text-neon/45'}`}
+                          aria-hidden="true"
+                        />
+                        <span className="text-white/60 text-sm">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA */}
+                  <Link
+                    href="/kontakt"
+                    className={`block w-full text-center font-semibold px-5 py-3 rounded-full text-sm transition-all duration-200 cursor-pointer ${
+                      pkg.highlighted
+                        ? 'bg-neon text-text-dark hover:bg-neon-dim'
+                        : 'border border-white/15 text-white/60 hover:border-white/30 hover:text-white/90'
+                    }`}
+                  >
+                    {pkg.name} anfragen
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* Why this model */}
-          <div className="bg-dark-bg rounded-2xl p-8 md:p-10 mb-6">
-            <div className="max-w-3xl">
-              <p className="text-neon/60 text-xs font-semibold uppercase tracking-widest mb-3">
-                Warum dieses Modell?
-              </p>
-              <p className="text-white/80 text-base md:text-lg leading-relaxed mb-4">
-                Viele Agenturen bauen eine Website – und übergeben sie dann. Was danach passiert,
-                ist Ihre Sorge. Wir machen das anders.
-              </p>
-              <p className="text-white/50 text-base leading-relaxed">
-                Unser Modell trennt bewusst zwei Dinge:{' '}
-                <span className="text-white/70 font-semibold">Setup = Erstellen</span>{' '}
-                und{' '}
-                <span className="text-neon font-semibold">Betreuung = Betreiben</span>.
-                {' '}So wissen Sie von Anfang an, was einmalig anfällt und was monatlich läuft –
-                ohne Überraschungen, ohne versteckte Kosten.
-              </p>
-            </div>
-          </div>
-
-          {/* Standalone note */}
+          {/* Info note */}
           <div className="flex items-start gap-3 bg-warm-gray rounded-xl px-5 py-4 border border-border-light">
             <Info size={15} className="text-text-muted shrink-0 mt-0.5" aria-hidden="true" />
             <p className="text-text-muted text-sm leading-relaxed">
@@ -263,9 +221,8 @@ export default function LeistungenPage() {
               Mehr, wenn Sie es brauchen.
             </p>
             <p className="text-text-muted text-base leading-relaxed">
-              Das Komplettpaket deckt alles ab, was Sie für einen professionellen Start brauchen.
-              Wenn Sie mehr möchten, können wir Ihre Website jederzeit gezielt erweitern –
-              nur nach Absprache, nur was wirklich Sinn ergibt.
+              Jedes Paket kann jederzeit gezielt erweitert werden – nur nach Absprache, nur was
+              wirklich Sinn ergibt. Keine Standardlösung von der Stange.
             </p>
           </div>
 
@@ -285,7 +242,7 @@ export default function LeistungenPage() {
           </div>
 
           <p className="text-text-muted text-sm mt-8 text-center">
-            Alle Erweiterungen sind auf Anfrage und werden individuell kalkuliert.
+            Alle Erweiterungen auf Anfrage und individuell kalkuliert.
           </p>
         </div>
       </section>
