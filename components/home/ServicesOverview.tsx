@@ -3,92 +3,251 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Globe, BarChart2, Zap } from 'lucide-react'
-import { CreativePricing, PricingTier } from '@/components/ui/creative-pricing'
+import { Globe2, Zap, MapPin, Headset, ArrowRight, type LucideIcon } from 'lucide-react'
 
-const tiers: PricingTier[] = [
+// ─── Data ──────────────────────────────────────────────────────────────────
+
+interface Service {
+  icon: LucideIcon
+  title: string
+  text: string
+  accent?: boolean
+}
+
+const services: Service[] = [
   {
-    name: 'Starter',
-    icon: <Globe className="w-5 h-5" />,
-    monthlyPrice: '50 €',
-    setupPrice: '500 €',
-    description: 'Professioneller Einstieg.',
-    features: [
-      'Moderne One-Pager Website',
-      'Local SEO Grundsetup',
-      'Smartes Kontaktformular',
-      'Hosting & Wartung',
-    ],
+    icon: Globe2,
+    title: 'Moderne Website',
+    text: 'Mobiloptimiert, blitzschnell, Local SEO – damit Sie gefunden werden.',
   },
   {
-    name: 'Business',
-    icon: <BarChart2 className="w-5 h-5" />,
-    monthlyPrice: '89 €',
-    setupPrice: '850 €',
-    description: 'Für Unternehmen, die wachsen.',
-    features: [
-      'Multi-Page Website (bis 5 Seiten)',
-      'Erweitertes Local SEO',
-      'Automatisierte Terminbuchung',
-      'WhatsApp/E-Mail-Erinnerungen',
-      'Hosting & Wartung',
-    ],
-    popular: true,
-    badge: 'Am beliebtesten',
+    icon: Zap,
+    title: 'KI-Automatisierung',
+    text: 'Anfragen automatisch qualifizieren, ins CRM eintragen, Kunden sofort benachrichtigen.',
+    accent: true,
   },
   {
-    name: 'Premium',
-    icon: <Zap className="w-5 h-5" />,
-    monthlyPrice: '139 €',
-    setupPrice: '1.750 €',
-    description: 'Maximale Automatisierung.',
-    features: [
-      'Umfassende Website (bis 10 Seiten)',
-      'KI-Chatbot für 24/7 Support',
-      'KI-Telefonassistent (optional)',
-      'Alle Automatisierungen',
-      'Priorisierter Support',
-      'Hosting & Wartung',
-    ],
+    icon: MapPin,
+    title: 'Local SEO',
+    text: 'Wenn jemand in LE nach Ihrem Service sucht – erscheinen Sie ganz oben.',
+  },
+  {
+    icon: Headset,
+    title: 'Rundum-Betreuung',
+    text: 'Updates, Hosting, Änderungen – alles inklusive. Kein technischer Aufwand für Sie.',
   },
 ]
 
-export default function ServicesOverview() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+// ─── Card ──────────────────────────────────────────────────────────────────
+
+function ServiceCard({ service, index }: { service: Service; index: number }) {
+  const Icon = service.icon
 
   return (
-    <section className="section-pad bg-dark-bg" id="leistungen" aria-labelledby="services-heading">
-      <div ref={ref} className="container-xl">
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <CreativePricing
-            tag="Leistungen & Preise"
-            title="Das richtige Paket für Ihr Unternehmen"
-            description="Klar kalkuliert – von der Erstellung bis zur laufenden Betreuung."
-            tiers={tiers}
-          />
-        </motion.div>
+    <motion.div
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{
+        duration: 0.6,
+        delay: index * 0.1,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className="group relative rounded-2xl p-7 border transition-all duration-300"
+      style={{
+        background:   '#1E293B',
+        borderColor:  'rgba(99,102,241,0.3)',
+      }}
+      // Inline hover via Framer whileHover keeps it type-safe
+    >
+      {/* Hover glow overlay */}
+      <div
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        style={{
+          boxShadow: 'inset 0 0 0 1px rgba(99,102,241,0.55), 0 0 28px rgba(99,102,241,0.12)',
+        }}
+        aria-hidden="true"
+      />
 
-        {/* Bottom link */}
+      {/* Accent card: subtle indigo gradient tint */}
+      {service.accent && (
+        <div
+          className="absolute inset-0 rounded-2xl pointer-events-none"
+          style={{
+            background:
+              'radial-gradient(ellipse 80% 60% at 20% 20%, rgba(99,102,241,0.1) 0%, transparent 70%)',
+          }}
+          aria-hidden="true"
+        />
+      )}
+
+      <div className="relative z-10 flex flex-col gap-5">
+        {/* Icon */}
+        <div
+          className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300"
+          style={{ background: 'rgba(99,102,241,0.15)' }}
+          aria-hidden="true"
+        >
+          <Icon
+            size={22}
+            style={{ color: '#6366F1' }}
+            className="transition-transform duration-300 group-hover:scale-110"
+          />
+        </div>
+
+        {/* Text */}
+        <div className="flex flex-col gap-2">
+          <h3
+            className="text-lg font-semibold leading-snug"
+            style={{ color: '#F8FAFC' }}
+          >
+            {service.title}
+
+            {/* KI badge on the accent card */}
+            {service.accent && (
+              <span
+                className="ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider align-middle"
+                style={{
+                  background:  'rgba(204,255,0,0.12)',
+                  color:       '#CCFF00',
+                  border:      '1px solid rgba(204,255,0,0.25)',
+                }}
+              >
+                Neu
+              </span>
+            )}
+          </h3>
+          <p
+            className="text-sm leading-relaxed"
+            style={{ color: 'rgba(248,250,252,0.55)' }}
+          >
+            {service.text}
+          </p>
+        </div>
+
+        {/* Arrow link */}
+        <div
+          className="flex items-center gap-1.5 text-xs font-semibold mt-auto pt-1 transition-colors duration-200"
+          style={{ color: 'rgba(99,102,241,0.6)' }}
+        >
+          Mehr erfahren
+          <ArrowRight
+            size={13}
+            className="transition-transform duration-200 group-hover:translate-x-0.5"
+          />
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+// ─── Section ───────────────────────────────────────────────────────────────
+
+export default function ServicesOverview() {
+  const headingRef = useRef<HTMLDivElement>(null)
+  const headingInView = useInView(headingRef, { once: true, margin: '-80px' })
+
+  return (
+    <section
+      id="leistungen"
+      className="relative py-20 md:py-28 overflow-hidden"
+      style={{ background: '#0A0F1E' }}
+      aria-labelledby="services-heading"
+    >
+      {/* Subtle section separator gradient */}
+      <div
+        className="absolute inset-x-0 top-0 h-px pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent)',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* ── Heading ─────────────────────────────────────────────────── */}
+        <div ref={headingRef} className="text-center mb-14">
+          <motion.span
+            initial={{ opacity: 0, y: 16 }}
+            animate={headingInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-widest border mb-6"
+            style={{
+              background:   'rgba(99,102,241,0.09)',
+              borderColor:  'rgba(99,102,241,0.3)',
+              color:        '#38BDF8',
+            }}
+          >
+            Was wir für Sie tun
+          </motion.span>
+
+          <motion.h2
+            id="services-heading"
+            initial={{ opacity: 0, y: 20 }}
+            animate={headingInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.08 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight"
+            style={{ color: '#F8FAFC' }}
+          >
+            Alles aus einer Hand –{' '}
+            <span
+              className="relative inline-block"
+              style={{ color: '#6366F1' }}
+            >
+              ohne Aufwand für Sie.
+            </span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={headingInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.16 }}
+            className="mt-4 text-base md:text-lg max-w-xl mx-auto"
+            style={{ color: 'rgba(248,250,252,0.5)' }}
+          >
+            Von der Website bis zur Automatisierung – wir liefern ein System, das für Sie arbeitet.
+          </motion.p>
+        </div>
+
+        {/* ── 2×2 Card Grid ───────────────────────────────────────────── */}
+        <div className="grid sm:grid-cols-2 gap-5">
+          {services.map((service, i) => (
+            <ServiceCard key={service.title} service={service} index={i} />
+          ))}
+        </div>
+
+        {/* ── Bottom CTA ─────────────────────────────────────────────── */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center mt-12"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-12 text-center"
         >
           <Link
             href="/leistungen"
-            className="inline-flex items-center gap-1.5 text-white/40 hover:text-white/70 font-medium text-sm transition-colors duration-200"
+            className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-200"
+            style={{ color: 'rgba(248,250,252,0.35)' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'rgba(248,250,252,0.7)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(248,250,252,0.35)')}
           >
             Vollständige Leistungsübersicht
-            <ArrowRight size={13} />
+            <ArrowRight size={14} />
           </Link>
         </motion.div>
+
       </div>
+
+      {/* Subtle section separator gradient bottom */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-px pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)',
+        }}
+        aria-hidden="true"
+      />
     </section>
   )
 }

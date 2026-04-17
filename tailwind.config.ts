@@ -9,6 +9,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // ── New design system ──────────────────────────────
+        'bg-primary':   '#0A0F1E',
+        'bg-card':      '#0F1629',
+        'bg-elevated':  '#141B2D',
+        indigo: {
+          DEFAULT: '#6366F1',
+          dim:     '#4F52D6',
+          glow:    'rgba(99,102,241,0.25)',
+          subtle:  'rgba(99,102,241,0.08)',
+          border:  'rgba(99,102,241,0.25)',
+        },
+        sky: {
+          DEFAULT: '#38BDF8',
+          subtle:  'rgba(56,189,248,0.12)',
+        },
+        'accent-neon':  '#CCFF00',
+        'text-primary': '#F8FAFC',
+        'text-soft':    'rgba(248,250,252,0.6)',
+        'text-faint':   'rgba(248,250,252,0.35)',
+        'border-dim':   'rgba(99,102,241,0.2)',
+        // ── Legacy (kept for existing components) ─────────
         neon: '#C5F74F',
         'neon-dim': '#A8D93A',
         'dark-bg': '#131313',
