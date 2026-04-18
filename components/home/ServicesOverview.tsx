@@ -55,8 +55,8 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       }}
       className="group relative rounded-2xl p-7 border transition-all duration-300"
       style={{
-        background:   '#1E293B',
-        borderColor:  'rgba(99,102,241,0.3)',
+        background:   '#141e00',
+        borderColor:  'rgba(197,247,79,0.3)',
       }}
       // Inline hover via Framer whileHover keeps it type-safe
     >
@@ -64,7 +64,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       <div
         className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         style={{
-          boxShadow: 'inset 0 0 0 1px rgba(99,102,241,0.55), 0 0 28px rgba(99,102,241,0.12)',
+          boxShadow: 'inset 0 0 0 1px rgba(197,247,79,0.55), 0 0 28px rgba(197,247,79,0.08)',
         }}
         aria-hidden="true"
       />
@@ -75,7 +75,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           className="absolute inset-0 rounded-2xl pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse 80% 60% at 20% 20%, rgba(99,102,241,0.1) 0%, transparent 70%)',
+              'radial-gradient(ellipse 80% 60% at 20% 20%, rgba(197,247,79,0.08) 0%, transparent 70%)',
           }}
           aria-hidden="true"
         />
@@ -85,12 +85,12 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         {/* Icon */}
         <div
           className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300"
-          style={{ background: 'rgba(99,102,241,0.15)' }}
+          style={{ background: 'rgba(197,247,79,0.15)' }}
           aria-hidden="true"
         >
           <Icon
             size={22}
-            style={{ color: '#6366F1' }}
+            style={{ color: '#C5F74F' }}
             className="transition-transform duration-300 group-hover:scale-110"
           />
         </div>
@@ -128,7 +128,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         {/* Arrow link */}
         <div
           className="flex items-center gap-1.5 text-xs font-semibold mt-auto pt-1 transition-colors duration-200"
-          style={{ color: 'rgba(99,102,241,0.6)' }}
+          style={{ color: 'rgba(197,247,79,0.7)' }}
         >
           Mehr erfahren
           <ArrowRight
@@ -151,7 +151,7 @@ export default function ServicesOverview() {
     <section
       id="leistungen"
       className="relative py-20 md:py-28 overflow-hidden"
-      style={{ background: '#0A0F1E' }}
+      style={{ background: '#0A1400' }}
       aria-labelledby="services-heading"
     >
       {/* Subtle section separator gradient */}
@@ -159,7 +159,7 @@ export default function ServicesOverview() {
         className="absolute inset-x-0 top-0 h-px pointer-events-none"
         style={{
           background:
-            'linear-gradient(90deg, transparent, rgba(99,102,241,0.4), transparent)',
+            'linear-gradient(90deg, transparent, rgba(197,247,79,0.4), transparent)',
         }}
         aria-hidden="true"
       />
@@ -174,9 +174,9 @@ export default function ServicesOverview() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-widest border mb-6"
             style={{
-              background:   'rgba(99,102,241,0.09)',
-              borderColor:  'rgba(99,102,241,0.3)',
-              color:        '#38BDF8',
+              background:   'rgba(197,247,79,0.09)',
+              borderColor:  'rgba(197,247,79,0.3)',
+              color:        '#C5F74F',
             }}
           >
             Was wir für Sie tun
@@ -193,7 +193,7 @@ export default function ServicesOverview() {
             Alles aus einer Hand –{' '}
             <span
               className="relative inline-block"
-              style={{ color: '#6366F1' }}
+              style={{ color: '#C5F74F' }}
             >
               ohne Aufwand für Sie.
             </span>
@@ -244,7 +244,7 @@ export default function ServicesOverview() {
         className="absolute inset-x-0 bottom-0 h-px pointer-events-none"
         style={{
           background:
-            'linear-gradient(90deg, transparent, rgba(99,102,241,0.2), transparent)',
+            'linear-gradient(90deg, transparent, rgba(197,247,79,0.2), transparent)',
         }}
         aria-hidden="true"
       />

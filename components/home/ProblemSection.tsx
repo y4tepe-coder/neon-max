@@ -16,7 +16,7 @@ const problems = [
   },
   {
     icon: SearchX,
-    color: 'bg-blue-50 text-blue-500',
+    color: 'bg-lime-50 text-lime-600',
     title: 'Kaum online auffindbar',
     description:
       'Wenn Kunden nach Ihnen suchen, finden sie Sie nicht. Oder schlimmer: Sie finden Ihre Konkurrenz.',

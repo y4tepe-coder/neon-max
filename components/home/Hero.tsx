@@ -36,20 +36,20 @@ export default function Hero() {
     >
       {/* ── Backgrounds ─────────────────────────────────────────────────── */}
 
-      {/* Indigo radial glow – right side */}
+      {/* Neon radial glow – right side */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 70% 65% at 80% 50%, rgba(99,102,241,0.18) 0%, transparent 70%)',
+            'radial-gradient(ellipse 70% 65% at 80% 50%, rgba(197,247,79,0.12) 0%, transparent 70%)',
         }}
         aria-hidden="true"
       />
 
-      {/* Sky blue accent – top left corner */}
+      {/* Neon accent – top left corner */}
       <div
         className="absolute -top-32 -left-32 w-96 h-96 rounded-full pointer-events-none blur-3xl"
-        style={{ background: 'rgba(56,189,248,0.07)' }}
+        style={{ background: 'rgba(197,247,79,0.06)' }}
         aria-hidden="true"
       />
 
@@ -58,7 +58,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            'radial-gradient(rgba(99,102,241,0.22) 1px, transparent 1px)',
+            'radial-gradient(rgba(197,247,79,0.15) 1px, transparent 1px)',
           backgroundSize: '34px 34px',
           maskImage:
             'radial-gradient(ellipse 85% 85% at 50% 50%, black 40%, transparent 100%)',
@@ -78,9 +78,9 @@ export default function Hero() {
               <span
                 className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-widest border"
                 style={{
-                  background:    'rgba(99,102,241,0.09)',
-                  borderColor:   'rgba(99,102,241,0.3)',
-                  color:         '#38BDF8',
+                  background:    'rgba(197,247,79,0.09)',
+                  borderColor:   'rgba(197,247,79,0.3)',
+                  color:         '#C5F74F',
                 }}
               >
                 <span
@@ -140,8 +140,9 @@ export default function Hero() {
                 href="/kontakt"
                 className="group inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-4 text-base font-semibold text-white transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 active:scale-95 shadow-lg"
                 style={{
-                  background: 'linear-gradient(135deg, #6366F1 0%, #5254CC 100%)',
-                  boxShadow: '0 4px 24px rgba(99,102,241,0.35)',
+                  background: 'linear-gradient(135deg, #C5F74F 0%, #A8D93A 100%)',
+                  boxShadow: '0 4px 24px rgba(197,247,79,0.35)',
+                  color: '#111111',
                 }}
               >
                 Kostenloses Erstgespräch
@@ -159,8 +160,8 @@ export default function Hero() {
                   color:       'rgba(248,250,252,0.75)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(99,102,241,0.6)'
-                  e.currentTarget.style.color = '#6366F1'
+                  e.currentTarget.style.borderColor = 'rgba(197,247,79,0.6)'
+                  e.currentTarget.style.color = '#C5F74F'
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = 'rgba(248,250,252,0.18)'
@@ -184,7 +185,7 @@ export default function Hero() {
                   role="listitem"
                   className="flex items-center gap-2 text-sm font-medium text-text-faint"
                 >
-                  <Icon size={14} style={{ color: '#6366F1' }} aria-hidden="true" />
+                  <Icon size={14} style={{ color: '#C5F74F' }} aria-hidden="true" />
                   {label}
                 </div>
               ))}
@@ -199,7 +200,7 @@ export default function Hero() {
             {/* Glow halo behind image */}
             <div
               className="absolute inset-4 rounded-3xl blur-2xl pointer-events-none"
-              style={{ background: 'rgba(99,102,241,0.15)' }}
+              style={{ background: 'rgba(197,247,79,0.12)' }}
               aria-hidden="true"
             />
 
@@ -208,9 +209,9 @@ export default function Hero() {
               className="relative rounded-2xl overflow-hidden border"
               style={{
                 aspectRatio: '4 / 5',
-                borderColor: 'rgba(99,102,241,0.28)',
+                borderColor: 'rgba(197,247,79,0.25)',
                 background:
-                  'linear-gradient(145deg, rgba(99,102,241,0.12) 0%, rgba(56,189,248,0.06) 100%)',
+                  'linear-gradient(145deg, rgba(197,247,79,0.08) 0%, rgba(197,247,79,0.04) 100%)',
               }}
             >
               {/* Replace src with your actual photo, e.g. /yasin.png */}
@@ -227,7 +228,7 @@ export default function Hero() {
                   if (parent) {
                     parent.innerHTML = `
                       <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
-                        <div style="width:96px;height:96px;border-radius:50%;background:rgba(99,102,241,0.25);border:2px solid rgba(99,102,241,0.4)"></div>
+                        <div style="width:96px;height:96px;border-radius:50%;background:rgba(197,247,79,0.2);border:2px solid rgba(197,247,79,0.35)"></div>
                         <p style="font-size:13px;color:rgba(248,250,252,0.3);font-family:sans-serif">Foto Yasin Tepe</p>
                       </div>`
                   }
@@ -239,7 +240,7 @@ export default function Hero() {
                 className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
                 style={{
                   background:
-                    'linear-gradient(to top, rgba(10,15,30,0.7) 0%, transparent 100%)',
+                    'linear-gradient(to top, rgba(10,20,0,0.7) 0%, transparent 100%)',
                 }}
                 aria-hidden="true"
               />
@@ -250,15 +251,15 @@ export default function Hero() {
               {...popIn(0.7)}
               className="absolute -left-6 top-[30%] rounded-xl px-4 py-3 border backdrop-blur-md shadow-2xl"
               style={{
-                background:  'rgba(10,15,30,0.88)',
-                borderColor: 'rgba(99,102,241,0.35)',
+                background:  'rgba(10,20,0,0.88)',
+                borderColor: 'rgba(197,247,79,0.35)',
               }}
               aria-label="Ergebnis: +340% mehr Anfragen"
             >
               <div className="flex items-center gap-3">
                 <div
                   className="w-9 h-9 rounded-lg flex items-center justify-center text-base shrink-0"
-                  style={{ background: 'rgba(99,102,241,0.2)' }}
+                  style={{ background: 'rgba(197,247,79,0.2)' }}
                   aria-hidden="true"
                 >
                   📈
@@ -279,8 +280,8 @@ export default function Hero() {
               {...popIn(0.85)}
               className="absolute -right-5 bottom-[22%] rounded-xl px-4 py-3 border backdrop-blur-md shadow-2xl"
               style={{
-                background:  'rgba(10,15,30,0.88)',
-                borderColor: 'rgba(56,189,248,0.3)',
+                background:  'rgba(10,20,0,0.88)',
+                borderColor: 'rgba(197,247,79,0.3)',
               }}
               aria-label="Umsetzung live in 14 Tagen"
             >
@@ -318,7 +319,7 @@ export default function Hero() {
           transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
           className="w-px h-10 mx-auto"
           style={{
-            background: 'linear-gradient(to bottom, rgba(99,102,241,0.5), transparent)',
+            background: 'linear-gradient(to bottom, rgba(197,247,79,0.4), transparent)',
           }}
         />
       </motion.div>

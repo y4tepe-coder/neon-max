@@ -10,25 +10,25 @@ const config: Config = {
     extend: {
       colors: {
         // ── New design system ──────────────────────────────
-        'bg-primary':   '#0A0F1E',
-        'bg-card':      '#0F1629',
-        'bg-elevated':  '#141B2D',
+        'bg-primary':   '#0A1400',
+        'bg-card':      '#0F1A00',
+        'bg-elevated':  '#141E00',
         indigo: {
-          DEFAULT: '#6366F1',
-          dim:     '#4F52D6',
-          glow:    'rgba(99,102,241,0.25)',
-          subtle:  'rgba(99,102,241,0.08)',
-          border:  'rgba(99,102,241,0.25)',
+          DEFAULT: '#C5F74F',
+          dim:     '#A8D93A',
+          glow:    'rgba(197,247,79,0.25)',
+          subtle:  'rgba(197,247,79,0.08)',
+          border:  'rgba(197,247,79,0.25)',
         },
         sky: {
-          DEFAULT: '#38BDF8',
-          subtle:  'rgba(56,189,248,0.12)',
+          DEFAULT: '#C5F74F',
+          subtle:  'rgba(197,247,79,0.12)',
         },
-        'accent-neon':  '#CCFF00',
+        'accent-neon':  '#C5F74F',
         'text-primary': '#F8FAFC',
         'text-soft':    'rgba(248,250,252,0.6)',
         'text-faint':   'rgba(248,250,252,0.35)',
-        'border-dim':   'rgba(99,102,241,0.2)',
+        'border-dim':   'rgba(197,247,79,0.2)',
         // ── Legacy (kept for existing components) ─────────
         neon: '#C5F74F',
         'neon-dim': '#A8D93A',
