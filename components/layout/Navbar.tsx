@@ -8,9 +8,11 @@ import { Menu, X, Phone } from 'lucide-react'
 
 const navLinks = [
   { href: '/leistungen', label: 'Leistungen' },
-  { href: '/ueber-uns', label: 'Über NEON' },
-  { href: '/fuer-wen', label: 'Für wen' },
-  { href: '/kontakt', label: 'Kontakt' },
+  { href: '/branchen',   label: 'Branchen' },
+  { href: '/portfolio',  label: 'Portfolio' },
+  { href: '/preise',     label: 'Preise' },
+  { href: '/ueber',      label: 'Über NEON' },
+  { href: '/kontakt',    label: 'Kontakt' },
 ]
 
 export default function Navbar() {
@@ -59,7 +61,7 @@ export default function Navbar() {
             <Link
               href="/"
               className="flex items-center gap-1 group"
-              aria-label="NEON Webdesign Agentur - Startseite"
+              aria-label="NEON BW KI-Agentur – Startseite"
             >
               <span
                 className={`text-[26px] font-black tracking-tight leading-none transition-colors duration-300 ${
@@ -75,14 +77,14 @@ export default function Navbar() {
                     showDark ? 'text-neon/70' : 'text-neon-dim'
                   }`}
                 >
-                  Webdesign
+                  KI-Agentur
                 </span>
                 <span
                   className={`text-[10px] font-semibold uppercase tracking-[0.12em] leading-none mt-0.5 transition-colors duration-300 ${
                     showDark ? 'text-white/35' : 'text-text-muted/50'
                   }`}
                 >
-                  Agentur
+                  BW
                 </span>
               </div>
             </Link>
@@ -123,7 +125,7 @@ export default function Navbar() {
                 className="bg-neon text-text-dark text-sm font-semibold px-5 py-2.5 rounded-full
                            hover:bg-neon-dim transition-all duration-200 cursor-pointer"
               >
-                Projekt anfragen
+                Bedarfsanalyse starten
               </Link>
             </div>
 
@@ -181,7 +183,7 @@ export default function Navbar() {
                 className="mt-2 w-full text-center bg-neon text-text-dark font-semibold px-6 py-3 rounded-full
                            hover:bg-neon-dim transition-all duration-200 cursor-pointer"
               >
-                Projekt anfragen
+                Bedarfsanalyse starten
               </Link>
             </nav>
           </motion.div>
