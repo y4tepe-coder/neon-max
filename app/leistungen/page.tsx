@@ -1,97 +1,84 @@
 import type { Metadata } from 'next'
-import { CheckCircle2, ArrowRight, Zap, Star, Info } from 'lucide-react'
+import { CheckCircle2, ArrowRight, Globe2, Zap, BrainCircuit, Headset } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Leistungen & Preise – NEON Agentur',
+  title: 'Leistungen — Neon BW · KI-Agentur Stuttgart & BW',
   description:
-    'Starter ab 500 € + 50 €/Monat, Business ab 850 € + 89 €/Monat, Premium ab 1.750 € + 139 €/Monat. Webdesign & Betreuung für lokale Unternehmen in Baden-Württemberg.',
+    'Websites ab 499 €, System-Automatisierung ab 1.490 €, Custom KI-Integration ab 2.990 €, Chatbot & Voice-Agent ab 1.990 €. Kostenlose Bedarfsanalyse zuerst.',
   alternates: {
     canonical: '/leistungen',
   },
 }
 
-const packages = [
+const services = [
   {
-    id: 'starter',
-    name: 'Starter',
-    monthlyPrice: '50 €',
-    setupPrice: '500 €',
-    description: 'Professioneller Einstieg für lokale Unternehmen.',
+    id: 'websites',
+    icon: Globe2,
+    label: 'Website',
+    price: 'ab 499 €',
+    headline: 'Ihr digitaler Erstkontakt – fertig in 14 Tagen.',
+    description:
+      'Eine mobiloptimierte, schnelle Website ist das Fundament. Ohne sie verlieren Sie Interessenten, bevor das erste Gespräch stattfindet.',
     features: [
-      'Moderne One-Pager Website',
+      'Mobiloptimiert & blitzschnell',
       'Local SEO Grundsetup',
-      'Smartes Kontaktformular',
-      'Hosting & Wartung',
+      'Kontaktformular mit DSGVO-Checkbox',
+      'Hosting auf Servern in Deutschland',
+      'Monatliche Betreuung & Updates',
+      'In 14 Tagen live',
     ],
-    highlighted: false,
-    badge: null,
   },
   {
-    id: 'business',
-    name: 'Business',
-    monthlyPrice: '89 €',
-    setupPrice: '850 €',
-    description: 'Für Unternehmen, die wachsen wollen.',
+    id: 'automatisierung',
+    icon: Zap,
+    label: 'System-Automatisierung',
+    price: 'ab 1.490 €',
+    headline: 'Anfragen qualifizieren, Daten übergeben, Kunden benachrichtigen – automatisch.',
+    description:
+      'Wiederkehrende Abläufe laufen von selbst. Ihr Team konzentriert sich auf das, was wirklich zählt – nicht auf Copy-Paste und manuelle Datenpflege.',
     features: [
-      'Multi-Page Website (bis 5 Seiten)',
-      'Erweitertes Local SEO',
-      'Automatisierte Terminbuchung',
-      'WhatsApp/E-Mail-Erinnerungen',
-      'Hosting & Wartung',
+      'Anfragen-Qualifizierung und Weiterleitung',
+      'Automatische Bestätigungen und Erinnerungen',
+      'CRM- und Kalender-Integration',
+      'Self-hosted – keine Drittanbieter-Daten',
+      'DSGVO-konform, Server in Deutschland',
+      'Monatliches Monitoring inklusive',
     ],
-    highlighted: true,
-    badge: 'Am beliebtesten',
   },
   {
-    id: 'premium',
-    name: 'Premium',
-    monthlyPrice: '139 €',
-    setupPrice: '1.750 €',
-    description: 'Maximale Reichweite & Automatisierung.',
+    id: 'ki-integration',
+    icon: BrainCircuit,
+    label: 'Custom KI-Integration',
+    price: 'ab 2.990 €',
+    headline: 'KI direkt in Ihre bestehenden Abläufe gebaut.',
+    description:
+      'Keine Insellösung, kein Vendor-Lock-in. Wir integrieren KI-Funktionen in das, was Sie bereits nutzen – und bauen genau das, was Ihren Betrieb voranbringt.',
     features: [
-      'Umfassende Website (bis 10 Seiten)',
-      'KI-Chatbot für 24/7 Support',
-      'KI-Telefonassistent (optional)',
-      'Alle Automatisierungen',
-      'Priorisierter Support',
-      'Hosting & Wartung',
+      'Analyse Ihrer bestehenden Prozesse',
+      'Maßgeschneiderte KI-Logik',
+      'Integration in bestehende Systeme',
+      'Kein Vendor-Lock-in',
+      'Self-hosted & DSGVO-konform',
+      'Technische Dokumentation & Übergabe',
     ],
-    highlighted: false,
-    badge: null,
-  },
-]
-
-const erweiterungen = [
-  {
-    title: 'Online-Terminbuchung',
-    description:
-      'Lassen Sie Kunden direkt über Ihre Website Termine buchen – automatisch, ohne Telefonkette.',
   },
   {
-    title: 'Chat & Kontaktfunktionen',
+    id: 'chatbot',
+    icon: Headset,
+    label: 'Chatbot & Voice-Agent',
+    price: 'ab 1.990 €',
+    headline: 'Ihr KI-Assistent antwortet – auch nachts und am Wochenende.',
     description:
-      'Schnelle Kontaktaufnahme über einen Chat oder Kontakt-Button direkt auf Ihrer Website.',
-  },
-  {
-    title: 'Smarte Formulare',
-    description:
-      'Intelligente Anfrage- und Kontaktformulare, die Ihnen vorqualifizierte Leads liefern.',
-  },
-  {
-    title: 'Lokale SEO-Erweiterung',
-    description:
-      'Erweiterte Maßnahmen, damit Sie lokal noch besser gefunden werden – bei Google Maps und Co.',
-  },
-  {
-    title: 'Automatisierungen',
-    description:
-      'Einfache Automatisierungen, die Ihnen Arbeit abnehmen – wie automatische Bestätigungsmails.',
-  },
-  {
-    title: 'Individuelle Wünsche',
-    description:
-      'Haben Sie eine spezifische Anforderung? Wir besprechen gern, was möglich ist.',
+      'Kunden stellen Fragen außerhalb Ihrer Öffnungszeiten. Ein KI-Assistent qualifiziert Anfragen, bucht Termine und gibt erste Antworten – zuverlässig, rund um die Uhr.',
+    features: [
+      'Chatbot für Website oder Messaging-Kanal',
+      'Voice-Agent optional verfügbar',
+      'Anfragen-Qualifizierung und Weiterleitung',
+      'Automatische Terminbuchung',
+      'Self-hosted & DSGVO-konform',
+      'Monatliches Monitoring inklusive',
+    ],
   },
 ]
 
@@ -103,171 +90,110 @@ export default function LeistungenPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="text-neon/60 text-sm font-semibold uppercase tracking-widest mb-4">
-              Leistungen & Preise
+              Was wir bauen
             </p>
             <h1 className="text-5xl md:text-6xl font-bold text-off-white leading-tight tracking-tight mb-6 text-balance">
-              Drei Pakete.{' '}
-              <span className="text-neon">Ein Ansprechpartner.</span>
+              Vier Leistungen.{' '}
+              <span className="text-neon">Einer für alles.</span>
             </h1>
             <p className="text-white/50 text-lg leading-relaxed max-w-2xl">
-              Kein Baukastensystem, keine versteckten Extras. Wählen Sie das Paket, das zu Ihrem
-              Unternehmen passt – wir übernehmen Erstellung und Betreuung aus einer Hand.
+              Website, System-Automatisierung, KI-Integration, Chatbot & Voice – je nach Bedarf,
+              immer mit kostenloser Bedarfsanalyse zuerst, immer zum Festpreis.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Pricing Packages */}
-      <section id="pakete" className="py-20 md:py-28 bg-off-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            {packages.map((pkg) => (
-              <div
-                key={pkg.id}
-                className={`relative flex flex-col rounded-2xl overflow-hidden ${
-                  pkg.highlighted
-                    ? 'bg-dark-bg border-2 border-neon/50 shadow-[0_0_60px_rgba(197,247,79,0.12)]'
-                    : 'bg-dark-bg border border-dark-border'
-                }`}
-              >
-                {/* Bestseller badge */}
-                {pkg.badge && (
-                  <div className="absolute top-0 inset-x-0 flex justify-center">
-                    <span className="inline-flex items-center gap-1.5 bg-neon text-text-dark text-xs font-bold px-4 py-1.5 rounded-b-xl tracking-wide">
-                      <Star size={11} fill="currentColor" aria-hidden="true" />
-                      {pkg.badge}
+      {/* 4 Service Sections */}
+      {services.map((service, i) => {
+        const Icon = service.icon
+        const isEven = i % 2 === 0
+        return (
+          <section
+            key={service.id}
+            id={service.id}
+            className={`py-20 md:py-28 ${isEven ? 'bg-off-white' : 'bg-warm-gray'}`}
+          >
+            <div className="max-w-7xl mx-auto px-6 lg:px-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                {/* Text side */}
+                <div>
+                  <div className="flex items-center gap-3 mb-5">
+                    <div className="w-10 h-10 rounded-xl bg-neon/10 flex items-center justify-center">
+                      <Icon size={20} className="text-neon-dim" aria-hidden="true" />
+                    </div>
+                    <span className="text-neon-dim text-sm font-semibold uppercase tracking-widest">
+                      {service.label}
                     </span>
                   </div>
-                )}
-
-                <div className={`flex flex-col flex-1 p-7 ${pkg.badge ? 'pt-11' : ''}`}>
-                  {/* Package label + description */}
-                  <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${pkg.highlighted ? 'text-neon/70' : 'text-white/30'}`}>
-                    {pkg.name}
+                  <p className="text-neon-dim font-bold text-lg mb-3">{service.price} einmalig + Retainer</p>
+                  <h2 className="text-3xl md:text-4xl font-bold text-text-dark leading-tight tracking-tight mb-5 text-balance">
+                    {service.headline}
+                  </h2>
+                  <p className="text-text-muted text-base leading-relaxed mb-8">
+                    {service.description}
                   </p>
-                  <p className="text-white/40 text-sm mb-6 leading-relaxed">{pkg.description}</p>
+                  <Link
+                    href="/kontakt"
+                    className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold
+                               px-6 py-3 rounded-full hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm"
+                  >
+                    Bedarfsanalyse starten
+                    <ArrowRight size={15} aria-hidden="true" />
+                  </Link>
+                </div>
 
-                  {/* Pricing */}
-                  <div className="mb-1.5">
-                    <div className={`text-4xl font-black leading-none tabular-nums ${pkg.highlighted ? 'text-neon' : 'text-off-white'}`}>
-                      {pkg.monthlyPrice}
-                      <span className={`text-sm font-semibold ml-1.5 ${pkg.highlighted ? 'text-neon/50' : 'text-white/30'}`}>
-                        / Monat
-                      </span>
-                    </div>
-                    <p className="text-white/35 text-sm mt-2">
-                      + {pkg.setupPrice} <span className="text-white/20">einmalig</span>
-                    </p>
-                  </div>
-                  <p className="text-white/20 text-xs mb-7">12 Monate Mindestlaufzeit</p>
-
-                  {/* Divider */}
-                  <div className={`h-px w-full mb-6 ${pkg.highlighted ? 'bg-neon/15' : 'bg-dark-border'}`} />
-
-                  {/* Features */}
-                  <ul className="space-y-3 flex-1 mb-8">
-                    {pkg.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5">
+                {/* Feature list */}
+                <div className="bg-white rounded-2xl p-7 border border-border-light">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-text-muted mb-5">
+                    Leistungsumfang
+                  </p>
+                  <ul className="space-y-3.5">
+                    {service.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3">
                         <CheckCircle2
-                          size={15}
-                          className={`shrink-0 mt-0.5 ${pkg.highlighted ? 'text-neon' : 'text-neon/45'}`}
+                          size={16}
+                          className="text-neon shrink-0 mt-0.5"
                           aria-hidden="true"
                         />
-                        <span className="text-white/60 text-sm">{f}</span>
+                        <span className="text-text-dark text-sm">{f}</span>
                       </li>
                     ))}
                   </ul>
-
-                  {/* CTA */}
-                  <Link
-                    href="/kontakt"
-                    className={`block w-full text-center font-semibold px-5 py-3 rounded-full text-sm transition-all duration-200 cursor-pointer ${
-                      pkg.highlighted
-                        ? 'bg-neon text-text-dark hover:bg-neon-dim'
-                        : 'border border-white/15 text-white/60 hover:border-white/30 hover:text-white/90'
-                    }`}
-                  >
-                    {pkg.name} anfragen
-                  </Link>
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Info note */}
-          <div className="flex items-start gap-3 bg-warm-gray rounded-xl px-5 py-4 border border-border-light">
-            <Info size={15} className="text-text-muted shrink-0 mt-0.5" aria-hidden="true" />
-            <p className="text-text-muted text-sm leading-relaxed">
-              <span className="text-text-dark font-medium">Reine Website-Übergabe möglich –</span>{' '}
-              ohne laufende Betreuung. Auf Anfrage und zu einem höheren Einmalpreis. Sprechen Sie uns an.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Optionale Erweiterungen */}
-      <section id="erweiterungen" className="py-20 md:py-28 bg-warm-gray">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-2xl mb-14">
-            <div className="inline-flex items-center gap-2 bg-white border border-border-light rounded-full px-4 py-2 mb-6">
-              <Zap size={15} className="text-neon-dim" aria-hidden="true" />
-              <span className="text-text-muted text-sm font-medium">Optional</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-text-dark leading-tight tracking-tight mb-4 text-balance">
-              Optionale Erweiterungen
-            </h2>
-            <p className="text-neon-dim font-semibold text-lg mb-4">
-              Mehr, wenn Sie es brauchen.
-            </p>
-            <p className="text-text-muted text-base leading-relaxed">
-              Jedes Paket kann jederzeit gezielt erweitert werden – nur nach Absprache, nur was
-              wirklich Sinn ergibt. Keine Standardlösung von der Stange.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {erweiterungen.map((item) => (
-              <div
-                key={item.title}
-                className="bg-white rounded-2xl p-6 border border-border-light hover:border-neon/30 transition-colors duration-300 cursor-default"
-              >
-                <div className="w-8 h-8 rounded-lg bg-neon/10 flex items-center justify-center mb-4">
-                  <Zap size={15} className="text-neon-dim" aria-hidden="true" />
-                </div>
-                <h3 className="text-text-dark font-semibold text-base mb-2">{item.title}</h3>
-                <p className="text-text-muted text-sm leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-text-muted text-sm mt-8 text-center">
-            Alle Erweiterungen auf Anfrage und individuell kalkuliert.
-          </p>
-        </div>
-      </section>
+          </section>
+        )
+      })}
 
       {/* CTA */}
-      <section className="py-20 md:py-28 bg-off-white">
+      <section className="py-20 md:py-28 bg-dark-bg">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <p className="text-neon-dim text-sm font-semibold uppercase tracking-widest mb-4">
+          <p className="text-neon/60 text-sm font-semibold uppercase tracking-widest mb-4">
             Nächster Schritt
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-text-dark leading-tight tracking-tight mb-5 text-balance">
-            Bereit für Ihre neue Website?
+          <h2 className="text-4xl md:text-5xl font-bold text-off-white leading-tight tracking-tight mb-5 text-balance">
+            Zuerst Bedarfsanalyse – dann Festpreis.
           </h2>
-          <p className="text-text-muted text-lg leading-relaxed max-w-xl mx-auto mb-8">
-            Kontaktieren Sie uns – kostenlos und unverbindlich. Wir besprechen Ihr Projekt
-            und klären alle Fragen persönlich.
+          <p className="text-white/50 text-lg leading-relaxed max-w-xl mx-auto mb-8">
+            Wir verstehen Ihre Abläufe, bevor wir etwas empfehlen. Kostenloses Erstgespräch,
+            kein Verkaufsdruck, konkrete Empfehlung.
           </p>
           <Link
             href="/kontakt"
             className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
           >
-            Jetzt anfragen
+            Kostenlose Bedarfsanalyse starten
             <ArrowRight size={18} aria-hidden="true" />
           </Link>
+          <p className="text-white/30 text-sm mt-5">
+            Alle Preise transparent auf{' '}
+            <Link href="/preise" className="text-neon/60 hover:text-neon underline transition-colors duration-200">
+              /preise
+            </Link>
+          </p>
         </div>
       </section>
     </div>
