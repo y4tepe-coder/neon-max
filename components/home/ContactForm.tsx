@@ -23,7 +23,7 @@ export default function ContactOptions() {
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   const [emailOpen, setEmailOpen] = useState(false)
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formData, setFormData] = useState({ name: '', email: '', message: '', dsgvo: false })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -44,12 +44,12 @@ export default function ContactOptions() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ name: formData.name, email: formData.email, message: formData.message }),
       })
       const data = await res.json()
       if (res.ok) {
         setStatus('success')
-        setFormData({ name: '', email: '', message: '' })
+        setFormData({ name: '', email: '', message: '', dsgvo: false })
       } else {
         setStatus('error')
         setErrorMsg(data.error ?? 'Fehler beim Senden.')
@@ -283,6 +283,24 @@ export default function ContactOptions() {
                             className="w-full rounded-xl border border-border-light bg-warm-gray px-4 py-2.5 text-sm text-text-dark placeholder:text-text-muted/50
                                        focus:outline-none focus:ring-2 focus:ring-neon/40 focus:border-neon/40 transition-colors resize-none"
                           />
+                        </div>
+
+                        <div className="flex items-start gap-3">
+                          <input
+                            id="contact-dsgvo"
+                            type="checkbox"
+                            required
+                            checked={formData.dsgvo}
+                            onChange={(e) => setFormData({ ...formData, dsgvo: e.target.checked })}
+                            className="mt-0.5 shrink-0 w-4 h-4 rounded border-border-light accent-neon cursor-pointer"
+                          />
+                          <label htmlFor="contact-dsgvo" className="text-text-muted text-xs leading-relaxed cursor-pointer">
+                            Ich stimme der Verarbeitung meiner Daten gemäß der{' '}
+                            <a href="/datenschutz" className="text-neon-dim hover:underline" target="_blank" rel="noopener noreferrer">
+                              Datenschutzerklärung
+                            </a>{' '}
+                            zu. *
+                          </label>
                         </div>
 
                         {status === 'error' && (

@@ -27,6 +27,16 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/fuer-wen',
+        destination: '/branchen',
+        permanent: true,
+      },
+      {
+        source: '/ueber-uns',
+        destination: '/ueber',
+        permanent: true,
+      },
     ]
   },
 }
