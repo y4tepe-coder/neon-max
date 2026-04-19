@@ -11,9 +11,10 @@ const fadeUp = (delay = 0) => ({
 })
 
 const badges = [
-  'Mobil optimiert',
-  'Inklusive Betreuung',
-  'Schnelle Umsetzung',
+  'Lokal in BW',
+  'Self-hosted & DSGVO',
+  'Ab 499 €',
+  'Erste 2 Kunden kostenfrei',
 ] as const
 
 export default function Hero() {
@@ -58,7 +59,7 @@ export default function Hero() {
               style={{ background: '#C5F74F' }}
               aria-hidden="true"
             />
-            Webdesign Agentur · Baden-Württemberg
+            KI-AUTOMATION UND WEBSITES AUS BW
           </span>
         </motion.div>
 
@@ -68,11 +69,11 @@ export default function Hero() {
           className="font-bold leading-[1.08] tracking-tight"
           style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', color: '#F8FAFC' }}
         >
-          Ihre neue Website.
+          Weniger Aufwand.
           <br />
-          <span style={{ color: '#C5F74F' }}>Professionell.</span>
+          Mehr Ergebnisse.
           <br />
-          Modern. Betreut.
+          <span style={{ color: '#C5F74F' }}>Mit KI.</span>
         </motion.h1>
 
         {/* Subtext */}
@@ -81,9 +82,9 @@ export default function Hero() {
           className="mt-7 text-lg md:text-xl leading-relaxed max-w-2xl"
           style={{ color: 'rgba(248,250,252,0.55)' }}
         >
-          NEON Agentur baut moderne Websites für lokale Unternehmen – und sorgt
-          dafür, dass alles reibungslos läuft. Kein technischer Aufwand für Sie,
-          kein komplizierter Prozess.
+          Wir analysieren Ihre Abläufe – und bauen Ihnen das System, das Routine
+          übernimmt, Anfragen qualifiziert und Termine organisiert.
+          Festpreis. DSGVO-konform. In BW.
         </motion.p>
 
         {/* CTAs */}
@@ -100,12 +101,12 @@ export default function Hero() {
               boxShadow:  '0 4px 28px rgba(197,247,79,0.3)',
             }}
           >
-            Projekt anfragen
+            Kostenlose Bedarfsanalyse
             <ArrowRight size={17} className="transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
 
           <Link
-            href="#website-check"
+            href="/leistungen"
             className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-semibold border transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
             style={{
               borderColor: 'rgba(248,250,252,0.2)',
@@ -120,7 +121,7 @@ export default function Hero() {
               e.currentTarget.style.color = 'rgba(248,250,252,0.75)'
             }}
           >
-            Website prüfen lassen
+            Leistungen ansehen
           </Link>
         </motion.div>
 
