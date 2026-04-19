@@ -82,7 +82,7 @@ async function analyzeWebsite(url: string): Promise<WebsiteAnalysis> {
 
   try {
     const session = await anthropic.beta.sessions.create({
-      agent_id: websiteAgentId,
+      agent: websiteAgentId,
       environment_id: environmentId,
     })
 
