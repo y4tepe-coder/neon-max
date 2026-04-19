@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { Globe2, Zap, MapPin, Headset, ArrowRight, type LucideIcon } from 'lucide-react'
+import { Globe2, Zap, BrainCircuit, Headset, ArrowRight, type LucideIcon } from 'lucide-react'
 
 // ─── Data ──────────────────────────────────────────────────────────────────
 
@@ -17,24 +17,24 @@ interface Service {
 const services: Service[] = [
   {
     icon: Globe2,
-    title: 'Moderne Website',
-    text: 'Mobiloptimiert, blitzschnell, Local SEO – damit Sie gefunden werden.',
+    title: 'Website',
+    text: 'Mobiloptimiert, blitzschnell, Local SEO. Ihr digitaler Erstkontakt – ab 499 €, in 14 Tagen live.',
   },
   {
     icon: Zap,
-    title: 'KI-Automatisierung',
-    text: 'Anfragen automatisch qualifizieren, ins CRM eintragen, Kunden sofort benachrichtigen.',
+    title: 'System-Automatisierung',
+    text: 'Anfragen qualifizieren, Daten übergeben, Kunden benachrichtigen – automatisch, rund um die Uhr.',
     accent: true,
   },
   {
-    icon: MapPin,
-    title: 'Local SEO',
-    text: 'Wenn jemand in LE nach Ihrem Service sucht – erscheinen Sie ganz oben.',
+    icon: BrainCircuit,
+    title: 'Custom KI-Integration',
+    text: 'KI direkt in Ihre bestehenden Abläufe gebaut – keine Insellösung, kein Vendor-Lock-in.',
   },
   {
     icon: Headset,
-    title: 'Rundum-Betreuung',
-    text: 'Updates, Hosting, Änderungen – alles inklusive. Kein technischer Aufwand für Sie.',
+    title: 'Chatbot & Voice-Agent',
+    text: 'Ihr KI-Assistent beantwortet Fragen, bucht Termine und qualifiziert Leads – auch nachts und am Wochenende.',
   },
 ]
 
@@ -179,7 +179,7 @@ export default function ServicesOverview() {
               color:        '#C5F74F',
             }}
           >
-            Was wir für Sie tun
+            Was wir bauen
           </motion.span>
 
           <motion.h2
@@ -190,12 +190,12 @@ export default function ServicesOverview() {
             className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight"
             style={{ color: '#F8FAFC' }}
           >
-            Alles aus einer Hand –{' '}
+            Vier Hebel. Ein Partner.{' '}
             <span
               className="relative inline-block"
               style={{ color: '#C5F74F' }}
             >
-              ohne Aufwand für Sie.
+              Kein Overhead.
             </span>
           </motion.h2>
 
@@ -206,7 +206,7 @@ export default function ServicesOverview() {
             className="mt-4 text-base md:text-lg max-w-xl mx-auto"
             style={{ color: 'rgba(248,250,252,0.5)' }}
           >
-            Von der Website bis zur Automatisierung – wir liefern ein System, das für Sie arbeitet.
+            Vom ersten Klick bis zur laufenden KI – alles aus einer Hand, alles mit Festpreis.
           </motion.p>
         </div>
 
@@ -232,7 +232,7 @@ export default function ServicesOverview() {
             onMouseEnter={(e) => (e.currentTarget.style.color = 'rgba(248,250,252,0.7)')}
             onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(248,250,252,0.35)')}
           >
-            Vollständige Leistungsübersicht
+            Alle Leistungen im Detail
             <ArrowRight size={14} />
           </Link>
         </motion.div>

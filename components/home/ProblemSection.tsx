@@ -3,30 +3,30 @@
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
-import { Monitor, SearchX, Clock, ArrowRight } from 'lucide-react'
+import { MessageSquare, RefreshCw, Calendar, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 const problems = [
   {
-    icon: Monitor,
+    icon: MessageSquare,
     color: 'bg-orange-50 text-orange-500',
-    title: 'Veraltetes Design',
+    title: 'Anfragen gehen verloren',
     description:
-      'Ihre Website sieht aus wie vor zehn Jahren – und Kunden bemerken das sofort. Ein erster Eindruck zählt.',
+      'Interessenten schreiben nachts oder am Wochenende – und bekommen keine Antwort. Der nächste Anbieter ist nur einen Klick entfernt.',
   },
   {
-    icon: SearchX,
+    icon: RefreshCw,
     color: 'bg-lime-50 text-lime-600',
-    title: 'Kaum online auffindbar',
+    title: 'Routinearbeit frisst Zeit',
     description:
-      'Wenn Kunden nach Ihnen suchen, finden sie Sie nicht. Oder schlimmer: Sie finden Ihre Konkurrenz.',
+      'Terminerinnerungen, Nachfassmails, Datenpflege – dieselben Handgriffe, immer wieder. Das kostet Stunden, die im Kerngeschäft fehlen.',
   },
   {
-    icon: Clock,
+    icon: Calendar,
     color: 'bg-amber-50 text-amber-500',
-    title: 'Keine Zeit für Pflege',
+    title: 'Termine und Folgeaufgaben fallen durch',
     description:
-      'Sie führen ein Unternehmen – da bleibt keine Zeit, sich auch noch um die Website zu kümmern.',
+      'Ein Kunde bucht nicht nach, eine Erinnerung kommt zu spät – Umsatz, der sich hätte vermeiden lassen.',
   },
 ]
 
@@ -55,14 +55,14 @@ export default function ProblemSection() {
           className="max-w-2xl mb-14"
         >
           <p className="text-neon-dim text-sm font-semibold uppercase tracking-widest mb-4">
-            Die häufigsten Probleme
+            Bekannte Herausforderungen
           </p>
           <h2 id="problem-heading" className="heading-section text-text-dark mb-5 text-balance">
-            Kommt Ihnen das bekannt vor?
+            Was viele Betriebe bremst.
           </h2>
           <p className="text-body text-balance">
-            Viele lokale Unternehmen kämpfen mit denselben Themen – obwohl die Lösung
-            eigentlich ganz einfach sein sollte.
+            Unabhängig von Branche und Größe – viele KMU kämpfen mit denselben
+            Themen. Und oft liegt die Lösung näher, als man denkt.
           </p>
         </motion.div>
 
@@ -100,8 +100,8 @@ export default function ProblemSection() {
             <div className="hidden md:block w-1 min-h-[40px] bg-neon rounded-full shrink-0" aria-hidden="true" />
             <p className="text-white/70 text-base md:text-lg text-center md:text-left leading-relaxed">
               <span className="text-neon font-semibold">Genau hier setzt NEON an.</span>{' '}
-              Wir übernehmen alles – von der Erstellung bis zur laufenden Betreuung. Klar
-              strukturiert, ohne versteckte Kosten, auf Augenhöhe.
+              Wir analysieren Ihre Abläufe – kostenlos – und zeigen Ihnen,
+              was ein System übernehmen kann.
             </p>
           </div>
           <Link
@@ -109,7 +109,7 @@ export default function ProblemSection() {
             className="shrink-0 inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-6 py-3 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm whitespace-nowrap"
           >
-            Jetzt anfragen
+            Bedarfsanalyse starten
             <ArrowRight size={15} aria-hidden="true" />
           </Link>
         </motion.div>

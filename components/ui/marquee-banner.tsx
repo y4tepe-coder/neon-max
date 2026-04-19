@@ -1,18 +1,18 @@
 'use client'
 
 const items = [
-  'Webdesign',
-  'Leinfelden-Echterdingen',
-  'Modern & individuell',
-  'Baden-Württemberg',
+  'KI-Automation',
+  'Self-hosted & DSGVO',
+  'Lokal in BW',
+  'Ab 499 €',
+  'Festpreis garantiert',
+  'Keine Tool-Abhängigkeit',
+  'Server in Deutschland',
+  'Erste 2 Kunden kostenfrei',
+  'Handwerk · Kanzleien · Steuerberater',
+  'In 14 Tagen live',
   'Persönliche Betreuung',
-  'Für alle Geräte optimiert',
-  'Kein Baukastensystem',
-  'Echte Handarbeit',
-  'Lokale Unternehmen',
-  'Live in wenigen Wochen',
-  'Transparent & fair',
-  'Direkt & unkompliziert',
+  'Kostenlose Bedarfsanalyse',
 ]
 
 export function MarqueeBanner() {

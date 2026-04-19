@@ -2,26 +2,26 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { User, MessageSquare, Clock } from 'lucide-react'
+import { Search, FileCheck, ReceiptText } from 'lucide-react'
 
 const reasons = [
   {
-    icon: User,
-    title: 'Persönliche Betreuung',
+    icon: Search,
+    title: 'Kostenlose Bedarfsanalyse',
     description:
-      'Kein anonymes Support-System, kein Ticket-Portal. Sie haben immer einen direkten Ansprechpartner – und der kennt Ihr Projekt.',
+      'Im ersten Gespräch verstehen wir Ihre Prozesse, Engpässe und Ziele – ohne Verpflichtung.',
   },
   {
-    icon: MessageSquare,
-    title: 'Klare Kommunikation',
+    icon: FileCheck,
+    title: 'Klare Empfehlung',
     description:
-      'Kein Fachjargon, keine undurchsichtigen Angebote. Wir erklären alles verständlich – und Sie wissen immer, was gerade passiert.',
+      'Sie erhalten eine konkrete Empfehlung, welches System den größten Hebel hat – ohne Buzzwords.',
   },
   {
-    icon: Clock,
-    title: 'Alles aus einer Hand',
+    icon: ReceiptText,
+    title: 'Festpreis. Kein Überraschungs-Invoice.',
     description:
-      'Setup, Betreuung, Erweiterungen – alles bei NEON. Sie müssen nicht zwischen drei Dienstleistern koordinieren.',
+      'Wir bauen, was vereinbart ist – zum Preis, der vereinbart ist. Punkt.',
   },
 ]
 
@@ -51,17 +51,17 @@ export default function WhyNeon() {
           className="max-w-2xl mb-16"
         >
           <p className="text-neon/60 text-sm font-semibold uppercase tracking-widest mb-4">
-            Warum NEON
+            Unser Ansatz
           </p>
           <h2
             id="why-heading"
             className="heading-section text-off-white mb-5 text-balance"
           >
-            Was NEON von anderen unterscheidet.
+            Analyse zuerst. Dann Empfehlung. Dann Festpreis.
           </h2>
           <p className="text-white/50 text-lg leading-relaxed">
-            Es gibt viele Anbieter. Aber nicht alle kümmern sich wirklich.
-            Wir schon.
+            Kein Paket von der Stange. Wir verstehen Ihre Abläufe –
+            und empfehlen nur, was wirklich hilft.
           </p>
         </motion.div>
 
