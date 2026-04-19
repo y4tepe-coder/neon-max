@@ -22,69 +22,69 @@ type QuizStep = {
 
 const CALENDLY_URL = 'https://calendly.com/y4tepe/30min'
 const WHATSAPP_URL =
-  'https://wa.me/4917620170133?text=Hallo%2C%20ich%20habe%20den%20Website-Check%20gemacht%20und%20m%C3%B6chte%20mehr%20erfahren.'
+  'https://wa.me/4917620170133?text=Hallo%2C%20ich%20habe%20die%20KI-Bedarfsanalyse%20gemacht%20und%20m%C3%B6chte%20mehr%20erfahren.'
 
 // ─── Quiz questions ───────────────────────────────────────────────────────────
 
 const quizSteps: QuizStep[] = [
   {
     id: 1,
-    question: 'Wie würden Sie Ihre aktuelle Website beschreiben?',
+    question: 'Wie viele gleichartige Anfragen oder Aufgaben bearbeiten Sie wöchentlich?',
     options: [
-      { label: 'Ich habe noch keine Website', value: 'none' },
-      { label: 'Sie wirkt veraltet / nicht mehr zeitgemäß', value: 'outdated' },
-      { label: 'Sie sieht okay aus, bringt aber kaum Anfragen', value: 'ok_no_leads' },
-      { label: 'Gut – ich will aber mehr daraus machen', value: 'good' },
+      { label: 'Weniger als 5', value: 'none' },
+      { label: '5 bis 20', value: 'ok_no_leads' },
+      { label: 'Mehr als 20', value: 'good' },
+      { label: 'Schwer zu sagen – sehr unterschiedlich', value: 'outdated' },
     ],
   },
   {
     id: 2,
-    question: 'Wie sieht Ihre Website auf dem Smartphone aus?',
+    question: 'Wie viel Zeit kostet manuelle Datenpflege (E-Mail, Tabellen, CRM) pro Woche?',
     options: [
-      { label: 'Schlecht – kaum nutzbar auf Handy', value: 'bad' },
-      { label: 'Habe ich nie geprüft / weiß ich nicht', value: 'unknown' },
-      { label: 'Es geht – aber nicht wirklich optimal', value: 'ok' },
-      { label: 'Einwandfrei – funktioniert gut auf Handy', value: 'good' },
+      { label: 'Weniger als 1 Stunde', value: 'good' },
+      { label: '1 bis 5 Stunden', value: 'ok' },
+      { label: 'Mehr als 5 Stunden', value: 'bad' },
+      { label: 'Ich weiß es nicht genau', value: 'unknown' },
     ],
   },
   {
     id: 3,
-    question: 'Wie gut werden Sie bei Google gefunden?',
+    question: 'Wie gehen Anfragen von Kunden bei Ihnen ein?',
     options: [
-      { label: 'Kaum – wir tauchen so gut wie nicht auf', value: 'not_found' },
-      { label: 'Nur wenn jemand unseren Namen sucht', value: 'name_only' },
-      { label: 'Manchmal – für einige Suchbegriffe', value: 'partial' },
-      { label: 'Gut – wir ranken für unsere Branche', value: 'found' },
+      { label: 'Fast nur telefonisch', value: 'not_found' },
+      { label: 'Per E-Mail und Telefon gemischt', value: 'name_only' },
+      { label: 'Über Website-Formular oder Chat', value: 'partial' },
+      { label: 'Strukturiert – mit System', value: 'found' },
     ],
   },
   {
     id: 4,
-    question: 'Wie schnell lädt Ihre Website?',
+    question: 'Wie läuft die Terminplanung in Ihrem Betrieb ab?',
     options: [
-      { label: 'Langsam – spürbar über 5 Sekunden', value: 'slow' },
-      { label: 'Ich weiß es nicht / habe es nie gemessen', value: 'unknown' },
-      { label: 'Mittel – 3 bis 5 Sekunden', value: 'medium' },
-      { label: 'Schnell – unter 3 Sekunden', value: 'fast' },
+      { label: 'Manuell per Telefon oder E-Mail', value: 'slow' },
+      { label: 'Wir nutzen einen Kalender, aber kein System', value: 'unknown' },
+      { label: 'Halb automatisiert', value: 'medium' },
+      { label: 'Vollständig digital organisiert', value: 'fast' },
     ],
   },
   {
     id: 5,
-    question: 'Wie läuft die Pflege und Aktualisierung Ihrer Website?',
+    question: 'Haben Sie eine aktuelle Website?',
     options: [
-      { label: 'Gar nicht – seit Monaten unverändert', value: 'none' },
-      { label: 'Ich weiß nicht, wer überhaupt zuständig ist', value: 'unknown' },
-      { label: 'Gelegentlich – aber aufwändig und teuer', value: 'difficult' },
-      { label: 'Regelmäßig – wir haben eine Betreuung', value: 'managed' },
+      { label: 'Nein, noch keine', value: 'none' },
+      { label: 'Ja, aber veraltet', value: 'difficult' },
+      { label: 'Ja, aktuell und gepflegt', value: 'managed' },
+      { label: 'Ich weiß es nicht genau', value: 'unknown' },
     ],
   },
   {
     id: 6,
-    question: 'Was soll Ihre Website in Zukunft vor allem leisten?',
+    question: 'Was wäre für Sie der größte Gewinn?',
     options: [
-      { label: 'Mehr Anfragen und neue Kunden gewinnen', value: 'leads' },
-      { label: 'Professioneller wirken als die Konkurrenz', value: 'image' },
-      { label: 'Besser bei Google gefunden werden', value: 'seo' },
-      { label: 'Alles davon – ein kompletter Neustart', value: 'all' },
+      { label: 'Mehr Anfragen und neue Kunden', value: 'leads' },
+      { label: 'Weniger Routinearbeit im Team', value: 'image' },
+      { label: 'Schnellere Reaktion auf Kundenanfragen', value: 'seo' },
+      { label: 'Alles davon – ich will ein System', value: 'all' },
     ],
   },
 ]
@@ -119,53 +119,52 @@ const RESULT_CONFIG: Record<
   { label: string; barColor: string; textColor: string; bgColor: string; description: string }
 > = {
   critical: {
-    label: 'Dringend handeln',
-    barColor: 'bg-red-500',
-    textColor: 'text-red-500',
-    bgColor: 'bg-red-50 border border-red-100',
+    label: 'Klares KI-Potenzial',
+    barColor: 'bg-neon',
+    textColor: 'text-neon-dim',
+    bgColor: 'bg-lime-50 border border-lime-200',
     description:
-      'Ihre Website kostet Sie aktiv Kunden. Ein professioneller Neustart würde den Unterschied machen.',
+      'Ihre Abläufe haben erhebliches Automatisierungspotenzial. Eine gezielte KI-Lösung könnte Ihnen wöchentlich viele Stunden sparen.',
   },
   medium: {
-    label: 'Klares Potenzial',
+    label: 'Gutes Automatisierungspotenzial',
     barColor: 'bg-amber-400',
     textColor: 'text-amber-600',
     bgColor: 'bg-amber-50 border border-amber-100',
     description:
-      'Sie haben eine Basis – lassen aber deutliches Potenzial liegen. Mit gezielten Maßnahmen holen Sie mehr heraus.',
+      'Sie sind gut aufgestellt, lassen aber Potenzial liegen. Gezielte Automatisierungen würden Ihr Team spürbar entlasten.',
   },
   good: {
-    label: 'Gute Basis',
+    label: 'Solide Ausgangslage',
     barColor: 'bg-green-500',
     textColor: 'text-green-600',
     bgColor: 'bg-green-50 border border-green-100',
     description:
-      'Solide Ausgangslage. Mit gezielten Optimierungen können Sie Ihre Website noch wirkungsvoller machen.',
+      'Ihre Abläufe laufen strukturiert. Mit KI-Integration können Sie die nächste Stufe erreichen.',
   },
 }
 
 const ISSUE_MAP: Record<number, Record<string, string>> = {
   1: {
-    none: 'Keine Website – Sie sind für potenzielle Kunden online nicht existent',
-    outdated: 'Veraltetes Design schreckt Besucher ab – erster Eindruck zählt',
-    ok_no_leads: 'Website konvertiert nicht – Besucher kommen, fragen aber nicht an',
+    ok_no_leads: 'Mittleres Anfrageaufkommen – Automatisierung würde Zeit freisetzen',
+    good: 'Hohes Aufkommen – klares Potenzial für systemgestützte Qualifizierung',
   },
   2: {
-    bad: 'Mobile Darstellung mangelhaft – über 70 % der Nutzer kommen vom Handy',
-    unknown: 'Mobile-Performance unbekannt – ein unsichtbares, aber kritisches Risiko',
+    bad: 'Mehr als 5h/Woche Datenpflege – hoher manueller Aufwand mit Automatisierungspotenzial',
+    ok: '1–5h/Woche Datenpflege – gezielte Automatisierung würde spürbar helfen',
   },
   3: {
-    not_found: 'Keine Google-Sichtbarkeit – Kunden suchen, finden Sie aber nicht',
-    name_only: 'Nur unter eigenem Namen auffindbar – kein organischer Neukunden-Traffic',
+    not_found: 'Nur telefonisch erreichbar – Anfragen außerhalb Bürozeiten gehen verloren',
+    name_only: 'Gemischte Kanäle ohne System – Anfragen fallen durchs Raster',
   },
   4: {
-    slow: 'Ladezeit zu lang – 53 % der Besucher verlassen Seiten nach mehr als 3 Sekunden',
-    unknown: 'Ladezeit unbekannt – möglicherweise ein stiller Conversion-Killer',
+    slow: 'Manuelle Terminplanung – kostet Zeit und erhöht Fehlerrisiko',
+    unknown: 'Kein digitales System – Potenzial für automatisierte Terminbuchung vorhanden',
   },
   5: {
-    none: 'Website seit Langem nicht aktualisiert – technisches und inhaltliches Risiko',
-    unknown: 'Kein klarer Ansprechpartner – Probleme werden nicht zeitnah behoben',
-    difficult: 'Betreuung aufwändig und teuer – das muss nicht so sein',
+    none: 'Keine Website – fehlendes Fundament für digitale Anfragen',
+    difficult: 'Veraltete Website – erster Eindruck und Konversion verbesserungswürdig',
+    unknown: 'Website-Status unklar – Grundlage für Anfragen prüfen',
   },
 }
 
@@ -179,10 +178,10 @@ function getIssues(answers: Record<number, string>): string[] {
 }
 
 const GOAL_MESSAGE: Record<string, string> = {
-  leads: 'Mehr Anfragen & Neukunden – wir bauen auf Conversion optimierte Websites.',
-  image: 'Professioneller Auftritt – Design, das Vertrauen schafft und überzeugt.',
-  seo: 'Bessere Google-Sichtbarkeit – SEO-Grundlage ist bei uns immer inklusive.',
-  all: 'Kompletter Neustart – genau das ist unser Kerngeschäft bei NEON.',
+  leads: 'Mehr Anfragen & Neukunden – Website + automatische Anfragenqualifizierung sind unser Einstiegspaket.',
+  image: 'Weniger Routinearbeit – System-Automatisierung ist genau dafür gemacht.',
+  seo: 'Schnellere Reaktion – ein KI-Assistent antwortet sofort, auch außerhalb der Bürozeiten.',
+  all: 'Ein vollständiges System – genau das bauen wir. Starten Sie mit der kostenlosen Bedarfsanalyse.',
 }
 
 // ─── Calendly window type ─────────────────────────────────────────────────────
@@ -228,11 +227,11 @@ export default function WebsiteCheck() {
   useEffect(() => {
     if (phase !== 'loading') return
     const messages = [
-      'Website wird analysiert…',
-      'Mobile-Darstellung wird geprüft…',
-      'SEO-Basis wird bewertet…',
-      'Ladezeiten werden gemessen…',
-      'Ergebnis wird vorbereitet…',
+      'Antworten werden ausgewertet…',
+      'Automatisierungspotenzial wird berechnet…',
+      'Abläufe werden analysiert…',
+      'Empfehlungen werden vorbereitet…',
+      'Ergebnis wird finalisiert…',
     ]
     let i = 0
     const interval = setInterval(() => {
@@ -318,7 +317,7 @@ export default function WebsiteCheck() {
 
   return (
     <section
-      id="website-check"
+      id="ki-bedarfsanalyse"
       className="section-pad bg-dark-bg overflow-hidden"
       aria-labelledby="check-heading"
     >
@@ -333,13 +332,13 @@ export default function WebsiteCheck() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-neon/60 text-sm font-semibold uppercase tracking-widest mb-4">
-              Kostenloser Website-Check
+              Kostenlose KI-Bedarfsanalyse
             </p>
             <h2 id="check-heading" className="heading-section text-off-white mb-5 text-balance">
-              Wie steht es um Ihren Online-Auftritt?
+              Lohnt sich KI-Automation für Ihren Betrieb?
             </h2>
             <p className="text-white/50 text-lg leading-relaxed mb-8">
-              6 kurze Fragen – und Sie wissen genau, wo Ihre Website steht und was konkret verbessert werden kann.
+              6 kurze Fragen – und Sie wissen, wo das größte Automatisierungspotenzial in Ihrem Betrieb liegt.
             </p>
             <div className="space-y-3.5">
               {[
@@ -371,14 +370,14 @@ export default function WebsiteCheck() {
                       <Search size={18} className="text-neon-dim" aria-hidden="true" />
                     </div>
                     <div>
-                      <h3 className="text-text-dark font-bold text-lg leading-tight">Website prüfen lassen</h3>
+                      <h3 className="text-text-dark font-bold text-lg leading-tight">KI-Bedarfsanalyse starten</h3>
                       <p className="text-text-muted text-xs">Kostenlos & unverbindlich</p>
                     </div>
                   </div>
                   <form onSubmit={handleUrlSubmit} className="space-y-4">
                     <div>
                       <label htmlFor="check-url" className="block text-sm font-medium text-text-dark mb-1.5">
-                        Aktuelle Website-URL
+                        Ihre Website (optional)
                       </label>
                       <div className="relative">
                         <Globe size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted/50" aria-hidden="true" />
@@ -394,7 +393,7 @@ export default function WebsiteCheck() {
                         />
                       </div>
                       <p className="text-xs text-text-muted/50 mt-1.5">
-                        Noch keine Website? Einfach leer lassen und weiter.
+                        Noch keine Website? Kein Problem – einfach leer lassen.
                       </p>
                     </div>
                     <div>
@@ -417,7 +416,7 @@ export default function WebsiteCheck() {
                       className="w-full flex items-center justify-center gap-2 bg-neon text-text-dark font-semibold
                                  px-6 py-3.5 rounded-xl hover:bg-neon-dim transition-all duration-200 cursor-pointer mt-1"
                     >
-                      Website jetzt prüfen lassen
+                      Analyse jetzt starten
                       <ArrowRight size={16} aria-hidden="true" />
                     </button>
                     <p className="text-center text-xs text-text-muted/50">Kein Spam. Keine Verpflichtung.</p>
@@ -639,7 +638,7 @@ export default function WebsiteCheck() {
                   {issues.length > 0 && (
                     <div className="mb-5">
                       <p className="text-xs font-semibold text-text-muted uppercase tracking-widest mb-2.5">
-                        Identifizierte Schwachstellen
+                        Identifiziertes Potenzial
                       </p>
                       <ul className="space-y-2">
                         {issues.map((issue) => (
@@ -668,7 +667,7 @@ export default function WebsiteCheck() {
                                  px-5 py-3.5 rounded-xl hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm"
                     >
                       <Phone size={15} aria-hidden="true" />
-                      Kostenloses Erstgespräch buchen
+                      Bedarfsanalyse-Gespräch buchen
                     </button>
                     <a
                       href={WHATSAPP_URL}

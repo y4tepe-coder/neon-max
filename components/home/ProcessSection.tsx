@@ -8,41 +8,41 @@ import { BookingModal } from '@/components/ui/booking-modal'
 const milestones: Milestone[] = [
   {
     id: 1,
-    name: 'Erstgespräch',
+    name: 'Bedarfsanalyse',
     status: 'complete',
     position: { top: '80%', left: '7.5%' },
     description:
-      'Kostenloses, unverbindliches Gespräch über Ihr Unternehmen und Ihre Ziele. Ca. 30 Minuten – per Telefon oder Video. Ganz entspannt.',
+      'Kostenloses 30-Min.-Gespräch: Wir verstehen Ihre Abläufe, Engpässe und Ziele – ohne Verpflichtung.',
     tooltipSide: 'top',
     tooltipAlign: 'right',
   },
   {
     id: 2,
-    name: 'Ziele & Konzept',
+    name: 'Empfehlung',
     status: 'complete',
     position: { top: '16%', left: '22.5%' },
     description:
-      'Gemeinsam klären wir Struktur, Inhalte, Designrichtung und Zeitplan – verständlich erklärt, ohne Fachbegriffe.',
+      'Sie erhalten eine konkrete schriftliche Empfehlung: welches System, welchen Hebel, welchen Aufwand.',
     tooltipSide: 'bottom',
     tooltipAlign: 'right',
   },
   {
     id: 3,
-    name: 'Umsetzung',
+    name: 'Festpreis-Angebot',
     status: 'in-progress',
     position: { top: '56%', left: '43.75%' },
     description:
-      'Wir bauen Ihre Website und halten Sie dabei auf dem Laufenden. Sie entscheiden, was gefällt – und was noch angepasst werden soll.',
+      'Klares Angebot, klarer Umfang – was vereinbart ist, wird gebaut. Kein Overrun, kein Überraschungs-Invoice.',
     tooltipSide: 'top',
     tooltipAlign: 'center',
   },
   {
     id: 4,
-    name: 'Livegang',
+    name: 'Umsetzung',
     status: 'pending',
     position: { top: '9.5%', left: '63.75%' },
     description:
-      'Ihre Website geht online – wir kümmern uns um Domain, Hosting und alles Technische. Fertig. Live. Professionell.',
+      'Wir bauen und testen das System – Sie bleiben informiert, ohne technischen Aufwand.',
     cta: true,
     tooltipSide: 'bottom',
     tooltipAlign: 'center',
@@ -53,7 +53,7 @@ const milestones: Milestone[] = [
     status: 'pending',
     position: { top: '48.75%', left: '94.75%' },
     description:
-      'Wir bleiben an Ihrer Seite – Hosting, Pflege, Änderungen, Support. Dauerhaft. Mit persönlichem Ansprechpartner.',
+      'Wir bleiben an Ihrer Seite: Monitoring, Updates, Anpassungen – dauerhaft mit persönlichem Ansprechpartner.',
     tooltipSide: 'top',
     tooltipAlign: 'left',
   },
@@ -88,10 +88,10 @@ export default function ProcessSection() {
               id="process-heading"
               className="heading-section text-off-white mb-5 text-balance"
             >
-              Einfach. Strukturiert. Klar.
+              Analyse zuerst. Dann Ergebnis.
             </h2>
             <p className="text-white/50 text-lg leading-relaxed">
-              Von der ersten Idee bis zur fertigen Website – und darüber hinaus.
+              Kein Paket von der Stange. Verstehen, empfehlen, umsetzen, betreuen.
             </p>
           </motion.div>
 
