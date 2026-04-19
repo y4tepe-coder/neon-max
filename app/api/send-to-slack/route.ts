@@ -1,4 +1,8 @@
 import { NextResponse } from 'next/server'
+import { analyzeWebsite } from '@/lib/analyze-website'
+
+export const runtime = 'nodejs'
+export const maxDuration = 60
 
 export async function POST(request: Request) {
   try {
@@ -13,14 +17,25 @@ export async function POST(request: Request) {
       timeStyle: 'short',
     })
 
+    const analysis = await analyzeWebsite(website)
+
+    const siteDisplay = website
+      ? website.startsWith('http') ? website : `https://${website}`
+      : '–'
+
     const text = [
       '🔔 *Neue Anfrage zur KI-Bedarfsanalyse*',
       '',
-      `*Website:* <${website}|${website}>`,
+      `*Website:* <${siteDisplay}|${website}>`,
       `*Unternehmen:* ${company || '–'}`,
       `*Name:* ${name}`,
       `*E-Mail:* ${email}`,
       `*Zeit:* ${timestamp}`,
+      '',
+      '📊 *Unternehmens-Analyse:*',
+      `• Standort: ${analysis.standort}`,
+      `• Branche: ${analysis.branche}`,
+      `• Größe: ${analysis.groesse}`,
     ].join('\n')
 
     const res = await fetch(webhookUrl, {
