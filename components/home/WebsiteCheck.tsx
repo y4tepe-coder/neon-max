@@ -184,6 +184,33 @@ const GOAL_MESSAGE: Record<string, string> = {
   all: 'Ein vollständiges System – genau das bauen wir. Starten Sie mit der kostenlosen Bedarfsanalyse.',
 }
 
+// ─── Validation helpers ───────────────────────────────────────────────────────
+
+const FAKE_DOMAINS = ['test', 'abc', 'hallo', 'example', 'foo', 'bar', 'baz', 'asdf', 'qwerty', 'demo', 'dummy']
+
+function normalizeUrl(input: string): string {
+  const t = input.trim()
+  return /^https?:\/\//i.test(t) ? t : 'https://' + t
+}
+
+function validateUrl(input: string): string | null {
+  const t = input.trim()
+  if (!t) return 'Bitte geben Sie eine gültige Website ein.'
+  const withoutProto = t.replace(/^https?:\/\//i, '').split('/')[0]
+  const parts = withoutProto.split('.')
+  if (parts.length < 2 || parts.some((p) => !p)) return 'Bitte geben Sie eine gültige Website ein.'
+  if (FAKE_DOMAINS.includes(parts[0].toLowerCase())) return 'Bitte geben Sie eine gültige Website ein.'
+  if (parts[parts.length - 1].length < 2) return 'Bitte geben Sie eine gültige Website ein.'
+  try { new URL(t.startsWith('http') ? t : 'https://' + t) } catch { return 'Bitte geben Sie eine gültige Website ein.' }
+  return null
+}
+
+function validateEmail(input: string): string | null {
+  if (!input.trim()) return 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(input.trim())) return 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
+  return null
+}
+
 // ─── Calendly window type ─────────────────────────────────────────────────────
 
 type CalendlyWindow = Window & {
@@ -216,12 +243,16 @@ export default function WebsiteCheck() {
 
   const [phase, setPhase] = useState<Phase>('url')
   const [url, setUrl] = useState('')
+  const [urlError, setUrlError] = useState('')
   const [companyName, setCompanyName] = useState('')
+  const [companyError, setCompanyError] = useState('')
   const [currentStep, setCurrentStep] = useState(0)
   const [answers, setAnswers] = useState<Record<number, string>>({})
   const [contact, setContact] = useState({ name: '', email: '' })
+  const [emailError, setEmailError] = useState('')
+  const [nameError, setNameError] = useState('')
   const [direction, setDirection] = useState(1)
-  const [loadingText, setLoadingText] = useState('Website wird analysiert…')
+  const [loadingText, setLoadingText] = useState('Antworten werden ausgewertet…')
   const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
@@ -247,7 +278,57 @@ export default function WebsiteCheck() {
 
   const handleUrlSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+
+    const urlErr = validateUrl(url)
+    const companyErr = !companyName.trim() ? 'Bitte geben Sie Ihren Firmennamen ein.' : null
+    const emailErr = validateEmail(contact.email)
+    const nameErr = !contact.name.trim() ? 'Bitte geben Sie Ihren Namen ein.' : null
+
+    setUrlError(urlErr ?? '')
+    setCompanyError(companyErr ?? '')
+    setEmailError(emailErr ?? '')
+    setNameError(nameErr ?? '')
+
+    if (urlErr || companyErr || emailErr || nameErr) return
+
+    const normalized = normalizeUrl(url)
+    setUrl(normalized)
+
+    // Fire-and-forget – Slack darf den User nicht blockieren
+    fetch('/api/send-to-slack', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        website: normalized,
+        company: companyName.trim(),
+        name: contact.name.trim(),
+        email: contact.email.trim(),
+      }),
+    }).catch(() => {})
+
     setPhase('loading')
+  }
+
+  const submitLead = async (finalAnswers: Record<number, string>) => {
+    setSubmitting(true)
+    const score = computeScore(finalAnswers)
+    const resultLevel = getResultLevel(score)
+    try {
+      await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url: url.trim(),
+          companyName: companyName.trim(),
+          contact,
+          answers: finalAnswers,
+          score,
+          resultLevel,
+        }),
+      })
+    } catch { /* silent */ }
+    setSubmitting(false)
+    setPhase('result')
   }
 
   const handleChoice = (value: string) => {
@@ -257,7 +338,7 @@ export default function WebsiteCheck() {
     if (currentStep < quizSteps.length - 1) {
       setTimeout(() => setCurrentStep((s) => s + 1), 240)
     } else {
-      setTimeout(() => setPhase('contact'), 240)
+      setTimeout(() => submitLead(newAnswers), 240)
     }
   }
 
@@ -374,10 +455,11 @@ export default function WebsiteCheck() {
                       <p className="text-text-muted text-xs">Kostenlos & unverbindlich</p>
                     </div>
                   </div>
-                  <form onSubmit={handleUrlSubmit} className="space-y-4">
+                  <form onSubmit={handleUrlSubmit} className="space-y-4" noValidate>
+                    {/* Website */}
                     <div>
                       <label htmlFor="check-url" className="block text-sm font-medium text-text-dark mb-1.5">
-                        Ihre Website (optional)
+                        Website <span className="text-red-400">*</span>
                       </label>
                       <div className="relative">
                         <Globe size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted/50" aria-hidden="true" />
@@ -385,38 +467,80 @@ export default function WebsiteCheck() {
                           id="check-url"
                           type="text"
                           value={url}
-                          onChange={(e) => setUrl(e.target.value)}
+                          onChange={(e) => { setUrl(e.target.value); setUrlError('') }}
                           placeholder="www.ihre-website.de"
-                          className="w-full pl-10 pr-4 py-3 rounded-xl border border-border-light text-text-dark text-sm
+                          className={`w-full pl-10 pr-4 py-3 rounded-xl border text-text-dark text-sm
                                      placeholder:text-text-muted/40 focus:outline-none focus:ring-2 focus:ring-neon
-                                     focus:border-transparent transition-all duration-200"
+                                     focus:border-transparent transition-all duration-200
+                                     ${urlError ? 'border-red-400 ring-1 ring-red-400' : 'border-border-light'}`}
                         />
                       </div>
-                      <p className="text-xs text-text-muted/50 mt-1.5">
-                        Noch keine Website? Kein Problem – einfach leer lassen.
-                      </p>
+                      {urlError && <p className="text-xs text-red-500 mt-1.5">{urlError}</p>}
                     </div>
+
+                    {/* Unternehmen */}
                     <div>
                       <label htmlFor="check-company" className="block text-sm font-medium text-text-dark mb-1.5">
-                        Ihr Unternehmen <span className="text-text-muted/50 font-normal">(optional)</span>
+                        Unternehmen <span className="text-red-400">*</span>
                       </label>
                       <input
                         id="check-company"
                         type="text"
                         value={companyName}
-                        onChange={(e) => setCompanyName(e.target.value)}
+                        onChange={(e) => { setCompanyName(e.target.value); setCompanyError('') }}
                         placeholder="Musterfirma GmbH"
-                        className="w-full px-4 py-3 rounded-xl border border-border-light text-text-dark text-sm
+                        className={`w-full px-4 py-3 rounded-xl border text-text-dark text-sm
                                    placeholder:text-text-muted/40 focus:outline-none focus:ring-2 focus:ring-neon
-                                   focus:border-transparent transition-all duration-200"
+                                   focus:border-transparent transition-all duration-200
+                                   ${companyError ? 'border-red-400 ring-1 ring-red-400' : 'border-border-light'}`}
                       />
+                      {companyError && <p className="text-xs text-red-500 mt-1.5">{companyError}</p>}
                     </div>
+
+                    {/* E-Mail */}
+                    <div>
+                      <label htmlFor="check-email" className="block text-sm font-medium text-text-dark mb-1.5">
+                        E-Mail-Adresse <span className="text-red-400">*</span>
+                      </label>
+                      <input
+                        id="check-email"
+                        type="email"
+                        value={contact.email}
+                        onChange={(e) => { setContact((c) => ({ ...c, email: e.target.value })); setEmailError('') }}
+                        placeholder="max@musterfirma.de"
+                        className={`w-full px-4 py-3 rounded-xl border text-text-dark text-sm
+                                   placeholder:text-text-muted/40 focus:outline-none focus:ring-2 focus:ring-neon
+                                   focus:border-transparent transition-all duration-200
+                                   ${emailError ? 'border-red-400 ring-1 ring-red-400' : 'border-border-light'}`}
+                      />
+                      {emailError && <p className="text-xs text-red-500 mt-1.5">{emailError}</p>}
+                    </div>
+
+                    {/* Name */}
+                    <div>
+                      <label htmlFor="check-name" className="block text-sm font-medium text-text-dark mb-1.5">
+                        Name <span className="text-red-400">*</span>
+                      </label>
+                      <input
+                        id="check-name"
+                        type="text"
+                        value={contact.name}
+                        onChange={(e) => { setContact((c) => ({ ...c, name: e.target.value })); setNameError('') }}
+                        placeholder="Max Mustermann"
+                        className={`w-full px-4 py-3 rounded-xl border text-text-dark text-sm
+                                   placeholder:text-text-muted/40 focus:outline-none focus:ring-2 focus:ring-neon
+                                   focus:border-transparent transition-all duration-200
+                                   ${nameError ? 'border-red-400 ring-1 ring-red-400' : 'border-border-light'}`}
+                      />
+                      {nameError && <p className="text-xs text-red-500 mt-1.5">{nameError}</p>}
+                    </div>
+
                     <button
                       type="submit"
                       className="w-full flex items-center justify-center gap-2 bg-neon text-text-dark font-semibold
                                  px-6 py-3.5 rounded-xl hover:bg-neon-dim transition-all duration-200 cursor-pointer mt-1"
                     >
-                      Analyse jetzt starten
+                      Analyse starten
                       <ArrowRight size={16} aria-hidden="true" />
                     </button>
                     <p className="text-center text-xs text-text-muted/50">Kein Spam. Keine Verpflichtung.</p>
