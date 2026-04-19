@@ -6,10 +6,18 @@ export interface WebsiteAnalysis {
   standort: string
   branche: string
   groesse: string
+  beschreibung: string
+  rueckmeldung: string
 }
 
 export async function analyzeWebsite(url: string): Promise<WebsiteAnalysis> {
-  const fallback: WebsiteAnalysis = { standort: '–', branche: '–', groesse: '–' }
+  const fallback: WebsiteAnalysis = {
+    standort: '–',
+    branche: '–',
+    groesse: '–',
+    beschreibung: '–',
+    rueckmeldung: '–',
+  }
 
   const websiteAgentId = process.env.WEBSITE_AGENT_ID
   const environmentId = process.env.ENVIRONMENT_ID

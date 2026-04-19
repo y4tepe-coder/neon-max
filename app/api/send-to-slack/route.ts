@@ -36,6 +36,16 @@ export async function POST(request: Request) {
       `• Standort: ${analysis.standort}`,
       `• Branche: ${analysis.branche}`,
       `• Größe: ${analysis.groesse}`,
+      '',
+      '🏢 *Was macht das Unternehmen:*',
+      analysis.beschreibung,
+      '',
+      '✉️ *Vorschlag für Rückmeldung per E-Mail:*',
+      '```',
+      `Hallo ${name?.split(' ')[0] || ''},`,
+      '',
+      analysis.rueckmeldung,
+      '```',
     ].join('\n')
 
     const res = await fetch(webhookUrl, {
