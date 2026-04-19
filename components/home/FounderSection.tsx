@@ -36,21 +36,21 @@ export default function FounderSection() {
             </div>
           </div>
 
-          <p className="text-neon-dim font-semibold text-base mb-5">Gründer von NEON Agentur</p>
+          <p className="text-neon-dim font-semibold text-base mb-5">Gründer von NEON BW</p>
 
           <div className="space-y-4 text-text-muted text-base leading-relaxed mb-5">
             <p>
-              NEON Agentur habe ich gegründet, weil ich täglich Unternehmen begegne, die in
-              ihrem Fachgebiet exzellent sind – online jedoch kaum wahrgenommen werden.
+              NEON BW habe ich gegründet, weil gute Arbeit allein nicht reicht –
+              man muss auch gefunden werden, und Abläufe müssen funktionieren.
             </p>
             <p>
-              Mein Anspruch: Kein Fachjargon, keine versteckten Kosten, kein anonymer Support.
-              Sie erhalten mich als persönlichen Ansprechpartner – von Anfang bis Ende.
+              KI ist das Werkzeug. Ergebnisse sind das Ziel.
+              Kein Technik-Bingo, kein Angebot von der Stange – nur was wirklich hilft.
             </p>
           </div>
 
           <div className="flex flex-wrap gap-2 mb-7">
-            {['Persönlich', 'Transparent', 'Engagiert', 'Lokal'].map((val) => (
+            {['KI-Strategie', 'Prozessdenken', 'Festpreis', 'Lokal in BW'].map((val) => (
               <span
                 key={val}
                 className="bg-white border border-border-light text-text-dark text-xs font-medium px-3 py-1.5 rounded-full"
@@ -70,7 +70,7 @@ export default function FounderSection() {
               <ArrowRight size={15} aria-hidden="true" />
             </Link>
             <Link
-              href="/ueber-uns"
+              href="/ueber"
               className="inline-flex items-center gap-2 text-text-muted font-medium hover:text-text-dark transition-colors duration-200 cursor-pointer group text-sm py-3"
             >
               Mehr über NEON erfahren

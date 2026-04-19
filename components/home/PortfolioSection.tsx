@@ -6,27 +6,27 @@ import { ArrowRight, ExternalLink } from 'lucide-react'
 const projects = [
   {
     id: 1,
-    name: 'Muster GmbH',
-    category: 'Handwerk',
-    description: 'Moderner Webauftritt für einen regionalen Handwerksbetrieb – mit Online-Terminbuchung und Kontaktformular.',
-    tags: ['Website', 'Betreuung', 'SEO'],
-    placeholder: true,
+    name: 'Kanzlei Mustermann – Demo',
+    category: 'Kanzlei',
+    description: 'Demo-Website mit Mandantenanfrage-Formular, DSGVO-Checkbox und automatischer Weiterleitung ins Postfach.',
+    tags: ['Website', 'KI-Formular', 'DSGVO'],
+    demo: true,
   },
   {
     id: 2,
-    name: 'Beispiel Restaurant',
-    category: 'Gastronomie',
-    description: 'Appetitliche Website mit digitaler Speisekarte, Tischreservierung und Google Maps Einbindung.',
-    tags: ['Website', 'Speisekarte', 'Reservierung'],
-    placeholder: true,
+    name: 'Handwerk-Betrieb – Demo',
+    category: 'Handwerk',
+    description: 'Demo-Website mit integrierter Terminbuchung und automatischer Auftragsbestätigung per Nachricht.',
+    tags: ['Website', 'Terminbuchung', 'Automatisierung'],
+    demo: true,
   },
   {
     id: 3,
-    name: 'Demo Praxis',
-    category: 'Gesundheit',
-    description: 'Vertrauenswürdiger Online-Auftritt für eine Arztpraxis mit Online-Terminbuchung und Datenschutz-Konformität.',
-    tags: ['Website', 'Terminbuchung', 'DSGVO'],
-    placeholder: true,
+    name: 'Steuerberater-Kanzlei – Demo',
+    category: 'Steuerberatung',
+    description: 'Demo mit Mandanten-Onboarding-Flow und automatischer Dokumentenanforderung.',
+    tags: ['Website', 'Onboarding', 'KI-Assistent'],
+    demo: true,
   },
 ]
 
@@ -43,13 +43,13 @@ export default function PortfolioSection() {
           className="mb-16"
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-neon-dim mb-4">
-            Referenzen
+            Portfolio
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-text-dark leading-tight mb-5">
-            Unsere Projekte
+            Beispiel-Projekte und Demo-Sites
           </h2>
           <p className="text-text-muted text-lg max-w-xl leading-relaxed">
-            Echte Websites. Echte Ergebnisse. Hier siehst du, was mit NEON möglich ist.
+            Alle aktuellen Projekte sind Demo-Sites – so sieht die Qualität aus. Echte Kundenprojekte folgen.
           </p>
         </motion.div>
 
@@ -72,8 +72,15 @@ export default function PortfolioSection() {
                   <div className="w-14 h-1 bg-neon/30 rounded-full" />
                 </div>
                 <span className="relative z-10 text-white/40 text-sm font-medium">
-                  Projekt-Screenshot folgt
+                  Screenshot folgt
                 </span>
+                {project.demo && (
+                  <div className="absolute top-3 left-3">
+                    <span className="flex items-center gap-1 bg-neon/20 border border-neon/40 text-neon text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                      Demo
+                    </span>
+                  </div>
+                )}
                 <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   <span className="flex items-center gap-1 bg-neon text-text-dark text-xs font-bold px-2.5 py-1 rounded-full cursor-pointer">
                     <ExternalLink size={11} />
@@ -112,12 +119,12 @@ export default function PortfolioSection() {
           transition={{ duration: 0.5, ease: 'easeOut', delay: 0.3 }}
           className="mt-12 text-center"
         >
-          <p className="text-text-muted text-sm mb-4">Dein Projekt könnte hier stehen.</p>
+          <p className="text-text-muted text-sm mb-4">Ihr Projekt könnte hier stehen.</p>
           <a
-            href="/kontakt"
+            href="/portfolio"
             className="inline-flex items-center gap-2 bg-text-dark text-off-white text-sm font-semibold px-6 py-3 rounded-full hover:bg-text-dark/80 transition-all duration-200"
           >
-            Jetzt anfragen
+            Alle Projekte ansehen
             <ArrowRight size={16} />
           </a>
         </motion.div>

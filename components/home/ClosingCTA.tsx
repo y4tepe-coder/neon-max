@@ -40,13 +40,13 @@ export default function ClosingCTA() {
           <span className="inline-flex items-center gap-2 bg-neon/10 border border-neon/20 rounded-full px-4 py-2 mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-neon" aria-hidden="true" />
             <span className="text-neon/80 text-sm font-medium">
-              Kostenloses Erstgespräch möglich
+              Kostenlose Bedarfsanalyse – unverbindlich
             </span>
           </span>
 
           <HandWrittenTitle
-            title="Bereit für Ihre neue Website?"
-            subtitle="Lassen Sie uns in einem kurzen Gespräch herausfinden, was Ihre Website braucht – und wie wir das gemeinsam umsetzen."
+            title="Bereit, Abläufe zu automatisieren?"
+            subtitle="In 30 Minuten verstehen wir gemeinsam, welche KI-Lösung für Ihr Unternehmen den größten Hebel hat."
           />
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 -mt-4">
@@ -56,7 +56,7 @@ export default function ClosingCTA() {
                          hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
             >
               <Calendar size={18} aria-hidden="true" />
-              Erstgespräch starten
+              Bedarfsanalyse starten
             </Link>
             <Link
               href="mailto:info@neon-bw.de"
@@ -72,8 +72,8 @@ export default function ClosingCTA() {
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
             {[
               'Kostenlos & unverbindlich',
-              'Antwort innerhalb von 24h',
-              'Persönliche Beratung',
+              'Antwort innerhalb 24h',
+              'Kein Verkaufsdruck',
             ].map((item) => (
               <span key={item} className="text-white/30 text-sm flex items-center gap-2">
                 <span className="w-1 h-1 rounded-full bg-neon/40" aria-hidden="true" />

@@ -6,29 +6,29 @@ import { Plus, Minus } from 'lucide-react'
 
 const faqs = [
   {
-    question: 'Was kostet eine Website?',
+    question: 'Was kostet eine KI-Integration?',
     answer:
-      'Unser Komplettpaket besteht aus einem einmaligen Setup-Preis und einer monatlichen Betreuungspauschale. Die genauen Konditionen besprechen wir transparent im Erstgespräch – keine versteckten Kosten.',
+      'Websites starten ab 499 €, System-Automatisierungen ab 1.490 €, KI-Integrationen ab 2.990 €, Chatbot/Voice-Agenten ab 1.990 € – jeweils plus monatlicher Betreuungs-Retainer. Alle Preise offen auf /preise.',
   },
   {
-    question: 'Muss ich mich selbst um Hosting oder Technik kümmern?',
+    question: 'Muss ich externe KI-Dienste selbst abonnieren?',
     answer:
-      'Nein. Domain-Einrichtung, Hosting, technische Konfiguration und Sicherheit übernehmen wir vollständig. Sie kümmern sich um Ihr Unternehmen – wir um alles Technische.',
+      'Nein. Wir betreiben alle Systeme self-hosted auf Servern in Deutschland – keine Tool-Abhängigkeit, keine monatlichen Drittanbieter-Gebühren für Sie.',
   },
   {
-    question: 'Wie schnell kann eine Website online gehen?',
+    question: 'Wie läuft die Bedarfsanalyse ab?',
     answer:
-      'Bei zügiger Bereitstellung der Inhalte können einfachere Projekte innerhalb von 2–4 Wochen live gehen. Den genauen Zeitplan klären wir im Erstgespräch.',
+      'Kostenloses Erstgespräch (ca. 30 Min.), wir verstehen Ihre Abläufe, und Sie erhalten eine konkrete Empfehlung – ohne Verpflichtung. Danach erst Angebot und Festpreis.',
   },
   {
-    question: 'Bietet ihr auch Terminbuchung oder Chatfunktionen an?',
+    question: 'Wie schnell kann ein System live gehen?',
     answer:
-      'Ja, als optionale Erweiterung. Online-Terminbuchung, Live-Chat und weitere smarte Funktionen können jederzeit nach dem Launch ergänzt werden – wenn Sie es brauchen.',
+      'Websites sind typischerweise in 14 Tagen live. Automatisierungen und KI-Integrationen je nach Komplexität in 2–6 Wochen. Den Zeitplan klären wir im Erstgespräch.',
   },
   {
-    question: 'Kann die Website später noch erweitert werden?',
+    question: 'Ist das DSGVO-konform?',
     answer:
-      'Ja. Wir bauen Ihre Website so, dass sie problemlos mitwachsen kann. Neue Seiten, Funktionen oder Integrationen können jederzeit ergänzt werden.',
+      'Ja. Alle KI-Systeme laufen self-hosted auf Servern in Deutschland. Keine Datenübertragung in die USA ohne explizite Einwilligung. Wir dokumentieren alles datenschutzkonform.',
   },
 ]
 
@@ -92,11 +92,10 @@ export default function FAQ() {
               id="faq-heading"
               className="heading-section text-text-dark mb-5 text-balance"
             >
-              Alles klar beantwortet.
+              Direkte Antworten.
             </h2>
             <p className="text-body">
-              Wir wollen, dass Sie informiert entscheiden. Hier finden Sie Antworten auf die
-              häufigsten Fragen.
+              Kein Kleingedrucktes, kein Vertriebsdruck. Informiert entscheiden – das ist unser Anspruch.
             </p>
             <p className="mt-4 text-text-muted text-sm">
               Noch mehr Fragen?{' '}
