@@ -5,23 +5,26 @@ const footerLinks = [
   {
     title: 'Leistungen',
     links: [
-      { href: '/leistungen#setup', label: 'Website-Setup' },
-      { href: '/leistungen#betreuung', label: 'Website-Betreuung' },
-      { href: '/leistungen#erweiterungen', label: 'Smarte Erweiterungen' },
+      { href: '/leistungen',                   label: 'Alle Leistungen' },
+      { href: '/leistungen#websites',           label: 'Websites' },
+      { href: '/leistungen#automatisierung',    label: 'System-Automatisierung' },
+      { href: '/leistungen#ki-integration',     label: 'KI-Integration' },
+      { href: '/leistungen#chatbot',            label: 'Chatbot & Voice' },
     ],
   },
   {
     title: 'Agentur',
     links: [
-      { href: '/ueber-uns', label: 'Über NEON' },
-      { href: '/fuer-wen', label: 'Für wen' },
-      { href: '/kontakt', label: 'Kontakt' },
+      { href: '/ueber',    label: 'Über NEON' },
+      { href: '/prozess',  label: 'Unser Prozess' },
+      { href: '/branchen', label: 'Branchen' },
+      { href: '/kontakt',  label: 'Kontakt' },
     ],
   },
   {
     title: 'Rechtliches',
     links: [
-      { href: '/impressum', label: 'Impressum' },
+      { href: '/impressum',   label: 'Impressum' },
       { href: '/datenschutz', label: 'Datenschutz' },
     ],
   },
@@ -38,9 +41,10 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-1 mb-4">
               <span className="text-2xl font-bold text-off-white">NEON</span>
               <span className="text-2xl font-bold text-neon">.</span>
+              <span className="text-xs font-semibold uppercase tracking-widest text-neon/50 ml-1">BW</span>
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs mb-6">
-              Moderne Websites für lokale Unternehmen – erstellt und betreut von NEON Agentur aus Baden-Württemberg.
+              KI-Automation und Websites aus Baden-Württemberg – persönlich, Festpreis, DSGVO-konform.
             </p>
             <div className="flex flex-col gap-3">
               <a
