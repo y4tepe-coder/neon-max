@@ -117,35 +117,35 @@ export default function PreisePage() {
                 )}
 
                 <div className={`flex flex-col flex-1 p-7 ${pkg.badge ? 'pt-11' : ''}`}>
-                  <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${pkg.highlighted ? 'text-neon/70' : 'text-white/30'}`}>
+                  <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${pkg.highlighted ? 'text-neon' : 'text-off-white'}`}>
                     {pkg.name}
                   </p>
-                  <p className="text-white/40 text-sm mb-6 leading-relaxed">{pkg.description}</p>
+                  <p className="text-white/80 text-sm mb-6 leading-relaxed">{pkg.description}</p>
 
                   <div className="mb-1.5">
                     <div className={`text-4xl font-black leading-none tabular-nums ${pkg.highlighted ? 'text-neon' : 'text-off-white'}`}>
                       {pkg.monthlyPrice}
-                      <span className={`text-sm font-semibold ml-1.5 ${pkg.highlighted ? 'text-neon/50' : 'text-white/30'}`}>
+                      <span className={`text-sm font-semibold ml-1.5 ${pkg.highlighted ? 'text-neon/90' : 'text-white/80'}`}>
                         / Monat
                       </span>
                     </div>
-                    <p className="text-white/35 text-sm mt-2">
-                      + {pkg.setupPrice} <span className="text-white/20">einmalig</span>
+                    <p className="text-white/80 text-sm mt-2">
+                      + {pkg.setupPrice} <span className="text-white/70">einmalig</span>
                     </p>
                   </div>
-                  <p className="text-white/20 text-xs mb-7">12 Monate Mindestlaufzeit</p>
+                  <p className="text-white/60 text-xs mb-7">12 Monate Mindestlaufzeit</p>
 
-                  <div className={`h-px w-full mb-6 ${pkg.highlighted ? 'bg-neon/15' : 'bg-dark-border'}`} />
+                  <div className={`h-px w-full mb-6 ${pkg.highlighted ? 'bg-neon/30' : 'bg-dark-border'}`} />
 
                   <ul className="space-y-3 flex-1 mb-8">
                     {pkg.features.map((f) => (
                       <li key={f} className="flex items-start gap-2.5">
                         <CheckCircle2
                           size={15}
-                          className={`shrink-0 mt-0.5 ${pkg.highlighted ? 'text-neon' : 'text-neon/45'}`}
+                          className={`shrink-0 mt-0.5 ${pkg.highlighted ? 'text-neon' : 'text-neon'}`}
                           aria-hidden="true"
                         />
-                        <span className="text-white/60 text-sm">{f}</span>
+                        <span className="text-off-white text-sm">{f}</span>
                       </li>
                     ))}
                   </ul>
@@ -155,7 +155,7 @@ export default function PreisePage() {
                     className={`block w-full text-center font-semibold px-5 py-3 rounded-full text-sm transition-all duration-200 cursor-pointer ${
                       pkg.highlighted
                         ? 'bg-neon text-text-dark hover:bg-neon-dim'
-                        : 'border border-white/15 text-white/60 hover:border-white/30 hover:text-white/90'
+                        : 'border border-white/30 text-off-white hover:border-white/60 hover:bg-white/5'
                     }`}
                   >
                     {pkg.name} anfragen
