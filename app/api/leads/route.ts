@@ -2,7 +2,6 @@ import { NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 import nodemailer from 'nodemailer'
-import { analyzeWebsite, WebsiteAnalysis } from '@/lib/analyze-website'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -63,42 +62,6 @@ async function sendLeadEmail(data: LeadData) {
   })
 }
 
-// ─── Slack notification ───────────────────────────────────────────────────────
-
-async function sendSlackNotification(data: LeadData, analysis: WebsiteAnalysis) {
-  const webhookUrl = process.env.SLACK_WEBHOOK_URL
-  if (!webhookUrl) return
-
-  const siteDisplay = data.url
-    ? data.url.startsWith('http') ? data.url : `https://${data.url}`
-    : '–'
-
-  const text = [
-    `🔔 *Neue KI-Bedarfsanalyse*`,
-    `*Website:* <${siteDisplay}|${data.url || '–'}>`,
-    `*Unternehmen:* ${data.companyName || '–'}`,
-    `*Name:* ${data.contact.name || '–'}   |   *E-Mail:* ${data.contact.email || '–'}`,
-    ``,
-    `📊 *Website-Analyse:*`,
-    `• Standort: ${analysis.standort}`,
-    `• Branche: ${analysis.branche}`,
-    `• Größe: ${analysis.groesse}`,
-  ].join('\n')
-
-  await fetch(webhookUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text }),
-  })
-}
-
-// ─── Background analysis + Slack ─────────────────────────────────────────────
-
-async function analyzeAndNotify(data: LeadData) {
-  const analysis = await analyzeWebsite(data.url)
-  await sendSlackNotification(data, analysis)
-}
-
 // ─── POST – save lead + notify ────────────────────────────────────────────────
 
 export async function POST(request: Request) {
@@ -124,7 +87,6 @@ export async function POST(request: Request) {
 
     // Fire-and-forget — don't block the response
     sendLeadEmail(data).catch(() => {})
-    analyzeAndNotify(data).catch(() => {})
 
     return NextResponse.json({ success: true })
   } catch (err) {

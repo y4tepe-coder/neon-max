@@ -294,18 +294,6 @@ export default function WebsiteCheck() {
     const normalized = normalizeUrl(url)
     setUrl(normalized)
 
-    // Fire-and-forget – Slack darf den User nicht blockieren
-    fetch('/api/send-to-slack', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        website: normalized,
-        company: companyName.trim(),
-        name: contact.name.trim(),
-        email: contact.email.trim(),
-      }),
-    }).catch(() => {})
-
     setPhase('loading')
   }
 
