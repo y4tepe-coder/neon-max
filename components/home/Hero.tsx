@@ -69,11 +69,11 @@ export default function Hero() {
           className="font-bold leading-[1.08] tracking-tight"
           style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', color: '#F8FAFC' }}
         >
-          Weniger Aufwand.
+          Dein unfairer
           <br />
-          Mehr Ergebnisse.
+          Wettbewerbs-
           <br />
-          <span style={{ color: '#C5F74F' }}>Mit KI.</span>
+          <span style={{ color: '#C5F74F' }}>vorteil.</span>
         </motion.h1>
 
         {/* Subtext */}
@@ -82,9 +82,8 @@ export default function Hero() {
           className="mt-7 text-lg md:text-xl leading-relaxed max-w-2xl"
           style={{ color: 'rgba(248,250,252,0.55)' }}
         >
-          Wir analysieren Ihre Abläufe – und bauen Ihnen das System, das Routine
-          übernimmt, Anfragen qualifiziert und Termine organisiert.
-          Festpreis. DSGVO-konform. In BW.
+          Ein Unternehmen voranzubringen ist hart. Mit uns geht es schneller,
+          verständlicher und macht mehr Spaß.
         </motion.p>
 
         {/* CTAs */}

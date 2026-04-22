@@ -1,25 +1,40 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Phone } from 'lucide-react'
+import { Menu, X, Phone, ChevronDown } from 'lucide-react'
+
+const leistungenItems = [
+  { href: '/leistungen#websites',        label: 'Website' },
+  { href: '/leistungen#automatisierung', label: 'System-Automatisierung' },
+  { href: '/leistungen#ki-integration',  label: 'KI-Integration' },
+  { href: '/leistungen#chatbot',         label: 'Chatbot & Voice-Agent' },
+]
 
 const navLinks = [
-  { href: '/leistungen', label: 'Leistungen' },
-  { href: '/branchen',   label: 'Branchen' },
-  { href: '/portfolio',  label: 'Portfolio' },
-  { href: '/preise',     label: 'Preise' },
-  { href: '/ueber',      label: 'Über NEON' },
-  { href: '/kontakt',    label: 'Kontakt' },
+  { href: '/branchen', label: 'Branchen' },
+  { href: '/preise',   label: 'Preise' },
 ]
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDark, setIsDark] = useState(true)
+  const [isLeistungenOpen, setIsLeistungenOpen] = useState(false)
+  const [isMobileLeistungenOpen, setIsMobileLeistungenOpen] = useState(false)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
   const pathname = usePathname()
+
+  const openLeistungen = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setIsLeistungenOpen(true)
+  }
+  const scheduleCloseLeistungen = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    closeTimer.current = setTimeout(() => setIsLeistungenOpen(false), 120)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -106,6 +121,59 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
+
+              {/* Leistungen dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={openLeistungen}
+                onMouseLeave={scheduleCloseLeistungen}
+              >
+                <Link
+                  href="/leistungen"
+                  className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${
+                    pathname.startsWith('/leistungen')
+                      ? 'text-neon'
+                      : showDark
+                      ? 'text-white/70 hover:text-white'
+                      : 'text-text-muted hover:text-text-dark'
+                  }`}
+                  aria-haspopup="true"
+                  aria-expanded={isLeistungenOpen}
+                >
+                  Leistungen
+                  <ChevronDown
+                    size={14}
+                    className={`transition-transform duration-200 ${isLeistungenOpen ? 'rotate-180' : ''}`}
+                  />
+                </Link>
+
+                <AnimatePresence>
+                  {isLeistungenOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.15, ease: 'easeOut' }}
+                      className="absolute right-0 top-full pt-3 w-64"
+                      role="menu"
+                    >
+                      <div className="bg-white border border-border-light rounded-2xl shadow-lg py-2 overflow-hidden">
+                        {leistungenItems.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setIsLeistungenOpen(false)}
+                            className="block px-5 py-2.5 text-sm font-medium text-text-muted hover:text-text-dark hover:bg-warm-gray transition-colors duration-150"
+                            role="menuitem"
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
             </nav>
 
             {/* Desktop CTA */}
@@ -169,6 +237,56 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
+
+              {/* Leistungen — collapsible group */}
+              <div className="border-b border-border-light/50">
+                <button
+                  type="button"
+                  onClick={() => setIsMobileLeistungenOpen((v) => !v)}
+                  className={`w-full flex items-center justify-between text-base font-medium py-2 transition-colors duration-200 ${
+                    pathname.startsWith('/leistungen') ? 'text-neon' : 'text-text-muted hover:text-text-dark'
+                  }`}
+                  aria-expanded={isMobileLeistungenOpen}
+                >
+                  Leistungen
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform duration-200 ${isMobileLeistungenOpen ? 'rotate-180' : ''}`}
+                  />
+                </button>
+                <AnimatePresence initial={false}>
+                  {isMobileLeistungenOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2, ease: 'easeOut' }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-3 pb-2 flex flex-col">
+                        <Link
+                          href="/leistungen"
+                          onClick={() => setIsMenuOpen(false)}
+                          className="text-sm font-medium py-2 text-text-muted hover:text-text-dark"
+                        >
+                          Übersicht
+                        </Link>
+                        {leistungenItems.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setIsMenuOpen(false)}
+                            className="text-sm font-medium py-2 text-text-muted hover:text-text-dark"
+                          >
+                            {item.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               <a
                 href="tel:+4917620170133"
                 onClick={() => setIsMenuOpen(false)}
