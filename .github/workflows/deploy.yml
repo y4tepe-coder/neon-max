@@ -15,15 +15,17 @@ jobs:
           username: root
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
+            set -e
+            mkdir -p /docker/neon-website
             cd /docker/neon-website
             if [ ! -d ".git" ]; then
               git init
               git remote add origin https://github.com/y4tepe-coder/neon-max.git
-              git fetch origin main
-              git reset --hard origin/main
-            else
-              git pull origin main
             fi
+            git fetch origin main
+            git reset --hard origin/main
+            git clean -fd
+            set +e
             docker compose down --remove-orphans
             docker rm -f neon-website-neon-agentur-1 2>/dev/null || true
             docker network rm neon-website_default 2>/dev/null || true
