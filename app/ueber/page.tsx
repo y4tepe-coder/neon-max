@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, CheckCircle2, MapPin, Quote } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Über NEON BW — KI-Agentur Stuttgart & BW',
@@ -60,28 +59,41 @@ export default function UeberPage() {
       {/* Founder */}
       <section className="section-pad bg-off-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
-            {/* Photo */}
-            <div className="relative flex-shrink-0 mx-auto lg:mx-0">
-              <div className="w-64 md:w-80 rounded-2xl overflow-hidden shadow-xl aspect-[3/4]">
-                <Image
-                  src="/yasin.png"
-                  alt="Yasin Tepe – Gründer von NEON BW"
-                  width={400}
-                  height={533}
-                  className="w-full h-full object-cover object-top"
-                  priority
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            {/* Brand / Identity Card */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded-2xl overflow-hidden bg-dark-bg border border-dark-border p-8 md:p-10 shadow-xl">
+                <div
+                  aria-hidden="true"
+                  className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-neon/10 blur-3xl"
                 />
-              </div>
-              <div className="absolute -bottom-4 -right-4 bg-white rounded-xl px-4 py-3 shadow-lg border border-border-light">
-                <p className="text-xs text-text-muted font-medium">Gegründet in</p>
-                <p className="text-text-dark font-bold text-sm">Baden-Württemberg</p>
-                <div className="mt-1.5 w-full h-0.5 bg-neon rounded-full" />
+                <div className="relative z-10 flex flex-col h-full min-h-[340px]">
+                  <div className="inline-flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 w-fit mb-8">
+                    <MapPin size={12} className="text-neon" aria-hidden="true" />
+                    <span className="text-white/80 font-medium text-xs">Baden-Württemberg</span>
+                  </div>
+
+                  <Quote size={28} className="text-neon mb-4" aria-hidden="true" />
+                  <p className="text-off-white text-lg md:text-xl leading-snug font-medium mb-8 text-balance">
+                    KI ist das Werkzeug. Ergebnisse sind das Ziel – kein Technik-Bingo.
+                  </p>
+
+                  <div className="mt-auto grid grid-cols-2 gap-4 pt-6 border-t border-white/10">
+                    <div>
+                      <p className="text-white/40 text-xs uppercase tracking-wider mb-1">Ansatz</p>
+                      <p className="text-off-white font-semibold text-sm">Festpreis, DSGVO</p>
+                    </div>
+                    <div>
+                      <p className="text-white/40 text-xs uppercase tracking-wider mb-1">Fokus</p>
+                      <p className="text-off-white font-semibold text-sm">KMU in BW</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Info */}
-            <div className="flex-1 pt-2">
+            <div className="lg:col-span-7">
               <p className="text-neon-dim text-sm font-semibold uppercase tracking-widest mb-3">
                 Zur Person
               </p>

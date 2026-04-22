@@ -49,9 +49,9 @@ export const metadata: Metadata = {
     siteName: 'NEON BW',
     images: [
       {
-        url: '/yasin.png',
-        width: 1200,
-        height: 630,
+        url: '/icon-512.png',
+        width: 512,
+        height: 512,
         alt: 'NEON BW – KI-Agentur für lokale Unternehmen in Baden-Württemberg',
       },
     ],
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     title: 'NEON BW — KI-Agentur für KMU in Baden-Württemberg',
     description:
       'KI-Automation und Websites aus BW. Festpreis, DSGVO-konform, persönlicher Ansprechpartner.',
-    images: ['/yasin.png'],
+    images: ['/icon-512.png'],
   },
   robots: {
     index: true,
