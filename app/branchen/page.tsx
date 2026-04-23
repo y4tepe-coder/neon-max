@@ -52,7 +52,7 @@ export default function BranchenPage() {
           playsInline
           preload="auto"
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-[72%_center] md:object-center"
         />
         <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-dark-bg/20 via-dark-bg/45 to-dark-bg/85 md:bg-gradient-to-r md:from-dark-bg/90 md:via-dark-bg/60 md:to-dark-bg/20" />
 
