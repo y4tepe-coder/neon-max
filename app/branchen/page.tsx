@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Wrench, Scale, Calculator } from 'lucide-react'
+import PingPongVideo from '@/components/branchen/PingPongVideo'
 
 export const metadata: Metadata = {
   title: 'Branchen — Neon BW · KI-Agentur Stuttgart & BW',
@@ -61,13 +61,10 @@ export default function BranchenPage() {
             </div>
 
             <div className="relative aspect-[16/10] lg:aspect-[4/3] rounded-2xl overflow-hidden border border-neon/20 shadow-[0_0_60px_-15px_rgba(197,247,79,0.25)]">
-              <Image
-                src="/branchen-hero.png"
-                alt="Team aus Handwerk, Kanzlei und Steuerberatung bei der Arbeit"
-                fill
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
+              <PingPongVideo
+                src="/branchen-hero.mp4"
+                poster="/branchen-hero.png"
+                className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-dark-bg/40 via-transparent to-transparent pointer-events-none" />
             </div>
