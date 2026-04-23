@@ -43,31 +43,28 @@ export default function BranchenPage() {
   return (
     <div className="pt-16">
       {/* Hero */}
-      <section className="bg-dark-bg section-pad">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-            <div>
-              <p className="text-neon/60 text-sm font-semibold uppercase tracking-widest mb-4">
-                Für wen wir bauen
-              </p>
-              <h1 className="text-5xl md:text-6xl font-bold text-off-white leading-tight tracking-tight mb-6 text-balance">
-                Handwerk. Kanzleien.{' '}
-                <span className="text-neon">Steuerberater.</span>
-              </h1>
-              <p className="text-white/50 text-lg leading-relaxed">
-                Wir kennen die Abläufe dieser Branchen – und wissen, welche KI-Systeme
-                wirklich helfen. Kein Paket von der Stange.
-              </p>
-            </div>
+      <section className="relative bg-dark-bg overflow-hidden min-h-[560px] md:min-h-[640px] lg:min-h-[720px] flex items-center">
+        <PingPongVideo
+          src="/branchen-hero.mp4"
+          poster="/branchen-hero.png"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-dark-bg/90 via-dark-bg/60 to-dark-bg/20 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-dark-bg/40 via-transparent to-dark-bg/60 pointer-events-none" />
 
-            <div className="relative aspect-[16/10] lg:aspect-[4/3] rounded-2xl overflow-hidden border border-neon/20 shadow-[0_0_60px_-15px_rgba(197,247,79,0.25)]">
-              <PingPongVideo
-                src="/branchen-hero.mp4"
-                poster="/branchen-hero.png"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-dark-bg/40 via-transparent to-transparent pointer-events-none" />
-            </div>
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full py-20 md:py-28">
+          <div className="max-w-2xl">
+            <p className="text-neon/80 text-sm font-semibold uppercase tracking-widest mb-4">
+              Für wen wir bauen
+            </p>
+            <h1 className="text-5xl md:text-6xl font-bold text-off-white leading-tight tracking-tight mb-6 text-balance drop-shadow-[0_2px_20px_rgba(0,0,0,0.5)]">
+              Handwerk. Kanzleien.{' '}
+              <span className="text-neon">Steuerberater.</span>
+            </h1>
+            <p className="text-white/80 text-lg leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.5)]">
+              Wir kennen die Abläufe dieser Branchen – und wissen, welche KI-Systeme
+              wirklich helfen. Kein Paket von der Stange.
+            </p>
           </div>
         </div>
       </section>
