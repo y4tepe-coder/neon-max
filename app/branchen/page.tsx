@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Wrench, Scale, Calculator } from 'lucide-react'
 
@@ -44,18 +45,32 @@ export default function BranchenPage() {
       {/* Hero */}
       <section className="bg-dark-bg section-pad">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="text-neon/60 text-sm font-semibold uppercase tracking-widest mb-4">
-              Für wen wir bauen
-            </p>
-            <h1 className="text-5xl md:text-6xl font-bold text-off-white leading-tight tracking-tight mb-6 text-balance">
-              Handwerk. Kanzleien.{' '}
-              <span className="text-neon">Steuerberater.</span>
-            </h1>
-            <p className="text-white/50 text-lg leading-relaxed max-w-2xl">
-              Wir kennen die Abläufe dieser Branchen – und wissen, welche KI-Systeme
-              wirklich helfen. Kein Paket von der Stange.
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div>
+              <p className="text-neon/60 text-sm font-semibold uppercase tracking-widest mb-4">
+                Für wen wir bauen
+              </p>
+              <h1 className="text-5xl md:text-6xl font-bold text-off-white leading-tight tracking-tight mb-6 text-balance">
+                Handwerk. Kanzleien.{' '}
+                <span className="text-neon">Steuerberater.</span>
+              </h1>
+              <p className="text-white/50 text-lg leading-relaxed">
+                Wir kennen die Abläufe dieser Branchen – und wissen, welche KI-Systeme
+                wirklich helfen. Kein Paket von der Stange.
+              </p>
+            </div>
+
+            <div className="relative aspect-[16/10] lg:aspect-[4/3] rounded-2xl overflow-hidden border border-neon/20 shadow-[0_0_60px_-15px_rgba(197,247,79,0.25)]">
+              <Image
+                src="/branchen-hero.png"
+                alt="Team aus Handwerk, Kanzlei und Steuerberatung bei der Arbeit"
+                fill
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-dark-bg/40 via-transparent to-transparent pointer-events-none" />
+            </div>
           </div>
         </div>
       </section>
