@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Wrench, Scale, Calculator } from 'lucide-react'
-import PingPongVideo from '@/components/branchen/PingPongVideo'
 
 export const metadata: Metadata = {
   title: 'Branchen — Neon BW · KI-Agentur Stuttgart & BW',
@@ -44,13 +43,18 @@ export default function BranchenPage() {
     <div className="pt-16">
       {/* Hero */}
       <section className="relative bg-dark-bg overflow-hidden min-h-[560px] md:min-h-[640px] lg:min-h-[720px] flex items-center">
-        <PingPongVideo
+        <video
           src="/branchen-hero.mp4"
           poster="/branchen-hero.png"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-dark-bg/90 via-dark-bg/60 to-dark-bg/20 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-dark-bg/40 via-transparent to-dark-bg/60 pointer-events-none" />
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-dark-bg/20 via-dark-bg/45 to-dark-bg/85 md:bg-gradient-to-r md:from-dark-bg/90 md:via-dark-bg/60 md:to-dark-bg/20" />
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full py-20 md:py-28">
           <div className="max-w-2xl">
