@@ -75,42 +75,41 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              className="group relative flex items-center gap-1 overflow-hidden rounded-md px-1 py-0.5 transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              className="group flex items-center gap-1"
               aria-label="NEON Webdesign & KI – Startseite"
             >
               <span
-                className={`text-[26px] font-black tracking-tight leading-none transition-colors duration-300 ${
-                  showDark ? 'text-off-white' : 'text-text-dark'
+                className={`text-[26px] font-black tracking-tight leading-none transition-colors duration-300 ease-out ${
+                  showDark
+                    ? 'text-off-white group-hover:text-neon'
+                    : 'text-text-dark group-hover:text-neon-dim'
                 }`}
               >
                 NEON
               </span>
-              <span className="text-[26px] font-black tracking-tight leading-none text-neon">.</span>
+              <span
+                className={`text-[26px] font-black tracking-tight leading-none text-neon transition-colors duration-300 ease-out ${
+                  showDark ? 'group-hover:text-off-white' : 'group-hover:text-text-dark'
+                }`}
+              >
+                .
+              </span>
               <div className="flex flex-col ml-1.5">
                 <span
-                  className={`text-[10px] font-bold uppercase tracking-[0.15em] leading-none transition-colors duration-300 ${
-                    showDark ? 'text-neon/70' : 'text-neon-dim'
+                  className={`text-[10px] font-bold uppercase tracking-[0.15em] leading-none transition-colors duration-300 ease-out ${
+                    showDark ? 'text-neon/70 group-hover:text-off-white' : 'text-neon-dim group-hover:text-text-dark'
                   }`}
                 >
                   Webdesign
                 </span>
                 <span
-                  className={`text-[10px] font-semibold uppercase tracking-[0.12em] leading-none mt-0.5 transition-colors duration-300 ${
-                    showDark ? 'text-white/35' : 'text-text-muted/50'
+                  className={`text-[10px] font-semibold uppercase tracking-[0.12em] leading-none mt-0.5 transition-colors duration-300 ease-out ${
+                    showDark ? 'text-white/35 group-hover:text-neon/80' : 'text-text-muted/50 group-hover:text-neon-dim'
                   }`}
                 >
                   & KI
                 </span>
               </div>
-              {/* Shine sweep — tinted per nav state */}
-              <span
-                aria-hidden
-                className={`pointer-events-none absolute inset-y-0 -left-1/3 w-1/2 opacity-0 group-hover:opacity-100 group-hover:animate-shine bg-gradient-to-r ${
-                  showDark
-                    ? 'from-transparent via-white/50 to-transparent'
-                    : 'from-transparent via-neon/60 to-transparent'
-                }`}
-              />
             </Link>
 
             {/* Desktop nav */}
