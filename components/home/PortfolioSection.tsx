@@ -62,16 +62,18 @@ export default function PortfolioSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.1 }}
-              className="group bg-white rounded-2xl overflow-hidden border border-border-light hover:shadow-xl transition-shadow duration-300"
+              className="group bg-white rounded-2xl overflow-hidden border border-border-light hover:border-neon/60 hover:shadow-[0_20px_50px_-12px_rgba(200,255,0,0.35)] hover:-translate-y-1 transition-all duration-300 cursor-pointer"
             >
               {/* Image Placeholder */}
               <div className="relative aspect-video bg-gradient-to-br from-dark-card to-dark-bg flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-30">
-                  <div className="w-16 h-1 bg-neon rounded-full" />
-                  <div className="w-10 h-1 bg-neon/50 rounded-full" />
-                  <div className="w-14 h-1 bg-neon/30 rounded-full" />
+                {/* Neon glow sweep */}
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(200,255,0,0.25),transparent_65%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-30 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-16 h-1 bg-neon rounded-full group-hover:w-24 transition-all duration-500" />
+                  <div className="w-10 h-1 bg-neon/50 rounded-full group-hover:w-20 group-hover:bg-neon transition-all duration-500 delay-75" />
+                  <div className="w-14 h-1 bg-neon/30 rounded-full group-hover:w-16 group-hover:bg-neon/80 transition-all duration-500 delay-150" />
                 </div>
-                <span className="relative z-10 text-white/40 text-sm font-medium">
+                <span className="relative z-10 text-white/40 text-sm font-medium group-hover:text-neon group-hover:opacity-0 transition-all duration-300">
                   Screenshot folgt
                 </span>
                 {project.demo && (
@@ -94,13 +96,13 @@ export default function PortfolioSection() {
                 <span className="inline-block text-xs font-bold uppercase tracking-widest text-neon-dim mb-2">
                   {project.category}
                 </span>
-                <h3 className="text-lg font-bold text-text-dark mb-2">{project.name}</h3>
+                <h3 className="text-lg font-bold text-text-dark mb-2 group-hover:text-neon-dim transition-colors duration-300">{project.name}</h3>
                 <p className="text-text-muted text-sm leading-relaxed mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs font-medium px-2.5 py-1 rounded-full bg-warm-gray text-text-muted border border-border-light"
+                      className="text-xs font-medium px-2.5 py-1 rounded-full bg-warm-gray text-text-muted border border-border-light group-hover:bg-neon/10 group-hover:border-neon/30 group-hover:text-neon-dim transition-colors duration-300"
                     >
                       {tag}
                     </span>
