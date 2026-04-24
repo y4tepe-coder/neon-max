@@ -3,9 +3,28 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, ExternalLink } from 'lucide-react'
 
-const projects = [
+type Project = {
+  id: number
+  name: string
+  category: string
+  description: string
+  tags: string[]
+  demo: boolean
+  href?: string
+}
+
+const projects: Project[] = [
   {
     id: 1,
+    name: 'EnVT Energieberatung',
+    category: 'Energieberatung',
+    description: 'DENA-gelistete Energieberatung mit Calendly-Terminbuchung, Energiespar-Rechner und DSGVO-konformem Anfrageformular für Sanierungsfahrpläne und Förderanträge.',
+    tags: ['Website', 'Terminbuchung', 'Energie-Rechner'],
+    demo: false,
+    href: 'https://lavender-oryx-218223.hostingersite.com',
+  },
+  {
+    id: 2,
     name: 'Kanzlei Mustermann – Demo',
     category: 'Kanzlei',
     description: 'Demo-Website mit Mandantenanfrage-Formular, DSGVO-Checkbox und automatischer Weiterleitung ins Postfach.',
@@ -13,7 +32,7 @@ const projects = [
     demo: true,
   },
   {
-    id: 2,
+    id: 3,
     name: 'Handwerk-Betrieb – Demo',
     category: 'Handwerk',
     description: 'Demo-Website mit integrierter Terminbuchung und automatischer Auftragsbestätigung per Nachricht.',
@@ -21,7 +40,7 @@ const projects = [
     demo: true,
   },
   {
-    id: 3,
+    id: 4,
     name: 'Steuerberater-Kanzlei – Demo',
     category: 'Steuerberatung',
     description: 'Demo mit Mandanten-Onboarding-Flow und automatischer Dokumentenanforderung.',
@@ -49,20 +68,26 @@ export default function PortfolioSection() {
             Beispiel-Projekte und Demo-Sites
           </h2>
           <p className="text-text-muted text-lg max-w-xl leading-relaxed">
-            Alle aktuellen Projekte sind Demo-Sites – so sieht die Qualität aus. Echte Kundenprojekte folgen.
+            Ein Live-Projekt und mehrere Demo-Sites – so sieht die Qualität aus. Weitere Kundenprojekte folgen.
           </p>
         </motion.div>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
+          {projects.map((project, index) => {
+            const CardTag = project.href ? motion.a : motion.div
+            const linkProps = project.href
+              ? { href: project.href, target: '_blank', rel: 'noopener noreferrer' }
+              : {}
+            return (
+            <CardTag
               key={project.id}
+              {...linkProps}
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.1 }}
-              className="group bg-white rounded-2xl overflow-hidden border border-border-light hover:border-neon/60 hover:shadow-[0_20px_50px_-12px_rgba(200,255,0,0.35)] hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              className="group block bg-white rounded-2xl overflow-hidden border border-border-light hover:border-neon/60 hover:shadow-[0_20px_50px_-12px_rgba(200,255,0,0.35)] hover:-translate-y-1 transition-all duration-300 cursor-pointer"
             >
               {/* Image Placeholder */}
               <div className="relative aspect-video bg-gradient-to-br from-dark-card to-dark-bg flex items-center justify-center overflow-hidden">
@@ -76,13 +101,18 @@ export default function PortfolioSection() {
                 <span className="relative z-10 text-white/40 text-sm font-medium group-hover:text-neon group-hover:opacity-0 transition-all duration-300">
                   Screenshot folgt
                 </span>
-                {project.demo && (
-                  <div className="absolute top-3 left-3">
+                <div className="absolute top-3 left-3">
+                  {project.demo ? (
                     <span className="flex items-center gap-1 bg-neon/20 border border-neon/40 text-neon text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
                       Demo
                     </span>
-                  </div>
-                )}
+                  ) : (
+                    <span className="flex items-center gap-1 bg-neon text-text-dark text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                      <span className="w-1.5 h-1.5 rounded-full bg-text-dark animate-pulse" />
+                      Live
+                    </span>
+                  )}
+                </div>
                 <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   <span className="flex items-center gap-1 bg-neon text-text-dark text-xs font-bold px-2.5 py-1 rounded-full cursor-pointer">
                     <ExternalLink size={11} />
@@ -109,8 +139,9 @@ export default function PortfolioSection() {
                   ))}
                 </div>
               </div>
-            </motion.div>
-          ))}
+            </CardTag>
+            )
+          })}
         </div>
 
         {/* CTA */}
