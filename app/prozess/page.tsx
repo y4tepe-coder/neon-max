@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Unser Prozess — Neon BW · KI-Agentur Stuttgart & BW',
+  title: 'Unser Prozess — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
   description:
     'Bedarfsanalyse → Empfehlung → Festpreis → Umsetzung → Betreuung. Kein Overrun, kein Überraschungs-Invoice. Fünf Schritte, ein Partner.',
   alternates: {

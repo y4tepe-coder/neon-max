@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Steuerberater — Neon BW · KI-Agentur Stuttgart & BW',
+  title: 'Steuerberater — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
   description:
     'KI-Automation für Steuerberater: Automatische Dokumentenanforderung, Erinnerungsflows, Mandanten-Onboarding. DSGVO-konform, self-hosted, Festpreis.',
   alternates: {

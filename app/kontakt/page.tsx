@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ContactForm from '@/components/home/ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Kontakt — Neon BW · KI-Agentur Stuttgart & BW',
+  title: 'Kontakt — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
   description:
     'Bedarfsanalyse starten: Beschreiben Sie kurz Ihr Unternehmen – wir antworten innerhalb von 24h. Kostenlos, unverbindlich, kein Verkaufsdruck.',
   alternates: {

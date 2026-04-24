@@ -3,7 +3,7 @@ import { CheckCircle2, Star, Info, ArrowRight, X } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Preise — Neon BW · KI-Agentur Stuttgart & BW',
+  title: 'Preise — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
   description:
     'Starter ab 499 €, Business ab 1.990 €, Premium ab 4.490 €. Erste 2 Kunden in Phase 1 kostenfrei. Keine versteckten Kosten, kein Überraschungs-Invoice.',
   alternates: {

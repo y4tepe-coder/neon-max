@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle2, MapPin, Quote } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Über NEON – Wer wir sind',
   description:
-    'NEON Agentur – gegründet mit der Mission, lokale Unternehmen professionell und modern online zu bringen. Persönlich, transparent und auf Augenhöhe.',
+    'NEON Webdesign & KI – gegründet mit der Mission, lokale Unternehmen professionell und modern online zu bringen. Persönlich, transparent und auf Augenhöhe.',
   alternates: {
     canonical: '/ueber-uns',
   },
@@ -49,7 +49,7 @@ export default function UeberUnsPage() {
               <span className="text-neon">echte Überzeugung.</span>
             </h1>
             <p className="text-white/50 text-lg leading-relaxed max-w-2xl">
-              NEON Agentur ist mehr als ein Dienstleister. Wir sind ein Partner – für lokale
+              NEON Webdesign & KI ist mehr als ein Dienstleister. Wir sind ein Partner – für lokale
               Unternehmen, die modern auftreten und online wachsen wollen.
             </p>
           </div>
@@ -100,11 +100,11 @@ export default function UeberUnsPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-text-dark leading-tight tracking-tight mb-1">
                 Yasin Tepe
               </h2>
-              <p className="text-neon-dim font-semibold text-base mb-6">Gründer von NEON Agentur</p>
+              <p className="text-neon-dim font-semibold text-base mb-6">Gründer von NEON Webdesign & KI</p>
 
               <div className="space-y-4 text-text-muted text-base leading-relaxed mb-6 max-w-xl">
                 <p>
-                  NEON Agentur habe ich mit einer klaren Überzeugung gegründet: Jedes lokale
+                  NEON Webdesign & KI habe ich mit einer klaren Überzeugung gegründet: Jedes lokale
                   Unternehmen – unabhängig von Größe oder Branche – verdient einen professionellen,
                   zeitgemäßen Online-Auftritt.
                 </p>

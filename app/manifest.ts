@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'NEON Agentur',
+    name: 'NEON Webdesign & KI',
     short_name: 'NEON',
     description: 'Moderne Websites für lokale Unternehmen in Baden-Württemberg.',
     start_url: '/',

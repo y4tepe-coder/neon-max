@@ -23,8 +23,8 @@ const caveat = Caveat({
 export const metadata: Metadata = {
   metadataBase: new URL('https://neon-bw.de'),
   title: {
-    default: 'NEON BW — KI-Agentur für KMU in Baden-Württemberg',
-    template: '%s — Neon BW · KI-Agentur Stuttgart & BW',
+    default: 'NEON Webdesign & KI – KI-Agentur Stuttgart & BW',
+    template: '%s – NEON Webdesign & KI',
   },
   description:
     'KI-Automation und Websites aus Baden-Württemberg. Wir analysieren Ihre Abläufe und bauen Systeme, die Routine übernehmen, Anfragen qualifizieren und Termine organisieren. Festpreis. DSGVO-konform.',
@@ -38,27 +38,27 @@ export const metadata: Metadata = {
     'KI Integration Steuerberater',
     'Automatisierung Kanzlei',
   ],
-  authors: [{ name: 'NEON BW' }],
+  authors: [{ name: 'NEON Webdesign & KI' }],
   openGraph: {
-    title: 'NEON BW — KI-Agentur für KMU in Baden-Württemberg',
+    title: 'NEON Webdesign & KI – KI-Agentur Stuttgart & BW',
     description:
       'KI-Automation und Websites aus BW. Festpreis, DSGVO-konform, persönlicher Ansprechpartner. Kostenlose Bedarfsanalyse.',
     type: 'website',
     locale: 'de_DE',
     url: 'https://neon-bw.de',
-    siteName: 'NEON BW',
+    siteName: 'NEON Webdesign & KI',
     images: [
       {
         url: '/icon-512.png',
         width: 512,
         height: 512,
-        alt: 'NEON BW – KI-Agentur für lokale Unternehmen in Baden-Württemberg',
+        alt: 'NEON Webdesign & KI – KI-Agentur für lokale Unternehmen in Baden-Württemberg',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NEON BW — KI-Agentur für KMU in Baden-Württemberg',
+    title: 'NEON Webdesign & KI – KI-Agentur Stuttgart & BW',
     description:
       'KI-Automation und Websites aus BW. Festpreis, DSGVO-konform, persönlicher Ansprechpartner.',
     images: ['/icon-512.png'],
@@ -82,11 +82,11 @@ const jsonLd = {
     {
       '@type': 'Organization',
       '@id': 'https://neon-bw.de/#organization',
-      name: 'NEON BW',
+      name: 'NEON Webdesign & KI',
       url: 'https://neon-bw.de',
       email: 'info@neon-bw.de',
       description:
-        'NEON BW ist eine KI-Agentur aus Baden-Württemberg. Wir automatisieren Geschäftsprozesse und bauen KI-Systeme für KMU, Handwerk, Kanzleien und Steuerberater.',
+        'NEON Webdesign & KI ist eine KI-Agentur aus Baden-Württemberg. Wir automatisieren Geschäftsprozesse und bauen KI-Systeme für KMU, Handwerk, Kanzleien und Steuerberater.',
       knowsAbout: [
         'KI-Automatisierung',
         'Prozessautomatisierung',
@@ -108,7 +108,7 @@ const jsonLd = {
     {
       '@type': 'LocalBusiness',
       '@id': 'https://neon-bw.de/#localbusiness',
-      name: 'NEON BW',
+      name: 'NEON Webdesign & KI',
       url: 'https://neon-bw.de',
       email: 'info@neon-bw.de',
       description:
@@ -162,7 +162,7 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': 'https://neon-bw.de/#website',
       url: 'https://neon-bw.de',
-      name: 'NEON BW',
+      name: 'NEON Webdesign & KI',
       publisher: { '@id': 'https://neon-bw.de/#organization' },
       inLanguage: 'de-DE',
     },

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Case Studies — Neon BW · KI-Agentur Stuttgart & BW',
+  title: 'Case Studies — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
   description:
     'Echte Ergebnisse, echter Kontext. Case Studies folgen nach den ersten Kundenprojekten – kein Erfundenes, nur Reales.',
   alternates: {

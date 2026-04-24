@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Anwaltskanzleien — Neon BW · KI-Agentur Stuttgart & BW',
+  title: 'Anwaltskanzleien — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
   description:
     'KI-Systeme für Anwaltskanzleien: Mandantenanfragen automatisch strukturieren, DSGVO-konformes Onboarding, Terminbuchung außerhalb der Bürozeiten. Self-hosted, Festpreis.',
   alternates: {

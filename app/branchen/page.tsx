@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, Wrench, Scale, Calculator } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Branchen — Neon BW · KI-Agentur Stuttgart & BW',
+  title: 'Branchen — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
   description:
     'KI-Automation für Handwerk, Anwaltskanzleien und Steuerberater in Baden-Württemberg. Maßgeschneiderte Systeme statt Paketware.',
   alternates: {

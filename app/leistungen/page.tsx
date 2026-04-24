@@ -3,7 +3,7 @@ import { CheckCircle2, ArrowRight, Globe2, Zap, BrainCircuit, Headset } from 'lu
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Leistungen — Neon BW · KI-Agentur Stuttgart & BW',
+  title: 'Leistungen — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
   description:
     'Websites ab 499 €, System-Automatisierung ab 1.490 €, Custom KI-Integration ab 2.990 €, Chatbot & Voice-Agent ab 1.990 €. Kostenlose Bedarfsanalyse zuerst.',
   alternates: {

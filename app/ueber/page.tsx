@@ -3,9 +3,9 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle2, MapPin, Quote } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Über NEON BW — KI-Agentur Stuttgart & BW',
+  title: 'Über NEON Webdesign & KI — KI-Agentur Stuttgart & BW',
   description:
-    'NEON BW: KI-Automation und Websites aus Baden-Württemberg. Gegründet mit der Mission, KMU und lokalen Betrieben echte KI-Systeme zugänglich zu machen.',
+    'NEON Webdesign & KI: KI-Automation und Websites aus Baden-Württemberg. Gegründet mit der Mission, KMU und lokalen Betrieben echte KI-Systeme zugänglich zu machen.',
   alternates: {
     canonical: '/ueber',
   },
@@ -45,11 +45,11 @@ export default function UeberPage() {
               Wer wir sind
             </p>
             <h1 className="text-5xl md:text-6xl font-bold text-off-white leading-tight tracking-tight mb-6 text-balance">
-              Hinter NEON BW steckt{' '}
+              Hinter NEON Webdesign & KI steckt{' '}
               <span className="text-neon">echte Überzeugung.</span>
             </h1>
             <p className="text-white/50 text-lg leading-relaxed max-w-2xl">
-              NEON BW ist eine KI-Agentur für KMU und lokale Betriebe in Baden-Württemberg.
+              NEON Webdesign & KI ist eine KI-Agentur für KMU und lokale Betriebe in Baden-Württemberg.
               Kein Buzzword-Bingo, kein Paket von der Stange – nur was wirklich hilft.
             </p>
           </div>
@@ -100,11 +100,11 @@ export default function UeberPage() {
               <h2 className="text-3xl md:text-4xl font-bold text-text-dark leading-tight tracking-tight mb-1">
                 Yasin Tepe
               </h2>
-              <p className="text-neon-dim font-semibold text-base mb-6">Gründer von NEON BW</p>
+              <p className="text-neon-dim font-semibold text-base mb-6">Gründer von NEON Webdesign & KI</p>
 
               <div className="space-y-4 text-text-muted text-base leading-relaxed mb-6 max-w-xl">
                 <p>
-                  NEON BW habe ich gegründet, weil ich täglich Betriebe erlebe, die in ihrem
+                  NEON Webdesign & KI habe ich gegründet, weil ich täglich Betriebe erlebe, die in ihrem
                   Fachgebiet exzellent sind – aber digitale Abläufe haben, die Zeit und Geld kosten.
                 </p>
                 <p>
@@ -138,7 +138,7 @@ export default function UeberPage() {
                   href="#mission"
                   className="inline-flex items-center gap-2 text-text-muted font-medium hover:text-text-dark transition-colors duration-200 cursor-pointer group text-sm py-3"
                 >
-                  Mehr über NEON BW
+                  Mehr über NEON Webdesign & KI
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" aria-hidden="true" />
                 </Link>
               </div>

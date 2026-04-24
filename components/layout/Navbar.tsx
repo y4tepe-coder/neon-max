@@ -76,7 +76,7 @@ export default function Navbar() {
             <Link
               href="/"
               className="flex items-center gap-1 group"
-              aria-label="NEON BW KI-Agentur – Startseite"
+              aria-label="NEON Webdesign & KI – Startseite"
             >
               <span
                 className={`text-[26px] font-black tracking-tight leading-none transition-colors duration-300 ${
@@ -92,14 +92,14 @@ export default function Navbar() {
                     showDark ? 'text-neon/70' : 'text-neon-dim'
                   }`}
                 >
-                  KI-Agentur
+                  Webdesign
                 </span>
                 <span
                   className={`text-[10px] font-semibold uppercase tracking-[0.12em] leading-none mt-0.5 transition-colors duration-300 ${
                     showDark ? 'text-white/35' : 'text-text-muted/50'
                   }`}
                 >
-                  BW
+                  & KI
                 </span>
               </div>
             </Link>

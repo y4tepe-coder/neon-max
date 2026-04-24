@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Impressum – NEON Agentur',
+  title: 'Impressum – NEON Webdesign & KI',
   robots: { index: false },
   alternates: {
     canonical: '/impressum',
@@ -20,7 +20,7 @@ export default function ImpressumPage() {
             <div>
               <h2 className="text-lg font-semibold text-text-dark mb-2">Angaben gemäß § 5 TMG</h2>
               <p>Yasin Tepe</p>
-              <p>NEON Agentur</p>
+              <p>NEON Webdesign & KI</p>
               <p>Flattichstraße 12</p>
               <p>70771 Leinfelden-Echterdingen</p>
               <p>Deutschland</p>

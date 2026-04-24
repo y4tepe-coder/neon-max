@@ -36,11 +36,11 @@ export default function FounderSection() {
             </div>
           </div>
 
-          <p className="text-neon-dim font-semibold text-base mb-5">Gründer von NEON BW</p>
+          <p className="text-neon-dim font-semibold text-base mb-5">Gründer von NEON Webdesign & KI</p>
 
           <div className="space-y-4 text-text-muted text-base leading-relaxed mb-5">
             <p>
-              NEON BW habe ich gegründet, weil gute Arbeit allein nicht reicht –
+              NEON Webdesign & KI habe ich gegründet, weil gute Arbeit allein nicht reicht –
               man muss auch gefunden werden, und Abläufe müssen funktionieren.
             </p>
             <p>

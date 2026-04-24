@@ -3,9 +3,9 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle2, XCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Für wen – NEON Agentur',
+  title: 'Für wen – NEON Webdesign & KI',
   description:
-    'NEON Agentur richtet sich an lokale Dienstleister, Handwerker, kleine Unternehmen und Betriebe in Baden-Württemberg, die professionell online auftreten wollen.',
+    'NEON Webdesign & KI richtet sich an lokale Dienstleister, Handwerker, kleine Unternehmen und Betriebe in Baden-Württemberg, die professionell online auftreten wollen.',
   alternates: {
     canonical: '/fuer-wen',
   },

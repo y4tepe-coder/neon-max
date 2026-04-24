@@ -42,7 +42,7 @@ async function sendLeadEmail(data: LeadData) {
     : ''
 
   await transporter.sendMail({
-    from: `"NEON Agentur" <${SMTP_USER}>`,
+    from: `"NEON Webdesign & KI" <${SMTP_USER}>`,
     to: NOTIFY_EMAIL,
     subject: `🔔 Neuer Website-Check: ${data.contact.name || 'Unbekannt'} – ${data.url || 'keine URL'}`,
     text: [

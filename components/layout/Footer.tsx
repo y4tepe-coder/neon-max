@@ -122,7 +122,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center py-6 gap-4">
           <p className="text-white/30 text-sm">
-            © {new Date().getFullYear()} NEON Agentur. Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} NEON Webdesign & KI. Alle Rechte vorbehalten.
           </p>
           <p className="text-white/20 text-sm">neon-bw.de</p>
         </div>

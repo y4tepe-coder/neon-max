@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Handwerk & Gewerbe — Neon BW · KI-Agentur Stuttgart & BW',
+  title: 'Handwerk & Gewerbe — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
   description:
     'KI-Automation für Handwerksbetriebe: Anfragen automatisch qualifizieren, Termine buchen, Kunden benachrichtigen. DSGVO-konform, self-hosted, Festpreis.',
   alternates: {
