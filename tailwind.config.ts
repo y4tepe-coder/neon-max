@@ -55,6 +55,7 @@ const config: Config = {
       animation: {
         'pulse-neon': 'pulseNeon 2s ease-in-out infinite',
         'fade-up': 'fadeUp 0.6s ease-out forwards',
+        'shine': 'shine 1.2s ease-in-out',
       },
       keyframes: {
         pulseNeon: {
@@ -64,6 +65,10 @@ const config: Config = {
         fadeUp: {
           from: { opacity: '0', transform: 'translateY(24px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        shine: {
+          '0%':   { transform: 'translateX(-120%) skewX(-20deg)' },
+          '100%': { transform: 'translateX(220%) skewX(-20deg)' },
         },
       },
       backgroundImage: {

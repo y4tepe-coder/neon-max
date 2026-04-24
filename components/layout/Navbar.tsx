@@ -75,7 +75,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-1 group"
+              className="group relative flex items-center gap-1 overflow-hidden rounded-md px-1 py-0.5 transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
               aria-label="NEON Webdesign & KI – Startseite"
             >
               <span
@@ -102,6 +102,15 @@ export default function Navbar() {
                   & KI
                 </span>
               </div>
+              {/* Shine sweep — tinted per nav state */}
+              <span
+                aria-hidden
+                className={`pointer-events-none absolute inset-y-0 -left-1/3 w-1/2 opacity-0 group-hover:opacity-100 group-hover:animate-shine bg-gradient-to-r ${
+                  showDark
+                    ? 'from-transparent via-white/50 to-transparent'
+                    : 'from-transparent via-neon/60 to-transparent'
+                }`}
+              />
             </Link>
 
             {/* Desktop nav */}
