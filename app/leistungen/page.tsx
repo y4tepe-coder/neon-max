@@ -181,18 +181,15 @@ export default function LeistungenPage() {
             kein Verkaufsdruck, konkrete Empfehlung.
           </p>
           <Link
-            href="/kontakt"
+            href="/termin"
             className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
           >
-            Kostenlose Bedarfsanalyse starten
+            30-Minuten-Gespräch buchen
             <ArrowRight size={18} aria-hidden="true" />
           </Link>
           <p className="text-white/30 text-sm mt-5">
-            Alle Preise transparent auf{' '}
-            <Link href="/preise" className="text-neon/60 hover:text-neon underline transition-colors duration-200">
-              /preise
-            </Link>
+            Festpreis steht fest, bevor gebaut wird – wir klären den Umfang im Gespräch.
           </p>
         </div>
       </section>

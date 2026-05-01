@@ -40,13 +40,13 @@ export default function ClosingCTA() {
           <span className="inline-flex items-center gap-2 bg-neon/10 border border-neon/20 rounded-full px-4 py-2 mb-8">
             <span className="w-1.5 h-1.5 rounded-full bg-neon" aria-hidden="true" />
             <span className="text-neon/80 text-sm font-medium">
-              Kostenlose Bedarfsanalyse – unverbindlich
+              30-Minuten-Gespräch – kostenlos & unverbindlich
             </span>
           </span>
 
           <HandWrittenTitle
-            title="Bereit, Abläufe zu automatisieren?"
-            subtitle="In 30 Minuten verstehen wir gemeinsam, welche KI-Lösung für Ihr Unternehmen den größten Hebel hat."
+            title="Bereit, Routine abzugeben?"
+            subtitle="In 30 Minuten klären wir gemeinsam, welche Bausteine Ihnen am meisten Zeit zurückgeben."
           />
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 -mt-4">
@@ -56,15 +56,15 @@ export default function ClosingCTA() {
                          hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
             >
               <Calendar size={18} aria-hidden="true" />
-              Termin buchen
+              30-Minuten-Gespräch buchen
             </Link>
             <Link
-              href="mailto:info@neon-bw.de"
+              href="mailto:hello@neon-bw.de"
               className="inline-flex items-center justify-center gap-2 border border-white/20 text-white font-semibold px-7 py-4 rounded-full
                          hover:border-neon hover:text-neon transition-all duration-200 cursor-pointer text-base"
             >
               <Mail size={18} aria-hidden="true" />
-              E-Mail schreiben
+              hello@neon-bw.de
             </Link>
           </div>
 

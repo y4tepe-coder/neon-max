@@ -14,8 +14,8 @@ const leistungenItems = [
 ]
 
 const navLinks = [
-  { href: '/branchen', label: 'Branchen' },
-  { href: '/preise',   label: 'Preise' },
+  { href: '/#zeit-sparen', label: 'Zeit sparen' },
+  { href: '/ueber-uns',    label: 'Über uns' },
 ]
 
 export default function Navbar() {

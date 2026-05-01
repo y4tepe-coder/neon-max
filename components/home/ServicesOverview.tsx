@@ -3,42 +3,40 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { Globe2, Zap, BrainCircuit, Headset, ArrowRight, type LucideIcon } from 'lucide-react'
-
-// ─── Data ──────────────────────────────────────────────────────────────────
+import { Globe2, Cpu, Workflow, LifeBuoy, ArrowRight, type LucideIcon } from 'lucide-react'
 
 interface Service {
   icon: LucideIcon
   title: string
   text: string
-  accent?: boolean
 }
 
 const services: Service[] = [
   {
     icon: Globe2,
-    title: 'Website',
-    text: 'Mobiloptimiert, blitzschnell, Local SEO. Ihr digitaler Erstkontakt – ab 499 €, in 14 Tagen live.',
+    title: 'Website als Eingang',
+    text:
+      'Schneller, klarer erster Eindruck mit Formularen und Strukturen, die schon beim Eintreffen sortieren.',
   },
   {
-    icon: Zap,
-    title: 'System-Automatisierung',
-    text: 'Anfragen qualifizieren, Daten übergeben, Kunden benachrichtigen – automatisch, rund um die Uhr.',
-    accent: true,
+    icon: Cpu,
+    title: 'KI im Hintergrund',
+    text:
+      'Inhalte zusammenfassen, Standards beantworten, wichtige Punkte markieren – ruhig und unsichtbar, nicht als Showeffekt.',
   },
   {
-    icon: BrainCircuit,
-    title: 'Custom KI-Integration',
-    text: 'KI direkt in Ihre bestehenden Abläufe gebaut – keine Insellösung, kein Vendor-Lock-in.',
+    icon: Workflow,
+    title: 'Anfrage- und Terminfluss',
+    text:
+      'Von der ersten Nachricht bis zum bestätigten Termin: ein Ablauf statt Zettelwirtschaft, mit Erinnerung und Übergabe in Ihre Tools.',
   },
   {
-    icon: Headset,
-    title: 'Chatbot & Voice-Agent',
-    text: 'Ihr KI-Assistent beantwortet Fragen, bucht Termine und qualifiziert Leads – auch nachts und am Wochenende.',
+    icon: LifeBuoy,
+    title: 'Betreuung & Optimierung',
+    text:
+      'Kein Set-and-forget. Wir schauen mit, justieren nach echten Anfragen nach – persönlicher Ansprechpartner aus BW.',
   },
 ]
-
-// ─── Card ──────────────────────────────────────────────────────────────────
 
 function ServiceCard({ service, index }: { service: Service; index: number }) {
   const Icon = service.icon
@@ -58,9 +56,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         background:   '#141e00',
         borderColor:  'rgba(197,247,79,0.3)',
       }}
-      // Inline hover via Framer whileHover keeps it type-safe
     >
-      {/* Hover glow overlay */}
       <div
         className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
         style={{
@@ -69,20 +65,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         aria-hidden="true"
       />
 
-      {/* Accent card: subtle indigo gradient tint */}
-      {service.accent && (
-        <div
-          className="absolute inset-0 rounded-2xl pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse 80% 60% at 20% 20%, rgba(197,247,79,0.08) 0%, transparent 70%)',
-          }}
-          aria-hidden="true"
-        />
-      )}
-
       <div className="relative z-10 flex flex-col gap-5">
-        {/* Icon */}
         <div
           className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300"
           style={{ background: 'rgba(197,247,79,0.15)' }}
@@ -95,53 +78,24 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           />
         </div>
 
-        {/* Text */}
         <div className="flex flex-col gap-2">
           <h3
             className="text-lg font-semibold leading-snug"
             style={{ color: '#F8FAFC' }}
           >
             {service.title}
-
-            {/* KI badge on the accent card */}
-            {service.accent && (
-              <span
-                className="ml-2 inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider align-middle"
-                style={{
-                  background:  'rgba(204,255,0,0.12)',
-                  color:       '#CCFF00',
-                  border:      '1px solid rgba(204,255,0,0.25)',
-                }}
-              >
-                Neu
-              </span>
-            )}
           </h3>
           <p
             className="text-sm leading-relaxed"
-            style={{ color: 'rgba(248,250,252,0.55)' }}
+            style={{ color: 'rgba(248,250,252,0.6)' }}
           >
             {service.text}
           </p>
-        </div>
-
-        {/* Arrow link */}
-        <div
-          className="flex items-center gap-1.5 text-xs font-semibold mt-auto pt-1 transition-colors duration-200"
-          style={{ color: 'rgba(197,247,79,0.7)' }}
-        >
-          Mehr erfahren
-          <ArrowRight
-            size={13}
-            className="transition-transform duration-200 group-hover:translate-x-0.5"
-          />
         </div>
       </div>
     </motion.div>
   )
 }
-
-// ─── Section ───────────────────────────────────────────────────────────────
 
 export default function ServicesOverview() {
   const headingRef = useRef<HTMLDivElement>(null)
@@ -154,7 +108,6 @@ export default function ServicesOverview() {
       style={{ background: '#0A1400' }}
       aria-labelledby="services-heading"
     >
-      {/* Subtle section separator gradient */}
       <div
         className="absolute inset-x-0 top-0 h-px pointer-events-none"
         style={{
@@ -166,7 +119,6 @@ export default function ServicesOverview() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* ── Heading ─────────────────────────────────────────────────── */}
         <div ref={headingRef} className="text-center mb-14">
           <motion.span
             initial={{ opacity: 0, y: 16 }}
@@ -190,12 +142,12 @@ export default function ServicesOverview() {
             className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight"
             style={{ color: '#F8FAFC' }}
           >
-            Vier Hebel. Ein Partner.{' '}
+            Eine Website, die für Sie{' '}
             <span
               className="relative inline-block"
               style={{ color: '#C5F74F' }}
             >
-              Kein Overhead.
+              mitarbeitet.
             </span>
           </motion.h2>
 
@@ -204,20 +156,19 @@ export default function ServicesOverview() {
             animate={headingInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.16 }}
             className="mt-4 text-base md:text-lg max-w-xl mx-auto"
-            style={{ color: 'rgba(248,250,252,0.5)' }}
+            style={{ color: 'rgba(248,250,252,0.55)' }}
           >
-            Vom ersten Klick bis zur laufenden KI – alles aus einer Hand, alles mit Festpreis.
+            Vier Bausteine, die zusammen einen Ablauf ergeben – nicht eine Liste an Tools.
+            Chatbot oder Voice-Agent ergänzen das nur, wenn es wirklich Sinn ergibt.
           </motion.p>
         </div>
 
-        {/* ── 2×2 Card Grid ───────────────────────────────────────────── */}
         <div className="grid sm:grid-cols-2 gap-5">
           {services.map((service, i) => (
             <ServiceCard key={service.title} service={service} index={i} />
           ))}
         </div>
 
-        {/* ── Bottom CTA ─────────────────────────────────────────────── */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -228,9 +179,9 @@ export default function ServicesOverview() {
           <Link
             href="/leistungen"
             className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-200"
-            style={{ color: 'rgba(248,250,252,0.35)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'rgba(248,250,252,0.7)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(248,250,252,0.35)')}
+            style={{ color: 'rgba(248,250,252,0.4)' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'rgba(248,250,252,0.75)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(248,250,252,0.4)')}
           >
             Alle Leistungen im Detail
             <ArrowRight size={14} />
@@ -239,7 +190,6 @@ export default function ServicesOverview() {
 
       </div>
 
-      {/* Subtle section separator gradient bottom */}
       <div
         className="absolute inset-x-0 bottom-0 h-px pointer-events-none"
         style={{

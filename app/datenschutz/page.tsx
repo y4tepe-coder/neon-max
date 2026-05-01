@@ -19,7 +19,7 @@ export default function DatenschutzPage() {
               <h2 className="text-lg font-semibold text-text-dark mb-2">1. Verantwortlicher</h2>
               <p>Yasin Tepe – NEON Webdesign & KI</p>
               <p>Egartstraße 2, 70771 Echterdingen</p>
-              <p>E-Mail: <a href="mailto:info@neon-bw.de" className="text-neon-dim hover:underline">info@neon-bw.de</a></p>
+              <p>E-Mail: <a href="mailto:hello@neon-bw.de" className="text-neon-dim hover:underline">hello@neon-bw.de</a></p>
               <p>Telefon: +49 176 20170133</p>
             </div>
 
@@ -147,8 +147,8 @@ export default function DatenschutzPage() {
               </ul>
               <p className="leading-relaxed mt-3">
                 Zur Geltendmachung Ihrer Rechte wenden Sie sich bitte an:{' '}
-                <a href="mailto:info@neon-bw.de" className="text-neon-dim hover:underline">
-                  info@neon-bw.de
+                <a href="mailto:hello@neon-bw.de" className="text-neon-dim hover:underline">
+                  hello@neon-bw.de
                 </a>
               </p>
               <p className="leading-relaxed mt-3">

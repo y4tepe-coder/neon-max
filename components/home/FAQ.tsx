@@ -6,29 +6,29 @@ import { Plus, Minus } from 'lucide-react'
 
 const faqs = [
   {
-    question: 'Was kostet eine KI-Integration?',
+    question: 'Wie genau spart KI bei mir Zeit?',
     answer:
-      'Websites starten ab 499 €, System-Automatisierungen ab 1.490 €, KI-Integrationen ab 2.990 €, Chatbot/Voice-Agenten ab 1.990 € – jeweils plus monatlicher Betreuungs-Retainer. Alle Preise offen auf /preise.',
+      'Indem sie Routine im Hintergrund übernimmt: Anfragen sauber aufnehmen, wichtige Punkte sortieren, Standardrückfragen vorbereiten und Termin-Bestätigungen automatisch laufen lassen. Sie geben am Ende nur noch frei, was wirklich Ihre Entscheidung braucht.',
   },
   {
-    question: 'Muss ich externe KI-Dienste selbst abonnieren?',
+    question: 'Was kostet das Ganze?',
     answer:
-      'Nein. Wir betreiben alle Systeme self-hosted auf Servern in Deutschland – keine Tool-Abhängigkeit, keine monatlichen Drittanbieter-Gebühren für Sie.',
+      'Wir nennen den Festpreis vor Projektstart, nicht erst auf der Rechnung. Im 30-Minuten-Gespräch klären wir Umfang und Aufwand und Sie bekommen eine klare Range, bevor irgendetwas gebaut wird.',
   },
   {
-    question: 'Wie läuft die Bedarfsanalyse ab?',
+    question: 'Wie läuft das 30-Minuten-Gespräch ab?',
     answer:
-      'Kostenloses Erstgespräch (ca. 30 Min.), wir verstehen Ihre Abläufe, und Sie erhalten eine konkrete Empfehlung – ohne Verpflichtung. Danach erst Angebot und Festpreis.',
+      'Kostenlos, ohne Verpflichtung. Wir schauen kurz auf Ihre aktuellen Abläufe, gehen die Stellen durch, an denen Routine Zeit kostet, und Sie bekommen eine ehrliche Einschätzung – auch wenn NEON nicht passt.',
   },
   {
-    question: 'Wie schnell kann ein System live gehen?',
+    question: 'Wie schnell ist eine Website mit KI im Hintergrund live?',
     answer:
-      'Websites sind typischerweise in 14 Tagen live. Automatisierungen und KI-Integrationen je nach Komplexität in 2–6 Wochen. Den Zeitplan klären wir im Erstgespräch.',
+      'Eine Website ist meist in rund 14 Tagen live. Komplexere KI-Bausteine im Hintergrund kommen je nach Umfang in 2–6 Wochen dazu. Den Zeitplan halten wir vor Start fest.',
   },
   {
     question: 'Ist das DSGVO-konform?',
     answer:
-      'Ja. Alle KI-Systeme laufen self-hosted auf Servern in Deutschland. Keine Datenübertragung in die USA ohne explizite Einwilligung. Wir dokumentieren alles datenschutzkonform.',
+      'Ja. Wir hosten in Deutschland und arbeiten möglichst self-hosted. Daten bleiben dort, wo sie hingehören, alles wird sauber dokumentiert.',
   },
 ]
 
@@ -100,10 +100,10 @@ export default function FAQ() {
             <p className="mt-4 text-text-muted text-sm">
               Noch mehr Fragen?{' '}
               <a
-                href="/kontakt"
+                href="mailto:hello@neon-bw.de"
                 className="text-neon-dim font-semibold hover:underline cursor-pointer"
               >
-                Schreiben Sie uns einfach.
+                hello@neon-bw.de
               </a>
             </p>
           </motion.div>

@@ -1,18 +1,18 @@
 'use client'
 
 const items = [
-  'KI-Automation',
-  'Self-hosted & DSGVO',
+  'Websites mit KI im Hintergrund',
+  'Anfragen aufnehmen',
+  'Informationen sortieren',
+  'Rückfragen vorbereiten',
+  'Termine erleichtern',
   'Lokal in BW',
-  'Ab 499 €',
-  'Festpreis garantiert',
-  'Keine Tool-Abhängigkeit',
+  'DSGVO & self-hosted',
   'Server in Deutschland',
-  'Erste 2 Kunden kostenfrei',
-  'Handwerk · Kanzleien · Steuerberater',
-  'In 14 Tagen live',
-  'Persönliche Betreuung',
-  'Kostenlose Bedarfsanalyse',
+  'Festpreis vor Start',
+  'Persönlich erreichbar',
+  '30-Minuten-Analyse',
+  'Region Stuttgart · LE · Filderstadt',
 ]
 
 export function MarqueeBanner() {

@@ -20,9 +20,8 @@ type QuizStep = {
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const CALENDLY_URL = 'https://calendly.com/y4tepe/30min'
-const WHATSAPP_URL =
-  'https://wa.me/4917620170133?text=Hallo%2C%20ich%20habe%20die%20KI-Bedarfsanalyse%20gemacht%20und%20m%C3%B6chte%20mehr%20erfahren.'
+const TERMIN_URL = '/termin'
+const MAIL_URL = 'mailto:hello@neon-bw.de?subject=Bedarfsanalyse%20Ergebnis'
 
 // ─── Quiz questions ───────────────────────────────────────────────────────────
 
@@ -119,20 +118,20 @@ const RESULT_CONFIG: Record<
   { label: string; barColor: string; textColor: string; bgColor: string; description: string }
 > = {
   critical: {
-    label: 'Klares KI-Potenzial',
+    label: 'Klar Zeit zu gewinnen',
     barColor: 'bg-neon',
     textColor: 'text-neon-dim',
     bgColor: 'bg-lime-50 border border-lime-200',
     description:
-      'Ihre Abläufe haben erhebliches Automatisierungspotenzial. Eine gezielte KI-Lösung könnte Ihnen wöchentlich viele Stunden sparen.',
+      'Bei Ihnen läuft viel manuell. Schon ein paar gezielte Bausteine könnten wöchentlich Stunden Routinearbeit aus Ihrem Tag holen.',
   },
   medium: {
-    label: 'Gutes Automatisierungspotenzial',
+    label: 'Gutes Entlastungs­potenzial',
     barColor: 'bg-amber-400',
     textColor: 'text-amber-600',
     bgColor: 'bg-amber-50 border border-amber-100',
     description:
-      'Sie sind gut aufgestellt, lassen aber Potenzial liegen. Gezielte Automatisierungen würden Ihr Team spürbar entlasten.',
+      'Sie sind grundsätzlich strukturiert, lassen aber Routine liegen. Punktuelle Bausteine würden Sie und Ihr Team spürbar entlasten.',
   },
   good: {
     label: 'Solide Ausgangslage',
@@ -140,31 +139,31 @@ const RESULT_CONFIG: Record<
     textColor: 'text-green-600',
     bgColor: 'bg-green-50 border border-green-100',
     description:
-      'Ihre Abläufe laufen strukturiert. Mit KI-Integration können Sie die nächste Stufe erreichen.',
+      'Ihre Abläufe laufen schon strukturiert. KI im Hintergrund kann hier Feinarbeit übernehmen, statt grundsätzlich umzubauen.',
   },
 }
 
 const ISSUE_MAP: Record<number, Record<string, string>> = {
   1: {
-    ok_no_leads: 'Mittleres Anfrageaufkommen – Automatisierung würde Zeit freisetzen',
-    good: 'Hohes Aufkommen – klares Potenzial für systemgestützte Qualifizierung',
+    ok_no_leads: 'Mittleres Anfrageaufkommen – Aufnahme und Sortierung würden spürbar Zeit sparen',
+    good: 'Hohes Aufkommen – klarer Hebel für strukturierte Anfrageaufnahme',
   },
   2: {
-    bad: 'Mehr als 5h/Woche Datenpflege – hoher manueller Aufwand mit Automatisierungspotenzial',
-    ok: '1–5h/Woche Datenpflege – gezielte Automatisierung würde spürbar helfen',
+    bad: 'Mehr als 5 h pro Woche Datenpflege – viel Routine, die ein System übernehmen kann',
+    ok: '1–5 h pro Woche Datenpflege – kleine Bausteine entlasten hier sofort',
   },
   3: {
-    not_found: 'Nur telefonisch erreichbar – Anfragen außerhalb Bürozeiten gehen verloren',
-    name_only: 'Gemischte Kanäle ohne System – Anfragen fallen durchs Raster',
+    not_found: 'Nur telefonisch erreichbar – Anfragen außerhalb der Bürozeiten gehen verloren',
+    name_only: 'Gemischte Kanäle ohne System – Anfragen rutschen schnell durch',
   },
   4: {
-    slow: 'Manuelle Terminplanung – kostet Zeit und erhöht Fehlerrisiko',
-    unknown: 'Kein digitales System – Potenzial für automatisierte Terminbuchung vorhanden',
+    slow: 'Manuelle Terminplanung – Zeitfresser und fehleranfällig',
+    unknown: 'Kein klar definierter Terminfluss – Erinnerungen und Bestätigungen verlieren sich',
   },
   5: {
-    none: 'Keine Website – fehlendes Fundament für digitale Anfragen',
-    difficult: 'Veraltete Website – erster Eindruck und Konversion verbesserungswürdig',
-    unknown: 'Website-Status unklar – Grundlage für Anfragen prüfen',
+    none: 'Keine Website – fehlendes Fundament für strukturierte Anfragen',
+    difficult: 'Veraltete Website – erster Eindruck und Aufnahme der Anfragen sind schwach',
+    unknown: 'Website-Status unklar – Grundlage für saubere Anfrageaufnahme prüfen',
   },
 }
 
@@ -178,10 +177,10 @@ function getIssues(answers: Record<number, string>): string[] {
 }
 
 const GOAL_MESSAGE: Record<string, string> = {
-  leads: 'Mehr Anfragen & Neukunden – Website + automatische Anfragenqualifizierung sind unser Einstiegspaket.',
-  image: 'Weniger Routinearbeit – System-Automatisierung ist genau dafür gemacht.',
-  seo: 'Schnellere Reaktion – ein KI-Assistent antwortet sofort, auch außerhalb der Bürozeiten.',
-  all: 'Ein vollständiges System – genau das bauen wir. Starten Sie mit der kostenlosen Bedarfsanalyse.',
+  leads: 'Mehr Anfragen ordentlich aufgenommen – Website plus strukturierte Aufnahme im Hintergrund.',
+  image: 'Weniger Routinearbeit – genau dafür laufen die Bausteine ruhig im Hintergrund mit.',
+  seo: 'Schneller reagieren – Standardrückfragen vorbereiten, statt nochmal hin- und her zu schreiben.',
+  all: 'Ein zusammenhängender Ablauf – das ist genau, was wir bauen. Starten Sie mit dem 30-Minuten-Gespräch.',
 }
 
 // ─── Validation helpers ───────────────────────────────────────────────────────
@@ -211,12 +210,6 @@ function validateEmail(input: string): string | null {
   return null
 }
 
-// ─── Calendly window type ─────────────────────────────────────────────────────
-
-type CalendlyWindow = Window & {
-  Calendly?: { initPopupWidget: (opts: { url: string }) => void }
-}
-
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
 function LoadingDot({ delay }: { delay: number }) {
@@ -228,12 +221,6 @@ function LoadingDot({ delay }: { delay: number }) {
     />
   )
 }
-
-const WhatsAppIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-4 h-4 fill-[#25D366]" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-  </svg>
-)
 
 // ─── Main component ────────────────────────────────────────────────────────────
 
@@ -297,24 +284,9 @@ export default function WebsiteCheck() {
     setPhase('loading')
   }
 
-  const submitLead = async (finalAnswers: Record<number, string>) => {
+  const submitLead = async (_finalAnswers: Record<number, string>) => {
     setSubmitting(true)
-    const score = computeScore(finalAnswers)
-    const resultLevel = getResultLevel(score)
-    try {
-      await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          url: url.trim(),
-          companyName: companyName.trim(),
-          contact,
-          answers: finalAnswers,
-          score,
-          resultLevel,
-        }),
-      })
-    } catch { /* silent */ }
+    // Ergebnis wird lokal aus den Antworten berechnet und sofort gezeigt.
     setSubmitting(false)
     setPhase('result')
   }
@@ -343,30 +315,8 @@ export default function WebsiteCheck() {
   const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
-    const score = computeScore(answers)
-    const resultLevel = getResultLevel(score)
-    try {
-      await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          url: url.trim(),
-          companyName: companyName.trim(),
-          contact,
-          answers,
-          score,
-          resultLevel,
-        }),
-      })
-    } catch { /* silent */ }
     setSubmitting(false)
     setPhase('result')
-  }
-
-  function openCalendly() {
-    const w = window as CalendlyWindow
-    if (w.Calendly) w.Calendly.initPopupWidget({ url: CALENDLY_URL })
-    else window.open(CALENDLY_URL, '_blank')
   }
 
   const slideVariants = {
@@ -401,19 +351,20 @@ export default function WebsiteCheck() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-neon/60 text-sm font-semibold uppercase tracking-widest mb-4">
-              Kostenlose KI-Bedarfsanalyse
+              Kostenlose Bedarfsanalyse
             </p>
             <h2 id="check-heading" className="heading-section text-off-white mb-5 text-balance">
-              Lohnt sich KI-Automation für Ihren Betrieb?
+              Wo geht in Ihrem Betrieb am meisten Zeit verloren?
             </h2>
-            <p className="text-white/50 text-lg leading-relaxed mb-8">
-              6 kurze Fragen – und Sie wissen, wo das größte Automatisierungspotenzial in Ihrem Betrieb liegt.
+            <p className="text-white/55 text-lg leading-relaxed mb-8">
+              6 kurze Fragen – und Sie sehen sofort, an welchen Stellen Routinearbeit
+              ein System übernehmen könnte.
             </p>
             <div className="space-y-3.5">
               {[
                 'Kostenlos & unverbindlich',
-                'Sofortiges Ergebnis – keine Wartezeit',
-                'Konkrete Handlungsempfehlungen',
+                'Sofortiges Ergebnis im Browser',
+                'Konkrete Hinweise, kein Verkaufstext',
               ].map((point) => (
                 <div key={point} className="flex items-center gap-3">
                   <CheckCircle2 size={17} className="text-neon shrink-0" aria-hidden="true" />
@@ -773,24 +724,21 @@ export default function WebsiteCheck() {
 
                   {/* CTAs */}
                   <div className="space-y-2.5">
-                    <button
-                      onClick={openCalendly}
+                    <a
+                      href={TERMIN_URL}
                       className="w-full flex items-center justify-center gap-2 bg-neon text-text-dark font-semibold
                                  px-5 py-3.5 rounded-xl hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm"
                     >
                       <Phone size={15} aria-hidden="true" />
-                      Bedarfsanalyse-Gespräch buchen
-                    </button>
+                      30-Minuten-Gespräch buchen
+                    </a>
                     <a
-                      href={WHATSAPP_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={MAIL_URL}
                       className="w-full flex items-center justify-center gap-2 border border-border-light text-text-dark
-                                 font-medium px-5 py-3 rounded-xl hover:border-[#25D366]/40 hover:bg-[#25D366]/5
+                                 font-medium px-5 py-3 rounded-xl hover:border-neon/50 hover:bg-neon/5
                                  transition-all duration-200 cursor-pointer text-sm"
                     >
-                      <WhatsAppIcon />
-                      Per WhatsApp anfragen
+                      hello@neon-bw.de
                     </a>
                   </div>
                 </motion.div>

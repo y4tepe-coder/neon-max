@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { ArrowRight, Calendar, CheckCircle2, Mail, Phone } from 'lucide-react'
+import { Calendar, CheckCircle2, Mail, Phone } from 'lucide-react'
 
 const CALENDLY_EMBED_URL =
   'https://calendly.com/y4tepe/30min?hide_gdpr_banner=1&background_color=F8F7F4&text_color=111111&primary_color=C5F74F'
@@ -104,19 +103,12 @@ export default function TerminPage() {
                       0176 20 17 01 33
                     </a>
                     <a
-                      href="mailto:info@neon-bw.de"
+                      href="mailto:hello@neon-bw.de"
                       className="flex items-center gap-3 text-sm font-medium text-text-muted hover:text-text-dark transition-colors"
                     >
                       <Mail size={16} className="text-neon-dim" aria-hidden="true" />
-                      info@neon-bw.de
+                      hello@neon-bw.de
                     </a>
-                    <Link
-                      href="/kontakt"
-                      className="inline-flex items-center gap-2 pt-2 text-sm font-semibold text-neon-dim hover:underline"
-                    >
-                      Kontaktformular öffnen
-                      <ArrowRight size={14} aria-hidden="true" />
-                    </Link>
                   </div>
                 </div>
               </div>

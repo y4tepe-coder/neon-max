@@ -3,30 +3,30 @@
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
-import { MessageSquare, RefreshCw, Calendar, ArrowRight } from 'lucide-react'
+import { Clock, Inbox, RefreshCw, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 const problems = [
   {
-    icon: MessageSquare,
+    icon: Inbox,
     color: 'bg-orange-50 text-orange-500',
-    title: 'Anfragen gehen verloren',
+    title: 'Postfach voll, Kopf voll',
     description:
-      'Interessenten schreiben nachts oder am Wochenende – und bekommen keine Antwort. Der nächste Anbieter ist nur einen Klick entfernt.',
+      'Anfragen, Rückfragen, Erinnerungen, Bestätigungen. Jede E-Mail kostet kurz Zeit – und in Summe ist der halbe Tag weg.',
   },
   {
     icon: RefreshCw,
     color: 'bg-lime-50 text-lime-600',
-    title: 'Routinearbeit frisst Zeit',
+    title: 'Dieselben Handgriffe, immer wieder',
     description:
-      'Terminerinnerungen, Nachfassmails, Datenpflege – dieselben Handgriffe, immer wieder. Das kostet Stunden, die im Kerngeschäft fehlen.',
+      'Daten in Tabellen pflegen, Termine bestätigen, Standardantworten tippen. Routinearbeit, die niemand sehen will – und keiner gerne macht.',
   },
   {
-    icon: Calendar,
+    icon: Clock,
     color: 'bg-amber-50 text-amber-500',
-    title: 'Termine und Folgeaufgaben fallen durch',
+    title: 'Abends fehlt die Zeit fürs Wesentliche',
     description:
-      'Ein Kunde bucht nicht nach, eine Erinnerung kommt zu spät – Umsatz, der sich hätte vermeiden lassen.',
+      'Statt Kunden zu betreuen, Angebote zu schreiben oder einfach Feierabend zu machen, bleibt Verwaltung übrig.',
   },
 ]
 
@@ -55,14 +55,14 @@ export default function ProblemSection() {
           className="max-w-2xl mb-14"
         >
           <p className="text-neon-dim text-sm font-semibold uppercase tracking-widest mb-4">
-            Bekannte Herausforderungen
+            Was Zeit kostet
           </p>
           <h2 id="problem-heading" className="heading-section text-text-dark mb-5 text-balance">
-            Was viele Betriebe bremst.
+            Das meiste ist Routine. Und Routine kann ein System.
           </h2>
           <p className="text-body text-balance">
-            Unabhängig von Branche und Größe – viele KMU kämpfen mit denselben
-            Themen. Und oft liegt die Lösung näher, als man denkt.
+            Die Themen sind in fast jedem Betrieb gleich – nur die Branche
+            wechselt. Und meistens lassen sich genau diese Stellen entlasten.
           </p>
         </motion.div>
 
@@ -99,17 +99,17 @@ export default function ProblemSection() {
           <div className="flex items-center gap-4">
             <div className="hidden md:block w-1 min-h-[40px] bg-neon rounded-full shrink-0" aria-hidden="true" />
             <p className="text-white/70 text-base md:text-lg text-center md:text-left leading-relaxed">
-              <span className="text-neon font-semibold">Genau hier setzt NEON an.</span>{' '}
-              Wir analysieren Ihre Abläufe – kostenlos – und zeigen Ihnen,
-              was ein System übernehmen kann.
+              <span className="text-neon font-semibold">Genau dafür ist NEON da.</span>{' '}
+              Im 30-Minuten-Gespräch schauen wir gemeinsam, an welchen Stellen
+              KI Sie spürbar entlasten kann.
             </p>
           </div>
           <Link
-            href="/kontakt"
+            href="/termin"
             className="shrink-0 inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-6 py-3 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm whitespace-nowrap"
           >
-            Bedarfsanalyse starten
+            30-Minuten-Gespräch buchen
             <ArrowRight size={15} aria-hidden="true" />
           </Link>
         </motion.div>

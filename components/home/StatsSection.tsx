@@ -3,12 +3,11 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 
-// TODO Yasin: nach ersten echten Kundenprojekten durch reale Zahlen ersetzen
 const stats = [
-  { value: '14',   unit: 'Tage',    label: 'bis zur fertigen Website' },
-  { value: '499',  unit: '€',       label: 'Website-Einstiegspaket' },
-  { value: '2',    unit: 'Kunden',  label: 'kostenfrei in Phase 1' },
-  { value: '100%', unit: '',        label: 'Festpreis – kein Überraschungs-Invoice' },
+  { value: '14',    unit: 'Tage',    label: 'bis zur fertigen Website' },
+  { value: '30',    unit: 'Min',     label: 'Bedarfsanalyse, kostenfrei' },
+  { value: '100',   unit: '%',       label: 'Festpreis vor Projektstart' },
+  { value: 'BW',    unit: '',        label: 'lokal aus Region Stuttgart / LE' },
 ]
 
 export default function StatsSection() {
