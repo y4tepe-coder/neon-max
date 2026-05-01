@@ -1,7 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
+import { ContainerScroll } from '@/components/ui/container-scroll-animation'
 
 type Project = {
   id: number
@@ -9,10 +11,7 @@ type Project = {
   category: string
   description: string
   tags: string[]
-  demo: boolean
-  href?: string
-  /** subtle, code-native mockup colors – per project for variety */
-  accent: { from: string; to: string; hint: string }
+  href: string
 }
 
 const projects: Project[] = [
@@ -23,201 +22,159 @@ const projects: Project[] = [
     description:
       'DENA-gelistete Energieberatung mit Calendly-Terminbuchung, Energiespar-Rechner und DSGVO-konformem Anfrageformular für Sanierungsfahrpläne und Förderanträge.',
     tags: ['Website', 'Terminbuchung', 'Energie-Rechner'],
-    demo: false,
     href: 'https://lavender-oryx-218223.hostingersite.com',
-    accent: { from: '#0e2a18', to: '#0a1a0f', hint: '#7BCBA0' },
-  },
-  {
-    id: 2,
-    name: 'Kanzlei Mustermann',
-    category: 'Kanzlei',
-    description:
-      'Demo: Mandantenanfrage mit DSGVO-Checkbox, automatischer Eingangsbestätigung und sortierter Übergabe ins Postfach.',
-    tags: ['Anfrage', 'DSGVO', 'Übergabe'],
-    demo: true,
-    accent: { from: '#1a1c2e', to: '#0e1020', hint: '#A4B4F5' },
-  },
-  {
-    id: 3,
-    name: 'Handwerks-Betrieb',
-    category: 'Handwerk',
-    description:
-      'Demo: Terminanfrage über die Website, Rückfrage automatisch vorbereitet, Bestätigung und Erinnerung laufen im Hintergrund.',
-    tags: ['Termin', 'Erinnerung', 'Routine'],
-    demo: true,
-    accent: { from: '#2a1d10', to: '#1c130a', hint: '#F0B97D' },
-  },
-  {
-    id: 4,
-    name: 'Steuerberater-Kanzlei',
-    category: 'Steuerberatung',
-    description:
-      'Demo: Mandanten-Onboarding über klare Formulare, automatische Dokumenten-Checkliste und sortierte Ablage je Mandat.',
-    tags: ['Onboarding', 'Sortierung', 'Vorlagen'],
-    demo: true,
-    accent: { from: '#1f1426', to: '#130a18', hint: '#C5A6E8' },
   },
 ]
 
-function ProjectMockup({ project }: { project: Project }) {
-  const { accent, name, demo } = project
-
-  return (
-    <div
-      className="relative aspect-video overflow-hidden flex items-end p-5"
-      style={{
-        background: `linear-gradient(135deg, ${accent.from} 0%, ${accent.to} 100%)`,
-      }}
-      aria-hidden="true"
-    >
-      {/* Faux browser chrome */}
-      <div className="absolute top-3 left-3 right-3 flex items-center gap-2">
-        <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-        <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-        <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-        <div className="ml-3 flex-1 h-5 rounded-md bg-white/[0.06] flex items-center px-2.5">
-          <span className="text-[9px] text-white/35 font-mono tracking-wide truncate">
-            {project.href?.replace(/^https?:\/\//, '') ?? `${name.toLowerCase().replace(/\s+/g, '-')}.demo`}
-          </span>
-        </div>
-      </div>
-
-      {/* Layout skeleton */}
-      <div className="absolute inset-x-5 top-12 bottom-16 flex flex-col gap-3">
-        <div className="h-2 rounded-full bg-white/15 w-1/2" />
-        <div className="h-2 rounded-full bg-white/10 w-2/3" />
-        <div className="mt-3 grid grid-cols-3 gap-2">
-          <div className="h-10 rounded-lg bg-white/[0.06]" />
-          <div className="h-10 rounded-lg bg-white/[0.06]" />
-          <div className="h-10 rounded-lg bg-white/[0.06]" />
-        </div>
-      </div>
-
-      {/* Action chip in mockup */}
-      <div
-        className="absolute bottom-4 left-5 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold"
-        style={{
-          background: `${accent.hint}26`,
-          color: accent.hint,
-          border: `1px solid ${accent.hint}40`,
-        }}
-      >
-        <span className="w-1 h-1 rounded-full" style={{ background: accent.hint }} />
-        {demo ? 'Demo-Layout' : 'Live-System'}
-      </div>
-
-      {/* Status badge top-right (live vs demo) */}
-      <div className="absolute top-3 right-3">
-        {demo ? (
-          <span className="bg-neon/15 border border-neon/40 text-neon text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
-            Demo
-          </span>
-        ) : (
-          <span className="flex items-center gap-1 bg-neon text-text-dark text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
-            <span className="w-1.5 h-1.5 rounded-full bg-text-dark animate-pulse" />
-            Live
-          </span>
-        )}
-      </div>
-    </div>
-  )
-}
-
 export default function PortfolioSection() {
+  const [index, setIndex] = useState(0)
+  const project = projects[index]
+  const hasMultiple = projects.length > 1
+
+  const prev = () => setIndex((i) => (i - 1 + projects.length) % projects.length)
+  const next = () => setIndex((i) => (i + 1) % projects.length)
+
   return (
     <section className="bg-warm-gray py-24 md:py-32" aria-labelledby="portfolio-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
+        <ContainerScroll
+          titleComponent={
+            <div className="text-left max-w-3xl mx-auto">
+              <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-neon-dim mb-4">
+                Projekte & Demos
+              </span>
+              <h2
+                id="portfolio-heading"
+                className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-text-dark leading-tight mb-5"
+              >
+                Live-Projekte aus echter Praxis.
+              </h2>
+              <p className="text-text-muted text-base md:text-lg leading-relaxed">
+                Echte Websites, die heute online sind – direkt im Fenster unten
+                live ladbar. Weitere Projekte kommen Stück für Stück dazu.
+              </p>
+            </div>
+          }
+        >
+          {/* Browser-Chrome */}
+          <div className="flex items-center gap-2 px-3 md:px-4 py-2 md:py-3 bg-zinc-800 border-b border-zinc-700">
+            <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+            <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+            <div className="ml-3 flex-1 h-6 rounded-md bg-zinc-700/60 flex items-center px-3">
+              <span className="text-[10px] md:text-xs text-zinc-300 font-mono tracking-wide truncate">
+                {project.href.replace(/^https?:\/\//, '')}
+              </span>
+            </div>
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-flex items-center gap-1 text-[10px] font-semibold text-neon hover:text-neon-dim transition-colors"
+            >
+              <ExternalLink size={11} />
+              Öffnen
+            </a>
+          </div>
+
+          {/* Live-Iframe */}
+          <div className="relative h-[calc(100%-2.25rem)] md:h-[calc(100%-2.75rem)] bg-white">
+            <iframe
+              key={project.id}
+              src={project.href}
+              title={`Live-Vorschau ${project.name}`}
+              loading="lazy"
+              className="absolute inset-0 w-full h-full border-0"
+              sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+            />
+          </div>
+        </ContainerScroll>
+
+        {/* Projekt-Navigation + Meta-Karte */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="mb-16"
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="-mt-8 md:-mt-16 max-w-4xl mx-auto bg-white rounded-2xl border border-border-light shadow-sm p-6 md:p-8"
         >
-          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-neon-dim mb-4">
-            Projekte & Demos
-          </span>
-          <h2
-            id="portfolio-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-text-dark leading-tight mb-5"
-          >
-            Ein Live-Projekt. Drei klar gekennzeichnete Demos.
-          </h2>
-          <p className="text-text-muted text-lg max-w-xl leading-relaxed">
-            Demos zeigen die Bauweise – nicht erfundene Kunden. Echte Projekte
-            kommen Stück für Stück dazu.
-          </p>
-        </motion.div>
+          <div className="flex items-start gap-4 md:gap-6">
+            {/* Prev */}
+            <button
+              type="button"
+              onClick={prev}
+              disabled={!hasMultiple}
+              aria-label="Vorheriges Projekt"
+              className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full border border-border-light flex items-center justify-center text-text-dark hover:bg-text-dark hover:text-off-white hover:border-text-dark transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-text-dark disabled:hover:border-border-light"
+            >
+              <ChevronLeft size={20} />
+            </button>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => {
-            const CardTag = project.href ? motion.a : motion.div
-            const linkProps = project.href
-              ? { href: project.href, target: '_blank', rel: 'noopener noreferrer' }
-              : {}
-            return (
-              <CardTag
-                key={project.id}
-                {...linkProps}
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.1 }}
-                className={`group block bg-white rounded-2xl overflow-hidden border border-border-light transition-all duration-300 ${
-                  project.href
-                    ? 'hover:border-neon/60 hover:shadow-[0_20px_50px_-12px_rgba(200,255,0,0.35)] hover:-translate-y-1 cursor-pointer'
-                    : 'hover:border-border-light/80'
-                }`}
-              >
-                <ProjectMockup project={project} />
+            {/* Inhalt */}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between gap-4 mb-2">
+                <span className="inline-block text-xs font-bold uppercase tracking-widest text-neon-dim">
+                  {project.category}
+                </span>
+                <span className="flex items-center gap-1.5 bg-neon text-text-dark text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                  <span className="w-1.5 h-1.5 rounded-full bg-text-dark animate-pulse" />
+                  Live
+                </span>
+              </div>
 
-                {/* Hover overlay link icon (only on real link cards) */}
-                {project.href && (
-                  <div className="relative">
-                    <div className="absolute -top-12 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      <span className="flex items-center gap-1 bg-neon text-text-dark text-xs font-bold px-2.5 py-1 rounded-full">
-                        <ExternalLink size={11} />
-                        Ansehen
-                      </span>
-                    </div>
-                  </div>
-                )}
-
-                {/* Content */}
-                <div className="p-6">
-                  <span className="inline-block text-xs font-bold uppercase tracking-widest text-neon-dim mb-2">
-                    {project.category}
+              <h3 className="text-xl md:text-2xl font-bold text-text-dark mb-2">
+                {project.name}
+              </h3>
+              <p className="text-text-muted text-sm md:text-base leading-relaxed mb-4">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs font-medium px-2.5 py-1 rounded-full bg-warm-gray text-text-muted border border-border-light"
+                  >
+                    {tag}
                   </span>
-                  <h3 className="text-lg font-bold text-text-dark mb-2 group-hover:text-neon-dim transition-colors duration-300">
-                    {project.name}
-                  </h3>
-                  <p className="text-text-muted text-sm leading-relaxed mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs font-medium px-2.5 py-1 rounded-full bg-warm-gray text-text-muted border border-border-light group-hover:bg-neon/10 group-hover:border-neon/30 group-hover:text-neon-dim transition-colors duration-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                ))}
+              </div>
+
+              {hasMultiple && (
+                <div className="flex justify-center gap-1.5 mt-5">
+                  {projects.map((p, i) => (
+                    <button
+                      key={p.id}
+                      type="button"
+                      onClick={() => setIndex(i)}
+                      aria-label={`Projekt ${i + 1}: ${p.name}`}
+                      className={`h-1.5 rounded-full transition-all duration-200 ${
+                        i === index ? 'w-6 bg-text-dark' : 'w-1.5 bg-border-light hover:bg-text-muted'
+                      }`}
+                    />
+                  ))}
                 </div>
-              </CardTag>
-            )
-          })}
-        </div>
+              )}
+            </div>
+
+            {/* Next */}
+            <button
+              type="button"
+              onClick={next}
+              disabled={!hasMultiple}
+              aria-label="Nächstes Projekt"
+              className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full border border-border-light flex items-center justify-center text-text-dark hover:bg-text-dark hover:text-off-white hover:border-text-dark transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-text-dark disabled:hover:border-border-light"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        </motion.div>
 
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut', delay: 0.3 }}
+          transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
           className="mt-12 text-center"
         >
           <p className="text-text-muted text-sm mb-4">Ihr Projekt könnte hier stehen.</p>
