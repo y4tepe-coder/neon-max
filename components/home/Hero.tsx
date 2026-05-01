@@ -92,7 +92,7 @@ export default function Hero() {
           className="mt-10 flex flex-col sm:flex-row gap-4"
         >
           <Link
-            href="/kontakt"
+            href="/termin"
             className="group inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-base font-bold transition-all duration-200 hover:opacity-90 hover:-translate-y-0.5 active:scale-95"
             style={{
               background: '#C5F74F',
@@ -100,7 +100,7 @@ export default function Hero() {
               boxShadow:  '0 4px 28px rgba(197,247,79,0.3)',
             }}
           >
-            Kostenlose Bedarfsanalyse
+            Termin buchen
             <ArrowRight size={17} className="transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
 

@@ -51,12 +51,12 @@ export default function ClosingCTA() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 -mt-4">
             <Link
-              href="/kontakt"
+              href="/termin"
               className="inline-flex items-center justify-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full
                          hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
             >
               <Calendar size={18} aria-hidden="true" />
-              Bedarfsanalyse starten
+              Termin buchen
             </Link>
             <Link
               href="mailto:info@neon-bw.de"

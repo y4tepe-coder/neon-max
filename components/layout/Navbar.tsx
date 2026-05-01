@@ -197,11 +197,11 @@ export default function Navbar() {
                 0176 20 17 01 33
               </a>
               <Link
-                href="/kontakt"
+                href="/termin"
                 className="bg-neon text-text-dark text-sm font-semibold px-5 py-2.5 rounded-full
                            hover:bg-neon-dim transition-all duration-200 cursor-pointer"
               >
-                Bedarfsanalyse starten
+                Termin buchen
               </Link>
             </div>
 
@@ -304,12 +304,12 @@ export default function Navbar() {
                 0176 20 17 01 33
               </a>
               <Link
-                href="/kontakt"
+                href="/termin"
                 onClick={() => setIsMenuOpen(false)}
                 className="mt-2 w-full text-center bg-neon text-text-dark font-semibold px-6 py-3 rounded-full
                            hover:bg-neon-dim transition-all duration-200 cursor-pointer"
               >
-                Bedarfsanalyse starten
+                Termin buchen
               </Link>
             </nav>
           </motion.div>
