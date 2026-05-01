@@ -57,12 +57,12 @@ export default function PortfolioSection() {
           }
         >
           {/* Browser-Chrome */}
-          <div className="flex items-center gap-2 px-3 md:px-4 py-2 md:py-3 bg-zinc-800 border-b border-zinc-700">
-            <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-            <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
-            <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
-            <div className="ml-3 flex-1 h-6 rounded-md bg-zinc-700/60 flex items-center px-3">
-              <span className="text-[10px] md:text-xs text-zinc-300 font-mono tracking-wide truncate">
+          <div className="flex items-center gap-2 px-2.5 md:px-4 py-1.5 md:py-3 bg-zinc-800 border-b border-zinc-700">
+            <span className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-red-500/70" />
+            <span className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-yellow-500/70" />
+            <span className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-green-500/70" />
+            <div className="ml-2 md:ml-3 flex-1 h-5 md:h-6 rounded bg-zinc-700/60 flex items-center px-2 md:px-3 min-w-0">
+              <span className="text-[9px] md:text-xs text-zinc-300 font-mono tracking-wide truncate">
                 {project.href.replace(/^https?:\/\//, '')}
               </span>
             </div>
@@ -70,23 +70,33 @@ export default function PortfolioSection() {
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center gap-1 text-[10px] font-semibold text-neon hover:text-neon-dim transition-colors"
+              className="inline-flex items-center gap-1 text-[10px] md:text-xs font-semibold text-neon hover:text-neon-dim transition-colors shrink-0"
             >
               <ExternalLink size={11} />
-              Öffnen
+              <span className="hidden sm:inline">Öffnen</span>
             </a>
           </div>
 
-          {/* Live-Iframe */}
-          <div className="relative h-[calc(100%-2.25rem)] md:h-[calc(100%-2.75rem)] bg-white">
+          {/* Live-Iframe — Mobile: Desktop-Site rendern + skalieren, Touch durchlassen */}
+          <div className="relative flex-1 h-[calc(100%-1.75rem)] md:h-[calc(100%-2.75rem)] bg-white overflow-hidden">
             <iframe
               key={project.id}
               src={project.href}
               title={`Live-Vorschau ${project.name}`}
               loading="lazy"
-              className="absolute inset-0 w-full h-full border-0"
+              className="border-0 origin-top-left pointer-events-none md:pointer-events-auto absolute top-0 left-0 w-[400%] h-[400%] scale-[0.25] sm:w-[200%] sm:h-[200%] sm:scale-[0.5] md:w-full md:h-full md:scale-100"
               sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
             />
+            {/* Touch-Hinweis nur Mobile */}
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="md:hidden absolute bottom-2 right-2 inline-flex items-center gap-1.5 bg-neon text-text-dark text-[10px] font-bold px-2.5 py-1.5 rounded-full shadow-lg"
+            >
+              <ExternalLink size={11} />
+              Live öffnen
+            </a>
           </div>
         </ContainerScroll>
 
