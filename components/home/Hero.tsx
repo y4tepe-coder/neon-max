@@ -12,9 +12,9 @@ const fadeUp = (delay = 0) => ({
 
 const badges = [
   'Lokal in BW',
-  'DSGVO & self-hosted',
-  'Festpreis vor Start',
-  '30-Minuten-Analyse',
+  'Self-hosted & DSGVO',
+  'Ab 499 €',
+  'Erste 2 Kunden kostenfrei',
 ] as const
 
 export default function Hero() {
@@ -59,7 +59,7 @@ export default function Hero() {
               style={{ background: '#C5F74F' }}
               aria-hidden="true"
             />
-            KI-WEBSITES & AUTOMATION AUS BW
+            KI-AUTOMATION UND WEBSITES AUS BW
           </span>
         </motion.div>
 
@@ -67,22 +67,23 @@ export default function Hero() {
         <motion.h1
           {...fadeUp(0.1)}
           className="font-bold leading-[1.08] tracking-tight"
-          style={{ fontSize: 'clamp(2.6rem, 6.4vw, 5rem)', color: '#F8FAFC' }}
+          style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', color: '#F8FAFC' }}
         >
-          Ihre Zeit gehört Ihnen.
+          Dein unfairer
           <br />
-          <span style={{ color: '#C5F74F' }}>Den Rest macht KI.</span>
+          Wettbewerbs-
+          <br />
+          <span style={{ color: '#C5F74F' }}>vorteil.</span>
         </motion.h1>
 
         {/* Subtext */}
         <motion.p
           {...fadeUp(0.2)}
           className="mt-7 text-lg md:text-xl leading-relaxed max-w-2xl"
-          style={{ color: 'rgba(248,250,252,0.6)' }}
+          style={{ color: 'rgba(248,250,252,0.55)' }}
         >
-          Wir bauen Websites mit KI im Hintergrund, die nicht nur schön aussehen,
-          sondern aktiv Zeit sparen: Anfragen aufnehmen, Informationen sortieren,
-          Rückfragen vorbereiten und Routine aus dem Postfach holen.
+          Ein Unternehmen voranzubringen ist hart. Mit uns geht es schneller,
+          verständlicher und macht mehr Spaß.
         </motion.p>
 
         {/* CTAs */}
@@ -99,12 +100,12 @@ export default function Hero() {
               boxShadow:  '0 4px 28px rgba(197,247,79,0.3)',
             }}
           >
-            30-Minuten-Gespräch buchen
+            Termin buchen
             <ArrowRight size={17} className="transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
 
-          <a
-            href="#zeit-sparen"
+          <Link
+            href="/leistungen"
             className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-semibold border transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
             style={{
               borderColor: 'rgba(248,250,252,0.2)',
@@ -119,8 +120,8 @@ export default function Hero() {
               e.currentTarget.style.color = 'rgba(248,250,252,0.75)'
             }}
           >
-            So spart KI Zeit
-          </a>
+            Leistungen ansehen
+          </Link>
         </motion.div>
 
         {/* Trust badges */}
@@ -135,7 +136,7 @@ export default function Hero() {
               key={label}
               role="listitem"
               className="flex items-center gap-2 text-sm font-medium"
-              style={{ color: 'rgba(248,250,252,0.5)' }}
+              style={{ color: 'rgba(248,250,252,0.45)' }}
             >
               <CheckCircle2 size={14} style={{ color: '#C5F74F' }} aria-hidden="true" />
               {label}
