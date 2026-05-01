@@ -1,6 +1,12 @@
 'use client'
 import React, { useRef } from 'react'
-import { useScroll, useTransform, motion, MotionValue } from 'framer-motion'
+import {
+  useScroll,
+  useSpring,
+  useTransform,
+  motion,
+  MotionValue,
+} from 'framer-motion'
 
 export const ContainerScroll = ({
   titleComponent,
@@ -26,17 +32,24 @@ export const ContainerScroll = ({
     }
   }, [])
 
-  const scaleDimensions = () => {
-    return isMobile ? [0.7, 0.9] : [1.05, 1]
-  }
+  // Spring-glättet scrollYProgress, damit iOS-Momentum keine Sprünge macht.
+  const smoothProgress = useSpring(scrollYProgress, {
+    damping: 30,
+    stiffness: 80,
+    restDelta: 0.001,
+  })
 
-  const rotate = useTransform(scrollYProgress, [0, 1], [20, 0])
-  const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions())
-  const translate = useTransform(scrollYProgress, [0, 1], [0, -100])
+  const rotateRange = isMobile ? [12, 0] : [20, 0]
+  const scaleRange = isMobile ? [0.88, 0.96] : [1.05, 1]
+  const translateRange = isMobile ? [0, -40] : [0, -100]
+
+  const rotate = useTransform(smoothProgress, [0, 1], rotateRange)
+  const scale = useTransform(smoothProgress, [0, 1], scaleRange)
+  const translate = useTransform(smoothProgress, [0, 1], translateRange)
 
   return (
     <div
-      className="h-[44rem] md:h-[80rem] flex items-center justify-center relative p-2 md:p-20"
+      className="h-[52rem] md:h-[80rem] flex items-center justify-center relative p-2 md:p-20"
       ref={containerRef}
     >
       <div

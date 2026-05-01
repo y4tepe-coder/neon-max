@@ -77,26 +77,49 @@ export default function PortfolioSection() {
             </a>
           </div>
 
-          {/* Live-Iframe — Mobile: Desktop-Site rendern + skalieren, Touch durchlassen */}
-          <div className="relative flex-1 h-[calc(100%-1.75rem)] md:h-[calc(100%-2.75rem)] bg-white overflow-hidden">
+          {/* Vorschau — Desktop: Live-Iframe. Mobile: CTA-Karte (Iframe ist auf
+              Mobile-Browsern unzuverlässig: Memory-Limits, third-party-Restrictions). */}
+          <div className="relative h-[calc(100%-1.75rem)] md:h-[calc(100%-2.75rem)] bg-white overflow-hidden">
+            {/* Desktop: echtes Iframe */}
             <iframe
               key={project.id}
               src={project.href}
               title={`Live-Vorschau ${project.name}`}
               loading="lazy"
-              className="border-0 origin-top-left pointer-events-none md:pointer-events-auto absolute top-0 left-0 w-[400%] h-[400%] scale-[0.25] sm:w-[200%] sm:h-[200%] sm:scale-[0.5] md:w-full md:h-full md:scale-100"
+              className="hidden md:block absolute inset-0 w-full h-full border-0"
               sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
             />
-            {/* Touch-Hinweis nur Mobile */}
-            <a
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="md:hidden absolute bottom-2 right-2 inline-flex items-center gap-1.5 bg-neon text-text-dark text-[10px] font-bold px-2.5 py-1.5 rounded-full shadow-lg"
+
+            {/* Mobile: Vorschau-Karte mit CTA */}
+            <div
+              className="md:hidden absolute inset-0 flex flex-col items-center justify-center text-center px-5 py-6"
+              style={{
+                background:
+                  'linear-gradient(135deg, #0e2a18 0%, #0a1a0f 100%)',
+              }}
             >
-              <ExternalLink size={11} />
-              Live öffnen
-            </a>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-neon/80 mb-3">
+                {project.category}
+              </span>
+              <h4 className="text-2xl font-black text-white leading-tight mb-2">
+                {project.name}
+              </h4>
+              <p className="text-white/60 text-xs mb-5 max-w-[18rem]">
+                Live-Website — direkt im Browser ansehen
+              </p>
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-neon text-text-dark text-sm font-bold px-5 py-2.5 rounded-full shadow-[0_8px_24px_-6px_rgba(197,247,79,0.5)] active:scale-95 transition-transform"
+              >
+                <ExternalLink size={14} />
+                Site live öffnen
+              </a>
+              <span className="mt-4 text-[10px] text-white/40 font-mono truncate max-w-full">
+                {project.href.replace(/^https?:\/\//, '')}
+              </span>
+            </div>
           </div>
         </ContainerScroll>
 
