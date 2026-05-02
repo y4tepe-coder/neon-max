@@ -11,10 +11,10 @@ const fadeUp = (delay = 0) => ({
 })
 
 const badges = [
-  'Lokal in BW',
-  'Self-hosted & DSGVO',
-  'Ab 499 €',
-  'Erste 2 Kunden kostenfrei',
+  'Region Stuttgart / BW',
+  'DSGVO & self-hosted',
+  'Festpreis vor Start',
+  '30-Minuten-Analyse',
 ] as const
 
 export default function Hero() {
@@ -71,9 +71,7 @@ export default function Hero() {
         >
           Dein unfairer
           <br />
-          Wettbewerbs-
-          <br />
-          <span style={{ color: '#C5F74F' }}>vorteil.</span>
+          <span style={{ color: '#C5F74F' }}>Wettbewerbsvorteil.</span>
         </motion.h1>
 
         {/* Subtext */}
@@ -82,8 +80,9 @@ export default function Hero() {
           className="mt-7 text-lg md:text-xl leading-relaxed max-w-2xl"
           style={{ color: 'rgba(248,250,252,0.55)' }}
         >
-          Ein Unternehmen voranzubringen ist hart. Mit uns geht es schneller,
-          verständlicher und macht mehr Spaß.
+          Wir bauen Websites mit KI im Hintergrund, die nicht nur gut aussehen,
+          sondern aktiv Zeit sparen: Anfragen aufnehmen, Informationen sortieren,
+          Rückfragen vorbereiten und Termine einfacher machen.
         </motion.p>
 
         {/* CTAs */}
@@ -100,12 +99,12 @@ export default function Hero() {
               boxShadow:  '0 4px 28px rgba(197,247,79,0.3)',
             }}
           >
-            Termin buchen
+            30-Minuten-Gespräch buchen
             <ArrowRight size={17} className="transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
 
           <Link
-            href="/leistungen"
+            href="/#zeit-sparen"
             className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-semibold border transition-all duration-200 hover:-translate-y-0.5 active:scale-95"
             style={{
               borderColor: 'rgba(248,250,252,0.2)',
@@ -120,7 +119,7 @@ export default function Hero() {
               e.currentTarget.style.color = 'rgba(248,250,252,0.75)'
             }}
           >
-            Leistungen ansehen
+            So spart KI Zeit
           </Link>
         </motion.div>
 

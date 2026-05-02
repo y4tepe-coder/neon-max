@@ -50,7 +50,7 @@ export default function PortfolioSection() {
                 Live-Projekte aus echter Praxis.
               </h2>
               <p className="text-text-muted text-base md:text-lg leading-relaxed">
-                Echte Websites, die heute online sind – direkt im Fenster unten
+                Ein echtes Projekt aus der Praxis – direkt im Fenster unten
                 live ladbar. Weitere Projekte kommen Stück für Stück dazu.
               </p>
             </div>
@@ -63,7 +63,7 @@ export default function PortfolioSection() {
             <span className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-green-500/70" />
             <div className="ml-2 md:ml-3 flex-1 h-5 md:h-6 rounded bg-zinc-700/60 flex items-center px-2 md:px-3 min-w-0">
               <span className="text-[9px] md:text-xs text-zinc-300 font-mono tracking-wide truncate">
-                {project.href.replace(/^https?:\/\//, '')}
+                EnVT Energieberatung · Live-Vorschau
               </span>
             </div>
             <a
@@ -105,7 +105,7 @@ export default function PortfolioSection() {
                 {project.name}
               </h4>
               <p className="text-white/60 text-xs mb-5 max-w-[18rem]">
-                Live-Website — direkt im Browser ansehen
+                Externes Live-Projekt direkt im Browser ansehen
               </p>
               <a
                 href={project.href}
@@ -116,8 +116,8 @@ export default function PortfolioSection() {
                 <ExternalLink size={14} />
                 Site live öffnen
               </a>
-              <span className="mt-4 text-[10px] text-white/40 font-mono truncate max-w-full">
-                {project.href.replace(/^https?:\/\//, '')}
+              <span className="mt-4 text-[10px] text-white/40 uppercase tracking-[0.2em]">
+                Live-Vorschau
               </span>
             </div>
           </div>

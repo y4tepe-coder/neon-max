@@ -231,6 +231,7 @@ export default function WebsiteCheck() {
   const [phase, setPhase] = useState<Phase>('url')
   const [url, setUrl] = useState('')
   const [urlError, setUrlError] = useState('')
+  const [noWebsite, setNoWebsite] = useState(false)
   const [companyName, setCompanyName] = useState('')
   const [companyError, setCompanyError] = useState('')
   const [currentStep, setCurrentStep] = useState(0)
@@ -266,20 +267,18 @@ export default function WebsiteCheck() {
   const handleUrlSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
-    const urlErr = validateUrl(url)
-    const companyErr = !companyName.trim() ? 'Bitte geben Sie Ihren Firmennamen ein.' : null
-    const emailErr = validateEmail(contact.email)
-    const nameErr = !contact.name.trim() ? 'Bitte geben Sie Ihren Namen ein.' : null
+    const urlErr = !noWebsite && url.trim() ? validateUrl(url) : null
+    const companyErr = null
 
     setUrlError(urlErr ?? '')
     setCompanyError(companyErr ?? '')
-    setEmailError(emailErr ?? '')
-    setNameError(nameErr ?? '')
 
-    if (urlErr || companyErr || emailErr || nameErr) return
+    if (urlErr || companyErr) return
 
-    const normalized = normalizeUrl(url)
-    setUrl(normalized)
+    if (!noWebsite && url.trim()) {
+      const normalized = normalizeUrl(url)
+      setUrl(normalized)
+    }
 
     setPhase('loading')
   }
@@ -358,7 +357,7 @@ export default function WebsiteCheck() {
             </h2>
             <p className="text-white/55 text-lg leading-relaxed mb-8">
               6 kurze Fragen – und Sie sehen sofort, an welchen Stellen Routinearbeit
-              ein System übernehmen könnte.
+              ein System übernehmen könnte. Ohne erst Ihre Kontaktdaten abzugeben.
             </p>
             <div className="space-y-3.5">
               {[
@@ -382,7 +381,7 @@ export default function WebsiteCheck() {
           >
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden" style={{ minHeight: 420 }}>
 
-              {/* ── Phase: URL input ── */}
+              {/* ── Phase: Start input ── */}
               {phase === 'url' && (
                 <motion.div key="url" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-7 md:p-8">
                   <div className="flex items-center gap-3 mb-6">
@@ -391,43 +390,62 @@ export default function WebsiteCheck() {
                     </div>
                     <div>
                       <h3 className="text-text-dark font-bold text-lg leading-tight">KI-Bedarfsanalyse starten</h3>
-                      <p className="text-text-muted text-xs">Kostenlos & unverbindlich</p>
+                      <p className="text-text-muted text-xs">6 Fragen, Ergebnis direkt im Browser</p>
                     </div>
                   </div>
                   <form onSubmit={handleUrlSubmit} className="space-y-4" noValidate>
                     {/* Website */}
                     <div>
                       <label htmlFor="check-url" className="block text-sm font-medium text-text-dark mb-1.5">
-                        Website <span className="text-red-400">*</span>
+                        Website <span className="text-text-muted/60">(optional)</span>
                       </label>
                       <div className="relative">
                         <Globe size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-text-muted/50" aria-hidden="true" />
                         <input
                           id="check-url"
+                          name="website"
                           type="text"
                           value={url}
-                          onChange={(e) => { setUrl(e.target.value); setUrlError('') }}
+                          onChange={(e) => { setUrl(e.target.value); setUrlError(''); if (noWebsite) setNoWebsite(false) }}
                           placeholder="www.ihre-website.de"
+                          autoComplete="url"
+                          disabled={noWebsite}
                           className={`w-full pl-10 pr-4 py-3 rounded-xl border text-text-dark text-sm
                                      placeholder:text-text-muted/40 focus:outline-none focus:ring-2 focus:ring-neon
                                      focus:border-transparent transition-all duration-200
+                                     disabled:bg-warm-gray disabled:text-text-muted disabled:cursor-not-allowed
                                      ${urlError ? 'border-red-400 ring-1 ring-red-400' : 'border-border-light'}`}
                         />
                       </div>
                       {urlError && <p className="text-xs text-red-500 mt-1.5">{urlError}</p>}
+                      <label className="mt-2.5 flex items-center gap-2 text-xs text-text-muted cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={noWebsite}
+                          onChange={(e) => {
+                            setNoWebsite(e.target.checked)
+                            setUrlError('')
+                            if (e.target.checked) setUrl('')
+                          }}
+                          className="size-3.5 rounded border-border-light accent-neon"
+                        />
+                        Ich habe noch keine Website
+                      </label>
                     </div>
 
                     {/* Unternehmen */}
                     <div>
                       <label htmlFor="check-company" className="block text-sm font-medium text-text-dark mb-1.5">
-                        Unternehmen <span className="text-red-400">*</span>
+                        Unternehmen <span className="text-text-muted/60">(optional)</span>
                       </label>
                       <input
                         id="check-company"
+                        name="company"
                         type="text"
                         value={companyName}
                         onChange={(e) => { setCompanyName(e.target.value); setCompanyError('') }}
                         placeholder="Musterfirma GmbH"
+                        autoComplete="organization"
                         className={`w-full px-4 py-3 rounded-xl border text-text-dark text-sm
                                    placeholder:text-text-muted/40 focus:outline-none focus:ring-2 focus:ring-neon
                                    focus:border-transparent transition-all duration-200
@@ -436,53 +454,17 @@ export default function WebsiteCheck() {
                       {companyError && <p className="text-xs text-red-500 mt-1.5">{companyError}</p>}
                     </div>
 
-                    {/* E-Mail */}
-                    <div>
-                      <label htmlFor="check-email" className="block text-sm font-medium text-text-dark mb-1.5">
-                        E-Mail-Adresse <span className="text-red-400">*</span>
-                      </label>
-                      <input
-                        id="check-email"
-                        type="email"
-                        value={contact.email}
-                        onChange={(e) => { setContact((c) => ({ ...c, email: e.target.value })); setEmailError('') }}
-                        placeholder="max@musterfirma.de"
-                        className={`w-full px-4 py-3 rounded-xl border text-text-dark text-sm
-                                   placeholder:text-text-muted/40 focus:outline-none focus:ring-2 focus:ring-neon
-                                   focus:border-transparent transition-all duration-200
-                                   ${emailError ? 'border-red-400 ring-1 ring-red-400' : 'border-border-light'}`}
-                      />
-                      {emailError && <p className="text-xs text-red-500 mt-1.5">{emailError}</p>}
-                    </div>
-
-                    {/* Name */}
-                    <div>
-                      <label htmlFor="check-name" className="block text-sm font-medium text-text-dark mb-1.5">
-                        Name <span className="text-red-400">*</span>
-                      </label>
-                      <input
-                        id="check-name"
-                        type="text"
-                        value={contact.name}
-                        onChange={(e) => { setContact((c) => ({ ...c, name: e.target.value })); setNameError('') }}
-                        placeholder="Max Mustermann"
-                        className={`w-full px-4 py-3 rounded-xl border text-text-dark text-sm
-                                   placeholder:text-text-muted/40 focus:outline-none focus:ring-2 focus:ring-neon
-                                   focus:border-transparent transition-all duration-200
-                                   ${nameError ? 'border-red-400 ring-1 ring-red-400' : 'border-border-light'}`}
-                      />
-                      {nameError && <p className="text-xs text-red-500 mt-1.5">{nameError}</p>}
-                    </div>
-
                     <button
                       type="submit"
                       className="w-full flex items-center justify-center gap-2 bg-neon text-text-dark font-semibold
                                  px-6 py-3.5 rounded-xl hover:bg-neon-dim transition-all duration-200 cursor-pointer mt-1"
                     >
-                      Analyse starten
+                      6 Fragen starten
                       <ArrowRight size={16} aria-hidden="true" />
                     </button>
-                    <p className="text-center text-xs text-text-muted/50">Kein Spam. Keine Verpflichtung.</p>
+                    <p className="text-center text-xs text-text-muted/50">
+                      Ergebnis zuerst. Kontakt erst, wenn Sie sprechen möchten.
+                    </p>
                   </form>
                 </motion.div>
               )}
@@ -525,8 +507,11 @@ export default function WebsiteCheck() {
                       {loadingText}
                     </motion.p>
                   </AnimatePresence>
-                  {url && (
+                  {url && !noWebsite && (
                     <p className="text-text-muted text-xs mt-2 font-mono truncate max-w-[220px]">{url}</p>
+                  )}
+                  {noWebsite && (
+                    <p className="text-text-muted text-xs mt-2">Start ohne bestehende Website</p>
                   )}
                 </motion.div>
               )}
