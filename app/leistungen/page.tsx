@@ -185,7 +185,7 @@ export default function LeistungenPage() {
             className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
           >
-            30-Minuten-Gespräch buchen
+            Kostenlose Potenzial-Analyse
             <ArrowRight size={18} aria-hidden="true" />
           </Link>
           <p className="text-white/30 text-sm mt-5">

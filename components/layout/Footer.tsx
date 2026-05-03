@@ -17,7 +17,7 @@ const footerLinks = [
     links: [
       { href: '/ueber-uns',     label: 'Über NEON' },
       { href: '/#zeit-sparen',  label: 'Wo KI Zeit spart' },
-      { href: '/termin',        label: 'Termin buchen' },
+      { href: '/termin',        label: 'Kostenlose Analyse' },
       { href: '/kontakt',       label: 'Kontakt' },
     ],
   },

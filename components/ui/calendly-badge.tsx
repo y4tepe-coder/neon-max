@@ -32,7 +32,7 @@ export function CalendlyBadge() {
       <button
         type="button"
         onClick={openPopup}
-        aria-label="Termin buchen"
+        aria-label="Kostenlose Analyse buchen"
         className="group fixed bottom-5 right-5 z-40 flex items-center gap-2 overflow-hidden
                    rounded-full bg-neon px-5 py-3 text-sm font-semibold text-text-dark
                    shadow-[0_8px_24px_rgba(197,247,79,0.35)]
@@ -41,7 +41,7 @@ export function CalendlyBadge() {
                    active:scale-95 cursor-pointer"
       >
         <Calendar size={16} strokeWidth={2.5} className="shrink-0" />
-        <span className="relative z-10">Termin buchen</span>
+        <span className="relative z-10">Kostenlose Analyse</span>
         {/* Shine sweep — plays on hover */}
         <span
           aria-hidden

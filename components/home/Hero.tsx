@@ -67,17 +67,17 @@ export default function Hero() {
         <motion.h1
           {...fadeUp(0.1)}
           className="font-bold leading-[1.08] tracking-tight"
-          style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', color: '#F8FAFC' }}
+          style={{ fontSize: 'clamp(2.25rem, 7vw, 5.5rem)', color: '#F8FAFC' }}
         >
-          Dein unfairer
+          Websites,
           <br />
-          <span style={{ color: '#C5F74F' }}>Wettbewerbsvorteil.</span>
+          <span style={{ color: '#C5F74F' }}>die mitarbeiten.</span>
         </motion.h1>
 
         {/* Subtext */}
         <motion.p
           {...fadeUp(0.2)}
-          className="mt-7 text-lg md:text-xl leading-relaxed max-w-2xl"
+          className="mt-6 md:mt-7 text-base md:text-xl leading-relaxed max-w-2xl"
           style={{ color: 'rgba(248,250,252,0.55)' }}
         >
           Wir bauen Websites mit KI im Hintergrund, die nicht nur gut aussehen,
@@ -99,7 +99,7 @@ export default function Hero() {
               boxShadow:  '0 4px 28px rgba(197,247,79,0.3)',
             }}
           >
-            30-Minuten-Gespräch buchen
+            Kostenlose Potenzial-Analyse
             <ArrowRight size={17} className="transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
 

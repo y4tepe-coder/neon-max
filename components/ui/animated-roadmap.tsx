@@ -12,7 +12,7 @@ export interface Milestone {
   /** CSS percentage values, must match SVG coordinates (see viewBox comment) */
   position: { top: string; left: string }
   description: string
-  /** Show a "Termin buchen" CTA button in the tooltip */
+  /** Show a "Kostenlose Analyse" CTA button in the tooltip */
   cta?: boolean
   /** Called when the CTA button is clicked */
   onCtaClick?: () => void
@@ -103,7 +103,7 @@ function MilestoneMarker({ milestone }: { milestone: Milestone }) {
                   }}
                 >
                   <Calendar size={13} aria-hidden="true" />
-                  Termin buchen
+                  Kostenlose Analyse
                 </button>
               )}
             </motion.div>

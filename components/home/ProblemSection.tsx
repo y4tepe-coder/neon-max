@@ -100,8 +100,8 @@ export default function ProblemSection() {
             <div className="hidden md:block w-1 min-h-[40px] bg-neon rounded-full shrink-0" aria-hidden="true" />
             <p className="text-white/70 text-base md:text-lg text-center md:text-left leading-relaxed">
               <span className="text-neon font-semibold">Genau dafür ist NEON da.</span>{' '}
-              Im 30-Minuten-Gespräch schauen wir gemeinsam, an welchen Stellen
-              KI Sie spürbar entlasten kann.
+              In der kostenlosen Potenzial-Analyse schauen wir gemeinsam, an welchen
+              Stellen KI Sie spürbar entlasten kann.
             </p>
           </div>
           <Link
@@ -109,7 +109,7 @@ export default function ProblemSection() {
             className="shrink-0 inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-6 py-3 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm whitespace-nowrap"
           >
-            30-Minuten-Gespräch buchen
+            Kostenlose Potenzial-Analyse
             <ArrowRight size={15} aria-hidden="true" />
           </Link>
         </motion.div>

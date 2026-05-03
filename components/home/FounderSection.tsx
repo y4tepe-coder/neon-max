@@ -67,7 +67,7 @@ export default function FounderSection() {
               className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-6 py-3 rounded-full
                          hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm"
             >
-              30-Minuten-Gespräch buchen
+              Kostenlose Potenzial-Analyse
               <ArrowRight size={15} aria-hidden="true" />
             </Link>
             <Link

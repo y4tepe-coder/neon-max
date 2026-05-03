@@ -201,7 +201,7 @@ export default function Navbar() {
                 className="bg-neon text-text-dark text-sm font-semibold px-5 py-2.5 rounded-full
                            hover:bg-neon-dim transition-all duration-200 cursor-pointer"
               >
-                Termin buchen
+                Kostenlose Analyse
               </Link>
             </div>
 
@@ -309,7 +309,7 @@ export default function Navbar() {
                 className="mt-2 w-full text-center bg-neon text-text-dark font-semibold px-6 py-3 rounded-full
                            hover:bg-neon-dim transition-all duration-200 cursor-pointer"
               >
-                Termin buchen
+                Kostenlose Potenzial-Analyse
               </Link>
             </nav>
           </motion.div>

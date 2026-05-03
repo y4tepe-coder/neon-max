@@ -17,7 +17,7 @@ const agendaItems = [
 ] as const
 
 export const metadata: Metadata = {
-  title: 'Termin buchen — NEON Webdesign & KI',
+  title: 'Kostenlose Potenzial-Analyse — NEON Webdesign & KI',
   description:
     'Kostenloses Erstgespräch mit NEON Webdesign & KI buchen. In 30 Minuten klären wir, welche Website-, KI- oder Automatisierungs-Lösung für Ihr Unternehmen sinnvoll ist.',
   alternates: {
@@ -33,11 +33,11 @@ export default function TerminPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end">
             <div className="lg:col-span-7">
               <p className="text-neon/60 text-sm font-semibold uppercase tracking-widest mb-4">
-                Termin buchen
+                Kostenlose Analyse
               </p>
               <h1 className="text-5xl md:text-6xl font-bold text-off-white leading-tight tracking-tight mb-6 text-balance">
-                Kostenlose Bedarfsanalyse{' '}
-                <span className="text-neon">direkt einplanen.</span>
+                Kostenlose Website- &{' '}
+                <span className="text-neon">KI-Potenzial-Analyse.</span>
               </h1>
               <p className="text-white/55 text-lg leading-relaxed max-w-2xl">
                 Wählen Sie einen passenden Slot. Im Gespräch klären wir kurz und

@@ -180,7 +180,7 @@ const GOAL_MESSAGE: Record<string, string> = {
   leads: 'Mehr Anfragen ordentlich aufgenommen – Website plus strukturierte Aufnahme im Hintergrund.',
   image: 'Weniger Routinearbeit – genau dafür laufen die Bausteine ruhig im Hintergrund mit.',
   seo: 'Schneller reagieren – Standardrückfragen vorbereiten, statt nochmal hin- und her zu schreiben.',
-  all: 'Ein zusammenhängender Ablauf – das ist genau, was wir bauen. Starten Sie mit dem 30-Minuten-Gespräch.',
+  all: 'Ein zusammenhängender Ablauf – das ist genau, was wir bauen. Starten Sie mit der kostenlosen Potenzial-Analyse.',
 }
 
 // ─── Validation helpers ───────────────────────────────────────────────────────
@@ -715,7 +715,7 @@ export default function WebsiteCheck() {
                                  px-5 py-3.5 rounded-xl hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm"
                     >
                       <Phone size={15} aria-hidden="true" />
-                      30-Minuten-Gespräch buchen
+                      Kostenlose Potenzial-Analyse
                     </a>
                     <a
                       href={MAIL_URL}

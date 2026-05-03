@@ -215,7 +215,7 @@ export default function PortfolioSection() {
             href="/termin"
             className="inline-flex items-center gap-2 bg-text-dark text-off-white text-sm font-semibold px-6 py-3 rounded-full hover:bg-text-dark/80 transition-all duration-200"
           >
-            30-Minuten-Gespräch buchen
+            Kostenlose Potenzial-Analyse
             <ArrowRight size={16} />
           </a>
         </motion.div>

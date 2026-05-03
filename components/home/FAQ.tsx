@@ -13,12 +13,12 @@ const faqs = [
   {
     question: 'Was kostet das Ganze?',
     answer:
-      'Wir nennen den Festpreis vor Projektstart, nicht erst auf der Rechnung. Im 30-Minuten-Gespräch klären wir Umfang und Aufwand und Sie bekommen eine klare Range, bevor irgendetwas gebaut wird.',
+      'Wir nennen den Festpreis vor Projektstart, nicht erst auf der Rechnung. In der kostenlosen Potenzial-Analyse klären wir Umfang und Aufwand und Sie bekommen eine klare Range, bevor irgendetwas gebaut wird.',
   },
   {
-    question: 'Wie läuft das 30-Minuten-Gespräch ab?',
+    question: 'Wie läuft die kostenlose Potenzial-Analyse ab?',
     answer:
-      'Kostenlos, ohne Verpflichtung. Wir schauen kurz auf Ihre aktuellen Abläufe, gehen die Stellen durch, an denen Routine Zeit kostet, und Sie bekommen eine ehrliche Einschätzung – auch wenn NEON nicht passt.',
+      'Kostenlos, ohne Verpflichtung, in rund 30 Minuten. Wir schauen kurz auf Ihre aktuellen Abläufe und Ihre Website, gehen die Stellen durch, an denen Routine Zeit kostet, und Sie bekommen eine ehrliche Einschätzung – auch wenn NEON nicht passt.',
   },
   {
     question: 'Wie schnell ist eine Website mit KI im Hintergrund live?',
