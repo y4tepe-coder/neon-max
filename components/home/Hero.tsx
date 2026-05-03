@@ -59,7 +59,7 @@ export default function Hero() {
               style={{ background: '#C5F74F' }}
               aria-hidden="true"
             />
-            KI-AUTOMATION UND WEBSITES AUS BW
+            DEIN UNFAIRER WETTBEWERBSVORTEIL
           </span>
         </motion.div>
 
@@ -69,9 +69,9 @@ export default function Hero() {
           className="font-bold leading-[1.08] tracking-tight"
           style={{ fontSize: 'clamp(2.25rem, 7vw, 5.5rem)', color: '#F8FAFC' }}
         >
-          Websites,
+          Routine raus,
           <br />
-          <span style={{ color: '#C5F74F' }}>die mitarbeiten.</span>
+          <span style={{ color: '#C5F74F' }}>mehr Zeit fürs Geschäft.</span>
         </motion.h1>
 
         {/* Subtext */}
@@ -80,9 +80,9 @@ export default function Hero() {
           className="mt-6 md:mt-7 text-base md:text-xl leading-relaxed max-w-2xl"
           style={{ color: 'rgba(248,250,252,0.55)' }}
         >
-          Wir bauen Websites mit KI im Hintergrund, die nicht nur gut aussehen,
-          sondern aktiv Zeit sparen: Anfragen aufnehmen, Informationen sortieren,
-          Rückfragen vorbereiten und Termine einfacher machen.
+          NEON baut KI-Systeme für lokale Betriebe: Websites, Automationen und
+          Assistenten, die Anfragen qualifizieren, Termine organisieren und
+          wiederkehrende Arbeit im Hintergrund übernehmen.
         </motion.p>
 
         {/* CTAs */}

@@ -142,7 +142,7 @@ export default function ServicesOverview() {
             className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight"
             style={{ color: '#F8FAFC' }}
           >
-            Eine Website, die für Sie{' '}
+            Ein System, das für Sie{' '}
             <span
               className="relative inline-block"
               style={{ color: '#C5F74F' }}
