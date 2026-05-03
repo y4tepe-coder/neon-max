@@ -59,7 +59,7 @@ export default function Hero() {
               style={{ background: '#C5F74F' }}
               aria-hidden="true"
             />
-            DEIN UNFAIRER WETTBEWERBSVORTEIL
+            ROUTINE RAUS — MEHR ZEIT FÜRS GESCHÄFT
           </span>
         </motion.div>
 
@@ -69,9 +69,9 @@ export default function Hero() {
           className="font-bold leading-[1.08] tracking-tight"
           style={{ fontSize: 'clamp(2.25rem, 7vw, 5.5rem)', color: '#F8FAFC' }}
         >
-          Routine raus,
+          Dein unfairer
           <br />
-          <span style={{ color: '#C5F74F' }}>mehr Zeit fürs Geschäft.</span>
+          <span style={{ color: '#C5F74F' }}>Wettbewerbsvorteil.</span>
         </motion.h1>
 
         {/* Subtext */}
