@@ -12,14 +12,15 @@ const trustItems = [
 
 const agendaItems = [
   'Wo aktuell Anfragen, Rückfragen oder manuelle Arbeit hängen bleiben',
-  'Welche Website-, KI- oder Automatisierungs-Lösung wirklich sinnvoll ist',
+  'Welche Website- oder Ablauf-Lösung wirklich sinnvoll ist',
+  'Ob ein KI-Baustein überhaupt einen messbaren Nutzen hat',
   'Welche nächsten Schritte realistisch sind, inklusive grober Preisrange',
 ] as const
 
 export const metadata: Metadata = {
-  title: 'Kostenlose Potenzial-Analyse — NEON Webdesign & KI',
+  title: 'Kostenlose Website- & Ablauf-Analyse — NEON Webdesign & KI',
   description:
-    'Kostenloses Erstgespräch mit NEON Webdesign & KI buchen. In 30 Minuten klären wir, welche Website-, KI- oder Automatisierungs-Lösung für Ihr Unternehmen sinnvoll ist.',
+    'Kostenlose Analyse mit NEON Webdesign & KI buchen. In 30 Minuten klären wir, wo Anfragen, Rückfragen oder manuelle Arbeit hängen bleiben und welche 2-3 Hebel sinnvoll sind.',
   alternates: {
     canonical: '/termin',
   },
@@ -37,12 +38,12 @@ export default function TerminPage() {
               </p>
               <h1 className="text-5xl md:text-6xl font-bold text-off-white leading-tight tracking-tight mb-6 text-balance">
                 Kostenlose Website- &{' '}
-                <span className="text-neon">KI-Potenzial-Analyse.</span>
+                <span className="text-neon">Ablauf-Analyse.</span>
               </h1>
               <p className="text-white/55 text-lg leading-relaxed max-w-2xl">
                 Wählen Sie einen passenden Slot. Im Gespräch klären wir kurz und
-                konkret, ob eine neue Website, Automatisierung oder KI-Lösung für
-                Ihr Unternehmen Sinn ergibt.
+                konkret, wo Ihr digitaler Erstkontakt Zeit kostet und welche
+                nächsten Schritte für Ihren Betrieb Sinn ergeben.
               </p>
             </div>
 
@@ -76,7 +77,7 @@ export default function TerminPage() {
                     Kein Pitch. Erst verstehen, dann empfehlen.
                   </h2>
                   <p className="text-text-muted leading-relaxed">
-                    Der Termin ist dafür da, die Situation sauber einzuschätzen.
+                    Der Termin ist dafür da, Ihre Situation sauber einzuschätzen.
                     Wenn NEON nicht passt, sagen wir das offen.
                   </p>
                 </div>
@@ -122,14 +123,14 @@ export default function TerminPage() {
                       <Calendar size={18} strokeWidth={2.5} aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-text-dark">NEON Erstgespräch</p>
+                      <p className="text-sm font-bold text-text-dark">NEON Website- & Ablauf-Analyse</p>
                       <p className="text-xs text-text-muted">Calendly-Buchung, ca. 30 Minuten</p>
                     </div>
                   </div>
                 </div>
 
                 <iframe
-                  title="Termin bei NEON Webdesign & KI buchen"
+                  title="Website- und Ablauf-Analyse bei NEON Webdesign & KI buchen"
                   src={CALENDLY_EMBED_URL}
                   className="h-[760px] w-full bg-off-white"
                   loading="lazy"

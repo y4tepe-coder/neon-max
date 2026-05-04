@@ -3,9 +3,9 @@ import { CheckCircle2, Star, Info, ArrowRight, X } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Preise — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
+  title: 'Preise — NEON Webdesign & KI · Website-Agentur Stuttgart & BW',
   description:
-    'Starter ab 499 €, Business ab 1.990 €, Premium ab 4.490 €. Erste 2 Kunden in Phase 1 kostenfrei. Keine versteckten Kosten, kein Überraschungs-Invoice.',
+    'Starter ab 990 €, Business ab 1.990 €, Premium ab 3.490 €. Klare Pakete, Festpreis vor Start und keine überraschende Rechnung.',
   alternates: {
     canonical: '/preise',
   },
@@ -15,9 +15,9 @@ const packages = [
   {
     id: 'starter',
     name: 'Starter',
-    setupPrice: '499 €',
+    setupPrice: '990 €',
     monthlyPrice: '79 €',
-    description: 'Professioneller Online-Auftritt für den Einstieg.',
+    description: 'Professioneller Online-Auftritt mit sauberer Anfrageaufnahme.',
     features: [
       'Moderne Website (bis 5 Seiten)',
       'Local SEO Grundsetup',
@@ -32,10 +32,10 @@ const packages = [
     name: 'Business',
     setupPrice: '1.990 €',
     monthlyPrice: '149 €',
-    description: 'Website + erste Automatisierung. Für Betriebe, die Abläufe entlasten wollen.',
+    description: 'Website plus erster Anfragefluss. Für Betriebe, die weniger manuell nachfassen wollen.',
     features: [
       'Alle Starter-Inhalte',
-      'System-Automatisierung (1 Workflow)',
+      'Anfragefluss (1 Workflow)',
       'Anfragen-Qualifizierung',
       'Automatische Benachrichtigungen',
       'Priorisierter Support',
@@ -46,13 +46,13 @@ const packages = [
   {
     id: 'premium',
     name: 'Premium',
-    setupPrice: '4.490 €',
-    monthlyPrice: '249 €',
-    description: 'Vollständige KI-Infrastruktur für Ihren Betrieb.',
+    setupPrice: '3.490 €',
+    monthlyPrice: '299 €',
+    description: 'Ablauf-System für Betriebe mit hohem Anfrage- oder Betreuungsaufwand.',
     features: [
       'Alle Business-Inhalte',
-      'KI-Chatbot oder Voice-Agent',
-      'Custom KI-Integration',
+      'Chatbot oder Telefonhilfe',
+      'Individuelle Ablauf-Automation',
       'Unbegrenzte Workflows',
       'Monatlicher Strategie-Call',
     ],
@@ -65,10 +65,10 @@ const comparisonRows = [
   { label: 'Website',                  starter: true,  business: true,  premium: true },
   { label: 'Local SEO Grundsetup',     starter: true,  business: true,  premium: true },
   { label: 'Hosting & Betreuung',      starter: true,  business: true,  premium: true },
-  { label: 'System-Automatisierung',   starter: false, business: true,  premium: true },
+  { label: 'Anfragefluss',             starter: false, business: true,  premium: true },
   { label: 'Anfragen-Qualifizierung',  starter: false, business: true,  premium: true },
-  { label: 'KI-Chatbot / Voice-Agent', starter: false, business: false, premium: true },
-  { label: 'Custom KI-Integration',    starter: false, business: false, premium: true },
+  { label: 'Chatbot / Telefonhilfe',   starter: false, business: false, premium: true },
+  { label: 'Individuelle Automation',  starter: false, business: false, premium: true },
   { label: 'Monatlicher Strategie-Call', starter: false, business: false, premium: true },
 ]
 
@@ -84,11 +84,11 @@ export default function PreisePage() {
             </p>
             <h1 className="text-5xl md:text-6xl font-bold text-off-white leading-tight tracking-tight mb-6 text-balance">
               Drei Pakete.{' '}
-              <span className="text-neon">Kein Überraschungs-Invoice.</span>
+              <span className="text-neon">Klarer Umfang vor Start.</span>
             </h1>
             <p className="text-white/50 text-lg leading-relaxed max-w-2xl">
-              Alle Preise offen und transparent. Einmaliger Setup-Preis + monatlicher Retainer.
-              Die ersten 2 Kunden in Phase 1 erhalten ihr Paket kostenfrei.
+              Alle Preise offen und transparent. Einmaliger Setup-Preis plus monatlicher Retainer.
+              Keine Gratis-Falle, keine versteckten Stunden, keine überraschende Rechnung.
             </p>
           </div>
         </div>
@@ -151,7 +151,7 @@ export default function PreisePage() {
                   </ul>
 
                   <Link
-                    href="/kontakt"
+                    href="/termin"
                     className={`block w-full text-center font-semibold px-5 py-3 rounded-full text-sm transition-all duration-200 cursor-pointer ${
                       pkg.highlighted
                         ? 'bg-neon text-text-dark hover:bg-neon-dim'
@@ -165,14 +165,12 @@ export default function PreisePage() {
             ))}
           </div>
 
-          {/* TODO-Hinweis erste 2 Kunden */}
-          {/* TODO Yasin: nach Phase-1-Ende diesen Banner entfernen */}
           <div className="flex items-start gap-3 bg-neon/8 rounded-xl px-5 py-4 border border-neon/20 mb-6">
             <Info size={15} className="text-neon-dim shrink-0 mt-0.5" aria-hidden="true" />
             <p className="text-text-dark text-sm leading-relaxed">
-              <span className="font-semibold text-neon-dim">Erste 2 Kunden in Phase 1 kostenfrei –</span>{' '}
-              wir bauen Ihr Paket ohne Setup-Gebühr, damit echte Referenzen entstehen.
-              Monatlicher Retainer fällt an. Auf Anfrage.
+              <span className="font-semibold text-neon-dim">Phase-1 Referenzplätze –</span>{' '}
+              für passende Betriebe dokumentieren wir das Projekt sauber als Case Study.
+              Der Preis bleibt transparent und wird vor Start festgelegt.
             </p>
           </div>
 
@@ -241,18 +239,18 @@ export default function PreisePage() {
             Unsicher, welches Paket passt?
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-off-white leading-tight tracking-tight mb-5 text-balance">
-            Bedarfsanalyse zuerst – dann Empfehlung.
+            Analyse zuerst – dann Empfehlung.
           </h2>
           <p className="text-white/50 text-lg leading-relaxed max-w-xl mx-auto mb-8">
             Wir empfehlen das Paket, das zu Ihrem Betrieb passt – nicht das teuerste.
             Kostenlos und ohne Verpflichtung.
           </p>
           <Link
-            href="/kontakt"
+            href="/termin"
             className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
           >
-            Kostenlose Bedarfsanalyse starten
+            Website kostenlos prüfen lassen
             <ArrowRight size={18} aria-hidden="true" />
           </Link>
         </div>

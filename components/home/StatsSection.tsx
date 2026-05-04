@@ -5,7 +5,7 @@ import { useRef } from 'react'
 
 const stats = [
   { value: '14',    unit: 'Tage',    label: 'bis zur fertigen Website' },
-  { value: '30',    unit: 'Min',     label: 'Bedarfsanalyse, kostenfrei' },
+  { value: '30',    unit: 'Min',     label: 'Analyse, kostenfrei' },
   { value: '100',   unit: '%',       label: 'Festpreis vor Projektstart' },
   { value: 'BW',    unit: '',        label: 'lokal aus Region Stuttgart / LE' },
 ]

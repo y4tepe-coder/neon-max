@@ -3,9 +3,9 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Steuerberater — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
+  title: 'Steuerberater — NEON Webdesign & KI · Website-Agentur Stuttgart & BW',
   description:
-    'KI-Automation für Steuerberater: Automatische Dokumentenanforderung, Erinnerungsflows, Mandanten-Onboarding. DSGVO-konform, self-hosted, Festpreis.',
+    'Digitale Abläufe für Steuerberater: Dokumentenanforderung, Erinnerungsflows und Mandanten-Onboarding. DSGVO-konform, self-hosted, Festpreis.',
   alternates: {
     canonical: '/branchen/steuerberater',
   },
@@ -25,7 +25,7 @@ const pains = [
   {
     title: 'Onboarding neuer Mandanten ist aufwändig',
     description:
-      'Stammdatenerfassung, Vollmachten, Erstunterlagen – alles manuell. Dabei lässt sich dieser Prozess vollständig automatisieren und DSGVO-konform gestalten.',
+      'Stammdatenerfassung, Vollmachten, Erstunterlagen – alles manuell. Dabei lässt sich dieser Prozess deutlich strukturierter und DSGVO-konform gestalten.',
   },
 ]
 
@@ -111,17 +111,17 @@ export default function SteuerberaterPage() {
                 Unterlagen kommen automatisch – Sie müssen nicht mehr nachfassen.
               </h2>
               <p className="text-text-muted text-base leading-relaxed mb-8">
-                Wir analysieren Ihre Kanzlei-Abläufe und bauen Ihnen ein System, das
+                Wir analysieren Ihre Kanzlei-Abläufe und bauen Ihnen einen Ablauf, der
                 Mandanten automatisch an ausstehende Unterlagen erinnert, Fristen steuert
                 und Onboarding-Prozesse standardisiert – DSGVO-konform, self-hosted,
                 ohne Drittanbieter mit Datenzugriff.
               </p>
               <Link
-                href="/kontakt"
+                href="/termin"
                 className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold
                            px-6 py-3 rounded-full hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm"
               >
-                Kostenlose Bedarfsanalyse starten
+                Website kostenlos prüfen lassen
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
             </div>
@@ -181,15 +181,15 @@ export default function SteuerberaterPage() {
             30 Minuten – und Sie wissen, was möglich ist.
           </h2>
           <p className="text-white/50 text-lg leading-relaxed max-w-xl mx-auto mb-8">
-            Kostenlose Bedarfsanalyse: Wir verstehen Ihre Abläufe und zeigen Ihnen,
-            wie ein DSGVO-konformes Automatisierungssystem konkret aussehen kann.
+            Kostenlose Analyse: Wir verstehen Ihre Abläufe und zeigen Ihnen,
+            wie ein DSGVO-konformer Erinnerungs- und Dokumentenfluss konkret aussehen kann.
           </p>
           <Link
-            href="/kontakt"
+            href="/termin"
             className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
           >
-            Bedarfsanalyse starten
+            Kostenlos prüfen lassen
             <ArrowRight size={18} aria-hidden="true" />
           </Link>
         </div>

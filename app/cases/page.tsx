@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Case Studies — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
+  title: 'Case Studies — NEON Webdesign & KI · Website-Agentur Stuttgart & BW',
   description:
     'Echte Ergebnisse, echter Kontext. Case Studies folgen nach den ersten Kundenprojekten – kein Erfundenes, nur Reales.',
   alternates: {
@@ -29,15 +29,15 @@ export default function CasesPage() {
               sobald die ersten Projekte abgeschlossen sind – kein Erfundenes, nur Reales.
             </p>
             <p className="text-white/30 text-base leading-relaxed max-w-xl mb-10">
-              In Phase 1 arbeiten wir mit den ersten 2 Kunden kostenfrei zusammen,
-              um echte Referenzen und messbare Ergebnisse zu schaffen.
+              In Phase 1 dokumentieren wir passende Projekte besonders sauber,
+              damit echte Referenzen und messbare Ergebnisse entstehen.
             </p>
             <Link
-              href="/kontakt"
+              href="/termin"
               className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full
                          hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
             >
-              Jetzt Bedarfsanalyse starten
+              Website kostenlos prüfen lassen
               <ArrowRight size={18} aria-hidden="true" />
             </Link>
           </div>

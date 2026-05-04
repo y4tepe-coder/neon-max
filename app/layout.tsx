@@ -23,26 +23,26 @@ const caveat = Caveat({
 export const metadata: Metadata = {
   metadataBase: new URL('https://neon-bw.de'),
   title: {
-    default: 'NEON Webdesign & KI – Zeit sparen durch KI im Hintergrund',
+    default: 'NEON Webdesign & KI – Klare Anfragewege für lokale Betriebe',
     template: '%s – NEON Webdesign & KI',
   },
   description:
-    'Websites mit KI im Hintergrund aus Baden-Württemberg. Anfragen aufnehmen, Informationen sortieren, Rückfragen vorbereiten und Termine erleichtern – damit Sie Ihre Zeit zurückbekommen. Festpreis vor Start, DSGVO-konform, lokal aus Region Stuttgart / LE / Filderstadt.',
+    'NEON baut Websites und digitale Anfragewege für lokale Betriebe in Baden-Württemberg. Anfragen aufnehmen, Informationen sortieren, Rückfragen vorbereiten und Termine erleichtern – Festpreis vor Start, DSGVO-konform, lokal aus Region Stuttgart / LE / Filderstadt.',
   keywords: [
-    'Websites mit KI Stuttgart',
+    'Website Agentur Stuttgart',
     'KI Webdesign Baden-Württemberg',
-    'KI im Hintergrund',
-    'Zeit sparen mit KI',
+    'Anfragen automatisieren Mittelstand',
+    'Digitale Anfragewege',
     'Website Leinfelden-Echterdingen',
     'Website Filderstadt',
-    'Anfragen automatisieren Mittelstand',
+    'Zeit sparen im Betrieb',
     'KI Webagentur BW',
   ],
   authors: [{ name: 'NEON Webdesign & KI' }],
   openGraph: {
-    title: 'NEON Webdesign & KI – Zeit sparen durch KI im Hintergrund',
+    title: 'NEON Webdesign & KI – Klare Anfragewege für lokale Betriebe',
     description:
-      'Websites mit KI im Hintergrund aus Baden-Württemberg. Anfragen aufnehmen, sortieren, Rückfragen vorbereiten, Termine erleichtern. Festpreis vor Start.',
+      'Websites und digitale Anfragewege aus Baden-Württemberg. Anfragen aufnehmen, sortieren, Rückfragen vorbereiten, Termine erleichtern. Festpreis vor Start.',
     type: 'website',
     locale: 'de_DE',
     url: 'https://neon-bw.de',
@@ -52,15 +52,15 @@ export const metadata: Metadata = {
         url: '/icon-512.png',
         width: 512,
         height: 512,
-        alt: 'NEON Webdesign & KI – Websites mit KI im Hintergrund aus Baden-Württemberg',
+        alt: 'NEON Webdesign & KI – Websites und Anfragewege aus Baden-Württemberg',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NEON Webdesign & KI – Zeit sparen durch KI im Hintergrund',
+    title: 'NEON Webdesign & KI – Klare Anfragewege für lokale Betriebe',
     description:
-      'Websites mit KI im Hintergrund aus Baden-Württemberg. Festpreis vor Start, DSGVO-konform, persönlich erreichbar.',
+      'Websites und digitale Anfragewege aus Baden-Württemberg. Festpreis vor Start, DSGVO-konform, persönlich erreichbar.',
     images: ['/icon-512.png'],
   },
   robots: {
@@ -86,13 +86,14 @@ const jsonLd = {
       url: 'https://neon-bw.de',
       email: 'hello@neon-bw.de',
       description:
-        'NEON Webdesign & KI baut Websites mit KI im Hintergrund für lokale Unternehmen aus Baden-Württemberg. Anfragen aufnehmen, Informationen sortieren, Rückfragen vorbereiten und Termine erleichtern – damit Inhaberinnen und Inhaber Zeit zurückbekommen.',
+        'NEON Webdesign & KI baut Websites und digitale Anfragewege für lokale Unternehmen aus Baden-Württemberg. Anfragen aufnehmen, Informationen sortieren, Rückfragen vorbereiten und Termine erleichtern – damit Inhaberinnen und Inhaber Zeit zurückbekommen.',
       knowsAbout: [
-        'Websites mit KI im Hintergrund',
+        'Website-Entwicklung',
+        'Digitale Anfragewege',
         'Anfrageaufnahme',
         'Termin-Automatisierung',
         'Prozess-Automatisierung',
-        'KI-Integration',
+        'Verantwortliche KI-Nutzung',
         'Local SEO',
       ],
       areaServed: {
@@ -111,7 +112,7 @@ const jsonLd = {
       url: 'https://neon-bw.de',
       email: 'hello@neon-bw.de',
       description:
-        'Websites mit KI im Hintergrund aus Region Stuttgart / Leinfelden-Echterdingen / Filderstadt. Festpreis vor Start, DSGVO-konform, persönlich erreichbar.',
+        'Websites und digitale Anfragewege aus Region Stuttgart / Leinfelden-Echterdingen / Filderstadt. Festpreis vor Start, DSGVO-konform, persönlich erreichbar.',
       priceRange: '€€',
       address: {
         '@type': 'PostalAddress',
@@ -133,28 +134,28 @@ const jsonLd = {
       '@type': 'Service',
       name: 'Website-Entwicklung',
       provider: { '@id': 'https://neon-bw.de/#organization' },
-      description: 'Mobiloptimierte Website mit Local SEO – ab 499 € einmalig.',
-      offers: { '@type': 'Offer', price: '499', priceCurrency: 'EUR' },
+      description: 'Mobiloptimierte Website mit Local SEO und klarer Anfrageaufnahme – ab 990 € einmalig.',
+      offers: { '@type': 'Offer', price: '990', priceCurrency: 'EUR' },
     },
     {
       '@type': 'Service',
-      name: 'System-Automatisierung',
+      name: 'Anfragefluss-Automatisierung',
       provider: { '@id': 'https://neon-bw.de/#organization' },
       description: 'Automatisierte Geschäftsprozesse: Anfragen qualifizieren, Daten übergeben, Kunden benachrichtigen – ab 1.490 €.',
       offers: { '@type': 'Offer', price: '1490', priceCurrency: 'EUR' },
     },
     {
       '@type': 'Service',
-      name: 'Custom KI-Integration',
+      name: 'Ablauf-Automation',
       provider: { '@id': 'https://neon-bw.de/#organization' },
-      description: 'KI direkt in bestehende Abläufe integriert – kein Vendor-Lock-in, DSGVO-konform, ab 2.990 €.',
+      description: 'Automatisierung und KI-Bausteine direkt in bestehende Abläufe integriert – kein Vendor-Lock-in, DSGVO-konform, ab 2.990 €.',
       offers: { '@type': 'Offer', price: '2990', priceCurrency: 'EUR' },
     },
     {
       '@type': 'Service',
-      name: 'KI-Chatbot & Voice-Agent',
+      name: 'Chatbot & Telefonhilfe',
       provider: { '@id': 'https://neon-bw.de/#organization' },
-      description: 'KI-Assistent für 24/7-Anfragenqualifizierung und Terminbuchung – ab 1.990 €.',
+      description: 'Assistent für Anfragequalifizierung, Rückfragen und Terminbuchung – ab 1.990 €.',
       offers: { '@type': 'Offer', price: '1990', priceCurrency: 'EUR' },
     },
     {

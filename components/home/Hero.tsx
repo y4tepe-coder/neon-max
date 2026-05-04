@@ -14,7 +14,7 @@ const badges = [
   'Region Stuttgart / BW',
   'DSGVO & self-hosted',
   'Festpreis vor Start',
-  '30-Minuten-Analyse',
+  '2-3 konkrete Hebel',
 ] as const
 
 export default function Hero() {
@@ -59,7 +59,7 @@ export default function Hero() {
               style={{ background: '#C5F74F' }}
               aria-hidden="true"
             />
-            ROUTINE RAUS — MEHR ZEIT FÜRS GESCHÄFT
+            WENIGER HANDARBEIT — KLARERE ANFRAGEN
           </span>
         </motion.div>
 
@@ -69,7 +69,7 @@ export default function Hero() {
           className="font-bold leading-[1.08] tracking-tight"
           style={{ fontSize: 'clamp(2.25rem, 7vw, 5.5rem)', color: '#F8FAFC' }}
         >
-          Dein unfairer
+          Ihr unfairer
           <br />
           <span style={{ color: '#C5F74F' }}>Wettbewerbsvorteil.</span>
         </motion.h1>
@@ -80,9 +80,10 @@ export default function Hero() {
           className="mt-6 md:mt-7 text-base md:text-xl leading-relaxed max-w-2xl"
           style={{ color: 'rgba(248,250,252,0.55)' }}
         >
-          NEON baut KI-Systeme für lokale Betriebe: Websites, Automationen und
-          Assistenten, die Anfragen qualifizieren, Termine organisieren und
-          wiederkehrende Arbeit im Hintergrund übernehmen.
+          NEON baut für lokale Betriebe den digitalen Erstkontakt: eine klare
+          Website, strukturierte Anfragen, vorbereitete Rückfragen und Termine,
+          die ohne Hin und Her funktionieren. KI läuft nur dort mit, wo sie
+          messbar Zeit spart.
         </motion.p>
 
         {/* CTAs */}
@@ -99,7 +100,7 @@ export default function Hero() {
               boxShadow:  '0 4px 28px rgba(197,247,79,0.3)',
             }}
           >
-            Kostenlose Potenzial-Analyse
+            Website kostenlos prüfen lassen
             <ArrowRight size={17} className="transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
 
@@ -119,7 +120,7 @@ export default function Hero() {
               e.currentTarget.style.color = 'rgba(248,250,252,0.75)'
             }}
           >
-            So spart KI Zeit
+            Zeitfresser finden
           </Link>
         </motion.div>
 

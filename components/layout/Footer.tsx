@@ -7,16 +7,16 @@ const footerLinks = [
     links: [
       { href: '/leistungen',                 label: 'Alle Leistungen' },
       { href: '/leistungen#websites',         label: 'Websites' },
-      { href: '/leistungen#automatisierung',  label: 'System-Automatisierung' },
-      { href: '/leistungen#ki-integration',   label: 'KI-Integration' },
-      { href: '/leistungen#chatbot',          label: 'Chatbot & Voice' },
+      { href: '/leistungen#automatisierung',  label: 'Anfragefluss' },
+      { href: '/leistungen#ki-integration',   label: 'Ablauf-Automation' },
+      { href: '/leistungen#chatbot',          label: 'Chatbot & Telefonhilfe' },
     ],
   },
   {
     title: 'Agentur',
     links: [
       { href: '/ueber-uns',     label: 'Über NEON' },
-      { href: '/#zeit-sparen',  label: 'Wo KI Zeit spart' },
+      { href: '/#zeit-sparen',  label: 'Zeitfresser finden' },
       { href: '/termin',        label: 'Kostenlose Analyse' },
       { href: '/kontakt',       label: 'Kontakt' },
     ],
@@ -44,8 +44,8 @@ export default function Footer() {
               <span className="text-xs font-semibold uppercase tracking-widest text-neon/50 ml-1">BW</span>
             </Link>
             <p className="text-white/55 text-sm leading-relaxed max-w-xs mb-6">
-              Websites mit KI im Hintergrund – aus Baden-Württemberg, persönlich,
-              Festpreis und DSGVO-konform.
+              Klare Websites und digitale Anfragewege – aus Baden-Württemberg,
+              persönlich, zum Festpreis und DSGVO-konform.
             </p>
             <div className="flex flex-col gap-3">
               <a

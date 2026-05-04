@@ -21,7 +21,7 @@ type QuizStep = {
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const TERMIN_URL = '/termin'
-const MAIL_URL = 'mailto:hello@neon-bw.de?subject=Bedarfsanalyse%20Ergebnis'
+const MAIL_URL = 'mailto:hello@neon-bw.de?subject=Potenzial-Check%20Ergebnis'
 
 // ─── Quiz questions ───────────────────────────────────────────────────────────
 
@@ -139,7 +139,7 @@ const RESULT_CONFIG: Record<
     textColor: 'text-green-600',
     bgColor: 'bg-green-50 border border-green-100',
     description:
-      'Ihre Abläufe laufen schon strukturiert. KI im Hintergrund kann hier Feinarbeit übernehmen, statt grundsätzlich umzubauen.',
+      'Ihre Abläufe laufen schon strukturiert. Hier geht es eher um Feinarbeit als um einen großen Umbau.',
   },
 }
 
@@ -180,7 +180,7 @@ const GOAL_MESSAGE: Record<string, string> = {
   leads: 'Mehr Anfragen ordentlich aufgenommen – Website plus strukturierte Aufnahme im Hintergrund.',
   image: 'Weniger Routinearbeit – genau dafür laufen die Bausteine ruhig im Hintergrund mit.',
   seo: 'Schneller reagieren – Standardrückfragen vorbereiten, statt nochmal hin- und her zu schreiben.',
-  all: 'Ein zusammenhängender Ablauf – das ist genau, was wir bauen. Starten Sie mit der kostenlosen Potenzial-Analyse.',
+  all: 'Ein zusammenhängender Ablauf – das ist genau, was wir bauen. Starten Sie mit der kostenlosen Analyse.',
 }
 
 // ─── Validation helpers ───────────────────────────────────────────────────────
@@ -247,7 +247,7 @@ export default function WebsiteCheck() {
     if (phase !== 'loading') return
     const messages = [
       'Antworten werden ausgewertet…',
-      'Automatisierungspotenzial wird berechnet…',
+      'Entlastungspotenzial wird berechnet…',
       'Abläufe werden analysiert…',
       'Empfehlungen werden vorbereitet…',
       'Ergebnis wird finalisiert…',
@@ -335,7 +335,7 @@ export default function WebsiteCheck() {
 
   return (
     <section
-      id="ki-bedarfsanalyse"
+      id="potenzial-check"
       className="section-pad bg-dark-bg overflow-hidden"
       aria-labelledby="check-heading"
     >
@@ -350,19 +350,19 @@ export default function WebsiteCheck() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-neon/60 text-sm font-semibold uppercase tracking-widest mb-4">
-              Kostenlose Bedarfsanalyse
+              Kostenloser Potenzial-Check
             </p>
             <h2 id="check-heading" className="heading-section text-off-white mb-5 text-balance">
               Wo geht in Ihrem Betrieb am meisten Zeit verloren?
             </h2>
             <p className="text-white/55 text-lg leading-relaxed mb-8">
               6 kurze Fragen – und Sie sehen sofort, an welchen Stellen Routinearbeit
-              ein System übernehmen könnte. Ohne erst Ihre Kontaktdaten abzugeben.
+              ein System übernehmen könnte. Ohne Tech-Begriffe, ohne Verkaufstext.
             </p>
             <div className="space-y-3.5">
               {[
                 'Kostenlos & unverbindlich',
-                'Sofortiges Ergebnis im Browser',
+                'Ergebnis direkt im Browser',
                 'Konkrete Hinweise, kein Verkaufstext',
               ].map((point) => (
                 <div key={point} className="flex items-center gap-3">
@@ -389,8 +389,8 @@ export default function WebsiteCheck() {
                       <Search size={18} className="text-neon-dim" aria-hidden="true" />
                     </div>
                     <div>
-                      <h3 className="text-text-dark font-bold text-lg leading-tight">KI-Bedarfsanalyse starten</h3>
-                      <p className="text-text-muted text-xs">6 Fragen, Ergebnis direkt im Browser</p>
+                      <h3 className="text-text-dark font-bold text-lg leading-tight">Potenzial-Check starten</h3>
+                      <p className="text-text-muted text-xs">6 Fragen, konkrete Einschätzung</p>
                     </div>
                   </div>
                   <form onSubmit={handleUrlSubmit} className="space-y-4" noValidate>
@@ -715,7 +715,7 @@ export default function WebsiteCheck() {
                                  px-5 py-3.5 rounded-xl hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm"
                     >
                       <Phone size={15} aria-hidden="true" />
-                      Kostenlose Potenzial-Analyse
+                      Website kostenlos prüfen lassen
                     </a>
                     <a
                       href={MAIL_URL}

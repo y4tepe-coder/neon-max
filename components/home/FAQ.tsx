@@ -6,24 +6,24 @@ import { Plus, Minus } from 'lucide-react'
 
 const faqs = [
   {
-    question: 'Wie genau spart KI bei mir Zeit?',
+    question: 'Was bringt mir das konkret im Alltag?',
     answer:
-      'Indem sie Routine im Hintergrund übernimmt: Anfragen sauber aufnehmen, wichtige Punkte sortieren, Standardrückfragen vorbereiten und Termin-Bestätigungen automatisch laufen lassen. Sie geben am Ende nur noch frei, was wirklich Ihre Entscheidung braucht.',
+      'Weniger Nachfassen, weniger Sucherei, weniger Hin und Her. Anfragen werden sauber aufgenommen, wichtige Punkte sortiert, Standardrückfragen vorbereitet und Termine bestätigt. Sie entscheiden am Ende nur noch das, was wirklich Ihre Entscheidung braucht.',
   },
   {
     question: 'Was kostet das Ganze?',
     answer:
-      'Wir nennen den Festpreis vor Projektstart, nicht erst auf der Rechnung. In der kostenlosen Potenzial-Analyse klären wir Umfang und Aufwand und Sie bekommen eine klare Range, bevor irgendetwas gebaut wird.',
+      'Wir nennen den Festpreis vor Projektstart, nicht erst auf der Rechnung. In der kostenlosen Analyse klären wir Umfang und Aufwand und Sie bekommen eine klare Range, bevor irgendetwas gebaut wird.',
   },
   {
-    question: 'Wie läuft die kostenlose Potenzial-Analyse ab?',
+    question: 'Wie läuft die kostenlose Analyse ab?',
     answer:
-      'Kostenlos, ohne Verpflichtung, in rund 30 Minuten. Wir schauen kurz auf Ihre aktuellen Abläufe und Ihre Website, gehen die Stellen durch, an denen Routine Zeit kostet, und Sie bekommen eine ehrliche Einschätzung – auch wenn NEON nicht passt.',
+      'Kostenlos, ohne Verpflichtung, in rund 30 Minuten. Wir schauen auf Ihre Website und auf den Weg der Anfrage: Wo kommt sie rein, wer sortiert sie, wo bleibt Arbeit liegen? Danach bekommen Sie 2-3 konkrete Hebel – auch wenn NEON nicht passt.',
   },
   {
-    question: 'Wie schnell ist eine Website mit KI im Hintergrund live?',
+    question: 'Wie schnell kann das live sein?',
     answer:
-      'Eine Website ist meist in rund 14 Tagen live. Komplexere KI-Bausteine im Hintergrund kommen je nach Umfang in 2–6 Wochen dazu. Den Zeitplan halten wir vor Start fest.',
+      'Eine klare Website ist meist in rund 14 Tagen live. Zusätzliche Bausteine für Anfrageaufnahme, Terminfluss oder Assistenz kommen je nach Umfang in 2–6 Wochen dazu. Den Zeitplan halten wir vor Start fest.',
   },
   {
     question: 'Ist das DSGVO-konform?',
@@ -95,7 +95,7 @@ export default function FAQ() {
               Direkte Antworten.
             </h2>
             <p className="text-body">
-              Kein Kleingedrucktes, kein Vertriebsdruck. Informiert entscheiden – das ist unser Anspruch.
+              Kein Kleingedrucktes, kein Vertriebsdruck. Erst verstehen, dann entscheiden.
             </p>
             <p className="mt-4 text-text-muted text-sm">
               Noch mehr Fragen?{' '}

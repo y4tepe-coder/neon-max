@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle2, XCircle } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Für wen – NEON Webdesign & KI',
   description:
-    'NEON Webdesign & KI richtet sich an lokale Dienstleister, Handwerker, kleine Unternehmen und Betriebe in Baden-Württemberg, die professionell online auftreten wollen.',
+    'NEON Webdesign & KI richtet sich an lokale Dienstleister, Handwerker und Betriebe in Baden-Württemberg, die professionell auftreten und Anfragewege entlasten wollen.',
   alternates: {
     canonical: '/fuer-wen',
   },
@@ -16,31 +16,31 @@ const targetGroups = [
     title: 'Handwerk & Gewerbe',
     examples: ['Elektriker', 'Maler & Lackierer', 'Sanitär & Heizung', 'Schreiner', 'Kfz-Werkstätten', 'Bauunternehmen'],
     description:
-      'Ihr Handwerk ist Ihr Aushängeschild – Ihre Website sollte es ebenfalls sein. Wir helfen Ihnen, online professionell aufzutreten und mehr Anfragen zu bekommen.',
+      'Ihr Handwerk ist Ihr Aushängeschild – Ihre Website sollte es ebenfalls sein. Wir helfen Ihnen, online professionell aufzutreten und Anfragen sauberer aufzunehmen.',
   },
   {
     title: 'Dienstleister & Berater',
     examples: ['Steuerberater', 'Versicherungen', 'Coaches', 'Berater', 'Freelancer', 'Büros'],
     description:
-      'Kompetenz und Vertrauen sind Ihr Kapital. Eine professionelle Website vermittelt genau das – und überzeugt potenzielle Kunden, bevor Sie das erste Wort sagen.',
+      'Kompetenz und Vertrauen sind Ihr Kapital. Eine professionelle Website vermittelt genau das – und sortiert den Erstkontakt, bevor Sie zurückrufen.',
   },
   {
     title: 'Gesundheit & Wellness',
     examples: ['Friseure', 'Kosmetikstudios', 'Massagepraxen', 'Fitnessstudios', 'Yogastudios', 'Therapeuten'],
     description:
-      'Ihr Angebot verdient einen Auftritt, der Wohlgefühl und Professionalität vermittelt – mit einfacher Terminbuchung und klarer Darstellung Ihrer Leistungen.',
+      'Ihr Angebot verdient einen Auftritt, der Wohlgefühl und Professionalität vermittelt – mit einfacher Terminbuchung und klarer Anfrageaufnahme.',
   },
   {
     title: 'Gastronomie & Einzelhandel',
     examples: ['Restaurants', 'Cafés', 'Bäckereien', 'Einzelhandel', 'Boutiquen', 'Feinkost'],
     description:
-      'Bevor ein Gast kommt, schaut er auf Ihre Website. Wir sorgen dafür, dass der erste Eindruck stimmt – mit aktuellen Infos, Öffnungszeiten und Atmosphäre.',
+      'Bevor ein Gast kommt, schaut er auf Ihre Website. Wir sorgen dafür, dass der erste Eindruck stimmt – mit aktuellen Infos, Öffnungszeiten und einem einfachen Weg zur Anfrage.',
   },
 ]
 
 const goodFit = [
   'Sie haben noch keine Website oder eine deutlich veraltete',
-  'Sie wollen mehr Anfragen und Kunden über das Internet',
+  'Sie wollen passendere Anfragen und weniger Rückfragen',
   'Sie haben keine Zeit oder Lust, sich selbst um Technik zu kümmern',
   'Ihnen ist ein persönlicher Ansprechpartner wichtig',
   'Sie suchen eine faire, transparente Zusammenarbeit',
@@ -70,8 +70,8 @@ export default function FuerWenPage() {
               <span className="text-neon">wie Ihres.</span>
             </h1>
             <p className="text-white/50 text-lg leading-relaxed max-w-2xl">
-              NEON richtet sich an lokale Unternehmen, die professionell online auftreten wollen –
-              ohne technischen Aufwand und ohne versteckte Kosten.
+              NEON richtet sich an lokale Unternehmen, die professionell online auftreten
+              und ihren Erstkontakt sauberer organisieren wollen.
             </p>
           </div>
         </div>
@@ -89,7 +89,7 @@ export default function FuerWenPage() {
             </h2>
             <p className="text-text-muted text-lg leading-relaxed">
               Wir arbeiten am liebsten mit lokalen Unternehmen zusammen, die wissen, was sie tun –
-              und die einen verlässlichen Partner für den digitalen Auftritt suchen.
+              und die einen verlässlichen Partner für Website, Anfrageaufnahme und Betreuung suchen.
             </p>
           </div>
 
@@ -185,10 +185,10 @@ export default function FuerWenPage() {
             die richtige Wahl. Sprechen wir in einem kurzen, kostenlosen Gespräch darüber.
           </p>
           <Link
-            href="/kontakt"
+            href="/termin"
             className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
           >
-            Kostenloses Erstgespräch
+            Website kostenlos prüfen lassen
             <ArrowRight size={18} aria-hidden="true" />
           </Link>
         </div>

@@ -3,9 +3,9 @@ import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Unser Prozess — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
+  title: 'Unser Prozess — NEON Webdesign & KI · Website-Agentur Stuttgart & BW',
   description:
-    'Bedarfsanalyse → Empfehlung → Festpreis → Umsetzung → Betreuung. Kein Overrun, kein Überraschungs-Invoice. Fünf Schritte, ein Partner.',
+    'Analyse → Empfehlung → Festpreis → Umsetzung → Betreuung. Klare Anfragewege, keine versteckten Stunden, keine überraschende Rechnung.',
   alternates: {
     canonical: '/prozess',
   },
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const steps = [
   {
     number: '01',
-    name: 'Bedarfsanalyse',
+    name: 'Analyse',
     duration: 'ca. 30 Minuten · kostenlos',
     description:
       'Im ersten Gespräch verstehen wir Ihre Abläufe, Engpässe und Ziele. Wir fragen nach: Wie gehen Anfragen ein? Wo entsteht manuelle Arbeit? Was läuft gut – und was kostet Zeit? Kein Verkaufsgespräch, kein Angebotsdruck.',
@@ -33,15 +33,15 @@ const steps = [
     name: 'Festpreis-Angebot',
     duration: 'nach Empfehlung',
     description:
-      'Nach Ihrer Zustimmung erhalten Sie ein verbindliches Festpreis-Angebot. Was drin steht, wird gebaut – zum Preis, der vereinbart ist. Kein Overrun, kein Überraschungs-Invoice.',
+      'Nach Ihrer Zustimmung erhalten Sie ein verbindliches Festpreis-Angebot. Was drin steht, wird gebaut – zum Preis, der vereinbart ist. Keine versteckten Stunden, keine überraschende Rechnung.',
     result: 'Klarer Vertrag, klarer Umfang, klarer Preis.',
   },
   {
     number: '04',
     name: 'Umsetzung',
-    duration: '14 Tage (Website) · 2–6 Wochen (KI)',
+    duration: '14 Tage (Website) · 2–6 Wochen (Abläufe)',
     description:
-      'Wir bauen und testen das System. Sie bleiben informiert, ohne selbst Hand anlegen zu müssen. Iterationen und Feedback sind Teil des Prozesses – kein abruptes "Fertig, hier ist Ihr Passwort".',
+      'Wir bauen und testen den Ablauf. Sie bleiben informiert, ohne selbst Hand anlegen zu müssen. Iterationen und Feedback sind Teil des Prozesses – kein abruptes "Fertig, hier ist Ihr Passwort".',
     result: 'Ein System, das funktioniert – getestet vor dem Launch.',
   },
   {
@@ -66,10 +66,10 @@ export default function ProzessPage() {
             </p>
             <h1 className="text-5xl md:text-6xl font-bold text-off-white leading-tight tracking-tight mb-6 text-balance">
               Fünf Schritte.{' '}
-              <span className="text-neon">Kein Blindflug.</span>
+              <span className="text-neon">Kein Techniknebel.</span>
             </h1>
             <p className="text-white/50 text-lg leading-relaxed max-w-2xl">
-              Wir analysieren zuerst, empfehlen dann – und bauen erst, wenn Sie zustimmen.
+              Wir analysieren zuerst, empfehlen dann und bauen erst, wenn Sie zustimmen.
               Festpreis, klarer Zeitplan, persönliche Betreuung.
             </p>
           </div>
@@ -129,18 +129,18 @@ export default function ProzessPage() {
             Schritt 1 starten
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-off-white leading-tight tracking-tight mb-5 text-balance">
-            Bedarfsanalyse – kostenlos & unverbindlich.
+            Website- & Ablauf-Analyse – kostenlos und unverbindlich.
           </h2>
           <p className="text-white/50 text-lg leading-relaxed max-w-xl mx-auto mb-8">
-            30 Minuten. Wir verstehen Ihre Abläufe. Sie erhalten eine konkrete Empfehlung –
+            30 Minuten. Wir verstehen Ihre Abläufe. Sie erhalten 2-3 konkrete Hebel –
             ohne Verpflichtung.
           </p>
           <Link
-            href="/kontakt"
+            href="/termin"
             className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
           >
-            Jetzt Bedarfsanalyse starten
+            Jetzt kostenlos prüfen lassen
             <ArrowRight size={18} aria-hidden="true" />
           </Link>
         </div>

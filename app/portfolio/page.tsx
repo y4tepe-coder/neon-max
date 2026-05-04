@@ -3,9 +3,9 @@ import Link from 'next/link'
 import { ArrowRight, Info } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Portfolio — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
+  title: 'Portfolio — NEON Webdesign & KI · Website-Agentur Stuttgart & BW',
   description:
-    'Demo-Sites und Beispielprojekte: Websites und KI-Systeme für Handwerk, Kanzleien und Steuerberater in Baden-Württemberg.',
+    'Demo-Sites und Beispielprojekte: Websites, Anfragewege und Automationen für Handwerk, Kanzleien und Steuerberater in Baden-Württemberg.',
   alternates: {
     canonical: '/portfolio',
   },
@@ -18,7 +18,7 @@ const projects = [
     category: 'Kanzlei',
     description:
       'Demo-Website mit Mandantenanfrage-Formular, DSGVO-Checkbox und automatischer Weiterleitung ins Postfach.',
-    tags: ['Website', 'KI-Formular', 'DSGVO'],
+    tags: ['Website', 'Anfrageformular', 'DSGVO'],
     demo: true,
     comingSoon: false,
   },
@@ -38,37 +38,37 @@ const projects = [
     category: 'Steuerberatung',
     description:
       'Demo mit Mandanten-Onboarding-Flow und automatischer Dokumentenanforderung.',
-    tags: ['Website', 'Onboarding', 'KI-Assistent'],
+    tags: ['Website', 'Onboarding', 'Dokumentenfluss'],
     demo: true,
     comingSoon: false,
   },
   {
     id: 4,
-    name: 'KI-Chatbot Demo',
-    category: 'KI-System',
+    name: 'Chatbot Demo',
+    category: 'Assistenz',
     description:
-      'Chatbot-Integration für eine Kanzlei-Website: Mandantenanfragen qualifizieren, Termine buchen, rund um die Uhr erreichbar.',
-    tags: ['KI-Chatbot', 'Terminbuchung', 'DSGVO'],
+      'Chatbot-Integration für eine Kanzlei-Website: Mandantenanfragen qualifizieren, Termine vorbereiten, rund um die Uhr erreichbar.',
+    tags: ['Chatbot', 'Terminbuchung', 'DSGVO'],
     demo: true,
     comingSoon: true,
   },
   {
     id: 5,
-    name: 'Anfragen-Automatisierung Demo',
+    name: 'Anfragefluss Demo',
     category: 'Automatisierung',
     description:
-      'Vollständiger Automatisierungs-Flow für Handwerksbetriebe: Anfrage → Qualifizierung → Benachrichtigung → Kalender.',
-    tags: ['System-Automatisierung', 'Handwerk', 'CRM'],
+      'Vollständiger Anfragefluss für Handwerksbetriebe: Anfrage → Qualifizierung → Benachrichtigung → Kalender.',
+    tags: ['Anfragefluss', 'Handwerk', 'CRM'],
     demo: true,
     comingSoon: true,
   },
   {
     id: 6,
-    name: 'Voice-Agent Demo',
-    category: 'KI-System',
+    name: 'Telefonhilfe Demo',
+    category: 'Assistenz',
     description:
-      'Sprachbasierter KI-Assistent für telefonische Erstanfragen: Verfügbarkeit prüfen, Termin buchen, Daten strukturiert übergeben.',
-    tags: ['Voice-Agent', 'Telefon-KI', 'Automatisierung'],
+      'Telefonischer Assistent für Erstanfragen: Verfügbarkeit prüfen, Rückruf vorbereiten, Daten strukturiert übergeben.',
+    tags: ['Telefonhilfe', 'Erstanfrage', 'Automatisierung'],
     demo: true,
     comingSoon: true,
   },
@@ -171,18 +171,18 @@ export default function PortfolioPage() {
             Ihr Projekt als Nächstes?
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-off-white leading-tight tracking-tight mb-5 text-balance">
-            Starten Sie mit einer kostenlosen Bedarfsanalyse.
+            Starten Sie mit einer kostenlosen Analyse.
           </h2>
           <p className="text-white/50 text-lg leading-relaxed max-w-xl mx-auto mb-8">
             Wir analysieren Ihre Abläufe – kostenlos und unverbindlich – und zeigen Ihnen,
-            welches System den größten Hebel hat.
+            welcher Anfrageweg den größten Hebel hat.
           </p>
           <Link
-            href="/kontakt"
+            href="/termin"
             className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
           >
-            Kostenlose Bedarfsanalyse starten
+            Website kostenlos prüfen lassen
             <ArrowRight size={18} aria-hidden="true" />
           </Link>
         </div>

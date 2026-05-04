@@ -3,9 +3,9 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle2, MapPin, Quote } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Über NEON Webdesign & KI — KI-Agentur Stuttgart & BW',
+  title: 'Über NEON Webdesign & KI — Websites und Anfragewege aus BW',
   description:
-    'NEON Webdesign & KI: KI-Automation und Websites aus Baden-Württemberg. Gegründet mit der Mission, KMU und lokalen Betrieben echte KI-Systeme zugänglich zu machen.',
+    'NEON Webdesign & KI baut Websites und digitale Anfragewege für lokale Betriebe in Baden-Württemberg: persönlich, DSGVO-konform und zum Festpreis.',
   alternates: {
     canonical: '/ueber',
   },
@@ -20,7 +20,7 @@ const values = [
   {
     title: 'Ergebnisse statt Features',
     description:
-      'Wir bauen, was wirkt – nicht was beeindruckt. KI ist das Werkzeug, Ihr Betrieb ist das Ziel.',
+      'Wir bauen, was wirkt – nicht was beeindruckt. Technik ist das Werkzeug, Ihr Betrieb ist das Ziel.',
   },
   {
     title: 'DSGVO by default',
@@ -49,8 +49,8 @@ export default function UeberPage() {
               <span className="text-neon">echte Überzeugung.</span>
             </h1>
             <p className="text-white/50 text-lg leading-relaxed max-w-2xl">
-              NEON Webdesign & KI ist eine KI-Agentur für KMU und lokale Betriebe in Baden-Württemberg.
-              Kein Buzzword-Bingo, kein Paket von der Stange – nur was wirklich hilft.
+              NEON Webdesign & KI baut Websites und digitale Anfragewege für KMU und lokale Betriebe in Baden-Württemberg.
+              Kein Buzzword-Bingo, kein Paket von der Stange – nur was im Alltag wirklich hilft.
             </p>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function UeberPage() {
 
                   <Quote size={28} className="text-neon mb-4" aria-hidden="true" />
                   <p className="text-off-white text-lg md:text-xl leading-snug font-medium mb-8 text-balance">
-                    KI ist das Werkzeug. Ergebnisse sind das Ziel – kein Technik-Bingo.
+                    Technik ist das Werkzeug. Ergebnisse sind das Ziel.
                   </p>
 
                   <div className="mt-auto grid grid-cols-2 gap-4 pt-6 border-t border-white/10">
@@ -108,18 +108,18 @@ export default function UeberPage() {
                   Fachgebiet exzellent sind – aber digitale Abläufe haben, die Zeit und Geld kosten.
                 </p>
                 <p>
-                  KI-Systeme sollten nicht nur Großkonzernen vorbehalten sein.
+                  Gute digitale Abläufe sollten nicht nur Großkonzernen vorbehalten sein.
                   Wir machen sie zugänglich – verständlich erklärt, DSGVO-konform umgesetzt,
                   mit Festpreis und persönlichem Ansprechpartner.
                 </p>
                 <p>
-                  KI ist das Werkzeug. Ergebnisse sind das Ziel.
-                  Kein Technik-Bingo, kein Angebot von der Stange – nur was wirklich hilft.
+                  Technik ist das Werkzeug. Ergebnisse sind das Ziel.
+                  Kein Fachbegriff-Theater, kein Angebot von der Stange – nur was wirklich hilft.
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-2 mb-8">
-                {['KI-Strategie', 'Prozessdenken', 'Festpreis', 'Lokal in BW'].map((val) => (
+                {['Prozessdenken', 'Anfragewege', 'Festpreis', 'Lokal in BW'].map((val) => (
                   <span key={val} className="bg-warm-gray border border-border-light text-text-dark text-xs font-medium px-3 py-1.5 rounded-full">
                     {val}
                   </span>
@@ -128,7 +128,7 @@ export default function UeberPage() {
 
               <div className="flex flex-col sm:flex-row items-start gap-3">
                 <Link
-                  href="/kontakt"
+                  href="/termin"
                   className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-6 py-3 rounded-full hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm"
                 >
                   Gespräch starten
@@ -155,12 +155,12 @@ export default function UeberPage() {
               Unsere Mission
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-off-white leading-tight tracking-tight mb-5 text-balance">
-              KI-Systeme für Betriebe, die keine KI-Abteilung haben.
+              Digitale Abläufe für Betriebe, die keine eigene Technikabteilung haben.
             </h2>
             <p className="text-white/50 text-lg leading-relaxed">
-              Wir wollen die erste Anlaufstelle für KMU und lokale Betriebe in BW sein, wenn es
-              um KI-Automation geht – persönlich, DSGVO-konform, mit Festpreis und ohne
-              Vendor-Lock-in.
+              Wir wollen die erste Anlaufstelle für KMU und lokale Betriebe in BW sein, wenn Website,
+              Anfrageaufnahme und wiederkehrende Arbeit sauber zusammenspielen sollen – persönlich,
+              DSGVO-konform, mit Festpreis und ohne Vendor-Lock-in.
             </p>
           </div>
 
@@ -193,8 +193,8 @@ export default function UeberPage() {
               braucht – und empfehlen dann, was wirklich hilft.
             </p>
             <p className="text-text-muted text-lg leading-relaxed mb-8">
-              Kein Overrun, kein Überraschungs-Invoice. Was vereinbart ist, wird gebaut –
-              zum Preis, der vereinbart ist.
+              Keine versteckten Stunden, keine überraschende Rechnung. Was vereinbart ist,
+              wird gebaut – zum Preis, der vereinbart ist.
             </p>
             <Link
               href="/prozess"

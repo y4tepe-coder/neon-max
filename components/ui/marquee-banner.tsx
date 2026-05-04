@@ -1,11 +1,13 @@
 'use client'
 
 const items = [
-  'Websites mit KI im Hintergrund',
-  'Anfragen aufnehmen',
-  'Informationen sortieren',
+  'Klare Websites',
+  'Anfragen sauber aufnehmen',
+  'Informationen vorsortieren',
   'Rückfragen vorbereiten',
-  'Termine erleichtern',
+  'Termine ohne Hin und Her',
+  'Weniger manuelle Nacharbeit',
+  'KI nur, wo sie hilft',
   'Lokal in BW',
   'DSGVO & self-hosted',
   'Server in Deutschland',

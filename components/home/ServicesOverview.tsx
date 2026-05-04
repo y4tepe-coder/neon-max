@@ -16,17 +16,17 @@ const services: Service[] = [
     icon: Globe2,
     title: 'Website als Eingang',
     text:
-      'Schneller, klarer erster Eindruck mit Formularen und Strukturen, die schon beim Eintreffen sortieren.',
+      'Ein schneller, glaubwürdiger erster Eindruck mit Formularen, die die wichtigsten Angaben direkt sauber abfragen.',
   },
   {
     icon: Cpu,
-    title: 'KI im Hintergrund',
+    title: 'Sortieren & vorbereiten',
     text:
-      'Inhalte zusammenfassen, Standards beantworten, wichtige Punkte markieren – ruhig und unsichtbar, nicht als Showeffekt.',
+      'Anfragen zusammenfassen, wichtige Punkte markieren, Standardrückfragen vorbereiten – ruhig im Hintergrund.',
   },
   {
     icon: Workflow,
-    title: 'Anfrage- und Terminfluss',
+    title: 'Anfrage- & Terminfluss',
     text:
       'Von der ersten Nachricht bis zum bestätigten Termin: ein Ablauf statt Zettelwirtschaft, mit Erinnerung und Übergabe in Ihre Tools.',
   },
@@ -158,8 +158,8 @@ export default function ServicesOverview() {
             className="mt-4 text-base md:text-lg max-w-xl mx-auto"
             style={{ color: 'rgba(248,250,252,0.55)' }}
           >
-            Vier Bausteine, die zusammen einen Ablauf ergeben – nicht eine Liste an Tools.
-            Chatbot oder Voice-Agent ergänzen das nur, wenn es wirklich Sinn ergibt.
+            Vier Bausteine, die zusammen einen Ablauf ergeben. Nicht mehr Tools,
+            sondern weniger manuelle Nacharbeit.
           </motion.p>
         </div>
 

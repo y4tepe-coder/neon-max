@@ -3,9 +3,9 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Handwerk & Gewerbe — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
+  title: 'Handwerk & Gewerbe — NEON Webdesign & KI · Website-Agentur Stuttgart & BW',
   description:
-    'KI-Automation für Handwerksbetriebe: Anfragen automatisch qualifizieren, Termine buchen, Kunden benachrichtigen. DSGVO-konform, self-hosted, Festpreis.',
+    'Websites und Anfragewege für Handwerksbetriebe: Anfragen sauber aufnehmen, Termine erleichtern, Kunden schneller benachrichtigen. DSGVO-konform, self-hosted, Festpreis.',
   alternates: {
     canonical: '/branchen/handwerk',
   },
@@ -30,7 +30,7 @@ const pains = [
 ]
 
 const solutions = [
-  'Automatische Anfragen-Qualifizierung (Kontaktformular, WhatsApp, Telefon)',
+  'Strukturierte Anfragen-Qualifizierung (Kontaktformular, WhatsApp, Telefon)',
   'Online-Terminbuchung – Kunden buchen selbst, Sie werden benachrichtigt',
   'Automatische Bestätigungen und Erinnerungen per Nachricht',
   'Professionelle Website mit Local SEO – in 14 Tagen live',
@@ -111,16 +111,16 @@ export default function HandwerkPage() {
                 Ihr Betrieb läuft – auch wenn Sie gerade nicht ans Telefon gehen können.
               </h2>
               <p className="text-text-muted text-base leading-relaxed mb-8">
-                Wir analysieren Ihre konkreten Abläufe und bauen Ihnen ein System, das
-                Anfragen automatisch entgegennimmt, qualifiziert und weiterleitet –
+                Wir analysieren Ihre konkreten Abläufe und bauen Ihnen einen Anfrageweg, der
+                Anfragen sauber entgegennimmt, qualifiziert und weiterleitet –
                 DSGVO-konform, self-hosted, mit Festpreis.
               </p>
               <Link
-                href="/kontakt"
+                href="/termin"
                 className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold
                            px-6 py-3 rounded-full hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm"
               >
-                Kostenlose Bedarfsanalyse starten
+                Website kostenlos prüfen lassen
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
             </div>
@@ -180,15 +180,15 @@ export default function HandwerkPage() {
             30 Minuten – und Sie wissen, was möglich ist.
           </h2>
           <p className="text-white/50 text-lg leading-relaxed max-w-xl mx-auto mb-8">
-            Kostenlose Bedarfsanalyse: Wir verstehen Ihre Abläufe und zeigen Ihnen konkret,
-            wo ein System den größten Unterschied macht.
+            Kostenlose Analyse: Wir verstehen Ihre Abläufe und zeigen Ihnen konkret,
+            wo ein digitaler Anfrageweg den größten Unterschied macht.
           </p>
           <Link
-            href="/kontakt"
+            href="/termin"
             className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
           >
-            Bedarfsanalyse starten
+            Kostenlos prüfen lassen
             <ArrowRight size={18} aria-hidden="true" />
           </Link>
         </div>

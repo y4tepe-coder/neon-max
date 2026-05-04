@@ -3,9 +3,9 @@ import { CheckCircle2, ArrowRight, Globe2, Zap, BrainCircuit, Headset } from 'lu
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Leistungen — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
+  title: 'Leistungen — NEON Webdesign & KI · Website-Agentur Stuttgart & BW',
   description:
-    'Websites ab 499 €, System-Automatisierung ab 1.490 €, Custom KI-Integration ab 2.990 €, Chatbot & Voice-Agent ab 1.990 €. Kostenlose Bedarfsanalyse zuerst.',
+    'Websites ab 990 €, Anfragefluss ab 1.490 €, Ablauf-Automation ab 2.990 €, Chatbot & Telefonhilfe ab 1.990 €. Kostenlose Analyse zuerst.',
   alternates: {
     canonical: '/leistungen',
   },
@@ -16,10 +16,10 @@ const services = [
     id: 'websites',
     icon: Globe2,
     label: 'Website',
-    price: 'ab 499 €',
-    headline: 'Ihr digitaler Erstkontakt – fertig in 14 Tagen.',
+    price: 'ab 990 €',
+    headline: 'Ihr digitaler Erstkontakt – klar, schnell und in 14 Tagen live.',
     description:
-      'Eine mobiloptimierte, schnelle Website ist das Fundament. Ohne sie verlieren Sie Interessenten, bevor das erste Gespräch stattfindet.',
+      'Eine mobiloptimierte, schnelle Website ist das Fundament. Sie erklärt, was Sie tun, schafft Vertrauen und fragt die richtigen Informationen ab, bevor das erste Gespräch stattfindet.',
     features: [
       'Mobiloptimiert & blitzschnell',
       'Local SEO Grundsetup',
@@ -32,11 +32,11 @@ const services = [
   {
     id: 'automatisierung',
     icon: Zap,
-    label: 'System-Automatisierung',
+    label: 'Anfragefluss',
     price: 'ab 1.490 €',
-    headline: 'Anfragen qualifizieren, Daten übergeben, Kunden benachrichtigen – automatisch.',
+    headline: 'Anfragen qualifizieren, Daten übergeben, Kunden benachrichtigen.',
     description:
-      'Wiederkehrende Abläufe laufen von selbst. Ihr Team konzentriert sich auf das, was wirklich zählt – nicht auf Copy-Paste und manuelle Datenpflege.',
+      'Wiederkehrende Abläufe laufen sauberer. Ihr Team konzentriert sich auf die Arbeit am Kunden – nicht auf Copy-Paste, doppelte Rückfragen und manuelle Datenpflege.',
     features: [
       'Anfragen-Qualifizierung und Weiterleitung',
       'Automatische Bestätigungen und Erinnerungen',
@@ -49,14 +49,14 @@ const services = [
   {
     id: 'ki-integration',
     icon: BrainCircuit,
-    label: 'Custom KI-Integration',
+    label: 'Ablauf-Automation',
     price: 'ab 2.990 €',
-    headline: 'KI direkt in Ihre bestehenden Abläufe gebaut.',
+    headline: 'Automatisierung direkt in Ihre bestehenden Abläufe gebaut.',
     description:
-      'Keine Insellösung, kein Vendor-Lock-in. Wir integrieren KI-Funktionen in das, was Sie bereits nutzen – und bauen genau das, was Ihren Betrieb voranbringt.',
+      'Keine Insellösung, kein Vendor-Lock-in. Wir integrieren Automatisierung und KI-Bausteine in das, was Sie bereits nutzen – und nur dort, wo es Ihren Betrieb wirklich entlastet.',
     features: [
       'Analyse Ihrer bestehenden Prozesse',
-      'Maßgeschneiderte KI-Logik',
+      'Maßgeschneiderte Ablauf-Logik',
       'Integration in bestehende Systeme',
       'Kein Vendor-Lock-in',
       'Self-hosted & DSGVO-konform',
@@ -66,16 +66,16 @@ const services = [
   {
     id: 'chatbot',
     icon: Headset,
-    label: 'Chatbot & Voice-Agent',
+    label: 'Chatbot & Telefonhilfe',
     price: 'ab 1.990 €',
-    headline: 'Ihr KI-Assistent antwortet – auch nachts und am Wochenende.',
+    headline: 'Ein Assistent nimmt Erstanfragen auf – auch außerhalb der Öffnungszeiten.',
     description:
-      'Kunden stellen Fragen außerhalb Ihrer Öffnungszeiten. Ein KI-Assistent qualifiziert Anfragen, bucht Termine und gibt erste Antworten – zuverlässig, rund um die Uhr.',
+      'Kunden stellen Fragen abends, am Wochenende oder wenn niemand ans Telefon kann. Ein Assistent nimmt Erstanfragen auf, sortiert sie vor und leitet nur das weiter, was wirklich Aufmerksamkeit braucht.',
     features: [
       'Chatbot für Website oder Messaging-Kanal',
-      'Voice-Agent optional verfügbar',
+      'Telefonhilfe optional verfügbar',
       'Anfragen-Qualifizierung und Weiterleitung',
-      'Automatische Terminbuchung',
+      'Terminbuchung oder Rückruf-Wunsch',
       'Self-hosted & DSGVO-konform',
       'Monatliches Monitoring inklusive',
     ],
@@ -93,12 +93,12 @@ export default function LeistungenPage() {
               Was wir bauen
             </p>
             <h1 className="text-5xl md:text-6xl font-bold text-off-white leading-tight tracking-tight mb-6 text-balance">
-              Vier Leistungen.{' '}
-              <span className="text-neon">Einer für alles.</span>
+              Vier Bausteine.{' '}
+              <span className="text-neon">Ein klarer Ablauf.</span>
             </h1>
             <p className="text-white/50 text-lg leading-relaxed max-w-2xl">
-              Website, System-Automatisierung, KI-Integration, Chatbot & Voice – je nach Bedarf,
-              immer mit kostenloser Bedarfsanalyse zuerst, immer zum Festpreis.
+              Website, Anfragefluss, Ablauf-Automation und Assistenz – je nach Bedarf,
+              immer mit kostenloser Analyse zuerst, immer zum Festpreis.
             </p>
           </div>
         </div>
@@ -134,11 +134,11 @@ export default function LeistungenPage() {
                     {service.description}
                   </p>
                   <Link
-                    href="/kontakt"
+                    href="/termin"
                     className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold
                                px-6 py-3 rounded-full hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm"
                   >
-                    Bedarfsanalyse starten
+                    Kostenlos prüfen lassen
                     <ArrowRight size={15} aria-hidden="true" />
                   </Link>
                 </div>
@@ -174,10 +174,10 @@ export default function LeistungenPage() {
             Nächster Schritt
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-off-white leading-tight tracking-tight mb-5 text-balance">
-            Zuerst Bedarfsanalyse – dann Festpreis.
+            Zuerst Analyse – dann Festpreis.
           </h2>
           <p className="text-white/50 text-lg leading-relaxed max-w-xl mx-auto mb-8">
-            Wir verstehen Ihre Abläufe, bevor wir etwas empfehlen. Kostenloses Erstgespräch,
+            Wir verstehen Ihre Abläufe, bevor wir etwas empfehlen. Kostenlose Analyse,
             kein Verkaufsdruck, konkrete Empfehlung.
           </p>
           <Link
@@ -185,7 +185,7 @@ export default function LeistungenPage() {
             className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
           >
-            Kostenlose Potenzial-Analyse
+            Website kostenlos prüfen lassen
             <ArrowRight size={18} aria-hidden="true" />
           </Link>
           <p className="text-white/30 text-sm mt-5">

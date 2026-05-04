@@ -135,7 +135,7 @@ export function CreativePricing({
 
               {/* CTA Button */}
               <Link
-                href="/kontakt"
+                href="/termin"
                 className={cn(
                   'block w-full text-center font-handwritten text-lg font-semibold py-3 px-5 rounded-xl',
                   'border-2 border-text-dark',

@@ -40,13 +40,13 @@ export default function FounderSection() {
 
           <div className="space-y-4 text-text-muted text-base leading-relaxed mb-6">
             <p>
-              Ich baue Websites mit KI im Hintergrund für Inhaberinnen und Inhaber
-              aus der Region – aus Leinfelden-Echterdingen, Filderstadt, Stuttgart
-              und Umgebung.
+              Ich baue Websites und digitale Anfragewege für Inhaberinnen und
+              Inhaber aus Leinfelden-Echterdingen, Filderstadt, Stuttgart und Umgebung.
             </p>
             <p>
               Wenig Bling, viel Ruhe im Postfach. Ich erkläre offen, was Sinn ergibt
-              und was nicht – und was am Ende stehen bleibt, soll Ihnen Zeit zurückgeben.
+              und was nicht. Technik ist nur dann gut, wenn sie Ihnen im Alltag
+              Zeit zurückgibt.
             </p>
           </div>
 
@@ -67,7 +67,7 @@ export default function FounderSection() {
               className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-6 py-3 rounded-full
                          hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm"
             >
-              Kostenlose Potenzial-Analyse
+              Website kostenlos prüfen lassen
               <ArrowRight size={15} aria-hidden="true" />
             </Link>
             <Link

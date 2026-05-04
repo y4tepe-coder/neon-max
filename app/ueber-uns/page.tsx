@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle2, MapPin, Quote } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Über NEON – Wer wir sind',
   description:
-    'NEON Webdesign & KI – gegründet mit der Mission, lokale Unternehmen professionell und modern online zu bringen. Persönlich, transparent und auf Augenhöhe.',
+    'NEON Webdesign & KI baut Websites und digitale Anfragewege für lokale Betriebe in Baden-Württemberg. Persönlich, transparent und zum Festpreis.',
   alternates: {
     canonical: '/ueber-uns',
   },
@@ -30,7 +30,7 @@ const values = [
   {
     title: 'Ergebnisse, die zählen',
     description:
-      'Eine schöne Website ist schön. Aber eine Website, die Kunden bringt und professionell wirkt – das ist unser Ziel.',
+      'Eine schöne Website ist schön. Aber ein Auftritt, der Anfragen sauber aufnimmt und Zeit spart – das ist unser Ziel.',
   },
 ]
 
@@ -49,8 +49,8 @@ export default function UeberUnsPage() {
               <span className="text-neon">echte Überzeugung.</span>
             </h1>
             <p className="text-white/50 text-lg leading-relaxed max-w-2xl">
-              NEON Webdesign & KI ist mehr als ein Dienstleister. Wir sind ein Partner – für lokale
-              Unternehmen, die modern auftreten und online wachsen wollen.
+              NEON Webdesign & KI ist mehr als ein Dienstleister. Wir bauen für lokale
+              Unternehmen Websites und Anfragewege, die im Alltag wirklich helfen.
             </p>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function UeberUnsPage() {
 
                   <Quote size={28} className="text-neon mb-4" aria-hidden="true" />
                   <p className="text-off-white text-lg md:text-xl leading-snug font-medium mb-8 text-balance">
-                    Jedes lokale Unternehmen verdient einen professionellen, zeitgemäßen Auftritt.
+                    Ein guter Online-Auftritt soll nicht nur gut aussehen. Er soll Arbeit abnehmen.
                   </p>
 
                   <div className="mt-auto grid grid-cols-2 gap-4 pt-6 border-t border-white/10">
@@ -105,20 +105,19 @@ export default function UeberUnsPage() {
               <div className="space-y-4 text-text-muted text-base leading-relaxed mb-6 max-w-xl">
                 <p>
                   NEON Webdesign & KI habe ich mit einer klaren Überzeugung gegründet: Jedes lokale
-                  Unternehmen – unabhängig von Größe oder Branche – verdient einen professionellen,
-                  zeitgemäßen Online-Auftritt.
+                  Unternehmen – unabhängig von Größe oder Branche – verdient einen professionellen
+                  Online-Auftritt, der Anfragen klarer macht.
                 </p>
                 <p>
                   Was mich täglich antreibt: Ich begegne Unternehmern, die in ihrem Fachgebiet
-                  exzellent sind – online jedoch kaum wahrgenommen werden. Genau das möchte ich
-                  ändern. Mit Websites, die nachhaltig wirken und von echter Betreuung begleitet
-                  werden.
+                  exzellent sind – online jedoch kaum wahrgenommen werden oder zu viel Zeit mit
+                  Rückfragen, Terminen und Nachfassen verlieren. Genau das möchte ich ändern.
                 </p>
                 <p>
                   Mein Anspruch ist klar: Keine Fachbegriffe, keine versteckten Kosten, kein
                   anonymer Support. Sie erhalten mich als persönlichen Ansprechpartner – jemanden,
-                  der Ihr Projekt von Anfang an begleitet, tiefgehend versteht und mit
-                  konsequentem Engagement betreut.
+                  der Ihr Projekt von Anfang an begleitet, die Abläufe versteht und mit
+                  konsequentem Fokus betreut.
                 </p>
               </div>
 
@@ -132,7 +131,7 @@ export default function UeberUnsPage() {
 
               <div className="flex flex-col sm:flex-row items-start gap-3">
                 <Link
-                  href="/kontakt"
+                  href="/termin"
                   className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-6 py-3 rounded-full hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm"
                 >
                   Gespräch starten
@@ -159,12 +158,12 @@ export default function UeberUnsPage() {
               Unsere Mission
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-off-white leading-tight tracking-tight mb-5 text-balance">
-              Lokale Unternehmen online stark machen.
+              Lokale Unternehmen digital entlasten.
             </h2>
             <p className="text-white/50 text-lg leading-relaxed">
-              Wir wollen die erste Anlaufstelle für lokale Unternehmen sein, wenn es um einen
-              professionellen, modernen Online-Auftritt geht – persönlich, vertrauenswürdig und
-              ergebnisorientiert.
+              Wir wollen die erste Anlaufstelle für lokale Unternehmen sein, wenn Website,
+              Anfrageaufnahme und wiederkehrende Arbeit besser zusammenspielen sollen –
+              persönlich, vertrauenswürdig und ergebnisorientiert.
             </p>
           </div>
 
@@ -202,7 +201,7 @@ export default function UeberUnsPage() {
               Partner, dem Ihr Projekt wirklich wichtig ist.
             </p>
             <Link
-              href="/kontakt"
+              href="/termin"
               className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-6 py-3.5 rounded-full hover:bg-neon-dim transition-all duration-200 cursor-pointer"
             >
               Unverbindlich kennenlernen

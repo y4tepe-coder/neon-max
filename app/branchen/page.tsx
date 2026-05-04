@@ -3,9 +3,9 @@ import Link from 'next/link'
 import { ArrowRight, Wrench, Scale, Calculator } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Branchen — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
+  title: 'Branchen — NEON Webdesign & KI · Website-Agentur Stuttgart & BW',
   description:
-    'KI-Automation für Handwerk, Anwaltskanzleien und Steuerberater in Baden-Württemberg. Maßgeschneiderte Systeme statt Paketware.',
+    'Websites und digitale Anfragewege für Handwerk, Anwaltskanzleien und Steuerberater in Baden-Württemberg. Konkrete Abläufe statt Standardpaket.',
   alternates: {
     canonical: '/branchen',
   },
@@ -16,7 +16,7 @@ const industries = [
     icon: Wrench,
     title: 'Handwerk & Gewerbe',
     description:
-      'Anfragen über Telefon, WhatsApp, E-Mail – und dazwischen gehen Aufträge verloren. Wir bauen Ihnen das System, das Anfragen automatisch qualifiziert, Termine bucht und Ihre Website als ersten Eindruck professionell macht.',
+      'Anfragen über Telefon, WhatsApp, E-Mail – und dazwischen gehen Aufträge verloren. Wir bauen den Ablauf, der Anfragen sauber aufnimmt, vorsortiert und Ihre Website als ersten Eindruck professionell macht.',
     href: '/branchen/handwerk',
     examples: ['Elektriker', 'Sanitär & Heizung', 'Maler & Lackierer', 'Schreiner', 'Kfz-Werkstätten'],
   },
@@ -24,7 +24,7 @@ const industries = [
     icon: Scale,
     title: 'Anwaltskanzleien',
     description:
-      'Mandantenanfragen außerhalb der Bürozeiten, manuelle Dokumentensammlung, Terminabsprachen per E-Mail-Kette. Wir bauen DSGVO-konforme KI-Systeme, die Mandanten onboarden und Anfragen strukturieren.',
+      'Mandantenanfragen außerhalb der Bürozeiten, manuelle Dokumentensammlung, Terminabsprachen per E-Mail-Kette. Wir bauen DSGVO-konforme Abläufe, die Mandantenanfragen strukturieren und Unterlagen sauber anfordern.',
     href: '/branchen/kanzleien',
     examples: ['Strafrecht', 'Familienrecht', 'Arbeitsrecht', 'Mietrecht', 'Erbrecht'],
   },
@@ -32,7 +32,7 @@ const industries = [
     icon: Calculator,
     title: 'Steuerberater',
     description:
-      'Mandanten liefern Unterlagen zu spät, manuelle Nachfassaktionen fressen Zeit. Wir automatisieren Dokumentenanforderung und Erinnerungsflows – DSGVO-konform, self-hosted, zuverlässig.',
+      'Mandanten liefern Unterlagen zu spät, manuelle Nachfassaktionen fressen Zeit. Wir strukturieren Dokumentenanforderung und Erinnerungen – DSGVO-konform, self-hosted, zuverlässig.',
     href: '/branchen/steuerberater',
     examples: ['Einzelkanzleien', 'Kanzlei-Verbünde', 'Jahresabschluss', 'Lohnbuchhaltung', 'Beratung'],
   },
@@ -66,8 +66,8 @@ export default function BranchenPage() {
               <span className="text-neon">Steuerberater.</span>
             </h1>
             <p className="text-white/80 text-lg leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.5)]">
-              Wir kennen die Abläufe dieser Branchen – und wissen, welche KI-Systeme
-              wirklich helfen. Kein Paket von der Stange.
+              Wir kennen die Abläufe dieser Branchen und suchen zuerst den Engpass:
+              Anfrage, Rückfrage, Termin oder Unterlagen. Kein Paket von der Stange.
             </p>
           </div>
         </div>
@@ -122,18 +122,18 @@ export default function BranchenPage() {
             Ihre Branche nicht dabei?
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-off-white leading-tight tracking-tight mb-5 text-balance">
-            Wir arbeiten branchenoffen – sprechen Sie uns an.
+            Wir arbeiten branchenoffen – wenn der Ablauf klar ist.
           </h2>
           <p className="text-white/50 text-lg leading-relaxed max-w-xl mx-auto mb-8">
-            In Phase 2 erweitern wir auf den Mittelstand in BW (20–250 Mitarbeitende).
-            Wenn Sie sich angesprochen fühlen – melden Sie sich jetzt.
+            Entscheidend ist nicht die Branche, sondern der wiederkehrende Engpass.
+            Wenn Sie wöchentlich Zeit durch Anfragen, Rückfragen oder Terminabstimmung verlieren, lohnt sich die Analyse.
           </p>
           <Link
-            href="/kontakt"
+            href="/termin"
             className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
           >
-            Kostenlose Bedarfsanalyse starten
+            Website kostenlos prüfen lassen
             <ArrowRight size={18} aria-hidden="true" />
           </Link>
         </div>

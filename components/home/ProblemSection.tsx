@@ -58,11 +58,11 @@ export default function ProblemSection() {
             Was Zeit kostet
           </p>
           <h2 id="problem-heading" className="heading-section text-text-dark mb-5 text-balance">
-            Das meiste ist Routine. Und Routine kann ein System.
+            Kunden wollen Antwort. Ihr Team braucht Luft.
           </h2>
           <p className="text-body text-balance">
-            Die Themen sind in fast jedem Betrieb gleich – nur die Branche
-            wechselt. Und meistens lassen sich genau diese Stellen entlasten.
+            In vielen Betrieben geht nicht der große Auftrag verloren, sondern
+            die kleine Anfrage dazwischen. Genau dort muss der Ablauf besser werden.
           </p>
         </motion.div>
 
@@ -100,8 +100,8 @@ export default function ProblemSection() {
             <div className="hidden md:block w-1 min-h-[40px] bg-neon rounded-full shrink-0" aria-hidden="true" />
             <p className="text-white/70 text-base md:text-lg text-center md:text-left leading-relaxed">
               <span className="text-neon font-semibold">Genau dafür ist NEON da.</span>{' '}
-              In der kostenlosen Potenzial-Analyse schauen wir gemeinsam, an welchen
-              Stellen KI Sie spürbar entlasten kann.
+              In der kostenlosen Analyse schauen wir gemeinsam, an welchen
+              Stellen ein digitaler Ablauf Sie spürbar entlasten kann.
             </p>
           </div>
           <Link
@@ -109,7 +109,7 @@ export default function ProblemSection() {
             className="shrink-0 inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-6 py-3 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm whitespace-nowrap"
           >
-            Kostenlose Potenzial-Analyse
+            Ablauf prüfen lassen
             <ArrowRight size={15} aria-hidden="true" />
           </Link>
         </motion.div>

@@ -6,7 +6,7 @@ import { Calendar, MapPin, Clock, CheckCircle2, ArrowRight, Mail, Send, Loader2 
 
 const CALENDLY_URL = 'https://calendly.com/y4tepe/30min'
 const WHATSAPP_URL =
-  'https://wa.me/4917620170133?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20neue%20Website.'
+  'https://wa.me/4917620170133?text=Hallo%2C%20ich%20m%C3%B6chte%20meine%20Website%20und%20meinen%20Anfrageweg%20pr%C3%BCfen%20lassen.'
 
 type CalendlyWindow = Window & {
   Calendly?: { initPopupWidget: (opts: { url: string }) => void }
@@ -73,11 +73,11 @@ export default function ContactOptions() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-text-dark mb-4">
-              Einfach Kontakt aufnehmen.
+              Kurz schildern, wo es hakt.
             </h2>
             <p className="text-text-muted text-base leading-relaxed mb-8">
-              Wählen Sie einfach, wie Sie mit uns in Kontakt treten möchten –
-              wir sind schnell für Sie da.
+              Website, Anfrageweg oder wiederkehrende Rückfragen: Beschreiben Sie kurz,
+              wo aktuell Zeit verloren geht. Wir melden uns mit einer konkreten Einschätzung.
             </p>
 
             <div className="space-y-5 mb-8">
@@ -105,8 +105,8 @@ export default function ContactOptions() {
                 {[
                   'Schnelle, persönliche Rückmeldung',
                   'Kein Verkaufsdruck, keine Verpflichtung',
-                  'Ehrliche, transparente Beratung',
-                  'Gespräch auf Augenhöhe',
+                  'Ehrliche, transparente Einschätzung',
+                  'Konkrete nächste Schritte',
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2.5">
                     <CheckCircle2 size={14} className="text-neon shrink-0" aria-hidden="true" />
@@ -138,17 +138,17 @@ export default function ContactOptions() {
                     Empfohlen
                   </p>
                   <h3 className="text-off-white font-bold text-lg mb-1.5">
-                    Erstgespräch buchen
+                    Website- & Ablauf-Analyse buchen
                   </h3>
                   <p className="text-white/50 text-sm leading-relaxed">
-                    Ca. 30 Minuten per Telefon – kostenlos, unverbindlich und auf
-                    Ihren Zeitplan abgestimmt.
+                    Ca. 30 Minuten per Telefon – kostenlos, unverbindlich und mit
+                    Blick auf Ihre konkreten Anfragewege.
                   </p>
                 </div>
               </div>
               <div className="mt-5 inline-flex items-center gap-2 bg-neon text-text-dark font-semibold
                               text-sm px-5 py-2.5 rounded-full group-hover:bg-neon-dim transition-colors duration-200">
-                Termin auswählen
+                Analyse buchen
                 <ArrowRight size={14} aria-hidden="true" />
               </div>
             </motion.button>
@@ -279,7 +279,7 @@ export default function ContactOptions() {
                             rows={4}
                             value={formData.message}
                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                            placeholder="Erzählen Sie uns kurz von Ihrem Projekt oder Ihrer Frage..."
+                            placeholder="Welche Anfragen, Rückfragen oder Termine kosten aktuell am meisten Zeit?"
                             className="w-full rounded-xl border border-border-light bg-warm-gray px-4 py-2.5 text-sm text-text-dark placeholder:text-text-muted/50
                                        focus:outline-none focus:ring-2 focus:ring-neon/40 focus:border-neon/40 transition-colors resize-none"
                           />

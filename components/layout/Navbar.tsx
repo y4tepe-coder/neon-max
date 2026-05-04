@@ -8,13 +8,13 @@ import { Menu, X, Phone, ChevronDown } from 'lucide-react'
 
 const leistungenItems = [
   { href: '/leistungen#websites',        label: 'Website' },
-  { href: '/leistungen#automatisierung', label: 'System-Automatisierung' },
-  { href: '/leistungen#ki-integration',  label: 'KI-Integration' },
-  { href: '/leistungen#chatbot',         label: 'Chatbot & Voice-Agent' },
+  { href: '/leistungen#automatisierung', label: 'Anfragefluss' },
+  { href: '/leistungen#ki-integration',  label: 'Ablauf-Automation' },
+  { href: '/leistungen#chatbot',         label: 'Chatbot & Telefonhilfe' },
 ]
 
 const navLinks = [
-  { href: '/#zeit-sparen', label: 'Zeit sparen' },
+  { href: '/#zeit-sparen', label: 'Zeitfresser' },
   { href: '/ueber-uns',    label: 'Über uns' },
 ]
 
@@ -201,7 +201,7 @@ export default function Navbar() {
                 className="bg-neon text-text-dark text-sm font-semibold px-5 py-2.5 rounded-full
                            hover:bg-neon-dim transition-all duration-200 cursor-pointer"
               >
-                Kostenlose Analyse
+                Kostenlos prüfen lassen
               </Link>
             </div>
 
@@ -309,7 +309,7 @@ export default function Navbar() {
                 className="mt-2 w-full text-center bg-neon text-text-dark font-semibold px-6 py-3 rounded-full
                            hover:bg-neon-dim transition-all duration-200 cursor-pointer"
               >
-                Kostenlose Potenzial-Analyse
+                Website kostenlos prüfen lassen
               </Link>
             </nav>
           </motion.div>

@@ -15,7 +15,7 @@ const cards = [
     icon: FolderOpen,
     title: 'Informationen sortieren',
     text:
-      'Wichtige Punkte werden automatisch markiert, dem richtigen Vorgang zugeordnet und in Ihre Tools übergeben.',
+      'Wichtige Punkte werden automatisch markiert, dem richtigen Vorgang zugeordnet und in Ihre bestehenden Systeme übergeben.',
   },
   {
     icon: MessageSquareText,
@@ -66,10 +66,10 @@ export default function ZeitSparen() {
             id="zeit-sparen-heading"
             className="heading-section text-text-dark mb-5 text-balance"
           >
-            Wo KI Ihnen Zeit zurückholt.
+            Was ein gutes System Ihnen abnimmt.
           </h2>
           <p className="text-body">
-            Nicht als Spielerei, sondern als ruhiges System im Hintergrund.
+            Nicht als Technikshow, sondern als ruhiger Ablauf im Hintergrund.
           </p>
         </motion.div>
 

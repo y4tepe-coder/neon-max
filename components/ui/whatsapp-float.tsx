@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 
 const WHATSAPP_URL =
-  'https://wa.me/4917620170133?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20neue%20Website.'
+  'https://wa.me/4917620170133?text=Hallo%2C%20ich%20m%C3%B6chte%20meine%20Website%20und%20meinen%20Anfrageweg%20pr%C3%BCfen%20lassen.'
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" className="w-7 h-7 fill-white" aria-hidden="true">

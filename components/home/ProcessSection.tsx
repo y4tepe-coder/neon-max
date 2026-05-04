@@ -8,11 +8,11 @@ import { BookingModal } from '@/components/ui/booking-modal'
 const milestones: Milestone[] = [
   {
     id: 1,
-    name: 'Bedarfsanalyse',
+    name: 'Analyse',
     status: 'complete',
     position: { top: '80%', left: '7.5%' },
     description:
-      'Kostenloses 30-Min.-Gespräch: Wir verstehen Ihre Abläufe, Engpässe und Ziele – ohne Verpflichtung.',
+      'Kostenloses 30-Min.-Gespräch: Wir verstehen Ihren Anfrageweg, Engpässe und Ziele – ohne Verpflichtung.',
     tooltipSide: 'top',
     tooltipAlign: 'right',
   },
@@ -22,7 +22,7 @@ const milestones: Milestone[] = [
     status: 'complete',
     position: { top: '16%', left: '22.5%' },
     description:
-      'Sie erhalten eine konkrete schriftliche Empfehlung: welches System, welchen Hebel, welchen Aufwand.',
+      'Sie erhalten eine konkrete schriftliche Empfehlung: welcher Hebel, welcher Aufwand, welcher nächste Schritt.',
     tooltipSide: 'bottom',
     tooltipAlign: 'right',
   },
@@ -32,7 +32,7 @@ const milestones: Milestone[] = [
     status: 'in-progress',
     position: { top: '56%', left: '43.75%' },
     description:
-      'Klares Angebot, klarer Umfang – was vereinbart ist, wird gebaut. Kein Overrun, kein Überraschungs-Invoice.',
+      'Klares Angebot, klarer Umfang – was vereinbart ist, wird gebaut. Keine versteckten Stunden.',
     tooltipSide: 'top',
     tooltipAlign: 'center',
   },
@@ -88,10 +88,10 @@ export default function ProcessSection() {
               id="process-heading"
               className="heading-section text-off-white mb-5 text-balance"
             >
-              Analyse zuerst. Dann Ergebnis.
+            Erst verstehen. Dann bauen.
             </h2>
             <p className="text-white/50 text-lg leading-relaxed">
-              Kein Paket von der Stange. Verstehen, empfehlen, umsetzen, betreuen.
+              Kein Standardpaket von der Stange. Erst der Ablauf, dann die Technik.
             </p>
           </motion.div>
 

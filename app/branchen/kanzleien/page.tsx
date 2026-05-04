@@ -3,9 +3,9 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Anwaltskanzleien — NEON Webdesign & KI · KI-Agentur Stuttgart & BW',
+  title: 'Anwaltskanzleien — NEON Webdesign & KI · Website-Agentur Stuttgart & BW',
   description:
-    'KI-Systeme für Anwaltskanzleien: Mandantenanfragen automatisch strukturieren, DSGVO-konformes Onboarding, Terminbuchung außerhalb der Bürozeiten. Self-hosted, Festpreis.',
+    'Digitale Anfragewege für Anwaltskanzleien: Mandantenanfragen strukturieren, DSGVO-konformes Onboarding, Terminbuchung außerhalb der Bürozeiten. Self-hosted, Festpreis.',
   alternates: {
     canonical: '/branchen/kanzleien',
   },
@@ -30,7 +30,7 @@ const pains = [
 ]
 
 const solutions = [
-  'KI-gestütztes Mandanten-Onboarding – strukturiert, DSGVO-konform',
+  'Mandanten-Onboarding – strukturiert, DSGVO-konform',
   'Automatische Anfragen-Qualifizierung nach Rechtsgebiet und Dringlichkeit',
   'Online-Terminbuchung – auch außerhalb der Bürozeiten',
   'Automatisierte Dokumentenanforderung mit Erinnerungsflow',
@@ -66,7 +66,7 @@ export default function KanzleienPage() {
             <p className="text-white/50 text-lg leading-relaxed max-w-2xl">
               Kanzleien verlieren Mandantenanfragen nicht wegen mangelnder Kompetenz –
               sondern wegen fehlender Erreichbarkeit und langsamer Rückmeldung.
-              Wir bauen Systeme, die das lösen.
+              Wir bauen Anfragewege, die genau dort entlasten.
             </p>
           </div>
         </div>
@@ -112,17 +112,17 @@ export default function KanzleienPage() {
                 Mandanten werden strukturiert erfasst – automatisch, DSGVO-konform.
               </h2>
               <p className="text-text-muted text-base leading-relaxed mb-8">
-                Wir analysieren Ihre Kanzlei-Abläufe und bauen Ihnen ein System, das
+                Wir analysieren Ihre Kanzlei-Abläufe und bauen Ihnen einen Anfrageweg, der
                 Mandantenanfragen strukturiert, Dokumente anfordert und Termine koordiniert –
                 self-hosted auf Servern in Deutschland, ohne Drittanbieter mit Zugriff auf
                 vertrauliche Daten.
               </p>
               <Link
-                href="/kontakt"
+                href="/termin"
                 className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold
                            px-6 py-3 rounded-full hover:bg-neon-dim transition-all duration-200 cursor-pointer text-sm"
               >
-                Kostenlose Bedarfsanalyse starten
+                Website kostenlos prüfen lassen
                 <ArrowRight size={15} aria-hidden="true" />
               </Link>
             </div>
@@ -182,15 +182,15 @@ export default function KanzleienPage() {
             30 Minuten – und Sie wissen, was möglich ist.
           </h2>
           <p className="text-white/50 text-lg leading-relaxed max-w-xl mx-auto mb-8">
-            Kostenlose Bedarfsanalyse: Wir verstehen Ihre Kanzlei-Abläufe und zeigen Ihnen,
-            wo ein DSGVO-konformes KI-System den größten Hebel hat.
+            Kostenlose Analyse: Wir verstehen Ihre Kanzlei-Abläufe und zeigen Ihnen,
+            wo strukturierte Anfrageaufnahme den größten Hebel hat.
           </p>
           <Link
-            href="/kontakt"
+            href="/termin"
             className="inline-flex items-center gap-2 bg-neon text-text-dark font-semibold px-7 py-4 rounded-full
                        hover:bg-neon-dim transition-all duration-200 cursor-pointer text-base"
           >
-            Bedarfsanalyse starten
+            Kostenlos prüfen lassen
             <ArrowRight size={18} aria-hidden="true" />
           </Link>
         </div>
