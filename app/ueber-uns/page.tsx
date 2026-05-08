@@ -38,8 +38,29 @@ export default function UeberUnsPage() {
   return (
     <div className="pt-16">
       {/* Hero */}
-      <section className="bg-dark-bg section-pad py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="relative bg-dark-bg section-pad py-24 md:py-32 overflow-hidden">
+        <video
+          src="/ueber-hero.mp4"
+          poster="/ueber-hero.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        {/* Lesbarkeits-Overlays */}
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-dark-bg/95 via-dark-bg/70 to-dark-bg/30 pointer-events-none"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-dark-bg/40 via-transparent to-dark-bg/60 pointer-events-none"
+          aria-hidden="true"
+        />
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-3xl">
             <p className="text-neon/60 text-sm font-semibold uppercase tracking-widest mb-4">
               Wer wir sind
@@ -48,7 +69,7 @@ export default function UeberUnsPage() {
               Hinter NEON steckt{' '}
               <span className="text-neon">echte Überzeugung.</span>
             </h1>
-            <p className="text-white/50 text-lg leading-relaxed max-w-2xl">
+            <p className="text-white/65 text-lg leading-relaxed max-w-2xl">
               NEON Webdesign & KI ist mehr als ein Dienstleister. Wir bauen für lokale
               Unternehmen Websites und Anfragewege, die im Alltag wirklich helfen.
             </p>
