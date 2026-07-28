@@ -621,7 +621,15 @@ async function sendWithResend(
     text,
   })
 
-  if (result.error || !result.data?.id) {
+  if (result.error) {
+    console.error(
+      `NFC-Resend-Ablehnung (Status: ${result.error.statusCode ?? 'unbekannt'}, Typ: ${result.error.name ?? 'unbekannt'}).`
+    )
+    throw new Error('Resend hat die Anfrage nicht angenommen.')
+  }
+
+  if (!result.data?.id) {
+    console.error('NFC-Resend-Antwort enthielt keine Versand-ID.')
     throw new Error('Resend hat die Anfrage nicht angenommen.')
   }
 
@@ -683,8 +691,11 @@ async function deliverInquiry(inquiry: NfcInquiry): Promise<boolean> {
       if (await sendWithResend(inquiry, subject, html, text)) {
         return true
       }
-    } catch {
-      console.error('NFC-Anfrage konnte nicht über Resend versendet werden.')
+    } catch (error) {
+      const errorType = error instanceof Error ? error.name : 'unbekannt'
+      console.error(
+        `NFC-Anfrage konnte nicht über Resend versendet werden (Typ: ${errorType}).`
+      )
     }
   }
 
@@ -693,8 +704,11 @@ async function deliverInquiry(inquiry: NfcInquiry): Promise<boolean> {
       if (await sendWithSmtp(inquiry, subject, html, text)) {
         return true
       }
-    } catch {
-      console.error('NFC-Anfrage konnte nicht über SMTP versendet werden.')
+    } catch (error) {
+      const errorType = error instanceof Error ? error.name : 'unbekannt'
+      console.error(
+        `NFC-Anfrage konnte nicht über SMTP versendet werden (Typ: ${errorType}).`
+      )
     }
   }
 
