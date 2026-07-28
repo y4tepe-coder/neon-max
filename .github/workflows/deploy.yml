@@ -11,6 +11,7 @@ jobs:
       - name: Deploy to Hostinger VPS
         uses: appleboy/ssh-action@v1.0.3
         env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
@@ -18,7 +19,7 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: root
           password: ${{ secrets.VPS_PASSWORD }}
-          envs: SMTP_USER,SMTP_PASS,NOTIFY_EMAIL
+          envs: RESEND_API_KEY,SMTP_USER,SMTP_PASS,NOTIFY_EMAIL
           script: |
             set -e
             mkdir -p /docker/neon-website
@@ -32,6 +33,7 @@ jobs:
             git clean -fd
             umask 077
             {
+              printf 'RESEND_API_KEY=%s\n' "$RESEND_API_KEY"
               printf 'SMTP_HOST=%s\n' 'smtp.gmail.com'
               printf 'SMTP_PORT=%s\n' '587'
               printf 'SMTP_USER=%s\n' "$SMTP_USER"
