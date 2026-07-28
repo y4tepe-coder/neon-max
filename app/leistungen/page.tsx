@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { CheckCircle2, ArrowRight, Globe2, Zap, BrainCircuit, Headset } from 'lucide-react'
+import { CheckCircle2, ArrowRight, Globe2, Zap, BrainCircuit, Headset, Nfc } from 'lucide-react'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -101,6 +101,32 @@ export default function LeistungenPage() {
               immer mit kostenloser Analyse zuerst, immer zum Festpreis.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-[#cfd4c2] bg-neon">
+        <div className="mx-auto grid max-w-7xl items-center gap-7 px-6 py-8 lg:grid-cols-[auto_1fr_auto] lg:px-8">
+          <span className="flex h-12 w-12 items-center justify-center rounded-full bg-text-dark text-neon">
+            <Nfc size={22} aria-hidden="true" />
+          </span>
+          <div>
+            <p className="text-[10px] font-black uppercase tracking-[0.17em] text-[#415300]">
+              Eigenes Produkt · Einführungspreis
+            </p>
+            <h2 className="mt-1 text-2xl font-black tracking-tight text-[#142000]">
+              5 NFC-Schlüsselanhänger + 5 digitale Visitenkarten für 99,99 €
+            </h2>
+            <p className="mt-1 text-sm leading-6 text-[#344400]">
+              Ohne App, mit QR-Fallback, persönlicher Einrichtung und Live-Konfigurator.
+            </p>
+          </div>
+          <Link
+            href="/nfc-visitenkarte"
+            className="inline-flex min-h-12 items-center justify-center gap-2 bg-text-dark px-6 text-sm font-black text-white"
+          >
+            NFC-Paket ansehen
+            <ArrowRight size={15} aria-hidden="true" />
+          </Link>
         </div>
       </section>
 

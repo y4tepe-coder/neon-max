@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
 import { DM_Sans, Caveat } from 'next/font/google'
 import './globals.css'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
-import { CalendlyBadge } from '@/components/ui/calendly-badge'
-import { ScrollProgress } from '@/components/ui/scroll-progress'
+import SiteChrome from '@/components/layout/SiteChrome'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -37,6 +34,8 @@ export const metadata: Metadata = {
     'Website Filderstadt',
     'Zeit sparen im Betrieb',
     'KI Webagentur BW',
+    'NFC Schlüsselanhänger Unternehmen',
+    'Digitale Visitenkarte NFC',
   ],
   authors: [{ name: 'NEON Webdesign & KI' }],
   openGraph: {
@@ -95,6 +94,8 @@ const jsonLd = {
         'Prozess-Automatisierung',
         'Verantwortliche KI-Nutzung',
         'Local SEO',
+        'NFC-Schlüsselanhänger',
+        'Digitale Visitenkarten',
       ],
       areaServed: {
         '@type': 'State',
@@ -159,6 +160,23 @@ const jsonLd = {
       offers: { '@type': 'Offer', price: '1990', priceCurrency: 'EUR' },
     },
     {
+      '@type': 'Product',
+      '@id': 'https://neon-bw.de/nfc-visitenkarte#product',
+      name: 'NFC-Schlüsselanhänger mit digitaler Visitenkarte',
+      url: 'https://neon-bw.de/nfc-visitenkarte',
+      description:
+        'Starterpaket für Unternehmen mit fünf NFC-Schlüsselanhängern, fünf persönlichen digitalen Visitenkarten, QR-Fallback und Einrichtung durch NEON.',
+      brand: { '@id': 'https://neon-bw.de/#organization' },
+      category: 'Digitale Visitenkarten',
+      offers: {
+        '@type': 'Offer',
+        price: '99.99',
+        priceCurrency: 'EUR',
+        availability: 'https://schema.org/InStock',
+        url: 'https://neon-bw.de/nfc-visitenkarte',
+      },
+    },
+    {
       '@type': 'WebSite',
       '@id': 'https://neon-bw.de/#website',
       url: 'https://neon-bw.de',
@@ -187,11 +205,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased">
-        <ScrollProgress />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <CalendlyBadge />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   )

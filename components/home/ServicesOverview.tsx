@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { Globe2, Cpu, Workflow, LifeBuoy, ArrowRight, type LucideIcon } from 'lucide-react'
+import { Globe2, Cpu, Workflow, LifeBuoy, ArrowRight, Nfc, type LucideIcon } from 'lucide-react'
 
 interface Service {
   icon: LucideIcon
@@ -168,6 +168,39 @@ export default function ServicesOverview() {
             <ServiceCard key={service.title} service={service} index={i} />
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6 }}
+          className="mt-6 grid overflow-hidden border border-neon/35 bg-[#C5F74F] md:grid-cols-[1fr_auto]"
+        >
+          <div className="flex gap-5 p-6 sm:p-8">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#142000] text-neon">
+              <Nfc size={23} aria-hidden="true" />
+            </span>
+            <div>
+              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#425500]">
+                Neues Produkt für kleine Teams
+              </p>
+              <h3 className="mt-2 text-2xl font-black tracking-tight text-[#142000]">
+                Digitale Visitenkarten am Schlüsselbund.
+              </h3>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-[#344400]">
+                5 NFC-Anhänger, 5 persönliche Profile und Einrichtung durch NEON – als
+                Einführungspaket für 99,99 €.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/nfc-visitenkarte"
+            className="group flex min-h-16 items-center justify-center gap-3 border-t border-[#142000]/20 bg-[#142000] px-8 text-sm font-black text-white md:border-l md:border-t-0"
+          >
+            Paket ansehen
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+          </Link>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}

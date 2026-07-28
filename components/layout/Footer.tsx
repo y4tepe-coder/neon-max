@@ -5,6 +5,7 @@ const footerLinks = [
   {
     title: 'Leistungen',
     links: [
+      { href: '/nfc-visitenkarte',          label: 'NFC-Visitenkarten' },
       { href: '/leistungen',                 label: 'Alle Leistungen' },
       { href: '/leistungen#websites',         label: 'Websites' },
       { href: '/leistungen#automatisierung',  label: 'Anfragefluss' },

@@ -11,7 +11,7 @@ export default function DatenschutzPage() {
       <section className="py-24 md:py-32 bg-off-white">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <h1 className="text-4xl font-bold text-text-dark mb-2">Datenschutzerklärung</h1>
-          <p className="text-text-muted text-sm mb-10">Stand: März 2026</p>
+          <p className="text-text-muted text-sm mb-10">Stand: Juli 2026</p>
 
           <div className="space-y-8 text-text-muted">
 
@@ -68,7 +68,26 @@ export default function DatenschutzPage() {
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold text-text-dark mb-2">5. Calendly (Terminbuchung)</h2>
+              <h2 className="text-lg font-semibold text-text-dark mb-2">
+                5. Anfrage für NFC-Visitenkarten
+              </h2>
+              <p className="leading-relaxed mb-3">
+                Wenn Sie den NFC-Konfigurator absenden, verarbeiten wir die von Ihnen
+                eingegebenen Unternehmens-, Profil- und Kontaktdaten sowie Ihre Paketwahl und
+                Nachricht. Diese Angaben werden per E-Mail an NEON übermittelt und zur Prüfung,
+                Angebotserstellung und Rückmeldung genutzt. Ein für die Vorschau ausgewähltes
+                Profilbild bleibt ausschließlich lokal in Ihrem Browser und wird nicht mit der
+                Anfrage übertragen.
+              </p>
+              <p className="leading-relaxed">
+                Rechtsgrundlage ist Art. 6 Abs. 1 lit. a DSGVO (Einwilligung) sowie Art. 6 Abs. 1
+                lit. b DSGVO (Vertragsanbahnung). Die Angaben werden nur so lange aufbewahrt, wie
+                dies für die Anfrage und mögliche gesetzliche Nachweispflichten erforderlich ist.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-lg font-semibold text-text-dark mb-2">6. Calendly (Terminbuchung)</h2>
               <p className="leading-relaxed">
                 Für die Buchung von Terminen nutzen wir Calendly (Calendly LLC, 271 17th St NW,
                 Atlanta, GA 30363, USA). Wenn Sie einen Termin über Calendly buchen, werden Ihre
@@ -82,13 +101,13 @@ export default function DatenschutzPage() {
                 >
                   calendly.com/privacy
                 </a>
-                . Das Calendly-Widget wird nur bei aktiver Nutzung (Klick auf „Termin buchen")
-                geladen.
+                . Beim Aufruf der Terminseite wird das Calendly-Widget geladen. Dabei kann
+                Calendly bereits technische Verbindungsdaten wie Ihre IP-Adresse erhalten.
               </p>
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold text-text-dark mb-2">6. WhatsApp</h2>
+              <h2 className="text-lg font-semibold text-text-dark mb-2">7. WhatsApp</h2>
               <p className="leading-relaxed">
                 Auf unserer Website binden wir einen Link zu WhatsApp (Meta Platforms Ireland
                 Limited, 4 Grand Canal Square, Dublin 2, Irland) ein. Wenn Sie auf den
@@ -109,7 +128,7 @@ export default function DatenschutzPage() {
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold text-text-dark mb-2">7. Hosting & Server-Logs</h2>
+              <h2 className="text-lg font-semibold text-text-dark mb-2">8. Hosting & Server-Logs</h2>
               <p className="leading-relaxed">
                 Diese Website wird auf Servern eines Hosting-Anbieters betrieben. Beim Aufruf
                 unserer Website werden automatisch Informationen in sogenannten Server-Log-Dateien
@@ -122,7 +141,7 @@ export default function DatenschutzPage() {
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold text-text-dark mb-2">8. Cookies</h2>
+              <h2 className="text-lg font-semibold text-text-dark mb-2">9. Cookies</h2>
               <p className="leading-relaxed">
                 Diese Website verwendet keine Tracking- oder Marketing-Cookies. Es werden
                 ausschließlich technisch notwendige Cookies eingesetzt, die für den Betrieb
@@ -132,7 +151,7 @@ export default function DatenschutzPage() {
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold text-text-dark mb-2">9. Ihre Rechte</h2>
+              <h2 className="text-lg font-semibold text-text-dark mb-2">10. Ihre Rechte</h2>
               <p className="leading-relaxed mb-3">
                 Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden
                 personenbezogenen Daten:

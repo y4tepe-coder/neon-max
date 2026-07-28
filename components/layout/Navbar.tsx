@@ -16,6 +16,7 @@ const leistungenItems = [
 const navLinks = [
   { href: '/#zeit-sparen', label: 'Zeitfresser' },
   { href: '/ueber-uns',    label: 'Über uns' },
+  { href: '/nfc-visitenkarte', label: 'NFC-Visitenkarte' },
 ]
 
 export default function Navbar() {
@@ -120,7 +121,7 @@ export default function Navbar() {
                   href={link.href}
                   className={`text-sm font-medium transition-colors duration-200 ${
                     pathname === link.href
-                      ? 'text-neon'
+                      ? 'text-[#526b10]'
                       : showDark
                       ? 'text-white/70 hover:text-white'
                       : 'text-text-muted hover:text-text-dark'
@@ -140,7 +141,7 @@ export default function Navbar() {
                   href="/leistungen"
                   className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${
                     pathname.startsWith('/leistungen')
-                      ? 'text-neon'
+                      ? 'text-[#526b10]'
                       : showDark
                       ? 'text-white/70 hover:text-white'
                       : 'text-text-muted hover:text-text-dark'
@@ -197,11 +198,11 @@ export default function Navbar() {
                 0176 20 17 01 33
               </a>
               <Link
-                href="/termin"
+                href={pathname === '/nfc-visitenkarte' ? '/nfc-visitenkarte#konfigurator' : '/termin'}
                 className="bg-neon text-text-dark text-sm font-semibold px-5 py-2.5 rounded-full
                            hover:bg-neon-dim transition-all duration-200 cursor-pointer"
               >
-                Kostenlos prüfen lassen
+                {pathname === '/nfc-visitenkarte' ? 'NFC-Paket anfragen' : 'Kostenlos prüfen lassen'}
               </Link>
             </div>
 
@@ -239,7 +240,7 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
                   className={`text-base font-medium py-2 border-b border-border-light/50 transition-colors duration-200 ${
-                    pathname === link.href ? 'text-neon' : 'text-text-muted hover:text-text-dark'
+                    pathname === link.href ? 'text-[#526b10]' : 'text-text-muted hover:text-text-dark'
                   }`}
                 >
                   {link.label}
@@ -252,7 +253,7 @@ export default function Navbar() {
                   type="button"
                   onClick={() => setIsMobileLeistungenOpen((v) => !v)}
                   className={`w-full flex items-center justify-between text-base font-medium py-2 transition-colors duration-200 ${
-                    pathname.startsWith('/leistungen') ? 'text-neon' : 'text-text-muted hover:text-text-dark'
+                    pathname.startsWith('/leistungen') ? 'text-[#526b10]' : 'text-text-muted hover:text-text-dark'
                   }`}
                   aria-expanded={isMobileLeistungenOpen}
                 >
@@ -304,12 +305,12 @@ export default function Navbar() {
                 0176 20 17 01 33
               </a>
               <Link
-                href="/termin"
+                href={pathname === '/nfc-visitenkarte' ? '/nfc-visitenkarte#konfigurator' : '/termin'}
                 onClick={() => setIsMenuOpen(false)}
                 className="mt-2 w-full text-center bg-neon text-text-dark font-semibold px-6 py-3 rounded-full
                            hover:bg-neon-dim transition-all duration-200 cursor-pointer"
               >
-                Website kostenlos prüfen lassen
+                {pathname === '/nfc-visitenkarte' ? 'NFC-Paket anfragen' : 'Website kostenlos prüfen lassen'}
               </Link>
             </nav>
           </motion.div>
