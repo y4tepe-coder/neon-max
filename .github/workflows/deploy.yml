@@ -56,3 +56,38 @@ jobs:
               }
               console.log("Runtime mail configuration is present.");
             '
+            docker compose exec -T neon-agentur node -e '
+              (async () => {
+                const response = await fetch("https://api.resend.com/emails", {
+                  method: "POST",
+                  headers: {
+                    Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    from: "NEON NFC <onboarding@resend.dev>",
+                    to: process.env.NOTIFY_EMAIL,
+                    subject: "NEON NFC – Container-Versandtest",
+                    text: "Automatischer Funktionstest der NFC-Anfrage. Bitte ignorieren.",
+                  }),
+                });
+                const responseBody = await response.text();
+                let errorName = "";
+                try {
+                  const result = JSON.parse(responseBody);
+                  errorName = typeof result.name === "string" ? result.name : "";
+                } catch {}
+                if (!response.ok) {
+                  console.error(
+                    "Resend runtime check failed:",
+                    response.status,
+                    errorName
+                  );
+                  process.exit(1);
+                }
+                console.log("Resend runtime check passed.");
+              })().catch((error) => {
+                console.error("Resend runtime check failed:", error.name, error.message);
+                process.exit(1);
+              });
+            '
