@@ -45,4 +45,14 @@ jobs:
             docker compose down --remove-orphans
             docker rm -f neon-website-neon-agentur-1 2>/dev/null || true
             docker network rm neon-website_default 2>/dev/null || true
+            set -e
             docker compose up -d --build
+            docker compose exec -T neon-agentur node -e '
+              const required = ["RESEND_API_KEY", "NOTIFY_EMAIL"];
+              const missing = required.filter((name) => !process.env[name]);
+              if (missing.length) {
+                console.error(`Missing runtime mail configuration: ${missing.join(", ")}`);
+                process.exit(1);
+              }
+              console.log("Runtime mail configuration is present.");
+            '
