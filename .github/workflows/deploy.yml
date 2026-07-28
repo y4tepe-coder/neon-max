@@ -10,10 +10,15 @@ jobs:
     steps:
       - name: Deploy to Hostinger VPS
         uses: appleboy/ssh-action@v1.0.3
+        env:
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: root
           password: ${{ secrets.VPS_PASSWORD }}
+          envs: SMTP_USER,SMTP_PASS,NOTIFY_EMAIL
           script: |
             set -e
             mkdir -p /docker/neon-website
@@ -25,6 +30,15 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             git clean -fd
+            umask 077
+            {
+              printf 'SMTP_HOST=%s\n' 'smtp.gmail.com'
+              printf 'SMTP_PORT=%s\n' '587'
+              printf 'SMTP_USER=%s\n' "$SMTP_USER"
+              printf 'SMTP_PASS=%s\n' "$SMTP_PASS"
+              printf 'NOTIFY_EMAIL=%s\n' "$NOTIFY_EMAIL"
+              printf 'NFC_INQUIRY_TO=%s\n' "$NOTIFY_EMAIL"
+            } > .env.runtime
             set +e
             docker compose down --remove-orphans
             docker rm -f neon-website-neon-agentur-1 2>/dev/null || true

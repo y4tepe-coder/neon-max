@@ -6,9 +6,7 @@ node_modules/
 out/
 
 # Environment variables – NIEMALS auf GitHub!
-.env
-.env.local
-.env*.local
+.env*
 
 # Lead-Daten (persönliche Kundendaten)
 data/leads.json

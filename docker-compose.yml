@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:3000"
+    env_file:
+      - .env.runtime
     environment:
       - NODE_ENV=production
     restart: unless-stopped
