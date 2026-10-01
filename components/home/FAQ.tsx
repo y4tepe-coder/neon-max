@@ -100,10 +100,10 @@ export default function FAQ() {
             <p className="mt-4 text-text-muted text-sm">
               Noch mehr Fragen?{' '}
               <a
-                href="mailto:hello@neon-bw.de"
+                href="mailto:y4tepe@gmail.com"
                 className="text-neon-dim font-semibold hover:underline cursor-pointer"
               >
-                hello@neon-bw.de
+                y4tepe@gmail.com
               </a>
             </p>
           </motion.div>

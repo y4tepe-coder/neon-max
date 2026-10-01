@@ -104,11 +104,11 @@ export default function TerminPage() {
                       0176 20 17 01 33
                     </a>
                     <a
-                      href="mailto:hello@neon-bw.de"
+                      href="mailto:y4tepe@gmail.com"
                       className="flex items-center gap-3 text-sm font-medium text-text-muted hover:text-text-dark transition-colors"
                     >
                       <Mail size={16} className="text-neon-dim" aria-hidden="true" />
-                      hello@neon-bw.de
+                      y4tepe@gmail.com
                     </a>
                   </div>
                 </div>

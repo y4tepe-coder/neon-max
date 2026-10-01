@@ -83,7 +83,7 @@ const jsonLd = {
       '@id': 'https://neon-bw.de/#organization',
       name: 'NEON Webdesign & KI',
       url: 'https://neon-bw.de',
-      email: 'hello@neon-bw.de',
+      email: 'y4tepe@gmail.com',
       description:
         'NEON Webdesign & KI baut Websites und digitale Anfragewege für lokale Unternehmen aus Baden-Württemberg. Anfragen aufnehmen, Informationen sortieren, Rückfragen vorbereiten und Termine erleichtern – damit Inhaberinnen und Inhaber Zeit zurückbekommen.',
       knowsAbout: [
@@ -111,7 +111,7 @@ const jsonLd = {
       '@id': 'https://neon-bw.de/#localbusiness',
       name: 'NEON Webdesign & KI',
       url: 'https://neon-bw.de',
-      email: 'hello@neon-bw.de',
+      email: 'y4tepe@gmail.com',
       description:
         'Websites und digitale Anfragewege aus Region Stuttgart / Leinfelden-Echterdingen / Filderstadt. Festpreis vor Start, DSGVO-konform, persönlich erreichbar.',
       priceRange: '€€',

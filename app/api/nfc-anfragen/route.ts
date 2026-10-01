@@ -593,7 +593,7 @@ function getRecipient(): string {
   return (
     process.env.NFC_INQUIRY_TO?.trim() ||
     process.env.NOTIFY_EMAIL?.trim() ||
-    'hello@neon-bw.de'
+    'y4tepe@gmail.com'
   )
 }
 
@@ -753,7 +753,7 @@ export async function POST(request: Request) {
       return jsonResponse(
         {
           error:
-            'Der Versand ist momentan nicht verfügbar. Bitte schreiben Sie direkt an hello@neon-bw.de.',
+            'Der Versand ist momentan nicht verfügbar. Bitte schreiben Sie direkt an y4tepe@gmail.com.',
         },
         503
       )

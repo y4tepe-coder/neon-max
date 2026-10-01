@@ -32,7 +32,7 @@ export const nfcProfiles = {
     role: 'Gründer',
     company: 'NEON BW',
     bio: 'Websites, digitale Anfragewege und NFC-Visitenkarten für Unternehmen in Baden-Württemberg.',
-    email: 'hello@neon-bw.de',
+    email: 'y4tepe@gmail.com',
     phone: {
       display: '+49 176 20170133',
       international: '+4917620170133',

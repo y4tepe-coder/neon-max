@@ -59,12 +59,12 @@ export default function ClosingCTA() {
               Website kostenlos prüfen lassen
             </Link>
             <Link
-              href="mailto:hello@neon-bw.de"
+              href="mailto:y4tepe@gmail.com"
               className="inline-flex items-center justify-center gap-2 border border-white/20 text-white font-semibold px-7 py-4 rounded-full
                          hover:border-neon hover:text-neon transition-all duration-200 cursor-pointer text-base"
             >
               <Mail size={18} aria-hidden="true" />
-              hello@neon-bw.de
+              y4tepe@gmail.com
             </Link>
           </div>
 

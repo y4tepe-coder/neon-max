@@ -392,7 +392,7 @@ export default function NfcConfigurator() {
       setErrorMessage(
         error instanceof Error
           ? error.message
-          : 'Die Anfrage konnte nicht gesendet werden. Bitte schreiben Sie an hello@neon-bw.de.',
+          : 'Die Anfrage konnte nicht gesendet werden. Bitte schreiben Sie an y4tepe@gmail.com.',
       )
     }
   }
@@ -730,7 +730,7 @@ export default function NfcConfigurator() {
                   {status === 'error' && (
                     <p role="alert" className="mt-6 border-l-2 border-red-700 pl-3 text-sm text-red-800">
                       {errorMessage}{' '}
-                      <a href="mailto:hello@neon-bw.de" className="font-bold underline">
+                      <a href="mailto:y4tepe@gmail.com" className="font-bold underline">
                         Alternativ direkt per E-Mail schreiben.
                       </a>
                     </p>

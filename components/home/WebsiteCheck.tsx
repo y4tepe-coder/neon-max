@@ -21,7 +21,7 @@ type QuizStep = {
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const TERMIN_URL = '/termin'
-const MAIL_URL = 'mailto:hello@neon-bw.de?subject=Potenzial-Check%20Ergebnis'
+const MAIL_URL = 'mailto:y4tepe@gmail.com?subject=Potenzial-Check%20Ergebnis'
 
 // ─── Quiz questions ───────────────────────────────────────────────────────────
 
@@ -723,7 +723,7 @@ export default function WebsiteCheck() {
                                  font-medium px-5 py-3 rounded-xl hover:border-neon/50 hover:bg-neon/5
                                  transition-all duration-200 cursor-pointer text-sm"
                     >
-                      hello@neon-bw.de
+                      y4tepe@gmail.com
                     </a>
                   </div>
                 </motion.div>

@@ -50,11 +50,11 @@ export default function Footer() {
             </p>
             <div className="flex flex-col gap-3">
               <a
-                href="mailto:hello@neon-bw.de"
+                href="mailto:y4tepe@gmail.com"
                 className="flex items-center gap-2.5 text-white/55 hover:text-neon transition-colors duration-200 text-sm cursor-pointer"
               >
                 <Mail size={15} />
-                hello@neon-bw.de
+                y4tepe@gmail.com
               </a>
               <a
                 href="tel:+4917620170133"
