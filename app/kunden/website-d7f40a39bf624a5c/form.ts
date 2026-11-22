@@ -1,51 +1,211 @@
 export const routePath = '/kunden/website-d7f40a39bf624a5c'
-type Field = { key: string; label: string; hint?: string; type?: 'name' | 'email' | 'text'; required?: boolean; wide?: boolean }
-export const sections: { title: string; fields: Field[] }[] = [
-  { title: 'Ihr Kontakt', fields: [
-    { key: 'name', label: 'Ihr Name', type: 'name', required: true },
-    { key: 'email', label: 'Ihre E-Mail für Rückfragen', type: 'email', required: true },
-  ] },
-  { title: 'Angaben fürs Impressum', fields: [
-    { key: 'operator', label: 'Wer betreibt die Website?', hint: 'Vollständiger Name, ggf. Unternehmen, Rechtsform und vertretungsberechtigte Person.' },
-    { key: 'address', label: 'Geschäftsanschrift', hint: 'Straße, Hausnummer, PLZ, Ort und Land für das Impressum.' },
-    { key: 'publicEmail', label: 'Öffentliche E-Mail-Adresse', hint: 'Eine Wunschadresse genügt, falls das Postfach noch eingerichtet wird.', type: 'text' },
-    { key: 'contact', label: 'Weiterer Kontaktweg', hint: 'Zum Beispiel die geschäftliche Telefonnummer. Dürfen wir sie veröffentlichen?', type: 'text' },
-    { key: 'register', label: 'Registereintrag', hint: 'Falls vorhanden: Register, Registergericht und Registernummer.' },
-    { key: 'businessId', label: 'Unternehmenskennzeichen', hint: 'Nur falls vorhanden: USt-IdNr. oder Wirtschafts-Identifikationsnummer. Bitte keine persönliche Steuer-ID oder Steuernummer.' },
-    { key: 'profession', label: 'Angaben zum Beruf', hint: 'Gibt es eine zuständige Aufsichtsbehörde, Kammer oder andere berufliche Pflichtangaben?', wide: true },
-  ] },
-  { title: 'Anfragen und Datenschutz', fields: [
-    { key: 'recipient', label: 'Zielpostfach und Zugriffsberechtigte', hint: 'Wo sollen Anfragen ankommen? Wer kann sie lesen? Gibt es Weiterleitungen?' },
-    { key: 'workflow', label: 'Bearbeitung von Anfragen', hint: 'Wie antworten Sie? Welche Programme oder weiteren Empfänger werden wofür einbezogen?' },
-    { key: 'services', label: 'Dienste auf der Website', hint: 'Wünschen Sie Statistik, Karten, eingebettete Instagram-Beiträge oder Videos, Terminbuchung oder andere Dienste? „Keine“ oder „noch offen“ genügt.', wide: true },
-    { key: 'retention', label: 'Aufbewahrung und Löschung', hint: 'Wann löschen Sie Anfragen ohne Auftrag? Was gilt bei einer Buchung?' },
-    { key: 'privacy', label: 'Kontakt für Datenschutzfragen', hint: '„Wie im Impressum“ genügt. Falls benannt, bitte den geschäftlichen Kontakt des Datenschutzbeauftragten ergänzen.' },
-  ] },
-  { title: 'Domain und Bilder', fields: [
-    { key: 'domain', label: 'Wunschdomain und Hosting', hint: 'Welche Domain wünschen oder besitzen Sie? Bei welchem Anbieter? Haben Sie bereits ein Hostinger-Konto? Bitte keine Zugangsdaten.' },
-    { key: 'images', label: 'Bildfreigabe und Nachweise', hint: 'Welche Bilder dürfen auf die Website? Bitte Dateinamen und gewünschte Bildnachweise nennen. Die Originalfotos bitte einzeln per E-Mail schicken.' },
-  ] },
+const filesPath = routePath + '?nachreichen=1'
+export type Values = Record<string, string>
+export type Mode = 'full' | 'files'
+
+type Field = {
+  key: string
+  label: string
+  hint?: string
+  type?: 'name' | 'email' | 'text'
+  required?: boolean
+  wide?: boolean
+  folded?: boolean
+}
+type Section = { title: string; fields: Field[] }
+
+export const sections: Section[] = [
+  {
+    title: 'Impressum',
+    fields: [
+      { key: 'name', label: 'Vor- und Nachname', type: 'name', required: true },
+      { key: 'address', label: 'Anschrift für das Impressum', hint: 'Straße, Hausnummer, PLZ und Ort der geschäftlichen Anschrift.', required: true },
+      { key: 'publicEmail', label: 'Öffentliche E-Mail-Adresse', type: 'email', hint: 'Für die Veröffentlichung brauchen wir eine Adresse. Ihre Wunschadresse genügt. Ist sie noch offen, klären wir sie beim Termin.' },
+      { key: 'contact', label: 'Öffentliche Telefonnummer', type: 'text', hint: 'Nur eintragen, wenn sie auf der Website stehen soll.' },
+      { key: 'company', label: 'Zusätzliche Angaben zum Unternehmen', hint: 'Falls eine Gesellschaft die Website betreibt: Firmenname, Rechtsform und Vertretung. Falls vorhanden: Register, Registergericht und Registernummer sowie USt-IdNr. oder W-IdNr. Bitte keine persönliche Steuer-ID oder Steuernummer eintragen.', wide: true, folded: true },
+    ],
+  },
+  {
+    title: 'Datenschutz',
+    fields: [
+      { key: 'email', label: 'Ihre E-Mail für Rückfragen', type: 'email', required: true, wide: true, hint: 'Hierüber erreichen wir Sie während des Projekts. Sie dient der Abstimmung mit NEON BW.' },
+      { key: 'recipient', label: 'Wer bearbeitet die Anfragen über Ihre Website?', hint: '„Nur ich“ genügt. Falls jemand mitliest oder Anfragen weitergeleitet werden, geben Sie das bitte kurz an.' },
+      { key: 'retention', label: 'Wann löschen Sie Anfragen ohne Auftrag?', hint: 'Eine ungefähre Frist oder Ihr übliches Vorgehen genügt. Falls noch offen, besprechen wir das gemeinsam.' },
+    ],
+  },
+  {
+    title: 'Sonstige Unterlagen',
+    fields: [
+      { key: 'notes', label: 'Bildfreigabe, Bildnachweis oder weitere Hinweise', hint: 'Welche Fotos dürfen auf Ihre Website? Nennen Sie den Dateinamen und ggf. den gewünschten Bildnachweis. Sie können die Auswahl auch später mit Yasin abstimmen.', wide: true },
+    ],
+  },
 ]
+
 export const fields = sections.flatMap(section => section.fields)
 export const limit = (field: Field) => field.type === 'name' ? 120 : field.type === 'email' ? 254 : field.type === 'text' ? 300 : 1500
-export type Values = Record<string, string>
-const html = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+const escapeHtml = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+
 function input(field: Field, values: Values, errors: Values) {
-  const {key, label, hint, type, required} = field
-  const attributes = `name="${key}" id="${key}" maxlength="${limit(field)}" ${required ? 'required' : ''} ${errors[key] ? 'aria-invalid="true"' : ''} aria-describedby="${[hint && key+'-hint',errors[key] && key+'-error'].filter(Boolean).join(' ')}"`
-  return `<div class="field ${field.wide?'wide':''}"><label for="${key}">${label}${required?' <span aria-hidden="true">*</span>':''}</label>${hint?`<p class="hint" id="${key}-hint">${hint}</p>`:''}${type?`<input ${attributes} type="${type==='email'?'email':'text'}" autocomplete="${type==='name'||type==='email'?type:'off'}" value="${html(values[key]||'')}">`:`<textarea ${attributes} rows="3">${html(values[key]||'')}</textarea>`}${errors[key]?`<p class="issue" id="${key}-error">${html(errors[key])}</p>`:''}</div>`
+  const { key, label, hint, type } = field
+  const error = errors[key]
+  const description = [hint && key + '-hint', error && key + '-error'].filter(Boolean).join(' ')
+  const attributes = [
+    `name="${key}" id="${key}" maxlength="${limit(field)}"`,
+    field.required && 'required',
+    description && `aria-describedby="${description}"`,
+    error && 'aria-invalid="true"',
+  ].filter(Boolean).join(' ')
+  const value = escapeHtml(values[key] || '')
+  const control = type
+    ? `<input ${attributes} type="${type === 'email' ? 'email' : 'text'}" autocomplete="${key === 'name' ? 'name' : key === 'email' ? 'email' : 'off'}" value="${value}">`
+    : `<textarea ${attributes} rows="${key === 'address' ? 2 : 3}">${value}</textarea>`
+  return `<div class="field${field.wide ? ' wide' : ''}">
+    <label for="${key}">${label}${field.required ? ' <span aria-hidden="true">*</span>' : ''}</label>
+    ${hint ? `<p class="hint" id="${key}-hint">${hint}</p>` : ''}
+    ${control}
+    ${error ? `<p class="issue" id="${key}-error">${escapeHtml(error)}</p>` : ''}
+  </div>`
 }
+
+function fileInput(key: 'photos' | 'documents', errors: Values) {
+  const photo = key === 'photos'
+  const accept = photo ? '.jpg,.jpeg,.png,.webp,.heic,.heif' : '.pdf,.docx'
+  return `<div class="upload">
+    <label for="${key}">${photo ? 'Fotos im Original' : 'Weitere Dokumente'}</label>
+    <p class="hint" id="${key}-hint">${photo ? 'Zum Beispiel Ihr Porträt. JPG, PNG, WebP oder HEIC/HEIF.' : 'Zum Beispiel ergänzende Texte oder Bildfreigaben. PDF oder Word (.docx).'}</p>
+    <input id="${key}" name="${key}" type="file" accept="${accept}" multiple aria-describedby="${key}-hint${errors[key] ? ' ' + key + '-error' : ''}" ${errors[key] ? 'aria-invalid="true"' : ''}>
+    ${errors[key] ? `<p class="issue" id="${key}-error">${escapeHtml(errors[key])}</p>` : ''}
+  </div>`
+}
+
+function attachments(errors: Values) {
+  return `<p class="section-note">Bitte laden Sie nur Dateien hoch, die wir für Ihr Projekt verwenden dürfen. Wählen Sie Fotos einzeln oder mehrere Originaldateien gemeinsam aus.</p>
+    <div class="uploads">${fileInput('photos', errors)}${fileInput('documents', errors)}</div>
+    <p class="hint limits">Je Übermittlung bis zu 10 Dateien, höchstens 15 MiB pro Datei und 35 MiB zusammen. Weitere Dateien können Sie später nachreichen.</p>`
+}
+
+function sectionPanel(section: Section, index: number, values: Values, errors: Values) {
+  const standard = section.fields.filter(field => !field.folded)
+  const folded = section.fields.filter(field => field.folded)
+  const specialCases = folded.length ? `<details${folded.some(field => values[field.key] || errors[field.key]) ? ' open' : ''}>
+    <summary>Gesellschaft, Registereintrag oder Unternehmens-ID vorhanden?</summary>
+    <div class="field-grid">${folded.map(field => input(field, values, errors)).join('')}</div>
+  </details>` : ''
+  return `<section class="panel" id="teil-${index + 1}" aria-labelledby="heading-${index}">
+    <h2 id="heading-${index}">${section.title}</h2>
+    ${index === 2 ? attachments(errors) : ''}
+    <div class="field-grid">${standard.map(field => input(field, values, errors)).join('')}</div>
+    ${specialCases}
+  </section>`
+}
+
 const css = `
-:root{color-scheme:light;--lime:#c5f74f;--ink:#131313;--paper:#f8f7f4;--muted:#555850;--line:#d7d9d1}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:22px}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.5 "DM Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit;text-underline-offset:4px}header{background:var(--ink);color:#fff}.row,.layout,footer{width:min(1160px,90%);margin:auto}.row{height:74px;display:flex;align-items:center;justify-content:space-between}.logo{display:flex;align-items:center;gap:12px;text-decoration:none}.logo strong{font-size:29px;letter-spacing:-.08em;line-height:1;font-weight:850}.logo i{color:var(--lime);font-style:normal}.logo small{border-left:1px solid #74776f;padding-left:11px;font-size:12px;line-height:1.15;font-weight:600}.row>span{font-size:14px;color:#ddd}.layout{display:grid;grid-template-columns:minmax(210px,.7fr) minmax(0,1.65fr);gap:clamp(35px,6vw,90px);padding:62px 0 78px}.intro{position:sticky;top:24px;align-self:start}.intro h1,h1{font-size:clamp(37px,4.2vw,63px);line-height:1.015;letter-spacing:-.062em;margin:0 0 24px;font-weight:730}.intro p{max-width:31ch;color:var(--muted);margin:0}.intro nav{margin-top:42px;border-top:1px solid var(--line);display:grid}.intro nav a{padding:10px 0;text-decoration:none;border-bottom:1px solid var(--line);font-size:15px;display:flex;align-items:center;justify-content:space-between}.intro nav a:after{content:'↓';color:#626956}.intro nav a:hover{text-decoration:underline}.panel{margin:0 0 22px;padding:clamp(20px,3vw,34px);background:white;border:1px solid var(--line);border-radius:16px;scroll-margin-top:12px}.panel h2{font-size:clamp(22px,2.4vw,31px);letter-spacing:-.045em;line-height:1.15;margin:0 0 22px}.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px}.field{display:flex;flex-direction:column}.wide{grid-column:1/-1}.field label{font-size:15px;font-weight:660}.field label span{color:#4d671f}.hint{font-size:13px;line-height:1.45;color:var(--muted);margin:4px 0 0}.field input,.field textarea{font:inherit;background:#fcfcfa;color:var(--ink);border:1px solid #aeb2a6;border-radius:8px;display:block;width:100%;margin-top:auto;min-width:0;padding:10px 12px}.field textarea{resize:vertical;min-height:84px}.field:has(.hint) .hint,.field:not(:has(.hint)) label{margin-bottom:8px}.field :focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #3c5112;outline-offset:3px}.field [aria-invalid=true]{border-color:#a13422}.notice,.issue{color:#8e291a}.notice{background:#fff4ed;border:1px solid #daaa98;border-radius:10px;padding:13px 15px}.issue{font-size:14px;margin:6px 0 0}.small{font-size:14px;color:var(--muted)}.submit{display:inline-block;background:var(--lime);color:var(--ink);border:1px solid #aaca58;border-radius:100px;padding:14px 26px;line-height:1.45;font-family:inherit;font-size:16px;font-weight:650;cursor:pointer}.submit:hover{background:#b4ed3a}.trap{position:absolute;width:1px;height:1px;left:-10000px;overflow:hidden}.thanks{max-width:720px;margin:clamp(65px,12vw,170px) auto;padding:0 24px}.thanks p{font-size:19px;color:var(--muted)}.thanks a{display:inline-flex;margin-top:1em}.footline{border-top:1px solid var(--line)}footer{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-size:14px}footer div{display:flex;gap:18px}
-@media(min-width:1000px){.field-grid:has(#operator),.field-grid:has(#recipient),.field-grid:has(#domain){row-gap:25px}}
-@media(max-width:850px){.layout{grid-template-columns:1fr;padding:36px 0 52px;gap:27px}.intro{position:static}.intro p{max-width:58ch}.intro nav{display:none}.intro h1{margin-bottom:16px}.row{height:62px}}
-@media(max-width:560px){.field-grid{grid-template-columns:1fr}.row,.layout,footer{width:91%}.panel{border-radius:12px;padding:20px}.submit{width:100%}.row>span{font-size:12px}footer{align-items:flex-start;flex-wrap:wrap}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}`
-export function render(values: Values = {}, errors: Values = {}, notice = '', sent = false, token = '', emailFallback = '') {
-  const mailto = 'mailto:y4tepe@gmail.com?subject=Website-Fragebogen'
-  const body = '&body=' + encodeURIComponent(emailFallback.replace(/\r?\n/g, '\r\n'))
-  const emailLink = mailto.length + body.length <= 1800 ? mailto + body : mailto
-  const main = sent
-    ? '<main class="thanks"><h1>Vielen Dank!</h1><p>Ihre Antworten sind bei NEON BW eingegangen. Wir melden uns bei Rückfragen unter der von Ihnen angegebenen E-Mail-Adresse.</p><a href="/">Zur NEON-Startseite</a></main>'
-    : `<main class="layout"><aside class="intro"><h1>Ihr Website-<br>Fragebogen.</h1><p>Mit Ihren Angaben bereiten wir Impressum, Datenschutz und Kontaktmöglichkeiten für Ihre Website vor. Pflichtfelder sind mit * markiert. Offene Punkte klären wir gemeinsam.</p><nav aria-label="Abschnitte">${sections.map((s,i)=>`<a href="#teil-${i+1}">${s.title}</a>`).join('')}</nav></aside><form method="post" accept-charset="UTF-8" action="${routePath}"><input type="hidden" name="submission" value="${html(token)}">${notice?`<div role="alert" class="notice">${html(notice)}</div>`:''}${emailFallback ? `<section class="panel"><h2>Alternativ per E-Mail</h2><p>${emailLink === mailto ? 'Kopieren Sie den Text in eine E-Mail an Yasin Tepe.' : 'Über den Link öffnen Sie eine E-Mail an Yasin Tepe mit Ihren Antworten. Sie können den Text auch kopieren.'} Sie entscheiden in Ihrem E-Mail-Programm, wann Sie die Nachricht versenden.</p><div class="field"><label for="mailtext">Text zum Kopieren</label><textarea id="mailtext" rows="7" readonly>${html(emailFallback)}</textarea></div><p><a href="${html(emailLink)}">E-Mail an Yasin öffnen</a></p></section>` : ''}<div class="trap" aria-hidden="true"><label>Bitte frei lassen<input name="address2" tabindex="-1" autocomplete="off"></label></div>${sections.map((s,i)=>`<section class="panel" id="teil-${i+1}" aria-labelledby="heading-${i}"><h2 id="heading-${i}">${s.title}</h2><div class="field-grid">${s.fields.map(f=>input(f,values,errors)).join('')}</div></section>`).join('')}<p class="small">NEON BW verwendet Ihre Antworten zur Bearbeitung Ihres Websiteprojekts. Sie werden in einem geschützten Ordner unseres Webhostings gespeichert. <a href="/datenschutz">Datenschutzhinweise</a></p><button class="submit" type="submit">Antworten an NEON senden</button></form></main>`
-  return `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="same-origin"><title>${sent?'Vielen Dank':'Website-Fragebogen'} · NEON BW</title><style>${css}</style></head><body><header><div class="row"><a class="logo" href="/" aria-label="NEON BW – Startseite"><strong>NEON<i>.</i></strong><small>Webdesign<br>&amp; KI</small></a><span>Kundenbereich</span></div></header>${main}<div class="footline"><footer><span>NEON BW · Region Stuttgart</span><div><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></div></footer></div></body></html>`
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/13971731025ec697-s.p.woff2") format("woff2");
+}
+:root { color-scheme: light; --lime: #c5f74f; --ink: #171815; --muted: #54574e; --paper: #f8f7f4; --line: #d7d9d1; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 20px; }
+body { margin: 0; color: var(--ink); background: var(--paper); font: 16px/1.5 "DM Sans",system-ui,sans-serif; }
+a { color: inherit; text-underline-offset: .2em; }
+a:hover { text-decoration-thickness: 2px; }
+header { background: #131313; color: white; }
+.bar, .layout, footer { width: min(1110px,91%); margin: auto; }
+.bar { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.logo { display: inline-flex; gap: 12px; align-items: center; text-decoration: none; }
+.logo strong { font-size: 30px; letter-spacing: -.08em; line-height: 1; font-weight: 850; }
+.logo i { color: var(--lime); font-style: normal; }
+.logo small { border-left: 1px solid #74776f; padding-left: 12px; font-size: 12px; line-height: 1.15; font-weight: 620; }
+.bar > span { font-size: 14px; color: #eee; }
+.layout { display: grid; grid-template-columns: minmax(210px,.72fr) minmax(0,1.6fr); align-items: start; gap: clamp(32px,5vw,75px); padding: 55px 0 75px; }
+.intro { position: sticky; top: 24px; }
+h1,h2 { text-wrap: balance; }
+h1 { margin: 0 0 20px; font-size: clamp(40px,4.35vw,62px); line-height: 1; letter-spacing: -.062em; }
+.intro p,.thanks p { color: var(--muted); margin: 0 0 14px; max-width: 40ch; }
+.intro nav { display: grid; border-top: 1px solid var(--line); margin: 30px 0 20px; }
+.intro nav a { display: flex; justify-content: space-between; border-bottom: 1px solid var(--line); padding: 10px 0; text-decoration: none; }
+.intro nav a::after { content: '↓'; color: var(--muted); }
+.intro nav a:hover { text-decoration: underline; }
+.shortcut { display: inline-block; font-size: 15px; font-weight: 600; }
+.panel { background: white; border: 1px solid var(--line); border-radius: 16px; padding: clamp(20px,3vw,34px); margin: 0 0 18px; }
+h2 { line-height: 1.1; font-size: clamp(25px,2.4vw,32px); letter-spacing: -.045em; margin: 0 0 22px; }
+.field-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 21px 18px; }
+.wide { grid-column: 1/-1; }
+.field label,.upload label { display: block; font-size: 15px; font-weight: 680; }
+.field > input,.field textarea { appearance: none; background: #fcfcfa; color: var(--ink); border: 1px solid #aeb2a6; border-radius: 8px; width: 100%; padding: 10px 12px; font: inherit; margin-top: 7px; }
+.field textarea { resize: vertical; display: block; }
+.hint,.section-note,.privacy { color: var(--muted); }
+.hint { font-size: 13px; line-height: 1.45; margin: 4px 0 0; }
+.section-note { font-size: 15px; margin: -4px 0 16px; }
+details { border-top: 1px solid var(--line); margin: 24px 0 0; padding-top: 14px; }
+summary { font-size: 14px; font-weight: 640; cursor: pointer; }
+details .field-grid { margin-top: 15px; }
+.uploads { display: grid; gap: 12px; }
+.upload { border: 1px dashed #9aab85; border-radius: 10px; padding: 13px 15px; background: #fafbf7; }
+.upload input { display: block; font: inherit; font-size: 14px; margin-top: 10px; max-width: 100%; }
+.upload input::file-selector-button { font-family: inherit; font-weight: 650; color: var(--ink); background: #edf2e2; border: 1px solid #b1be9e; padding: 7px 11px; border-radius: 6px; cursor: pointer; margin-right: 7px; }
+.limits { margin: 8px 0 22px; }
+.privacy { font-size: 14px; margin: 5px 0 16px; }
+.submit { color: var(--ink); background: var(--lime); border: 1px solid #b1d457; border-radius: 999px; padding: 13px 24px; font: inherit; font-weight: 680; cursor: pointer; }
+.submit:hover { background: #b6ed3c; }
+:focus-visible { outline: 3px solid #547319; outline-offset: 3px; }
+[aria-invalid=true] { border-color: #963726 !important; }
+.notice,.issue { color: #852b1b; }
+.notice { padding: 12px 15px; margin: 0 0 15px; border: 1px solid #d5ab99; background: #fff3ea; border-radius: 8px; }
+.issue { margin: 5px 0 0; font-size: 14px; }
+.trap { position: absolute; width: 1px; height: 1px; left: -10000px; overflow: hidden; }
+.thanks { width: min(690px,91%); margin: clamp(60px,10vw,140px) auto; }
+.thanks p { max-width: 50ch; font-size: 18px; }
+.thanks a { display: inline-block; margin-top: 6px; }
+.footline { border-top: 1px solid var(--line); }
+footer { display: flex; justify-content: space-between; gap: 16px; padding: 22px 0; font-size: 14px; }
+footer div { display: flex; gap: 16px; }
+@media (max-width: 820px) {
+  .layout { grid-template-columns: 1fr; gap: 25px; padding-top: 34px; }
+  .intro { position: static; }
+  .intro nav { display: none; }
+  .intro p { max-width: 58ch; }
+  .bar { min-height: 60px; }
+}
+@media (max-width: 560px) {
+  .field-grid { grid-template-columns: 1fr; gap: 18px; }
+  .panel { padding: 19px; border-radius: 12px; }
+  .submit { width: 100%; }
+  footer { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+`
+
+export function render(values: Values = {}, errors: Values = {}, notice = '', sent = false, token = '', mode: Mode = 'full') {
+  const filesOnly = mode === 'files'
+  const title = filesOnly ? 'Dateien nachreichen' : 'Impressum & Datenschutz'
+  const introduction = filesOnly
+    ? 'Über Name und E-Mail können wir die Dateien Ihrem Projekt zuordnen. Name und E-Mail sind Pflichtfelder. Bitte wählen Sie mindestens eine Datei aus.'
+    : 'Hier können Sie uns die Angaben für Ihre Rechtstexte und Ihre Originaldateien übermitteln. Die mit * markierten Felder sind für diese Abgabe erforderlich.'
+  const navigation = filesOnly ? '' : `<nav aria-label="Abschnitte">${sections.map((s, i) => `<a href="#teil-${i + 1}">${s.title}</a>`).join('')}</nav>`
+  const panels = filesOnly
+    ? `<section class="panel"><h2>Ihre Dateien</h2><div class="field-grid">${fields.filter(f => f.key === 'name' || f.key === 'email').map(f => input({ ...f, wide: false, hint: undefined }, values, errors)).join('')}</div>
+         <div style="margin-top:24px">${attachments(errors)}</div>${input(sections[2].fields[0], values, errors)}</section>`
+    : sections.map((s, i) => sectionPanel(s, i, values, errors)).join('')
+  const form = `<main class="layout"><aside class="intro">
+    <h1>${escapeHtml(title)}</h1><p>${introduction}</p>${navigation}
+    <a class="shortcut" href="${filesOnly ? routePath : filesPath}">${filesOnly ? 'Zum vollständigen Formular' : 'Nur Dateien nachreichen'}</a>
+  </aside>
+  <form method="post" enctype="multipart/form-data" accept-charset="UTF-8" action="${filesOnly ? filesPath : routePath}">
+    <input type="hidden" name="submission" value="${escapeHtml(token)}"><input type="hidden" name="mode" value="${filesOnly ? 'files' : 'full'}">
+    <div class="trap" aria-hidden="true"><label>Bitte frei lassen<input name="address2" tabindex="-1" autocomplete="off"></label></div>
+    ${notice ? `<div role="alert" class="notice">${escapeHtml(notice)}</div>` : ''}
+    ${panels}
+    <p class="privacy">Ihre Angaben und Dateien gehen an Yasin Tepe (NEON BW). Sie werden zur Vorbereitung und Durchführung Ihres Projekts in einem privaten Ordner bei Hostinger gespeichert. Auf Ihrer Website erscheinen nur ausdrücklich freigegebene Inhalte. <a href="/datenschutz">Datenschutzhinweise</a></p>
+    <button class="submit" type="submit">${filesOnly ? 'Dateien an Yasin übermitteln' : 'Angaben an Yasin übermitteln'}</button>
+  </form></main>`
+  const thanks = `<main class="thanks"><h1>Vielen Dank!</h1><p>Ihre Abgabe ist bei NEON BW eingegangen. Bei Rückfragen meldet sich Yasin über die angegebene E-Mail-Adresse.</p><a href="${filesPath}">Weitere Dateien nachreichen</a></main>`
+  return `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>${sent ? 'Vielen Dank' : escapeHtml(title)} · NEON BW</title><style>${css}</style></head>
+    <body><header><div class="bar"><a class="logo" href="/" aria-label="NEON BW – Startseite"><strong>NEON<i>.</i></strong><small>Webdesign<br>&amp; KI</small></a><span>Kundenbereich</span></div></header>
+    ${sent ? thanks : form}
+    <div class="footline"><footer><span>NEON BW · Region Stuttgart</span><div><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></div></footer></div></body></html>`
 }
