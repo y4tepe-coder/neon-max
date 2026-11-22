@@ -1,21 +1,7 @@
 import type { Metadata } from 'next'
-import { DM_Sans, Caveat } from 'next/font/google'
+import './fonts.css'
 import './globals.css'
 import SiteChrome from '@/components/layout/SiteChrome'
-
-const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  variable: '--font-dm-sans',
-  display: 'swap',
-})
-
-const caveat = Caveat({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-caveat',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://neon-bw.de'),
@@ -193,8 +179,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="de" className={`${dmSans.variable} ${caveat.variable}`}>
+    <html lang="de">
       <head>
+        <link rel="preload" href="/fonts/13971731025ec697-s.p.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/46bdd75a3ff56824-s.p.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link
           rel="stylesheet"
           href="https://assets.calendly.com/assets/external/widget.css"
