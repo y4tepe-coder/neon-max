@@ -19,24 +19,25 @@ export const sections: Section[] = [
     title: 'Impressum',
     fields: [
       { key: 'name', label: 'Vor- und Nachname', type: 'name', required: true },
-      { key: 'address', label: 'Anschrift für das Impressum', hint: 'Straße, Hausnummer, PLZ und Ort der geschäftlichen Anschrift.', required: true },
-      { key: 'publicEmail', label: 'Öffentliche E-Mail-Adresse', type: 'email', hint: 'Für die Veröffentlichung brauchen wir eine Adresse. Ihre Wunschadresse genügt. Ist sie noch offen, klären wir sie beim Termin.' },
-      { key: 'contact', label: 'Öffentliche Telefonnummer', type: 'text', hint: 'Nur eintragen, wenn sie auf der Website stehen soll.' },
-      { key: 'company', label: 'Zusätzliche Angaben zum Unternehmen', hint: 'Falls eine Gesellschaft die Website betreibt: Firmenname, Rechtsform und Vertretung. Falls vorhanden: Register, Registergericht und Registernummer sowie USt-IdNr. oder W-IdNr. Bitte keine persönliche Steuer-ID oder Steuernummer eintragen.', wide: true, folded: true },
+      { key: 'address', label: 'Geschäftsanschrift', hint: 'Straße, Hausnummer, Postleitzahl und Ort für Ihr Impressum.', required: true },
+      { key: 'publicEmail', label: 'Öffentliche E-Mail-Adresse', type: 'email', hint: 'Welche Adresse soll im Impressum stehen? Eine Wunschadresse können Sie bereits angeben.' },
+      { key: 'contact', label: 'Öffentliche Telefonnummer', type: 'text', hint: 'Freiwillig, wenn Sie telefonisch erreichbar sein möchten.' },
+      { key: 'company', label: 'Angaben zum Unternehmen', hint: 'Bei einer Gesellschaft bitte Firmennamen, Rechtsform und Vertretung nennen. Register, Registergericht, Registernummer, USt-IdNr. oder W-IdNr. nur ergänzen, soweit vorhanden. Bitte keine persönliche Steuer-ID oder Steuernummer eintragen.', wide: true, folded: true },
     ],
   },
   {
     title: 'Datenschutz',
     fields: [
-      { key: 'email', label: 'Ihre E-Mail für Rückfragen', type: 'email', required: true, wide: true, hint: 'Hierüber erreichen wir Sie während des Projekts. Sie dient der Abstimmung mit NEON BW.' },
-      { key: 'recipient', label: 'Wer bearbeitet die Anfragen über Ihre Website?', hint: '„Nur ich“ genügt. Falls jemand mitliest oder Anfragen weitergeleitet werden, geben Sie das bitte kurz an.' },
-      { key: 'retention', label: 'Wann löschen Sie Anfragen ohne Auftrag?', hint: 'Eine ungefähre Frist oder Ihr übliches Vorgehen genügt. Falls noch offen, besprechen wir das gemeinsam.' },
+      { key: 'email', label: 'E-Mail-Adresse für Rückfragen', type: 'email', required: true, wide: true, hint: 'Über diese Adresse erreicht NEON BW Sie während des Projekts.' },
+      { key: 'recipient', label: 'Wer bearbeitet Ihre Website-Anfragen?', hint: '„Nur ich“ genügt. Falls Sie Anfragen weiterleiten, geben Sie bitte an, wer sie erhält.' },
+      { key: 'retention', label: 'Wann löschen Sie Anfragen ohne Auftrag?', hint: 'Eine ungefähre Frist oder Ihr übliches Vorgehen genügt. Offene Fragen klären wir gemeinsam.' },
     ],
   },
   {
     title: 'Sonstige Unterlagen',
     fields: [
-      { key: 'notes', label: 'Bildfreigabe, Bildnachweis oder weitere Hinweise', hint: 'Welche Fotos dürfen auf Ihre Website? Nennen Sie den Dateinamen und ggf. den gewünschten Bildnachweis. Sie können die Auswahl auch später mit Yasin abstimmen.', wide: true },
+      { key: 'project', label: 'Projekt oder Unternehmen (optional)', type: 'text', wide: true, hint: 'Unter welchem Namen führen Sie das Projekt mit NEON BW?' },
+      { key: 'notes', label: 'Ihre Nachricht zum Projekt', hint: 'Hier ist Platz für Fragen, Änderungswünsche, Bildfreigaben und Bildnachweise. Beziehen Sie sich auf ein Foto, nennen Sie bitte den Dateinamen.', wide: true },
     ],
   },
 ]
@@ -57,13 +58,15 @@ function input(field: Field, values: Values, errors: Values) {
   ].filter(Boolean).join(' ')
   const value = escapeHtml(values[key] || '')
   const control = type
-    ? `<input ${attributes} type="${type === 'email' ? 'email' : 'text'}" autocomplete="${key === 'name' ? 'name' : key === 'email' ? 'email' : 'off'}" value="${value}">`
-    : `<textarea ${attributes} rows="${key === 'address' ? 2 : 3}">${value}</textarea>`
+    ? `<input ${attributes} type="${type === 'email' ? 'email' : key === 'contact' ? 'tel' : 'text'}" autocomplete="${key === 'name' ? 'name' : key === 'email' ? 'email' : 'off'}" value="${value}">`
+    : `<textarea ${attributes} rows="${key === 'address' ? 1 : 3}">${value}</textarea>`
   return `<div class="field${field.wide ? ' wide' : ''}">
     <label for="${key}">${label}${field.required ? ' <span aria-hidden="true">*</span>' : ''}</label>
-    ${hint ? `<p class="hint" id="${key}-hint">${hint}</p>` : ''}
     ${control}
-    ${error ? `<p class="issue" id="${key}-error">${escapeHtml(error)}</p>` : ''}
+    <div class="field-help">
+      ${hint ? `<p class="hint" id="${key}-hint">${hint}</p>` : ''}
+      ${error ? `<p class="issue" id="${key}-error">${escapeHtml(error)}</p>` : ''}
+    </div>
   </div>`
 }
 
@@ -72,23 +75,24 @@ function fileInput(key: 'photos' | 'documents', errors: Values) {
   const accept = photo ? '.jpg,.jpeg,.png,.webp,.heic,.heif' : '.pdf,.docx'
   return `<div class="upload">
     <label for="${key}">${photo ? 'Fotos im Original' : 'Weitere Dokumente'}</label>
-    <p class="hint" id="${key}-hint">${photo ? 'Zum Beispiel Ihr Porträt. JPG, PNG, WebP oder HEIC/HEIF.' : 'Zum Beispiel ergänzende Texte oder Bildfreigaben. PDF oder Word (.docx).'}</p>
+    <p class="hint" id="${key}-hint">${photo ? 'Ihr Porträt und weitere Fotos als JPG, PNG, WebP, HEIC oder HEIF.' : 'Zum Beispiel Texte, Freigaben oder weitere Projektunterlagen als PDF oder Word-Datei (.docx).'}</p>
     <input id="${key}" name="${key}" type="file" accept="${accept}" multiple aria-describedby="${key}-hint${errors[key] ? ' ' + key + '-error' : ''}" ${errors[key] ? 'aria-invalid="true"' : ''}>
     ${errors[key] ? `<p class="issue" id="${key}-error">${escapeHtml(errors[key])}</p>` : ''}
   </div>`
 }
 
 function attachments(errors: Values) {
-  return `<p class="section-note">Bitte laden Sie nur Dateien hoch, die wir für Ihr Projekt verwenden dürfen. Wählen Sie Fotos einzeln oder mehrere Originaldateien gemeinsam aus.</p>
+  return `<p class="section-note">Sie können Fotos und Dokumente als einzelne Dateien hochladen und mehrere auf einmal auswählen.</p>
     <div class="uploads">${fileInput('photos', errors)}${fileInput('documents', errors)}</div>
-    <p class="hint limits">Je Übermittlung bis zu 10 Dateien, höchstens 15 MiB pro Datei und 35 MiB zusammen. Weitere Dateien können Sie später nachreichen.</p>`
+    <p class="hint">Bis zu 10 Dateien pro Abgabe, jeweils bis zu 15 MiB und zusammen bis zu 35 MiB.</p>
+    <p class="hint email-option"><a href="mailto:y4tepe@gmail.com?subject=${encodeURIComponent('NEON BW · Kundenportal – Unterlagen')}">Unterlagen per E-Mail schicken</a> – die Dateien fügen Sie als Anhang in Ihrem Mailprogramm hinzu.</p>`
 }
 
 function sectionPanel(section: Section, index: number, values: Values, errors: Values) {
   const standard = section.fields.filter(field => !field.folded)
   const folded = section.fields.filter(field => field.folded)
   const specialCases = folded.length ? `<details${folded.some(field => values[field.key] || errors[field.key]) ? ' open' : ''}>
-    <summary>Gesellschaft, Registereintrag oder Unternehmens-ID vorhanden?</summary>
+    <summary>Angaben zu Gesellschaft, Register oder Unternehmens-ID ergänzen</summary>
     <div class="field-grid">${folded.map(field => input(field, values, errors)).join('')}</div>
   </details>` : ''
   return `<section class="panel" id="teil-${index + 1}" aria-labelledby="heading-${index}">
@@ -134,10 +138,18 @@ h1 { margin: 0 0 20px; font-size: clamp(40px,4.35vw,62px); line-height: 1; lette
 .panel { background: white; border: 1px solid var(--line); border-radius: 16px; padding: clamp(20px,3vw,34px); margin: 0 0 18px; }
 h2 { line-height: 1.1; font-size: clamp(25px,2.4vw,32px); letter-spacing: -.045em; margin: 0 0 22px; }
 .field-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 21px 18px; }
+.field { min-width: 0; }
 .wide { grid-column: 1/-1; }
 .field label,.upload label { display: block; font-size: 15px; font-weight: 680; }
-.field > input,.field textarea { appearance: none; background: #fcfcfa; color: var(--ink); border: 1px solid #aeb2a6; border-radius: 8px; width: 100%; padding: 10px 12px; font: inherit; margin-top: 7px; }
+.field > input,.field textarea { display: block; align-self: start; appearance: none; background: #fcfcfa; color: var(--ink); border: 1px solid #aeb2a6; border-radius: 8px; width: 100%; min-height: 46px; padding: 10px 12px; font: inherit; margin: 7px 0 0; }
 .field textarea { resize: vertical; display: block; }
+@supports (grid-template-rows: subgrid) {
+  .field-grid { row-gap: 0; }
+  .field-grid > .field { display: grid; grid-template-rows: subgrid; grid-row: span 3; }
+  .field-grid > .field > .field-help { padding-bottom: 20px; }
+  .field-grid > .field:not(.wide):nth-last-child(-n + 2) > .field-help,
+  .field-grid > .field:last-child > .field-help { padding-bottom: 0; }
+}
 .hint,.section-note,.privacy { color: var(--muted); }
 .hint { font-size: 13px; line-height: 1.45; margin: 4px 0 0; }
 .section-note { font-size: 15px; margin: -4px 0 16px; }
@@ -148,7 +160,8 @@ details .field-grid { margin-top: 15px; }
 .upload { border: 1px dashed #9aab85; border-radius: 10px; padding: 13px 15px; background: #fafbf7; }
 .upload input { display: block; font: inherit; font-size: 14px; margin-top: 10px; max-width: 100%; }
 .upload input::file-selector-button { font-family: inherit; font-weight: 650; color: var(--ink); background: #edf2e2; border: 1px solid #b1be9e; padding: 7px 11px; border-radius: 6px; cursor: pointer; margin-right: 7px; }
-.limits { margin: 8px 0 22px; }
+.uploads + .hint { margin-top: 9px; }
+.email-option { margin: 6px 0 22px; }
 .privacy { font-size: 14px; margin: 5px 0 16px; }
 .submit { color: var(--ink); background: var(--lime); border: 1px solid #b1d457; border-radius: 999px; padding: 13px 24px; font: inherit; font-weight: 680; cursor: pointer; }
 .submit:hover { background: #b6ed3c; }
@@ -173,6 +186,8 @@ footer div { display: flex; gap: 16px; }
 }
 @media (max-width: 560px) {
   .field-grid { grid-template-columns: 1fr; gap: 18px; }
+  .field-grid > .field { display: block; grid-row: auto; }
+  .field-grid > .field > .field-help { padding-bottom: 0; }
   .panel { padding: 19px; border-radius: 12px; }
   .submit { width: 100%; }
   footer { flex-wrap: wrap; }
@@ -182,28 +197,29 @@ footer div { display: flex; gap: 16px; }
 
 export function render(values: Values = {}, errors: Values = {}, notice = '', sent = false, token = '', mode: Mode = 'full') {
   const filesOnly = mode === 'files'
-  const title = filesOnly ? 'Dateien nachreichen' : 'Impressum & Datenschutz'
+  const title = filesOnly ? 'Unterlagen oder Nachricht nachreichen' : 'Kundenportal'
   const introduction = filesOnly
-    ? 'Über Name und E-Mail können wir die Dateien Ihrem Projekt zuordnen. Name und E-Mail sind Pflichtfelder. Bitte wählen Sie mindestens eine Datei aus.'
-    : 'Hier können Sie uns die Angaben für Ihre Rechtstexte und Ihre Originaldateien übermitteln. Die mit * markierten Felder sind für diese Abgabe erforderlich.'
+    ? 'Geben Sie Ihren Namen und Ihre E-Mail-Adresse an. Sie können uns eine Nachricht zu Ihrem Projekt schreiben, Dateien hochladen oder beides zusammen übermitteln.'
+    : 'Übermitteln Sie uns Ihre Angaben für Impressum und Datenschutz sowie Fotos und weitere Projektunterlagen. Pflichtfelder sind mit * gekennzeichnet.'
   const navigation = filesOnly ? '' : `<nav aria-label="Abschnitte">${sections.map((s, i) => `<a href="#teil-${i + 1}">${s.title}</a>`).join('')}</nav>`
   const panels = filesOnly
-    ? `<section class="panel"><h2>Ihre Dateien</h2><div class="field-grid">${fields.filter(f => f.key === 'name' || f.key === 'email').map(f => input({ ...f, wide: false, hint: undefined }, values, errors)).join('')}</div>
-         <div style="margin-top:24px">${attachments(errors)}</div>${input(sections[2].fields[0], values, errors)}</section>`
+    ? `<section class="panel"><h2>Ihre Angaben</h2><div class="field-grid">${fields.filter(f => f.key === 'name' || f.key === 'email').map(f => input({ ...f, wide: false, hint: undefined }, values, errors)).join('')}</div>
+         <div style="margin-top:24px">${attachments(errors)}</div>
+         <div class="field-grid">${sections[2].fields.map(field => input(field, values, errors)).join('')}</div></section>`
     : sections.map((s, i) => sectionPanel(s, i, values, errors)).join('')
   const form = `<main class="layout"><aside class="intro">
     <h1>${escapeHtml(title)}</h1><p>${introduction}</p>${navigation}
-    <a class="shortcut" href="${filesOnly ? routePath : filesPath}">${filesOnly ? 'Zum vollständigen Formular' : 'Nur Dateien nachreichen'}</a>
+    <a class="shortcut" href="${filesOnly ? routePath : filesPath}">${filesOnly ? 'Zum vollständigen Formular' : 'Unterlagen oder Nachricht nachreichen'}</a>
   </aside>
   <form method="post" enctype="multipart/form-data" accept-charset="UTF-8" action="${filesOnly ? filesPath : routePath}">
     <input type="hidden" name="submission" value="${escapeHtml(token)}"><input type="hidden" name="mode" value="${filesOnly ? 'files' : 'full'}">
     <div class="trap" aria-hidden="true"><label>Bitte frei lassen<input name="address2" tabindex="-1" autocomplete="off"></label></div>
     ${notice ? `<div role="alert" class="notice">${escapeHtml(notice)}</div>` : ''}
     ${panels}
-    <p class="privacy">Ihre Angaben und Dateien gehen an Yasin Tepe (NEON BW). Sie werden zur Vorbereitung und Durchführung Ihres Projekts in einem privaten Ordner bei Hostinger gespeichert. Auf Ihrer Website erscheinen nur ausdrücklich freigegebene Inhalte. <a href="/datenschutz">Datenschutzhinweise</a></p>
-    <button class="submit" type="submit">${filesOnly ? 'Dateien an Yasin übermitteln' : 'Angaben an Yasin übermitteln'}</button>
+    <p class="privacy">NEON BW speichert Ihre Angaben und Dateien für die Bearbeitung Ihres Projekts in einem privaten Ordner bei Hostinger. Eine kurze Nachricht an unser Projektpostfach bei Gmail ordnet den Eingang über Ihre Kontakt- und Projektangaben zu. Ihre hochgeladenen Dateien bleiben im Projektordner. Auf Ihrer Website veröffentlichen wir nur freigegebene Inhalte. <a href="/datenschutz">Datenschutzhinweise</a></p>
+    <button class="submit" type="submit">${filesOnly ? 'An NEON BW übermitteln' : 'Angaben an NEON BW übermitteln'}</button>
   </form></main>`
-  const thanks = `<main class="thanks"><h1>Vielen Dank!</h1><p>Ihre Abgabe ist bei NEON BW eingegangen. Bei Rückfragen meldet sich Yasin über die angegebene E-Mail-Adresse.</p><a href="${filesPath}">Weitere Dateien nachreichen</a></main>`
+  const thanks = `<main class="thanks"><h1>Vielen Dank!</h1><p>Ihre Angaben sind bei NEON BW eingegangen. Bei Rückfragen erreichen wir Sie unter der angegebenen E-Mail-Adresse.</p><a href="${filesPath}">Weitere Unterlagen oder eine Nachricht nachreichen</a></main>`
   return `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>${sent ? 'Vielen Dank' : escapeHtml(title)} · NEON BW</title><style>${css}</style></head>
     <body><header><div class="bar"><a class="logo" href="/" aria-label="NEON BW – Startseite"><strong>NEON<i>.</i></strong><small>Webdesign<br>&amp; KI</small></a><span>Kundenbereich</span></div></header>
     ${sent ? thanks : form}

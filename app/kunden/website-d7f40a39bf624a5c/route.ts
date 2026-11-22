@@ -1,5 +1,6 @@
 import { createHash, randomUUID } from 'node:crypto'
 import { fields, limit, render, type Values } from './form'
+import { notificationReady, notifyAfterReceipt } from './notify'
 import { FormError, probeStorage, readForm, readUploads, saveSubmission } from './upload'
 
 export const runtime = 'nodejs'
@@ -54,6 +55,12 @@ export async function HEAD() {
 }
 
 export async function GET(request: Request) {
+  if (new URL(request.url).searchParams.get('status') === 'eingang') {
+    const [storage, mail] = await Promise.all([storageStatus(), notificationReady()])
+    return new Response('Private Ablage: ' + (storage === 200 ? 'bereit' : 'nicht bereit') + '\nEingangshinweis: ' + (mail ? 'Mailtransport vorhanden' : 'Mailtransport nicht verfügbar'), {
+      headers: { ...headers, 'Content-Type': 'text/plain; charset=utf-8' },
+    })
+  }
   const notice = await storageStatus() === 200 ? '' : 'Die private Ablage ist momentan nicht erreichbar. Bitte versuchen Sie es etwas später erneut.'
   return page({}, {}, notice, randomUUID(), 200, requestMode(request))
 }
@@ -61,7 +68,7 @@ export async function GET(request: Request) {
 function validate(data: FormData, mode: Mode) {
   const values: Values = {}, errors: Values = {}
   for (const f of fields) {
-    if (mode === 'files' && !['name', 'email', 'notes'].includes(f.key)) continue
+    if (mode === 'files' && !['name', 'email', 'project', 'notes'].includes(f.key)) continue
     const entries = data.getAll(f.key)
     const raw = entries[0] ?? ''
     if (entries.length > 1 || typeof raw !== 'string') {
@@ -102,11 +109,12 @@ export async function POST(request: Request) {
     values = checked.values
     if (Object.keys(checked.errors).length) return page(values, checked.errors, 'Bitte prüfen Sie die markierten Felder und wählen Sie Ihre Dateien erneut aus.', token, 422, mode)
     const files = await readUploads(data)
-    if (mode === 'files' && !files.length) throw new FormError(422, 'Bitte wählen Sie mindestens ein Foto oder ein Dokument aus.', 'photos')
+    if (mode === 'files' && !files.length && !values.notes) throw new FormError(422, 'Bitte fügen Sie eine Datei oder eine Nachricht für NEON BW hinzu.', 'notes')
     const answers = fields.filter(f => values[f.key]).map(f => ({ frage: f.label, antwort: values[f.key] }))
-    await saveSubmission(token, {
-      name: values.name, email: values.email, bereich: mode === 'files' ? 'Nachreichung' : 'Impressum und Datenschutz', antworten: answers,
+    const receipt = await saveSubmission(token, {
+      name: values.name, email: values.email, ...(values.project ? { project: values.project } : {}), bereich: mode === 'files' ? 'Nachreichung' : 'Impressum und Datenschutz', antworten: answers,
     }, files)
+    if (receipt) await notifyAfterReceipt(receipt)
     return new Response(render({}, {}, '', true, '', mode), { headers })
   } catch (e) {
     const failure = e instanceof FormError ? e : new FormError(503, 'Die Übermittlung ist nicht bestätigt. Bitte versuchen Sie es später erneut.')

@@ -1,6 +1,7 @@
 import { createHash, randomUUID } from 'node:crypto'
 import { lstat, mkdir, open, readdir, realpath, rename, rm } from 'node:fs/promises'
 import path from 'node:path'
+import { pendingName, type ReceiptNotice } from './notify'
 
 const MiB = 1024 * 1024
 const maxFile = 15 * MiB
@@ -138,7 +139,7 @@ export async function probeStorage() {
   finally { await rm(folder, {recursive: true, force: true}) }
 }
 
-type Answers = { name: string; email: string; bereich: string; antworten: { frage: string; antwort: string }[] }
+type Answers = { name: string; email: string; project?: string; bereich: string; antworten: { frage: string; antwort: string }[] }
 
 export async function saveSubmission(token: string, answers: Answers, files: Attachment[]) {
   await ensurePrivateDirectory()
@@ -149,7 +150,8 @@ export async function saveSubmission(token: string, answers: Answers, files: Att
     sha256: f.sha256,
   }))
   const id = createHash('sha256').update(JSON.stringify([token, answers, listed])).digest('hex').slice(0, 32)
-  const manifest = JSON.stringify({ eingegangen: new Date().toISOString(), ...answers, dateien: listed }, null, 2)
+  const received = new Date().toISOString()
+  const manifest = JSON.stringify({ eingegangen: received, ...answers, dateien: listed }, null, 2)
   const units = Math.max(1, Math.ceil((65536 + Buffer.byteLength(manifest) + files.reduce((n, f) => n + f.data.length, 0)) / MiB))
   const destination = path.join(privateDirectory, 'Eingang-' + id + '-' + units + 'MiB')
   const temporary = path.join(privateDirectory, '.neu-' + randomUUID() + '-' + units + 'MiB')
@@ -163,12 +165,17 @@ export async function saveSubmission(token: string, answers: Answers, files: Att
       const match = /^(?:Eingang-[a-f0-9]{32}|\.neu-[a-f0-9-]{36})-(\d+)MiB$/.exec(e.name)
       return sum + (e.isDirectory() && match ? Number(match[1]) : e.isFile() && e.name.endsWith('.json') ? 1 : 0)
     }, 0)
-    if (occupied > 1024) throw new FormError(507, 'Der private Projektordner ist voll. Bitte kontaktieren Sie Yasin Tepe, damit er Platz freigeben kann.')
+    if (occupied > 1024) throw new FormError(507, 'Der private Projektordner ist voll. Bitte informieren Sie NEON BW.')
     if (listed.length) await mkdir(path.join(temporary, 'Dateien'), {mode: 0o700})
     for (let i = 0; i < files.length; i++) await writePrivate(path.join(temporary, listed[i].datei), files[i].data)
     await writePrivate(path.join(temporary, 'antworten.json'), manifest)
-    await rename(temporary, destination).catch((e: NodeJS.ErrnoException) => {
-      if (e.code !== 'EEXIST' && e.code !== 'ENOTEMPTY') throw e
-    })
+    const notice: ReceiptNotice = { received, project: answers.project || '', replyEmail: answers.email, files: files.length }
+    await writePrivate(path.join(temporary, pendingName), JSON.stringify(notice))
+    try { await rename(temporary, destination) } catch (e) {
+      const code = (e as NodeJS.ErrnoException).code
+      if (code === 'EEXIST' || code === 'ENOTEMPTY') return
+      throw e
+    }
+    return destination
   } finally { await rm(temporary, {recursive: true, force: true}) }
 }
