@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/kundenportal',
+        destination: '/kunden/website-d7f40a39bf624a5c',
+        permanent: false,
+      },
+      {
         source: '/webdesign/:city',
         destination: '/',
         permanent: true,

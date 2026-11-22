@@ -11,6 +11,7 @@ const footerLinks = [
       { href: '/leistungen#automatisierung',  label: 'Anfragefluss' },
       { href: '/leistungen#ki-integration',   label: 'Ablauf-Automation' },
       { href: '/leistungen#chatbot',          label: 'Chatbot & Telefonhilfe' },
+      { href: '/kundenportal',                label: 'Kundenportal' },
     ],
   },
   {
@@ -77,16 +78,19 @@ export default function Footer() {
                 {group.title}
               </p>
               <ul className="flex flex-col gap-3">
-                {group.links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-white/55 hover:text-white transition-colors duration-200"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {group.links.map((link) => {
+                  const FooterLink = link.href === '/kundenportal' ? 'a' : Link
+                  return (
+                    <li key={link.href}>
+                      <FooterLink
+                        href={link.href}
+                        className="text-sm text-white/55 hover:text-white transition-colors duration-200"
+                      >
+                        {link.label}
+                      </FooterLink>
+                    </li>
+                  )
+                })}
               </ul>
             </div>
           ))}
