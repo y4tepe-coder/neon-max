@@ -34,8 +34,9 @@ function formPage(values: Values, errors: Values, notice: string, token: string,
   return new Response(render(values, errors, notice, false, token, fallback), { status, headers })
 }
 
-export function GET() {
-  return formPage({}, {}, '', randomUUID())
+export async function GET() {
+  const notice = await storageStatus() === 200 ? '' : 'Die direkte Übermittlung ist vorübergehend eingeschränkt. Sie können den Bogen ausfüllen und Ihre Antworten am Ende per E-Mail übernehmen.'
+  return formPage({}, {}, notice, randomUUID())
 }
 
 async function parseBody(request: Request) {
@@ -100,12 +101,16 @@ async function probeStorage() {
 }
 
 let storageCheck: { until: number; status: Promise<number> } | undefined
-export async function HEAD() {
+function storageStatus() {
   const now = Date.now()
   if (!storageCheck || now >= storageCheck.until) {
     storageCheck = { until: now + 30_000, status: probeStorage().then(() => 200, () => 503) }
   }
-  return new Response(null, { status: await storageCheck.status, headers })
+  return storageCheck.status
+}
+
+export async function HEAD() {
+  return new Response(null, { status: await storageStatus(), headers })
 }
 
 async function savePrivate(values: Values, id: string) {
