@@ -1,5 +1,5 @@
 import { createHash, randomUUID } from 'node:crypto'
-import { fields, limit, render, type Values } from './form'
+import { fields, limit, render, selectionScript, type Values } from './form'
 import { notificationReady, notifyAfterReceipt } from './notify'
 import { FormError, probeStorage, readForm, readUploads, saveSubmission } from './upload'
 
@@ -15,7 +15,7 @@ const headers = {
   'X-Robots-Tag': 'noindex, nofollow, noarchive',
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'same-origin',
-  'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; font-src 'self'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'",
+  'Content-Security-Policy': `default-src 'none'; script-src 'sha256-${createHash('sha256').update(selectionScript).digest('base64')}'; style-src 'unsafe-inline'; font-src 'self'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'`,
 }
 
 const rates = new Map<string, { count: number; until: number }>()

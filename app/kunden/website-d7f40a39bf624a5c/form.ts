@@ -1,3 +1,5 @@
+import { fileLimitMB, maxFiles, megabyte, submissionLimitMB } from './limits'
+
 export const routePath = '/kunden/website-d7f40a39bf624a5c'
 const filesPath = routePath + '?nachreichen=1'
 export type Values = Record<string, string>
@@ -75,7 +77,7 @@ function fileInput(key: 'photos' | 'documents', errors: Values) {
   const accept = photo ? '.jpg,.jpeg,.png,.webp,.heic,.heif' : '.pdf,.docx'
   return `<div class="upload">
     <label for="${key}">${photo ? 'Fotos im Original' : 'Weitere Dokumente'}</label>
-    <p class="hint" id="${key}-hint">${photo ? 'Ihr Porträt und weitere Fotos als JPG, PNG, WebP, HEIC oder HEIF.' : 'Zum Beispiel Texte, Freigaben oder weitere Projektunterlagen als PDF oder Word-Datei (.docx).'}</p>
+    <p class="hint" id="${key}-hint">${photo ? 'Ihr Porträt und weitere Fotos als JPG, PNG, WebP, HEIC oder HEIF.' : 'Texte und Freigaben als PDF oder Word-Datei (.docx). Auch Word-Dateien mit eingefügten Fotos gehören hierher.'}</p>
     <input id="${key}" name="${key}" type="file" accept="${accept}" multiple aria-describedby="${key}-hint${errors[key] ? ' ' + key + '-error' : ''}" ${errors[key] ? 'aria-invalid="true"' : ''}>
     ${errors[key] ? `<p class="issue" id="${key}-error">${escapeHtml(errors[key])}</p>` : ''}
   </div>`
@@ -84,7 +86,8 @@ function fileInput(key: 'photos' | 'documents', errors: Values) {
 function attachments(errors: Values) {
   return `<p class="section-note">Sie können Fotos und Dokumente als einzelne Dateien hochladen und mehrere auf einmal auswählen.</p>
     <div class="uploads">${fileInput('photos', errors)}${fileInput('documents', errors)}</div>
-    <p class="hint">Bis zu 10 Dateien pro Abgabe, jeweils bis zu 15 MiB und zusammen bis zu 35 MiB.</p>
+    <p class="hint">Bis zu ${maxFiles} Dateien pro Abgabe, höchstens ${fileLimitMB} MB pro Datei und ${submissionLimitMB} MB insgesamt. Weitere Dateien können Sie separat nachreichen.</p>
+    <p class="hint" id="file-selection" role="status" aria-live="polite"></p>
     <p class="hint email-option"><a href="mailto:y4tepe@gmail.com?subject=${encodeURIComponent('NEON BW · Kundenportal – Unterlagen')}">Unterlagen per E-Mail schicken</a> – die Dateien fügen Sie als Anhang in Ihrem Mailprogramm hinzu.</p>`
 }
 
@@ -102,6 +105,37 @@ function sectionPanel(section: Section, index: number, values: Values, errors: V
     ${specialCases}
   </section>`
 }
+
+export const selectionScript = `(() => {
+  const inputs = Array.from(document.querySelectorAll('input[type="file"]'));
+  const status = document.getElementById('file-selection');
+  const format = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 1 });
+  function check(changed) {
+    let count = 0;
+    let bytes = 0;
+    let message = '';
+    let invalid = changed;
+    for (const input of inputs) {
+      input.setCustomValidity('');
+      for (const file of input.files) {
+        count++;
+        bytes += file.size;
+        if (!message && (file.size === 0 || file.size > ${fileLimitMB * megabyte})) {
+          message = file.size === 0
+            ? '„' + file.name + '“ ist leer. Bitte wählen Sie eine andere Datei.'
+            : '„' + file.name + '“ ist zu groß. Erlaubt sind ${fileLimitMB} MB pro Datei.';
+          invalid = input;
+        }
+      }
+    }
+    if (!message && count > ${maxFiles}) message = 'Bitte verteilen Sie die Dateien auf mehrere Abgaben mit jeweils höchstens ${maxFiles} Dateien.';
+    if (!message && bytes > ${submissionLimitMB * megabyte}) message = 'Die Auswahl überschreitet ${submissionLimitMB} MB. Bitte reichen Sie einen Teil der Dateien separat nach.';
+    invalid.setCustomValidity(message);
+    status.className = message ? 'issue' : 'hint';
+    status.textContent = message || (count ? count + (count === 1 ? ' Datei' : ' Dateien') + ' ausgewählt (' + format.format(bytes / ${megabyte}) + ' MB).' : '');
+  }
+  for (const input of inputs) input.addEventListener('change', () => check(input));
+})();`
 
 const css = `
 @font-face {
@@ -222,6 +256,6 @@ export function render(values: Values = {}, errors: Values = {}, notice = '', se
   const thanks = `<main class="thanks"><h1>Vielen Dank!</h1><p>Ihre Angaben sind bei NEON BW eingegangen. Bei Rückfragen erreichen wir Sie unter der angegebenen E-Mail-Adresse.</p><a href="${filesPath}">Weitere Unterlagen oder eine Nachricht nachreichen</a></main>`
   return `<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>${sent ? 'Vielen Dank' : escapeHtml(title)} · NEON BW</title><style>${css}</style></head>
     <body><header><div class="bar"><a class="logo" href="/" aria-label="NEON BW – Startseite"><strong>NEON<i>.</i></strong><small>Webdesign<br>&amp; KI</small></a><span>Kundenbereich</span></div></header>
-    ${sent ? thanks : form}
+    ${sent ? thanks : form + `<script>${selectionScript}</script>`}
     <div class="footline"><footer><span>NEON BW · Region Stuttgart</span><div><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></div></footer></div></body></html>`
 }

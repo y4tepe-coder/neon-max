@@ -1,11 +1,12 @@
 import { createHash, randomUUID } from 'node:crypto'
 import { lstat, mkdir, open, readdir, realpath, rename, rm } from 'node:fs/promises'
 import path from 'node:path'
+import { fileLimitMB, maxFiles, megabyte, submissionLimitMB } from './limits'
 import { pendingName, type ReceiptNotice } from './notify'
 
 const MiB = 1024 * 1024
-const maxFile = 15 * MiB
-const maxTotal = 35 * MiB
+const maxFile = fileLimitMB * megabyte
+const maxTotal = submissionLimitMB * megabyte
 const maxRequest = maxTotal + 128 * 1024
 const privateDirectory = '/home/u220996737/domains/neon-bw.de/.neon-kundenbogen'
 
@@ -21,14 +22,14 @@ export async function readForm(request: Request) {
     throw new FormError(415, 'Bitte öffnen Sie das Portal erneut und nutzen Sie das dortige Formular.')
   }
   if (!request.body) throw new FormError(400, 'Die Übermittlung ist leer.')
-  const sizeError = () => new FormError(413, 'Bitte teilen Sie die Dateien auf mehrere Übermittlungen mit jeweils höchstens 35 MB auf.')
+  const sizeError = () => new FormError(413, `Bitte teilen Sie die Dateien auf mehrere Abgaben mit jeweils höchstens ${submissionLimitMB} MB auf.`)
   if (Number(request.headers.get('content-length')) > maxRequest) throw sizeError()
 
   // Bound both bytes and part count before the platform multipart parser constructs File objects.
   const marker = Buffer.from('\r\n--' + boundary)
   let tail = Buffer.alloc(0), bytes = 0, parts = 0
   let failure: FormError | undefined
-  const timeout = AbortSignal.timeout(180_000)
+  const timeout = AbortSignal.timeout(10 * 60_000)
   const stream = request.body.pipeThrough(new TransformStream<Uint8Array, Uint8Array>({
     transform(chunk, controller) {
       bytes += chunk.byteLength
@@ -91,7 +92,7 @@ function validFormat(group: string, ext: string, data: Buffer) {
   }
 }
 
-export type Attachment = { group: string; name: string; data: Buffer; sha256: string }
+export type Attachment = { group: string; name: string; data: Blob; sha256: string }
 
 export async function readUploads(form: FormData) {
   const result: Attachment[] = []
@@ -100,10 +101,10 @@ export async function readUploads(form: FormData) {
     if (typeof entry === 'string') continue
     if (!entry.name && !entry.size) continue
     if (group !== 'photos' && group !== 'documents') throw new FormError(422, 'Unbekanntes Dateifeld.')
-    if (result.length >= 10) throw new FormError(422, 'Bitte wählen Sie insgesamt höchstens zehn Dateien aus.', group)
-    if (!entry.size || entry.size > maxFile) throw new FormError(422, 'Bitte wählen Sie eine nicht leere Datei mit höchstens 15 MB aus.', group)
+    if (result.length >= maxFiles) throw new FormError(422, `Bitte wählen Sie insgesamt höchstens ${maxFiles} Dateien aus.`, group)
+    if (!entry.size || entry.size > maxFile) throw new FormError(422, `Bitte wählen Sie eine nicht leere Datei mit höchstens ${fileLimitMB} MB aus.`, group)
     total += entry.size
-    if (total > maxTotal) throw new FormError(422, 'Die Dateien dürfen zusammen höchstens 35 MB groß sein.', group)
+    if (total > maxTotal) throw new FormError(422, `Die Dateien dürfen zusammen höchstens ${submissionLimitMB} MB groß sein. Sie können weitere Dateien nachreichen.`, group)
     const original = path.win32.basename(entry.name).normalize('NFC')
     const ext = path.extname(original).toLowerCase()
     const stem = original.slice(0, original.length - ext.length).replace(/[^\p{L}\p{N}\p{M} ._()+-]/gu, '_').replace(/^[\s.]+|[\s.]+$/g, '')
@@ -113,7 +114,7 @@ export async function readUploads(form: FormData) {
     if (!validFormat(group, ext, data)) {
       throw new FormError(422, group === 'photos' ? 'Bitte wählen Sie Originalfotos im Format JPG, PNG, WebP, HEIC oder HEIF.' : 'Bitte wählen Sie ein PDF oder ein Word-Dokument im Format DOCX.', group)
     }
-    result.push({ group, name: short + ext, data, sha256: createHash('sha256').update(data).digest('hex') })
+    result.push({ group, name: short + ext, data: entry, sha256: createHash('sha256').update(data).digest('hex') })
   }
   return result
 }
@@ -126,9 +127,23 @@ async function ensurePrivateDirectory() {
   if (!info.isDirectory() || (info.mode & 0o077) !== 0 || await realpath(privateDirectory) !== privateDirectory) throw Error('Storage unavailable')
 }
 
-async function writePrivate(file: string, data: Buffer | string) {
+async function writePrivate(file: string, data: Blob | string) {
   const handle = await open(file, 'wx', 0o600)
-  try { await handle.writeFile(data); await handle.sync() } finally { await handle.close() }
+  try {
+    if (typeof data === 'string') {
+      await handle.writeFile(data)
+    } else {
+      const reader = data.stream().getReader()
+      try {
+        for (;;) {
+          const { value, done } = await reader.read()
+          if (done) break
+          await handle.writeFile(value)
+        }
+      } finally { reader.releaseLock() }
+    }
+    await handle.sync()
+  } finally { await handle.close() }
 }
 
 export async function probeStorage() {
@@ -146,13 +161,13 @@ export async function saveSubmission(token: string, answers: Answers, files: Att
   const listed = files.map((f, index) => ({
     art: f.group === 'photos' ? 'Foto' : 'Dokument',
     datei: 'Dateien/' + String(index + 1).padStart(2, '0') + '-' + f.name,
-    bytes: f.data.length,
+    bytes: f.data.size,
     sha256: f.sha256,
   }))
   const id = createHash('sha256').update(JSON.stringify([token, answers, listed])).digest('hex').slice(0, 32)
   const received = new Date().toISOString()
   const manifest = JSON.stringify({ eingegangen: received, ...answers, dateien: listed }, null, 2)
-  const units = Math.max(1, Math.ceil((65536 + Buffer.byteLength(manifest) + files.reduce((n, f) => n + f.data.length, 0)) / MiB))
+  const units = Math.max(1, Math.ceil((65536 + Buffer.byteLength(manifest) + files.reduce((n, f) => n + f.data.size, 0)) / MiB))
   const destination = path.join(privateDirectory, 'Eingang-' + id + '-' + units + 'MiB')
   const temporary = path.join(privateDirectory, '.neu-' + randomUUID() + '-' + units + 'MiB')
   // Directory names reserve space across app workers before any content is written.
